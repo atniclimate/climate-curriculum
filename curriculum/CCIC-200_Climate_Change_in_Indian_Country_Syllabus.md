@@ -8,6 +8,8 @@ Draft for editing, 09/24/2026
 
 Adapted from NESC 215, Climate Change in Indian Country, Northwest Indian College (NWIC). Companion course: TCR 201, Tribal Climate Resilience.
 
+Built on *Understanding a Climate of Change: Understanding an Ever Changing Climate*, by Patrick Freeland and Cayla Jones, and on Steve Robinson's *Climate Change and the Tribes: Columbia River Edition* (draft).
+
 ---
 
 ## How to Use This Document
@@ -17,7 +19,7 @@ This document is a complete, teachable 200-level course for Tribal Colleges and 
 - **Who it is for:** TCU faculty first; also faculty elsewhere who serve Tribal students, and program teachers who want a college-level reference.
 - **What it keeps from NESC 215:** the overview, objectives, all nine NWIC catalog outcomes, the modular design, weekly reflections, week titles, final product options, and assessment criteria, with light wording edits.
 - **What it adds:** the missing Weeks 7 and 8, timed lesson plans, assignment instructions, a rubric, TCU-centered policies, a semester crosswalk, and guidance on working with Tribes, knowledge holders, and data.
-- **The spine:** Patrick Freeland's four-part series, "Understanding a Climate of Change" (How does a cloud work? How do you know what you know? Adaptation, Mitigation, Resilience; Relationships Matter), runs through the course. The Columbia River Basin is the shared case; each student centers their own Tribe and homelands.
+- **The spine:** the four-part series by Patrick Freeland and Cayla Jones, "Understanding a Climate of Change" (How does a cloud work? How do you know what you know? What can we do? Adaptation, Mitigation, Resilience; How do we work together? Relationships Matter), runs through the course. The Columbia River Basin is the shared case; each student centers their own Tribe and homelands.
 - **Where CCIC 200 stops and TCR 201 starts:** CCIC 200 is the science-and-knowing foundation: climate, ways of knowing, local sensing, data, impacts, vulnerability, and an introductory adaptation plan outline. TCR 201 carries that outline into action: leadership engagement, policy, funding, and implementation.
 - **Placeholders:** anything marked `[PLACEHOLDER: ...]` must be supplied by Patrick, the instructor, the institution, or a Tribe. Anything marked `[INSTRUCTOR SELECTS]` is a reading slot where the kind of source is described and the instructor chooses the specific piece. Nothing in this document speaks for any Tribe's cultural knowledge; those slots are left for the Tribe.
 
@@ -96,7 +98,7 @@ Every week moves through the same four modules from NESC 215. Students always kn
 
 ### The Four-Part Spine: Understanding a Climate of Change
 
-Patrick Freeland's four-part series, "Understanding a Climate of Change," gives the course its arc. Each part's key lesson and key takeaway appear in the weeks it anchors.
+The four-part series by Patrick Freeland and Cayla Jones, "Understanding a Climate of Change: Understanding an Ever Changing Climate," gives the course its arc. Each part's key lesson and key takeaway appear in the weeks it anchors.
 
 | PF Series Part | Core Idea | CCIC 200 Weeks |
 |---|---|---|
@@ -435,7 +437,7 @@ Each week follows the same format: PF series thread, key lesson and key takeaway
 **Hands-on activity: Norms and the Half-Circle Timeline.**
 - **Norms:** in small groups, students answer "What do I need from this group to learn well?" and "What will I give?" The class merges answers into five to eight agreements, posted all term. Include agreements on confidentiality of personal and community stories, and on care when topics get heavy.
 - **Talking circle note:** the circle and a talking piece support equal voice. Permission from some Tribal leaders is not permission from all. If you want to use a talking stick or another cultural object, ask the local Tribe's cultural resources staff first; otherwise use a neutral object such as a stone or a pen.
-- **Half-circle timeline** (adapted from the Indigenous Climate Project (ICP) Columbia River Edition draft): on a large sheet, draw the top half of a circle. From birth (left) to now (the top), place memories and milestones connected to weather, seasons, water, fire, harvest, and place. Drawings, words, and images all work. Students keep these; the second half comes back in Week 10.
+- **Half-circle timeline** (adapted from Steve Robinson's *Climate Change and the Tribes: Columbia River Edition* draft): on a large sheet, draw the top half of a circle. From birth (left) to now (the top), place memories and milestones connected to weather, seasons, water, fire, harvest, and place. Drawings, words, and images all work. Students keep these; the second half comes back in Week 10.
 
 **Assignment:** none beyond the reflection. Bring a notebook or sketchbook for the weather journal next week.
 
@@ -487,7 +489,7 @@ Each week follows the same format: PF series thread, key lesson and key takeaway
 
 **Guest or Elder slot:** `[PLACEHOLDER: meteorologist from the local National Weather Service forecast office, or Tribal air quality or environmental staff]`.
 
-**Instructor notes:** Keep numbers honest: recent-decade global warming is about 1.1 to 1.3 °C (2.0 to 2.4 °F) above the 1850 to 1900 average. Do not repeat the ICP draft's "33.8 °F" figure; see "Facts to Get Right."
+**Instructor notes:** Keep numbers honest: recent-decade global warming is about 1.1 to 1.3 °C (2.0 to 2.4 °F) above the 1850 to 1900 average. Do not repeat the Robinson draft's "33.8 °F" figure; see "Facts to Get Right."
 
 ---
 
@@ -622,9 +624,9 @@ Each week follows the same format: PF series thread, key lesson and key takeaway
 
 **Instructor notes: Columbia River case points.**
 - Historic returns are estimated at 10 to 16 million salmon and steelhead a year.
-- The four CRITFC member Tribes reserved fishing rights at usual and accustomed places in their 1855 Treaties; the rights were reserved, not granted (*U.S. v. Winans*, 1905). See "Facts to Get Right" on the ICP draft's 1846 Oregon Treaty error.
+- The four CRITFC member Tribes reserved fishing rights at usual and accustomed places in their 1855 Treaties; the rights were reserved, not granted (*U.S. v. Winans*, 1905). See "Facts to Get Right" on the Robinson draft's 1846 Oregon Treaty error.
 - Celilo Falls was flooded by The Dalles Dam on March 10, 1957.
-- Adult salmon migration is impaired above roughly 20 to 21 °C (68 to 70 °F). In 2015, roughly 250,000 adult sockeye died in warm Columbia Basin water. The ICP draft reports that the Nez Perce Tribe's current climate program started after the 2015 drought and fish kill.
+- Adult salmon migration is impaired above roughly 20 to 21 °C (68 to 70 °F). In 2015, roughly 250,000 adult sockeye died in warm Columbia Basin water. The Robinson draft reports that the Nez Perce Tribe's current climate program started after the 2015 drought and fish kill.
 - For contrast and hope, the Elwha: two dams (Elwha Dam, 1913; Glines Canyon Dam, 1927) removed 2011 to 2014, the largest dam removal in U.S. history at the time, after a decades-long push led by the Lower Elwha Klallam Tribe. PBS Nature, "The Beautiful Undammed" (Wild Hope): https://www.pbs.org/wnet/nature/the-beautiful-undammed-wild-hope/29052/
 
 ---
@@ -705,13 +707,13 @@ Each week follows the same format: PF series thread, key lesson and key takeaway
 | 110 to 120 min | Reflection | Introduce the reflection. Journal check-in (feedback only). |
 
 **Content notes for the hazard tour:**
-- **Extreme heat:** the late June 2021 Pacific Northwest heat dome set all-time records across the region. Warmer nights matter as much as hot days, because bodies, fish, and buildings do not cool down. The ICP draft reports Nez Perce climate staff describing Tribal members without air conditioning, and swimming holes made unusable by harmful algal blooms.
+- **Extreme heat:** the late June 2021 Pacific Northwest heat dome set all-time records across the region. Warmer nights matter as much as hot days, because bodies, fish, and buildings do not cool down. The Robinson draft reports Nez Perce climate staff describing Tribal members without air conditioning, and swimming holes made unusable by harmful algal blooms.
 - **Drought and snow drought:** in 2015, near-normal precipitation fell as rain instead of snow in much of the region, leaving low snowpack and low, warm summer flows. Snow drought is a warming signal.
 - **Wildfire and smoke:** heat and drought lengthen fire seasons. Smoke travels far beyond the fire. The 2017 Eagle Creek Fire in the Columbia River Gorge is a regional example.
 - **Flooding and atmospheric rivers:** long, narrow plumes of Pacific moisture bring much of the region's heavy rain. Rain on snow and rain on burned slopes raise flood and debris-flow risk.
 - **Snowpack loss:** less snow and earlier melt shift water from summer, when fish, farms, and forests need it most, to winter and spring.
 - **Ocean change:** warming, marine heatwaves, and acidification (the ocean absorbing CO2) stress shellfish and the salmon food web; sea level rise threatens coastal villages and sites.
-- **Cascades:** the ICP draft describes how, on Nez Perce homelands, fires are followed by floods and landslides that send sediment into streams and smother redds.
+- **Cascades:** the Robinson draft describes how, on Nez Perce homelands, fires are followed by floods and landslides that send sediment into streams and smother redds.
 
 **Hands-on activity: Hazard Profile and Cascade Map.**
 1. Open the ATNI Dynamic Drought Module with the Columbia and Snake Basin preset. Turn on layers for drought, heat, fire perimeters, streamflow, snowpack, and National Weather Service alerts. Click a reservation boundary to read its place-based impact briefing. Copy the view's shareable URL into your notes.
@@ -725,7 +727,7 @@ Each week follows the same format: PF series thread, key lesson and key takeaway
 
 **Guest or Elder slot:** `[PLACEHOLDER: Tribal emergency manager, wildland fire staff, or public health staff]`.
 
-**Instructor notes:** The ATNI Dynamic Drought Module is free and public, with no login. Its Tribal lands and Treaty layers ship empty on purpose, so each Nation populates its own copy; do not fill them from outside sources in class. Verify any 2026 events from the ICP draft before using them (see "Facts to Get Right").
+**Instructor notes:** The ATNI Dynamic Drought Module is free and public, with no login. Its Tribal lands and Treaty layers ship empty on purpose, so each Nation populates its own copy; do not fill them from outside sources in class. Verify any 2026 events from the Robinson draft before using them (see "Facts to Get Right").
 
 ---
 
@@ -766,8 +768,8 @@ Each week follows the same format: PF series thread, key lesson and key takeaway
 - **Geologic versus recent change:** over tens of thousands of years, changes in Earth's orbit paced ice ages, with CO2 and temperature rising and falling together over thousands of years. The current rise has happened in about 150 years and tracks fossil fuel burning and land clearing.
 - **The ocean:** the ocean has taken up a large share of human CO2 emissions and most of the excess heat. The first slows warming; both change ocean chemistry and life.
 - **Natural climate solutions:** Fargione et al. (2018) estimated that 21 natural pathways (forests, grasslands, agricultural lands, and wetlands) could together offset roughly one fifth of U.S. net annual emissions. Many of these pathways overlap with Tribal land stewardship: forest management, cultural burning where Tribes lead it, and wetland and floodplain restoration.
-- **Tribal mitigation examples (from the ICP draft; verify details before teaching):** the Nez Perce Tribe's solar and storage, 72 electric vehicle chargers, and about 380,000 trees on 2,137 acres, estimated to reduce about 18,700 metric tons CO2 equivalent by 2030; CTUIR solar and battery storage at its food sovereignty center; Warm Springs transmission and solar work.
-- **Clean energy and consent:** the proposed Goldendale pumped storage project sits near Pushpum, a site of great importance to the Yakama Nation. The ICP draft reports a Washington Department of Ecology finding of "significant and unavoidable adverse impacts" on Yakama cultural resources; verify before classroom use. Frame for discussion: clean energy is needed; clean energy on sacred ground or without meaningful consultation is not climate justice.
+- **Tribal mitigation examples (from the Robinson draft; verify details before teaching):** the Nez Perce Tribe's solar and storage, 72 electric vehicle chargers, and about 380,000 trees on 2,137 acres, estimated to reduce about 18,700 metric tons CO2 equivalent by 2030; CTUIR solar and battery storage at its food sovereignty center; Warm Springs transmission and solar work.
+- **Clean energy and consent:** the proposed Goldendale pumped storage project sits near Pushpum, a site of great importance to the Yakama Nation. The Robinson draft reports a Washington Department of Ecology finding of "significant and unavoidable adverse impacts" on Yakama cultural resources; verify before classroom use. Frame for discussion: clean energy is needed; clean energy on sacred ground or without meaningful consultation is not climate justice.
 
 **Hands-on activity: Carbon Cycle Lab.**
 1. **Carbon accounts:** label four containers atmosphere, ocean, land and living things, and fossil carbon. Use beans or tokens. Run "years" where carbon moves naturally between the first three (photosynthesis, respiration, ocean exchange). Then add fossil carbon to the atmosphere each year. Students record what happens to the atmosphere's account.
@@ -818,7 +820,7 @@ Each week follows the same format: PF series thread, key lesson and key takeaway
 - **A common planning cycle:** scope the concern and values; gather data and knowledge; assess vulnerability; set goals; choose strategies; implement; monitor and adjust. Tribal plans adapt this cycle to their own governance and values.
 - **Indigenous approaches:** plans organized around First Foods (CTUIR) or community-defined health indicators (the Swinomish Indian Tribal Community's work on Indigenous health indicators) put relationships and values at the center, not only infrastructure.
 - **Health and social vulnerability:** heat and smoke hit Elders, children, outdoor workers, and people without cooling first; loss of First Foods affects health and culture together.
-- **Rights holder engagement:** Tribal citizens are rights holders, not an interest group. Government-to-government consultation is a legal and relational duty. The Columbia River Treaty is a teaching example: Tribes and First Nations were excluded from the original 1964 Treaty; U.S. Tribes have participated in the review since 2012, and the Syilx Okanagan, Ktunaxa, and Secwepemc Nations were observers on the Canadian delegation. The ICP draft quotes a Tribal leader on being "left out of dinners only to be invited to dessert." Negotiation status and policy strategy belong to TCR 201.
+- **Rights holder engagement:** Tribal citizens are rights holders, not an interest group. Government-to-government consultation is a legal and relational duty. The Columbia River Treaty is a teaching example: Tribes and First Nations were excluded from the original 1964 Treaty; U.S. Tribes have participated in the review since 2012, and the Syilx Okanagan, Ktunaxa, and Secwepemc Nations were observers on the Canadian delegation. The Robinson draft quotes a Tribal leader on being "left out of dinners only to be invited to dessert." Negotiation status and policy strategy belong to TCR 201.
 
 **Hands-on activity: Vulnerability Matrix and Plan Skeleton.**
 1. From your Framing Worksheet, pick your priority concern.
@@ -986,7 +988,7 @@ Data about Tribal Peoples, lands, waters, and relatives belongs under the author
 
 ## Facts to Get Right
 
-*Editor's note for Patrick and the Tab 1 author: once these corrections are made in the source draft, this table can be cut before distribution.* The ICP Columbia River Edition draft is rich case material; these points need correcting.
+*Editor's note for Patrick and the Tab 1 author: once these corrections are made in the source draft, this table can be cut before distribution.* Steve Robinson's *Climate Change and the Tribes: Columbia River Edition* draft is rich case material; these points need correcting.
 
 | In the Draft | Correct |
 |---|---|
@@ -1096,7 +1098,7 @@ Adapt this, or use the Tribe's own form.
 - PBS Nature, "The Beautiful Undammed" (Wild Hope): https://www.pbs.org/wnet/nature/the-beautiful-undammed-wild-hope/29052/
 - Washington Sea Grant, self-guided Elwha River restoration tour: https://wsg.washington.edu/self-guided-field-trip-elwha-river-restoration-tour/
 - Since Time Immemorial: Tribal Sovereignty in Washington State (Washington Office of Superintendent of Public Instruction curriculum, RCW 28A.320.170)
-- Indigenous Climate Project (ICP), *Climate Change and the Tribes: Columbia River Edition* (Robinson, draft): case material; see "Facts to Get Right."
+- Steve Robinson, *Climate Change and the Tribes: Columbia River Edition* (draft): case material; see "Facts to Get Right."
 
 ### Data Sovereignty
 

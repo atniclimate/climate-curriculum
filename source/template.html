@@ -14,7 +14,7 @@
   --f-display:"League Spartan","Century Gothic",Arial,sans-serif;
   --f-body:"Lexend Deca","Segoe UI",system-ui,sans-serif;
   --f-data:"Cascadia Code","SF Mono",Consolas,monospace;
-  --b:clamp(15px, calc(.9vw + 5px), 24px);
+  --b:clamp(15px, min(calc(.9vw + 5px), calc(1.7vh + 4px)), 24px);
   --gutter:clamp(16px,4.5vw,72px);
 }
 *{box-sizing:border-box;border-radius:0}
@@ -66,15 +66,20 @@ h3{font-size:calc(var(--b)*1.17);font-weight:700;letter-spacing:-.01em;line-heig
 /* Hall mode: image is the slide; text in the lower third, forty words or fewer */
 .hallcopy{position:absolute;z-index:1;left:var(--gutter);right:calc(var(--gutter) + 90px);bottom:clamp(28px,8vh,96px);display:grid;gap:clamp(10px,1.6vh,18px);max-width:min(1100px,72vw)}
 .hallcopy p{font-size:calc(var(--b)*1.15);line-height:1.45;color:var(--text);font-weight:500}
+.byline{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*.9);letter-spacing:.06em;color:var(--text)}
+.credits{max-width:110ch}
 .hallcopy .quote{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*2.1);line-height:1.12;letter-spacing:-.015em;color:var(--white);max-width:22ch;text-wrap:balance}
 .hallcopy *{transition:color .6s ease}
 body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
 
 /* Plate mode: working slides over a darkened image */
 .inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.2vh,26px);padding-block:clamp(22px,4vh,52px);padding-inline:var(--gutter)}
+.inner.fit{height:100%;min-height:0;justify-content:flex-start}
+.stretch{flex:1 1 auto;min-height:0}
+@media (max-width:980px){.inner.fit{height:auto;min-height:100%}}
 .head{display:grid;gap:6px}
 .card{background:var(--plate);padding:clamp(14px,1.5vw,22px) clamp(16px,1.7vw,24px);display:grid;gap:.5em;align-content:start}
-.card p{font-size:calc(var(--b)*.86)}
+.card p{font-size:calc(var(--b)*.88)}
 .grid{display:grid;gap:clamp(8px,1vw,14px)}
 .g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
 .g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
@@ -94,35 +99,63 @@ body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
 
 /* agenda */
 .agenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:8px}
-.agenda button{all:unset;cursor:pointer;background:var(--plate);padding:clamp(16px,1.6vw,24px);display:grid;gap:10px;align-content:start;min-height:190px;transition:background .3s,color .3s}
+.agenda button{all:unset;cursor:pointer;background:var(--plate);padding:clamp(14px,1.4vw,22px);display:grid;gap:8px;align-content:start;transition:background .3s,color .3s}
 .agenda button:hover,.agenda button:focus-visible{background:var(--plate-hi)}
 .agenda button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
 .agenda .n{font-family:var(--f-display);font-weight:800;font-size:calc(var(--b)*2.2);line-height:1;color:var(--white)}
 .agenda h3{font-size:calc(var(--b)*1.05)}
-.agenda p{font-size:calc(var(--b)*.78);color:var(--muted)}
+.agenda p{font-size:calc(var(--b)*.86);color:var(--text)}
 .agenda .mins{font-family:var(--f-data);font-size:12px;color:var(--muted)}
 
 /* key + inquiry */
 .key{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:8px}
 .key .card p{font-size:calc(var(--b)*.95);color:var(--text)}
 .inq{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:q}
-.inq li{background:var(--plate);padding:12px 18px 12px 58px;position:relative;font-size:calc(var(--b)*.9);max-width:74ch}
+.inq li{background:var(--plate);padding:12px 18px 12px 58px;position:relative;font-size:calc(var(--b)*.92)}
+.carry{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:start}
+.carry .key{grid-template-columns:1fr}
+@media (max-width:860px){.carry{grid-template-columns:1fr}}
 .inq li::before{counter-increment:q;content:"(" counter(q) ")";position:absolute;left:18px;top:12px;font-family:var(--f-display);font-weight:700;color:var(--red-dk)}
 
 /* cloud machine */
-.cm{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(14px,2vw,28px);align-items:start}
-@media (max-width:860px){.cm{grid-template-columns:1fr}}
-.cm svg{width:100%;height:auto;display:block;background:rgba(20,20,20,.7)}
-.ctl{display:grid;gap:12px}
-.ctl label{display:grid;gap:4px;font-size:calc(var(--b)*.72);color:var(--muted)}
-.ctl label b{font-family:var(--f-data);font-weight:500;color:var(--white);font-size:calc(var(--b)*.8)}
-input[type=range]{width:100%;accent-color:var(--red)}
+.cm{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);grid-template-rows:minmax(0,1fr);gap:clamp(12px,1.6vw,24px);align-items:stretch}
+@media (max-width:980px){.cm{grid-template-rows:auto}}
+@media (max-width:980px){.cm{grid-template-columns:1fr}}
+.cmview{display:flex;flex-direction:column;gap:6px;min-height:0;min-width:0;overflow:hidden}
+.cmview svg{width:100%;flex:1;min-height:0;display:block;background:#0B1A2A}
+@media (max-width:980px){.cmview svg{flex:none;height:auto}}
+.cmax{font-family:var(--f-data);font-size:12px;fill:#8A94A6}
+.cmlab{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.06em;fill:#C5CDD6;paint-order:stroke;stroke:#0B1A2A;stroke-width:3px}
+.cmlab.sm{font-family:var(--f-body);font-weight:400;font-size:12.5px;letter-spacing:0;fill:#A9B3BF}
+.fog{fill:#C9D0D7;opacity:.3}
+.cmnote{font-family:var(--f-data);font-size:14px;fill:#F26B5E;paint-order:stroke;stroke:#0B1A2A;stroke-width:3px}
+.cb{fill:#DDE3E8;stroke:#9AA3AE;stroke-width:1.5}
+.wind{animation:flow 2.4s linear infinite}
+.rainfall{stroke:#7FB3E3;stroke-width:1.4;stroke-dasharray:6 7;animation:fall .5s linear infinite}
+.rainfall.k2{stroke-width:1.8}.rainfall.k3{stroke-width:2.4;stroke-dasharray:9 5}
+.snowfall{stroke:#F4F7FA;stroke-width:2.6;stroke-linecap:round;stroke-dasharray:.1 11;animation:fall 1.8s linear infinite}
+@keyframes fall{to{stroke-dashoffset:-26}}
+@media (prefers-reduced-motion:reduce){.wind,.rainfall,.snowfall{animation:none}}
+.ctl{display:grid;gap:7px;align-content:start;min-height:0;overflow:auto}
+.ctl label{display:grid;grid-template-columns:1fr auto;gap:0 10px;align-items:baseline;font-size:calc(var(--b)*.8);color:var(--muted)}
+.ctl label input{grid-column:1/-1}
+.ctl label b{font-family:var(--f-data);font-weight:500;color:var(--white);font-size:calc(var(--b)*.82)}
+input[type=range]{width:100%;accent-color:var(--red);height:20px;margin:2px 0}
 .readouts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
-.readouts div{background:var(--plate);padding:10px 12px}
-.readouts .v{font-family:var(--f-data);font-size:calc(var(--b)*1.05);color:var(--white)}
-.readouts .l{font-size:12px;color:var(--muted)}
+.readouts>div{background:var(--plate);padding:6px 10px}
+.readouts .v{font-family:var(--f-data);font-size:calc(var(--b)*.95);color:var(--white)}
+.readouts .l{font-size:13px;color:var(--muted)}
 .readouts .hot .v{color:var(--water-hi)}
-.status{font-size:calc(var(--b)*.78);padding:10px 14px;background:var(--plate-hi);border-left:3px solid var(--water-hi);min-height:3.4em}
+.ctype{display:grid;grid-template-columns:auto 1fr;gap:0 10px;align-items:baseline;padding:6px 12px;background:var(--plate);border-left:3px solid var(--text)}
+.ctype b{font-family:var(--f-display);font-size:calc(var(--b)*1.05);color:var(--white)}
+.ctype span:last-child{font-size:calc(var(--b)*.76);line-height:1.4;color:var(--text)}
+.status{font-size:calc(var(--b)*.8);line-height:1.45;padding:8px 12px;background:var(--plate-hi);border-left:3px solid var(--water-hi);min-height:3em}
+/* segmented controls: selected is always a light fill */
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{all:unset;cursor:pointer;padding:8px 14px;background:var(--plate);font-size:14px;font-weight:600;color:var(--text);text-align:center;flex:1 1 auto}
+.seg button:hover{background:var(--plate-hi)}
+.seg button[aria-pressed="true"]{background:var(--text);color:var(--base)}
+.seg button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
 
 /* instruments */
 .inst{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
@@ -130,14 +163,14 @@ input[type=range]{width:100%;accent-color:var(--red)}
 .inst button{all:unset;cursor:pointer;background:var(--plate);padding:14px 14px 16px;display:grid;gap:8px;justify-items:start;transition:background .3s,opacity .4s}
 .inst button:hover{background:var(--plate-hi)}
 .inst button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
-.inst button[aria-expanded="true"]{background:var(--plate-hi);box-shadow:inset 0 -3px 0 var(--red)}
+.inst button[aria-expanded="true"]{background:var(--plate-hi);box-shadow:inset 0 -3px 0 var(--text)}
 .inst.focused button[aria-expanded="false"]{opacity:.42}
-.inst svg{width:100%;max-width:200px;height:auto;aspect-ratio:1/1;display:block}
+.inst svg{width:100%;max-width:min(180px,22vh);height:auto;aspect-ratio:1/1;display:block}
 .inst h3{font-size:calc(var(--b)*.98)}
 .inst .unit{font-family:var(--f-data);font-size:12px;color:var(--muted)}
 .focus{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:8px}
 .focus .card h3{font-size:calc(var(--b)*.8);font-family:var(--f-display);text-transform:uppercase;letter-spacing:.12em;color:var(--red-dk)}
-.focus .card p{font-size:calc(var(--b)*.8)}
+.focus .card p{font-size:calc(var(--b)*.86)}
 /* instrument animations */
 .drop{animation:rain 1.4s linear infinite}
 @keyframes rain{0%{transform:translateY(-30px);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateY(58px);opacity:0}}
@@ -162,7 +195,7 @@ input[type=range]{width:100%;accent-color:var(--red)}
 .claim:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
 .claim .said{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*.95);line-height:1.22;color:var(--white)}
 .claim .hint{margin-top:auto;font-family:var(--f-display);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.claim .back{display:grid;gap:6px;font-size:calc(var(--b)*.74)}
+.claim .back{display:grid;gap:6px;font-size:calc(var(--b)*.84)}
 .claim .back b{font-family:var(--f-display);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-dk)}
 .claim[aria-expanded="true"]{background:var(--plate-hi)}
 .steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
@@ -171,21 +204,39 @@ input[type=range]{width:100%;accent-color:var(--red)}
 .steps3 b{display:block;font-family:var(--f-display);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-dk)}
 
 /* salmon map */
-.mapwrap{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,1fr);gap:10px;align-items:stretch}
+.mapwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(320px,1fr);gap:10px;align-items:stretch}
 @media (max-width:980px){.mapwrap{grid-template-columns:1fr}}
-.map{background:#07192A;position:relative;overflow:hidden}
-.map svg{display:block;width:100%;height:auto}
-.mpanel{display:grid;gap:8px;align-content:start}
-.stop{background:var(--plate-hi);padding:16px 18px;display:grid;gap:6px;min-height:170px;border-left:3px solid var(--water-hi)}
+.map{background:#07192A;position:relative;overflow:hidden;min-height:0}
+.map svg{display:block;width:100%;height:100%}
+@media (max-width:980px){.map svg{height:auto}}
+.futures{position:absolute;left:10px;top:10px;display:grid;gap:4px;background:rgba(1,11,19,.82);padding:8px 10px;max-width:calc(100% - 20px)}
+.futures .seg button{padding:5px 10px;font-size:13px}
+.fread{font-size:13.5px;line-height:1.45;color:var(--text);max-width:300px;padding-top:2px}
+.fread>b{display:block;font-family:var(--f-display);color:var(--white)}
+.fread .tline{font-size:13.5px}
+.seg button:disabled{opacity:.35;cursor:default}
+.tscale{position:absolute;left:10px;bottom:10px;display:flex;align-items:center;gap:8px;font-family:var(--f-data);font-size:12px;color:var(--text);background:rgba(1,11,19,.82);padding:5px 9px}
+.tscale i{display:block;width:120px;height:8px;background:linear-gradient(90deg,#4F8FD6 0%,#7FC3C9 30%,#E8D27A 50%,#F2A65A 60%,#E8603C 75%,#B5172E 100%)}
+.hydro{background:var(--plate);padding:8px 12px 4px}
+.hyhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}
+.hyhead .cap{font-size:12.5px}
+.hyhead i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin:0 5px 0 4px}
+.hyhead i.k1{background:#9CC7F0}.hyhead i.k2{background:#F26B5E}
+.hydro svg{width:100%;height:auto;display:block;max-height:84px}
+.juv{position:absolute;right:10px;bottom:10px;padding:8px 14px;font-size:13.5px;background:rgba(30,36,44,.92)}
+@media (max-width:980px){.futures,.tscale,.juv{position:static;margin:8px}.map{display:flex;flex-direction:column}.futures{max-width:none}}
+.hyl{font-family:var(--f-data);font-size:10px;fill:#8A94A6}
+.chal{border-top:1px solid var(--hair);padding-top:6px}
+.chal b{display:block;font-family:var(--f-display);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-dk)}
+.tline{font-size:calc(var(--b)*.74);color:var(--text);font-family:var(--f-body)}
+.tline b{font-family:var(--f-data);font-weight:500}
+.mpanel{display:flex;flex-direction:column;gap:8px;min-height:0}
+.stop{background:var(--plate-hi);padding:12px 16px;display:grid;gap:6px;align-content:start;border-left:3px solid var(--water-hi);flex:1;min-height:0;overflow:auto}
 .stop.block{border-left-color:var(--red)}
 .stop.place{border-left-color:var(--magenta)}
 .stop .rm{font-family:var(--f-data);font-size:12px;color:var(--water-hi)}
 .stop h3{font-size:calc(var(--b)*1.05)}
-.stop p{font-size:calc(var(--b)*.78)}
-.seg2{display:grid;grid-template-columns:1fr 1fr;gap:4px}
-.seg2 button{all:unset;cursor:pointer;text-align:center;padding:9px 8px;background:var(--plate);font-size:13px;font-weight:600}
-.seg2 button[aria-pressed="true"]{background:var(--text);color:var(--base)}
-.seg2 button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
+.stop p{font-size:calc(var(--b)*.78);line-height:1.45}
 .thermo{background:var(--plate);padding:12px 14px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center}
 .thermo .t{font-family:var(--f-data);font-size:calc(var(--b)*1.05);color:var(--red-dk);white-space:nowrap}
 .thermo p{font-size:calc(var(--b)*.7);color:var(--text)}
@@ -193,7 +244,7 @@ input[type=range]{width:100%;accent-color:var(--red)}
 @keyframes rflow{to{stroke-dashoffset:-32}}
 @media (prefers-reduced-motion:reduce){.river-flow{animation:none}}
 .damlab{font-family:var(--f-display);font-weight:600;font-size:14px;fill:var(--text);paint-order:stroke;stroke:#06101A;stroke-width:3px}
-.maplab{font-family:var(--f-display);font-weight:600;letter-spacing:.2em;fill:#56616F;font-size:15px}
+.maplab{font-family:var(--f-display);font-weight:600;letter-spacing:.2em;fill:#7C8796;font-size:15px}
 .rivlab{font-family:var(--f-body);font-style:italic;fill:var(--water);font-size:14px;paint-order:stroke;stroke:#07192A;stroke-width:3px}
 .pulse{animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.35}}
@@ -216,12 +267,12 @@ input[type=range]{width:100%;accent-color:var(--red)}
 .sort{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(10px,1.6vw,22px);align-items:start}
 @media (max-width:880px){.sort{grid-template-columns:1fr}}
 .acts{display:grid;gap:4px}
-.act{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:8px 12px;background:var(--plate)}
+.act{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:3px 4px 3px 12px;background:var(--plate)}
 .act[aria-current="true"]{background:var(--plate-hi);box-shadow:inset 3px 0 0 var(--white)}
 .act .t{font-size:calc(var(--b)*.78);color:var(--white);cursor:pointer}
 .act .t small{display:block;color:var(--muted);font-size:12px}
 .pick{display:flex;gap:3px}
-.pick button{width:34px;height:34px;border:0;background:var(--overlay);cursor:pointer;font-family:var(--f-display);font-weight:700}
+.pick button{width:40px;height:38px;border:0;background:var(--overlay);cursor:pointer;font-family:var(--f-display);font-weight:700}
 .pick button[data-k="A"]{--c:var(--A)} .pick button[data-k="M"]{--c:var(--M)} .pick button[data-k="R"]{--c:var(--R)}
 .pick button:hover{color:var(--c)}
 .pick button[aria-pressed="true"]{background:var(--c);color:var(--base)}
@@ -238,13 +289,13 @@ input[type=range]{width:100%;accent-color:var(--red)}
 .flowrow>div{background:var(--plate);padding:14px;display:grid;gap:5px;align-content:start}
 .flowrow .n{font-family:var(--f-data);font-size:12px;color:var(--red-dk)}
 .flowrow h3{font-size:calc(var(--b)*.92)}
-.flowrow p{font-size:12.5px;color:var(--muted)}
+.flowrow p{font-size:calc(var(--b)*.8);color:var(--text)}
 .flowrow .chip{font-family:var(--f-display);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--water-hi);font-weight:600}
 
 /* web */
 .webwrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(10px,1.6vw,22px);align-items:start}
 @media (max-width:900px){.webwrap{grid-template-columns:1fr}}
-.webwrap svg{width:100%;height:auto;display:block;max-width:660px;margin:0 auto}
+.webwrap svg{width:100%;height:auto;display:block;max-width:660px;max-height:calc(100vh - 250px);margin:0 auto}
 .ring{fill:none;stroke:rgba(232,236,240,.09);stroke-width:1}
 .ringlab{font-family:var(--f-display);font-size:10.5px;letter-spacing:.2em;fill:#5B6573;font-weight:600}
 .w-edge{stroke:rgba(232,236,240,.16);stroke-width:1.2;transition:stroke .4s,opacity .4s,stroke-width .4s}
@@ -271,16 +322,65 @@ input[type=range]{width:100%;accent-color:var(--red)}
 .scen button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
 .story{background:var(--plate-hi);padding:14px 16px;min-height:230px;display:grid;gap:8px;align-content:start}
 .story ol{margin:0;padding:0;list-style:none;display:grid;gap:6px;counter-reset:s}
-.story li{font-size:calc(var(--b)*.74);padding-left:34px;position:relative;opacity:0;animation:fade .5s ease forwards}
+.story li{font-size:calc(var(--b)*.82);padding-left:34px;position:relative;opacity:0;animation:fade .5s ease forwards}
 .story li::before{counter-increment:s;content:"(" counter(s) ")";position:absolute;left:0;font-family:var(--f-data);font-size:12px;color:var(--c,var(--muted));top:2px}
 .story li b{color:var(--white);font-weight:600}
 
 /* pathway + close */
 .tier{background:var(--plate);padding:18px 20px;display:grid;gap:8px;align-content:start}
-.tier ul{font-size:calc(var(--b)*.76)}
+.tier ul{font-size:calc(var(--b)*.86)}
 .reflect{display:grid;gap:10px;max-width:860px}
 .reflect label{display:grid;gap:6px;font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*.92);color:var(--white)}
-.reflect textarea{width:100%;min-height:58px;resize:vertical;padding:10px 12px;border:0;background:var(--plate-hi);color:var(--text);font:calc(var(--b)*.78)/1.5 var(--f-body)}
+.reflect textarea{width:100%;min-height:84px;resize:vertical;padding:10px 12px;border:0;background:var(--plate-hi);color:var(--text);font:calc(var(--b)*.78)/1.5 var(--f-body)}
+
+
+/* heads with a guiding question */
+.headrow{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px 28px}
+.ask{max-width:46ch;margin:0;padding:8px 14px;background:rgba(225,61,51,.12);border-left:3px solid var(--red);font-size:calc(var(--b)*.86);line-height:1.4;color:var(--white)}
+.ask .label{display:block;color:var(--red-dk);margin-bottom:2px}
+.sub{font-size:calc(var(--b)*.95);max-width:80ch}
+blockquote{margin:0}
+.lead{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*1.5);line-height:1.2;color:var(--white);max-width:34ch;text-wrap:balance}
+.themes{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.themes span:not(.label){font-size:13.5px;padding:4px 10px;background:var(--overlay);color:var(--text)}
+.themes .label{margin-right:6px}
+/* three ways of seeing */
+.eyes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (max-width:860px){.eyes{grid-template-columns:1fr}}
+.eyes button{all:unset;cursor:pointer;background:var(--plate);display:grid;gap:6px;align-content:start;padding:0 0 14px;transition:background .3s,opacity .4s}
+.eyes button>*:not(.pic){margin-inline:16px}
+.eyes button:hover{background:var(--plate-hi)}
+.eyes button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
+.eyes button[aria-expanded="true"]{background:var(--plate-hi);box-shadow:inset 0 -3px 0 var(--text)}
+.eyes.focused button[aria-expanded="false"]{opacity:.45}
+.eyes .pic{display:block;height:clamp(90px,18vh,190px);background-size:cover;background-position:center}
+.eyes .pic.globe{background:#06121E}
+.eyes .pic svg{width:100%;height:100%;display:block}
+.eyes p{font-size:calc(var(--b)*.86)}
+.eyemore{min-height:3em}
+/* relatives of the river */
+.kin{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px}
+@media (max-width:1100px){.kin{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:560px){.kin{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kin button{all:unset;cursor:pointer;background:var(--plate);padding:10px 10px 12px;display:grid;gap:3px;align-content:start;transition:background .3s}
+.kin button:hover{background:var(--plate-hi)}
+.kin button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
+.kin button[aria-expanded="true"]{background:var(--text);color:var(--base)}
+.kin button[aria-expanded="true"] .nm,.kin button[aria-expanded="true"] .sb{color:var(--base)}
+.kin svg{width:100%;max-width:120px;height:auto;display:block}
+.kin svg path,.kin svg circle{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
+.kin svg .f,.kin svg .f *{fill:currentColor;stroke:none}
+.kin .nm{font-family:var(--f-display);font-weight:700;font-size:calc(var(--b)*.95);color:var(--white);line-height:1.15}
+.kin .sb{font-size:12.5px;color:var(--muted);line-height:1.3}
+.kinmore{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-content:start}
+@media (max-width:860px){.kinmore{grid-template-columns:1fr}}
+.kinmore .card h3{font-size:calc(var(--b)*.8);font-family:var(--f-display);text-transform:uppercase;letter-spacing:.12em;color:var(--red-dk)}
+.voice{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*1.02);line-height:1.35;color:var(--white);border-left:3px solid var(--magenta);padding:6px 0 6px 14px;max-width:90ch}
+.voice cite{display:block;font-family:var(--f-body);font-style:normal;font-weight:400;font-size:13px;color:var(--muted);margin-top:4px}
+/* jobs at three scales */
+.steps{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:5px}
+.steps li{font-size:calc(var(--b)*.82);display:grid;grid-template-columns:7.2em 1fr;gap:8px;align-items:baseline}
+.steps b{font-family:var(--f-display);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
 
 /* notes + nav */
 .notes{background:#141414;border-top:1px solid var(--hair);padding-block:10px;padding-inline:var(--gutter);font-size:14.5px;line-height:1.55;max-height:30vh;overflow-y:auto;color:var(--text)}
@@ -295,7 +395,7 @@ input[type=range]{width:100%;accent-color:var(--red)}
 .pseg .fill{height:4px;background:rgba(232,236,240,.14);position:relative;overflow:hidden}
 .pseg .fill i{position:absolute;inset:0;width:var(--w,0%);background:var(--text);transition:width .4s}
 .pseg.cur .fill i{background:var(--red)}
-.pseg .lab{font-family:var(--f-display);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pseg .lab{font-family:var(--f-display);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pseg.cur .lab{color:var(--white)}
 .pseg:focus-visible{outline:2px solid var(--red-dk);outline-offset:3px}
 .count{font-family:var(--f-data);font-size:12.5px;color:var(--muted);white-space:nowrap}
@@ -323,82 +423,96 @@ input[type=range]{width:100%;accent-color:var(--red)}
 
 <!-- 1 TITLE (Hall) -->
 <section class="slide hall" data-bg="sound" data-part="0" data-min="0.5" data-title="Opening"
- data-notes="<span class='must'>Must land:</span> why we are here, in one breath. [PLACEHOLDER: PF opening, greeting, and land and water acknowledgment in his voice; name the Nations whose homelands host this session.] Then: four questions, one river, thirty minutes, and no test.">
+ data-notes="<span class='must'>Must land:</span> why we are here, in one breath. [PLACEHOLDER: PF opening, greeting, and land and water acknowledgment in his voice; name the Nations whose homelands host this session.] Then: four questions, one river, and no test.">
   <div class="hallcopy">
     <span class="label red">Columbia River Climate Change Teachers Program</span>
     <div class="display">Understanding a<br>Climate of Change</div>
-    <p>Four questions, one river, thirty minutes. Built so <span class="r">an Elder and a child</span> can both follow it, and so it travels back into the classroom.</p>
+    <span class="byline">Patrick Freeland and Cayla Jones · ATNI Climate</span>
+    <p>Four questions, one river. Shared with respectful communication so that <span class="r">both an Elder and a child</span> can understand; the surest sign you understand something is being able to pass it on.</p>
   </div>
   <img class="seal" src="img/atni-seal.png" alt="Affiliated Tribes of Northwest Indians seal">
 </section>
 
-<!-- 2 AGENDA (Plate) -->
+<!-- 2 FOUR QUESTIONS (Plate) -->
 <section class="slide plate" data-bg="sound" data-part="0" data-min="1" data-title="Four questions"
- data-notes="Walk the four cards quickly; each is a door to come back through. Say it plainly: there is no test here, only reflections and questions that lead to more questions. Cards are clickable.">
+ data-notes="Read the quote slowly, then walk the four cards; each is a door to come back through. Name the themes once: cycles, relationships, local observation, critical thinking, intergenerational knowledge, change (felt as well as measured), and scale, from the frog's eye to the moon's eye. Say it plainly: there is no test here, only reflections and questions that lead to more questions. Cards are clickable.">
   <div class="inner">
-    <div class="head"><span class="label red">The Shape of the Next Thirty Minutes</span><h2>Four Questions, One River</h2></div>
+    <blockquote class="lead">&ldquo;Think&hellip; when both an Elder and a Child can understand, then this is where learning happens.&rdquo;</blockquote>
+    <div class="head"><span class="label red">Four Questions, One River</span></div>
     <div class="agenda">
-      <button data-jump="1"><span class="n">1</span><h3>How Does a Cloud Work?</h3><p>Weather is physics anyone can watch. The same gauges that forecast tomorrow show change over decades.</p><span class="mins">about 6 min</span></button>
-      <button data-jump="2"><span class="n">2</span><h3>How Do You Know What You Know?</h3><p>Climate is social as much as scientific. Read the sources, and read yourself.</p><span class="mins">about 8 min</span></button>
-      <button data-jump="3"><span class="n">3</span><h3>Adaptation, Mitigation, Resilience</h3><p>Three different jobs with different tools. The impacts are already here.</p><span class="mins">about 7 min</span></button>
-      <button data-jump="4"><span class="n">4</span><h3>Relationships Matter</h3><p>It takes all of us, including non-human relatives. No one carries this alone.</p><span class="mins">about 4 min</span></button>
+      <button data-jump="1"><span class="n">1</span><h3>How Does a Cloud Work?</h3><p>Have you ever looked up and thought about how water moves into the sky and comes down as rain and snow?</p></button>
+      <button data-jump="2"><span class="n">2</span><h3>How Do You Know What You Know?</h3><p>Connect what you can see in your own backyard with the graphs, maps, and numbers that help us understand our changing world.</p></button>
+      <button data-jump="3"><span class="n">3</span><h3>What Can We Do?</h3><p>Break down big words like mitigation, adaptation, and resilience into real-world steps you, your family, and your community can take.</p></button>
+      <button data-jump="4"><span class="n">4</span><h3>How Do We Work Together?</h3><p>Relationships matter. No single person, scientific report, or action plan has all the answers.</p></button>
     </div>
-    <p class="cap">No test here; only reflections, and questions that lead to more questions.</p>
+    <div class="themes"><span class="label">Themes</span><span>Cycles</span><span>Relationships</span><span>Local observation</span><span>Critical thinking</span><span>Intergenerational knowledge</span><span>Change, felt as well as measured</span><span>Scale: frog&rsquo;s eye, bird&rsquo;s eye, moon&rsquo;s eye</span></div>
+    <p class="cap">There is no test here, only reflections and encouraging inquiry; education is not a race, and questions leading to questions let each of us choose what to carry forward.</p>
   </div>
 </section>
 
 <!-- 3 PART ONE (Hall) -->
-<section class="slide hall" data-bg="clouds" data-part="1" data-min="1" data-title="How does a cloud work?"
- data-notes="Ask the room to picture the last cloud they watched. Take two or three answers. Most people can describe a cloud; fewer can say how it works. That gap is the lesson. Do not correct anyone yet.">
+<section class="slide hall" data-bg="clouds" data-part="1" data-min="0.5" data-title="How does a cloud work?"
+ data-notes="Ask the room to picture the last cloud they watched. Take two or three answers. We start with a cloud because everyone knows what it is, but many may not have thought through how it works. That gap is the lesson. Do not correct anyone yet.">
   <div class="hallcopy">
     <span class="label red">Part One</span>
     <div class="display">How Does a<br>Cloud Work?</div>
-    <p>Everyone knows what a cloud is. What is it <span class="r">doing</span>, and why is it there and not somewhere else?</p>
+    <p>Have you ever looked up and thought about how water moves into the sky and <span class="r">comes down as rain and snow</span>?</p>
   </div>
 </section>
 
 <!-- 4 CLOUD MACHINE (Plate) -->
-<section class="slide plate" data-bg="clouds" data-part="1" data-min="3" data-title="Lift the air"
- data-notes="<span class='must'>Must land:</span> air that rises cools; cool air holds less water; the extra water condenses into cloud and, with enough of it, drips like an air conditioner. Drag the height slider slowly and let the cloud appear on its own. Then press 'Warm the world 2 °C': the same lift carries and drops more water. Warmer air holds about 7 percent more water per degree Celsius, which is the physics under heavier downpours and atmospheric rivers. This is a simplified teaching model (standard lapse rates, Magnus approximation), not a forecast.">
-  <div class="inner">
-    <div class="head"><span class="label red">Part One · Try It</span><h2>Lift the Air and Watch a Cloud Form</h2></div>
-    <div class="cm">
-      <svg id="cmSvg" viewBox="0 0 420 360" role="img" aria-labelledby="cmTitle">
-        <title id="cmTitle">A column of air from the ground to 4,000 meters, with a rising parcel of air and the height where a cloud forms</title>
-        <g id="cmAxis"></g>
-        <line id="cmBase" x1="70" x2="410" stroke="#9CC7F0" stroke-width="1.5" stroke-dasharray="6 5"/>
-        <text id="cmBaseLab" x="406" text-anchor="end" font-family="Cascadia Code, monospace" font-size="11" fill="#9CC7F0">cloud base</text>
-        <rect x="70" y="330" width="340" height="30" fill="#2B3A2C"/>
-        <g id="cmParcel">
-          <g id="cmCloud" opacity="0">
-            <circle cx="-22" cy="4" r="20" fill="#E8ECF0"/><circle cx="0" cy="-8" r="26" fill="#E8ECF0"/><circle cx="24" cy="4" r="20" fill="#E8ECF0"/><rect x="-40" y="4" width="82" height="20" fill="#E8ECF0"/>
-          </g>
-          <circle id="cmDot" r="14" fill="rgba(156,199,240,.25)" stroke="#9CC7F0" stroke-width="2"/>
-          <g id="cmRain" opacity="0" stroke="#9CC7F0" stroke-width="2" stroke-linecap="round"><line x1="-18" y1="30" x2="-22" y2="42"/><line x1="0" y1="32" x2="-4" y2="44"/><line x1="18" y1="30" x2="14" y2="42"/></g>
-        </g>
-      </svg>
-      <div class="ctl">
-        <label for="cmT">Ground temperature <b id="cmTv">25 °C · 77 °F</b><input id="cmT" type="range" min="0" max="35" step="1" value="25"></label>
-        <label for="cmH">Humidity at the ground <b id="cmHv">60%</b><input id="cmH" type="range" min="20" max="100" step="1" value="60"></label>
-        <label for="cmZ">Lift the air to <b id="cmZv">0 m</b><input id="cmZ" type="range" min="0" max="4000" step="50" value="0"></label>
-        <div class="row"><button class="btn sec" id="cmWarm" aria-pressed="false">Warm the world 2 °C</button></div>
-        <div class="readouts" aria-live="polite">
-          <div><div class="v" id="cmPT">25 °C</div><div class="l">Air temperature at this height</div></div>
-          <div><div class="v" id="cmW">0 g/kg</div><div class="l">Water the air is carrying</div></div>
-          <div><div class="v" id="cmWs">0 g/kg</div><div class="l">Water the air can hold here</div></div>
-          <div class="hot"><div class="v" id="cmC">0 g/kg</div><div class="l">Squeezed out as cloud</div></div>
+<section class="slide plate" data-bg="hood" data-part="1" data-min="3" data-title="Lift the air"
+ data-notes="<span class='must'>Must land:</span> air pushed up a mountain cools; cool air holds less water; the extra water becomes cloud, then rain or snow, mostly on the side facing the ocean. Coming down the far side, the air warms and dries; that is the rain shadow the Columbia Plateau lives in. Start on Winter and press 'Send the air inland.' Point to the snow line on the Cascades. Switch to Atmospheric River: warm, wet air, heavy rain, and rain falling on snow. Then press 'Warm the world 2 °C' and read the comparison line: the snow line climbs about 300 m and the same storm carries more water. Warmer air holds about 7 percent more water per degree Celsius. Summer with high humidity builds a thunderhead over the crest. This is a teaching model (standard lapse rates and the Magnus approximation, with the air steered over the ridge line), not a forecast.">
+  <div class="inner fit">
+    <div class="headrow"><div class="head"><span class="label red">Part One · Try It</span><h2>Follow the Air from the Ocean over the Mountains</h2></div><p class="ask"><span class="label">Ask the room</span>Which side of the mountains do you live on, and what does that mean for your rain and snow?</p></div>
+    <div class="cm stretch">
+      <div class="cmview">
+        <div class="seg seasons" id="cmSeason" role="group" aria-label="Choose a season">
+          <button data-s="winter" aria-pressed="true">Winter</button><button data-s="spring" aria-pressed="false">Spring</button><button data-s="summer" aria-pressed="false">Summer</button><button data-s="fall" aria-pressed="false">Fall</button><button data-s="ar" aria-pressed="false">Atmospheric River</button>
         </div>
-        <div class="status" id="cmMsg">Drag the height slider up. Rising air expands and cools.</div>
+        <svg id="cmSvg" viewBox="0 0 800 430" preserveAspectRatio="xMidYMax meet" role="img" aria-labelledby="cmTitle">
+          <title id="cmTitle">A slice of the land from the Pacific Ocean over the Coast Range and the Cascades to the Columbia Plateau, showing air rising over the mountains, the clouds that form, and where rain and snow fall</title>
+          <defs>
+            <linearGradient id="cmSky" x1="0" y1="0" x2="0" y2="1"><stop id="cmSky0" offset="0" stop-color="#0B1A2A"/><stop id="cmSky1" offset="1" stop-color="#14283C"/></linearGradient>
+            <linearGradient id="cmLand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C3B2E"/><stop offset="1" stop-color="#18211A"/></linearGradient>
+            <linearGradient id="cmDry" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A4232"/><stop offset="1" stop-color="#2A261E"/></linearGradient>
+          </defs>
+          <rect x="0" y="0" width="800" height="430" fill="url(#cmSky)"/>
+          <g id="cmAxis"></g>
+          <g id="cmGround"></g>
+          <g id="cmSnow"></g>
+          <path id="cmWind" class="wind" fill="none" stroke="rgba(232,236,240,.35)" stroke-width="1.6" stroke-dasharray="2 10"/>
+          <g id="cmClouds"></g>
+          <g id="cmFall"></g>
+          <g id="cmLabels"></g>
+          <g id="cmBars"></g>
+          <text id="cmNote" class="cmnote" x="400" y="20" text-anchor="middle"></text>
+          <g id="cmParcel"><line id="cmStem" stroke="rgba(232,236,240,.5)" stroke-dasharray="3 3"/><circle id="cmDot" r="9" fill="rgba(156,199,240,.3)" stroke="#E8ECF0" stroke-width="2"/></g>
+        </svg>
+      </div>
+      <div class="ctl">
+        <label for="cmT">Air temperature at the coast <b id="cmTv"></b><input id="cmT" type="range" min="-2" max="32" step="1" value="7"></label>
+        <label for="cmH">Humidity off the ocean <b id="cmHv"></b><input id="cmH" type="range" min="30" max="100" step="1" value="88"></label>
+        <label for="cmZ">Follow the air inland <b id="cmZv"></b><input id="cmZ" type="range" min="0" max="160" step="1" value="0"></label>
+        <div class="row"><button class="btn" id="cmPlay">Send the air inland</button><button class="btn sec" id="cmWarm" aria-pressed="false">Warm the world 2 °C</button></div>
+        <div class="readouts" aria-live="polite">
+          <div><div class="v" id="cmPT"></div><div class="l">Air temperature here</div></div>
+          <div><div class="v" id="cmW"></div><div class="l">Water the air carries</div></div>
+          <div><div class="v" id="cmWs"></div><div class="l">Water it can hold here</div></div>
+          <div class="hot"><div class="v" id="cmFallV"></div><div class="l">Reaching the ground</div></div>
+        </div>
+        <div class="ctype" id="cmType"></div>
+        <div class="status" id="cmMsg"></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 5 GAUGES (Plate) -->
-<section class="slide plate" data-bg="clouds" data-part="1" data-min="2" data-title="Same gauges, longer time"
+<section class="slide plate" data-bg="falls" data-part="1" data-min="1.5" data-title="Same gauges, longer time"
  data-notes="<span class='must'>Must land:</span> climate is the same instruments read over a longer time. Momentum, not speculation. Click one instrument (rain gauge or water quality work best for this room); the others drop back. The animations are illustrations, not live readings. If there is connection, the links open live atmosphere and live basin gauges.">
   <div class="inner">
-    <div class="head"><span class="label red">Part One · Weather and Climate</span><h2>Same Gauges, Longer Time</h2></div>
+    <div class="headrow"><div class="head"><span class="label red">Part One · Weather and Climate</span><h2>Same Gauges, Longer Time</h2></div><p class="ask"><span class="label">Ask the room</span>What would you measure where you live, and for how long?</p></div>
     <div class="inst" id="inst">
       <button aria-expanded="false" data-i="0">
         <svg viewBox="0 0 120 120" aria-hidden="true">
@@ -457,37 +571,51 @@ input[type=range]{width:100%;accent-color:var(--red)}
 </section>
 
 <!-- 6 PART ONE KEY (Plate) -->
-<section class="slide plate deep" data-bg="clouds" data-part="1" data-min="0.5" data-title="Part One inquiry"
+<section class="slide plate deep" data-bg="cloudfront" data-part="1" data-min="0.5" data-title="Part One inquiry"
  data-notes="Read the takeaway, then leave the three questions up for a breath. Invite one written answer; no share-out needed for time.">
   <div class="inner">
     <div class="head"><span class="label red">Part One · Carry Forward</span></div>
-    <div class="key">
+    <div class="carry"><div class="key">
       <div class="card"><span class="label">Key Lesson</span><p>Weather is based on fundamental physics, here and throughout the universe. Pressure and water are always moving, never fixed or stuck at one height.</p></div>
       <div class="card"><span class="label">Key Takeaway</span><p>The same physics, gauges, and data points that predict tomorrow's weather also show patterns and change over many years. With enough data, we look ahead on momentum, not speculation.</p></div>
-    </div>
-    <ol class="inq">
+    </div><ol class="inq">
       <li>What did you learn more deeply about the weather?</li>
       <li>What changed about how you think about clouds, the atmosphere, or the water cycle?</li>
       <li>What is one question about the weather you want to find the answer to?</li>
-    </ol>
+    </ol></div>
   </div>
 </section>
 
 <!-- 7 PART TWO (Hall) -->
-<section class="slide hall" data-bg="mist" data-part="2" data-min="1" data-title="How do you know what you know?"
- data-notes="Transition: most of us only partly understand the atmosphere, and we fill the gaps with what we are told. Same with climate. Ask: who taught you what you know about this river? A grandparent, a teacher, a news anchor, a feed? Let the answers sit.">
+<section class="slide hall" data-bg="aurora" data-part="2" data-min="0.5" data-title="How do you know what you know?"
+ data-notes="Transition: just like the atmosphere, most of us only partly understand climate, and we fill the gaps with what we are told. Ask: who taught you what you know about this river? A grandparent, a teacher, a news anchor, a feed? Let the answers sit.">
   <div class="hallcopy">
     <span class="label red">Part Two</span>
     <div class="display">How Do You Know<br>What You Know?</div>
-    <p>Who taught you what you know about this river, and <span class="r">why do you trust them?</span></p>
+    <p>With your own senses you can see the snow in the winter. How do we learn about weather and climate in the classroom, and in the media, and <span class="r">why do we trust them</span>?</p>
+  </div>
+</section>
+
+<!-- 7b SCALE (Plate) -->
+<section class="slide plate" data-bg="mist" data-part="2" data-min="2" data-title="Three ways of seeing"
+ data-notes="<span class='must'>Must land:</span> our senses are where knowing starts, and data lets us see at scales no one person can. Walk frog's eye, bird's eye, moon's eye in that order, from the water at your feet to the whole planet. Each card opens with a question for the room. The next two slides live at the bird's eye: the salmon's journey across the whole basin.">
+  <div class="inner">
+    <div class="headrow"><div class="head"><span class="label red">Part Two · Scale</span><h2>Frog&rsquo;s Eye, Bird&rsquo;s Eye, Moon&rsquo;s Eye</h2></div><p class="ask"><span class="label">Ask the room</span>What can only be seen up close, and what can only be seen from far away?</p></div>
+    <p class="sub">Senses are where knowing starts. Graphs, maps, and numbers let us connect what we can see in our own backyard with the big picture of our changing world.</p>
+    <div class="eyes" id="eyes">
+      <button aria-expanded="false" data-e="0"><span class="pic" style="background-image:url(img/sockeye-underwater.jpg)"></span><span class="label red">Frog&rsquo;s Eye</span><h3>At the Water</h3><p>The cold of the river on your hands, the color of a salmon coming home, the day the snow left the ridge.</p></button>
+      <button aria-expanded="false" data-e="1"><span class="pic" style="background-image:url(img/mountain-above-clouds.jpg);background-position:center 70%"></span><span class="label red">Bird&rsquo;s Eye</span><h3>Above the Land</h3><p>Snow on the mountains, the shape of a watershed, a river from the ocean to its headwaters.</p></button>
+      <button aria-expanded="false" data-e="2"><span class="pic globe"><svg viewBox="0 0 200 120" aria-hidden="true"><defs><radialGradient id="gl" cx="38%" cy="35%" r="70%"><stop offset="0" stop-color="#2D5B86"/><stop offset=".7" stop-color="#0E2740"/><stop offset="1" stop-color="#06121E"/></radialGradient></defs><circle cx="100" cy="60" r="50" fill="url(#gl)"/><g fill="none" stroke="rgba(156,199,240,.35)" stroke-width=".8"><ellipse cx="100" cy="60" rx="50" ry="16"/><ellipse cx="100" cy="60" rx="50" ry="34"/><ellipse cx="100" cy="60" rx="18" ry="50"/><ellipse cx="100" cy="60" rx="36" ry="50"/><line x1="50" y1="60" x2="150" y2="60"/></g><path d="M70 38 C78 30 92 28 98 34 C104 40 96 48 88 50 C80 54 72 50 70 44 Z" fill="#2E4A33" opacity=".9"/><circle cx="80" cy="40" r="3" fill="#F26B5E"/><circle cx="150" cy="22" r="7" fill="#E8ECF0" opacity=".85"/></svg></span><span class="label red">Moon&rsquo;s Eye</span><h3>The Whole Planet</h3><p>The atmosphere moving as one system, oceans warming, snow and ice measured from space.</p></button>
+    </div>
+    <div id="eyeMore" class="eyemore" aria-live="polite"><p class="cap">Select a way of seeing.</p></div>
   </div>
 </section>
 
 <!-- 8 SOURCE CHECK (Plate) -->
-<section class="slide plate" data-bg="mist" data-part="2" data-min="2.5" data-title="Source check"
+<section class="slide plate" data-bg="mist" data-part="2" data-min="2" data-title="Source check"
  data-notes="<span class='must'>Must land:</span> narrative and emotion move us whether we notice or not. Think about thinking. Open two cards, not four, unless the room is fast. The point is the habit: notice the feeling, ask who benefits, then check. This is Lesson 2.1 in the Grades 6 to 12 set.">
   <div class="inner">
-    <div class="head"><span class="label red">Part Two · Try It</span><h2>Four Things You Might Hear</h2></div>
+    <div class="headrow"><div class="head"><span class="label red">Part Two · Try It</span><h2>Four Things You Might Hear</h2></div><p class="ask"><span class="label">Ask the room</span>Which one did you feel before you thought about it?</p></div>
     <div class="steps3"><div><b>Notice</b>What feeling does it give you?</div><div><b>Ask</b>Who is saying it, and what do they want?</div><div><b>Check</b>Where would you go to see for yourself?</div></div>
     <div class="claims">
       <button class="claim" aria-expanded="false"><span class="said">"The salmon are coming back, so the river is fine now."</span><span class="hint">Select to check</span><span class="back" hidden><b>Notice</b><span>Relief. It lets everyone stop worrying.</span><b>Check</b><span>Compare recent dam counts (Fish Passage Center, CRITFC) with historic returns estimated at 10 to 16 million fish a year. Ask how many are hatchery fish, and which runs are still listed.</span></span></button>
@@ -498,26 +626,46 @@ input[type=range]{width:100%;accent-color:var(--red)}
   </div>
 </section>
 
-<!-- 9 SALMON MAP (Plate) -->
-<section class="slide plate deep" data-bg="mist" data-part="2" data-min="3" data-title="The salmon's road home"
- data-notes="<span class='must'>Must land:</span> the salmon are a way of knowing; they carry the river's condition in their bodies. Choose a route, then swim upstream stop by stop. Pause at Celilo and let it be quiet. On the Snake route, Lower Granite is eight dams; on the upper Columbia route, the road ends at Chief Joseph Dam. 'Send the young fish to sea' runs the same dams downstream. River shapes are Natural Earth 1:10m data; dam positions are approximate; river miles follow the U.S. Army Corps of Engineers convention from the mouth.">
-  <div class="inner">
-    <div class="head"><span class="label red">Part Two · The River as Teacher</span><h2>The Salmon's Road Home</h2></div>
-    <div class="mapwrap">
-      <div class="map"><svg id="mapSvg" role="img" aria-labelledby="mapTitle"><title id="mapTitle">Map of the Columbia River Basin from the Pacific to Idaho and the upper Columbia, with dams, Celilo Falls, and the salmon's route</title></svg></div>
+<!-- 9 SALMON JOURNEY (Plate) -->
+<section class="slide plate deep" data-bg="bonneville" data-part="2" data-min="3.5" data-title="The journey home"
+ data-notes="<span class='must'>Must land:</span> the salmon are a way of knowing; they carry the river's condition in their bodies. Choose a route, then continue the journey stop by stop. Pause at Celilo and let it be quiet. Then switch the river futures to SSP2-4.5 and SSP3-7.0, mid-century and late century: the river colors by August water temperature, and the stop card shows how many weeks the water runs above 68 °F. Point out that the two futures barely differ by mid-century and pull apart by late century; the choices made now decide which one we get. The flow chart shows the shape of change: more water in winter, an earlier and smaller spring peak, longer low flows in late summer. Sources: lower Columbia August temperatures from EPA (2021); warming steps scaled from published river temperature studies (EPA 2021 synthesis; Isaak and others) to CMIP6 SSP2-4.5 and SSP3-7.0 warming (IPCC AR6); flow shape from RMJOC-II (2018) and NCA5 (2023). Working draft: replace with CMIP6 river temperature and flow runs when available [verify]. River shapes are Natural Earth 1:10m data; dam positions are approximate.">
+  <div class="inner fit">
+    <div class="headrow"><div class="head"><span class="label red">Part Two · The River as Teacher · Bird&rsquo;s Eye</span><h2>The Journey Home</h2></div><p class="ask"><span class="label">Ask the room</span>What would you need to make this journey, and what would make it harder?</p></div>
+    <div class="mapwrap stretch">
+      <div class="map">
+        <svg id="mapSvg" role="img" aria-labelledby="mapTitle"><title id="mapTitle">Map of the Columbia River Basin from the Pacific to Idaho and the upper Columbia, with dams, Celilo Falls, the salmon's journey, and the river colored by August water temperature</title></svg>
+        <div class="futures">
+          <span class="label">River futures · August water</span>
+          <div class="seg" id="fScen" role="group" aria-label="Choose a future"><button data-k="now" aria-pressed="true">Today</button><button data-k="s245" aria-pressed="false">SSP2-4.5</button><button data-k="s370" aria-pressed="false">SSP3-7.0</button></div>
+          <div class="seg" id="fPer" role="group" aria-label="Choose a period"><button data-k="mid" aria-pressed="true">2040 to 2069</button><button data-k="late" aria-pressed="false">2070 to 2099</button></div>
+          <div class="fread" id="fRead" aria-live="polite"></div>
+        </div>
+        <button class="btn sec juv" id="juv">Follow the young ones to the ocean</button>
+        <div class="tscale" aria-hidden="true"><span>14 °C · 57 °F</span><i></i><span>24 °C · 75 °F</span></div>
+      </div>
       <div class="mpanel">
-        <div class="seg2" role="group" aria-label="Choose a route"><button id="rA" aria-pressed="true">Snake and Salmon Rivers</button><button id="rB" aria-pressed="false">Upper Columbia</button></div>
+        <div class="seg" role="group" aria-label="Choose a route"><button id="rA" aria-pressed="true">Snake and Salmon Rivers</button><button id="rB" aria-pressed="false">Upper Columbia</button></div>
         <div class="stop" id="stopCard" aria-live="polite"></div>
-        <div class="row"><button class="btn sec" id="back">Downstream</button><button class="btn" id="next">Swim upstream</button><span class="cap data" id="stopN"></span></div>
-        <div class="row"><button class="btn sec" id="juv">Send the young fish to sea</button></div>
-        <div class="thermo"><span class="t">68 °F · 20 °C</span><p>Adult salmon begin to struggle in water warmer than about 68 °F. In the hot, low-snow summer of 2015, roughly a quarter million adult sockeye died in warm Columbia Basin water before they could spawn.</p></div>
+        <div class="row"><button class="btn sec" id="back">Back a step</button><button class="btn" id="next">Continue the journey</button><span class="cap data" id="stopN"></span></div>
+        <div class="hydro"><div class="hyhead"><span class="label">Flow through the year · Columbia at The Dalles</span><span class="cap" id="hyKey"></span></div><svg id="hySvg" viewBox="0 0 320 96" aria-label="Shape of the river's flow through the year, today and in the selected future"></svg></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- 9b RELATIVES OF THE RIVER (Plate) -->
+<section class="slide plate deep" data-bg="sockeye" data-pos="center 45%" data-part="2" data-min="2" data-title="Relatives of the river"
+ data-notes="Working draft; general language only. Open two or three relatives, not all eight: salmon, then lamprey, then one the room knows least. Each card shows their journey, what is changing, and their relationship with the people. Before classroom use, confirm names in the language of the host Nation, and the teachings that go with them, with that Nation's permission. [PLACEHOLDER: Native names, with permission.] Sources: NOAA Fisheries ESA listings; CRITFC Tribal Pacific Lamprey Restoration Plan (2011); NCA5 Northwest chapter (2023); Northwest Power and Conservation Council on coho reintroduction (2022).">
+  <div class="inner fit">
+    <div class="headrow"><div class="head"><span class="label red">Part Two · Frog&rsquo;s Eye · Working Draft</span><h2>Relatives of the River</h2></div><p class="ask"><span class="label">Ask the room</span>Which of these relatives have you seen, eaten, or heard stories about?</p></div>
+    <div class="kin" id="kin"></div>
+    <div class="kinmore stretch" id="kinMore" aria-live="polite"></div>
+    <blockquote class="voice">&ldquo;My vision for the future of Columbia River fisheries is to work towards the restoration of salmon, steelhead, lamprey, suckers, and sturgeon using a well-rounded approach.&rdquo; <cite>Patrick Luke, Yakama Nation, as quoted in Steve Robinson, Climate Change and the Tribes: Columbia River Edition (draft)</cite></blockquote>
+  </div>
+</section>
+
 <!-- 10 CONVERGENCE (Plate) -->
-<section class="slide plate" data-bg="mist" data-part="2" data-min="1.5" data-title="Ways of knowing meet"
+<section class="slide plate" data-bg="columbia" data-part="2" data-min="1" data-title="Ways of knowing meet"
  data-notes="<span class='must'>Must land:</span> the Elder-and-child test. The true mark of understanding is explaining something so that both an Elder and a child understand. Plural knowledges are not competing; when they meet on the same finding, that is what we can call True.">
   <div class="inner">
     <div class="head"><span class="label red">Part Two · Plural Knowledges</span><h2>When Ways of Knowing Meet</h2></div>
@@ -534,55 +682,54 @@ input[type=range]{width:100%;accent-color:var(--red)}
 <section class="slide plate deep" data-bg="mist" data-part="2" data-min="0.5" data-title="Part Two inquiry" data-notes="Read the takeaway. Invite one written answer.">
   <div class="inner">
     <div class="head"><span class="label red">Part Two · Carry Forward</span></div>
-    <div class="key">
+    <div class="carry"><div class="key">
       <div class="card"><span class="label">Key Lesson</span><p>Climate is social as much as it is scientific; society moves action much more than the science does. How we come to know things, and who we trust, shapes what we believe.</p></div>
       <div class="card"><span class="label">Key Takeaway</span><p>Narrative and emotion move us whether we notice it or not, so we learn to read both our sources and ourselves. Think about thinking.</p></div>
-    </div>
-    <ol class="inq">
+    </div><ol class="inq">
       <li>What did you learn about how we come to know things, and who we trust to share their knowledge with us?</li>
       <li>Was there an idea you held that changed or became more clear?</li>
       <li>What is one question about climate change that you want to follow up on?</li>
-    </ol>
+    </ol></div>
   </div>
 </section>
 
 <!-- 12 PART THREE (Hall) -->
-<section class="slide hall" data-bg="forest" data-part="3" data-min="0.5" data-title="Adaptation, Mitigation, Resilience"
- data-notes="Transition line: the impacts are already here. The question is not whether to act; it is which kind of work, with which tools, and how fast.">
+<section class="slide hall" data-bg="forest" data-part="3" data-min="0.5" data-title="What can we do?"
+ data-notes="Transition line: the impacts are already here, so we respond quickly and on purpose, without getting lost in fear, the future, and the black mirror of media. Adaptation, mitigation, and resilience get used like they are one word, but they are different work done in different ways.">
   <div class="hallcopy">
-    <span class="label red">Part Three</span>
-    <div class="display">Adaptation,<br>Mitigation, Resilience</div>
-    <p>Used like one word. They are <span class="r">three different jobs</span>, with different tools, often done by different people.</p>
+    <span class="label red">Part Three · Adaptation, Mitigation, Resilience</span>
+    <div class="display">What Can We Do?</div>
+    <p>When people come to understanding, people take action. We break down the big words into <span class="r">real-world steps</span> you, your family, and your community can take.</p>
   </div>
 </section>
 
 <!-- 13 THREE JOBS -->
 <section class="slide plate" data-bg="forest" data-part="3" data-min="1.5" data-title="Three jobs"
- data-notes="<span class='must'>Must land:</span> we must adapt now if we are to be resilient; we must mitigate now if we are to limit the impacts on future generations. Hold onto sacred traditions while livelihoods, and the paradigms of livelihoods, shift faster than they used to.">
+ data-notes="<span class='must'>Must land:</span> we must adapt now if we are to be resilient; we must mitigate now if we are to limit the impacts on future generations. We hold onto our sacred traditions, but our livelihoods, and the paradigms of our livelihoods, have to shift, and the response has to move faster than it used to. Read one step from each column at the scale of you, your family, and your community.">
   <div class="inner">
-    <div class="head"><span class="label red">Part Three · Different Jobs, Different Tools</span><h2>Three Jobs</h2></div>
+    <div class="headrow"><div class="head"><span class="label red">Part Three · Different Jobs, Different Tools</span><h2>Three Jobs, Three Scales</h2></div><p class="ask"><span class="label">Ask the room</span>Which one of these could your class start this month?</p></div>
     <div class="grid g3">
-      <div class="job" style="--c:var(--A)"><span class="label">Adaptation</span><h3>Adjust to What Is Here and Coming</h3><p>Change how we live, build, harvest, and plan so the impacts do less harm.</p><div class="tools"><span>planning</span><span>groundwork</span><span>preparation</span><span>data</span></div></div>
-      <div class="job" style="--c:var(--M)"><span class="label">Mitigation</span><h3>Reduce the Cause</h3><p>Cut the gases warming the air and water, and keep carbon in forests, soils, and wetlands.</p><div class="tools"><span>energy</span><span>forests</span><span>policy</span><span>funding</span></div></div>
-      <div class="job" style="--c:var(--R)"><span class="label">Resilience</span><h3>Absorb, Recover, Carry Forward</h3><p>The capacity of a people and a place to take a hit, come back, and keep their lifeways whole.</p><div class="tools"><span>relationships</span><span>knowledge</span><span>readiness</span><span>emergency</span></div></div>
+      <div class="job" style="--c:var(--A)"><span class="label">Adaptation</span><h3>Adjust to What Is Here and Coming</h3><p>Change how we live, build, harvest, and plan so the impacts do less harm.</p><ul class="steps"><li><b>You</b>Know your heat and smoke plan.</li><li><b>Family</b>Check on Elders when the heat comes.</li><li><b>Community</b>Cooling centers; shade and cold water for streams.</li></ul></div>
+      <div class="job" style="--c:var(--M)"><span class="label">Mitigation</span><h3>Reduce the Cause</h3><p>Cut the gases warming the air and water, and keep carbon in forests, soils, and wetlands.</p><ul class="steps"><li><b>You</b>Walk, ride, and share trips.</li><li><b>Family</b>Use less energy; eat food grown close to home.</li><li><b>Community</b>Solar with storage; keep forests standing.</li></ul></div>
+      <div class="job" style="--c:var(--R)"><span class="label">Resilience</span><h3>Absorb, Recover, Carry Forward</h3><p>The capacity of a people and a place to take a hit, come back, and keep their lifeways whole.</p><ul class="steps"><li><b>You</b>Learn the plants, places, and stories around you.</li><li><b>Family</b>Keep First Foods and teachings moving between generations.</li><li><b>Community</b>Emergency plans built on relationships.</li></ul></div>
     </div>
-    <p style="font-size:calc(var(--b)*1.02);max-width:70ch">We must adapt now if we are to be resilient. We must mitigate now if we are to <span class="r">limit the impacts on future generations</span>.</p>
+    <p class="sub">We must adapt now if we are to be resilient. We must mitigate now if we are to <span class="r">limit the impacts on future generations</span>.</p>
   </div>
 </section>
 
 <!-- 14 SORT -->
-<section class="slide plate" data-bg="forest" data-part="3" data-min="3" data-title="Sort the work"
- data-notes="<span class='must'>Must land:</span> most real actions do more than one job, and some 'solutions' cause harm in the wrong place or without consent. Ask the room to call A, M, or R for three or four items, then open the reading. Slow down on Pushpum. Examples come from the ICP Columbia River Edition draft; confirm details with each Nation before classroom use.">
+<section class="slide plate" data-bg="forest" data-part="3" data-min="2.5" data-title="Sort the work"
+ data-notes="<span class='must'>Must land:</span> most real actions do more than one job, and some 'solutions' cause harm in the wrong place or without consent. Ask the room to call A, M, or R for three or four items, then open the reading. Slow down on Pushpum. Examples come from Steve Robinson's *Climate Change and the Tribes: Columbia River Edition* draft; confirm details with each Nation before classroom use.">
   <div class="inner">
-    <div class="head"><span class="label red">Part Three · Try It</span><h2>Which Job Is It Doing?</h2></div>
+    <div class="headrow"><div class="head"><span class="label red">Part Three · Try It</span><h2>Which Job Is It Doing?</h2></div><p class="ask"><span class="label">Ask the room</span>Which actions do more than one job?</p></div>
     <div class="legend"><span style="--c:var(--A)">A · Adaptation</span><span style="--c:var(--M)">M · Mitigation</span><span style="--c:var(--R)">R · Resilience</span></div>
-    <div class="sort"><div class="acts" id="acts"></div><div class="reading" id="reading" aria-live="polite"><span class="cap">Choose A, M, or R for any action. There is no score; the reading shows how each one works.</span></div></div>
-    <p class="cap">Examples drawn from Columbia Basin Tribal actions described in the Indigenous Climate Project, Columbia River Edition (draft). Confirm details with each Nation before classroom use.</p>
+    <div class="sort"><div class="acts" id="acts"></div><div class="reading" id="reading" aria-live="polite"><span class="label">How to Sort</span><p>Choose <b style="color:var(--A)">A</b>, <b style="color:var(--M)">M</b>, or <b style="color:var(--R)">R</b> for any action. There is no score; the reading shows how each one works.</p><p class="cap">Most real actions do more than one job. And some &ldquo;solutions&rdquo; cause harm when they land in the wrong place, or go forward without consent.</p></div></div>
+    <p class="cap">Examples drawn from Columbia Basin Tribal actions described in Steve Robinson, <i>Climate Change and the Tribes: Columbia River Edition</i> (draft). Confirm details with each Nation before classroom use.</p>
   </div>
 </section>
 
 <!-- 15 FLOW -->
-<section class="slide plate" data-bg="forest" data-part="3" data-min="1.5" data-title="From knowing to doing"
+<section class="slide plate" data-bg="reservoir" data-part="3" data-min="1" data-title="From knowing to doing"
  data-notes="Keep this brisk; it is the bridge to TCR 201. Name the tools once, then talk about what they help people do. Must say: tools support; they never replace Tribal decision-making. [PLACEHOLDER: current access contact for the non-public ATNI Climate tools.]">
   <div class="inner">
     <div class="head"><span class="label red">Part Three · How Action Actually Happens</span><h2>From Knowing to Doing</h2></div>
@@ -602,25 +749,25 @@ input[type=range]{width:100%;accent-color:var(--red)}
 <section class="slide plate deep" data-bg="forest" data-part="3" data-min="0.5" data-title="Part Three inquiry" data-notes="Read the takeaway. Name the black mirror plainly: fear is a narrative too, and it can freeze action.">
   <div class="inner">
     <div class="head"><span class="label red">Part Three · Carry Forward</span></div>
-    <div class="key">
+    <div class="carry"><div class="key">
       <div class="card"><span class="label">Key Lesson</span><p>These three are not the same. They are different jobs with different tools: policy, groundwork, preparation, data, knowledge, funding, and sometimes emergency.</p></div>
       <div class="card"><span class="label">Key Takeaway</span><p>The impacts are already here, so we respond quickly and on purpose, without getting lost in fear, the future, and the black mirror of media.</p></div>
-    </div>
-    <ol class="inq">
+    </div><ol class="inq">
       <li>How do you now understand climate change adaptation, mitigation, and resilience?</li>
       <li>Did your sense of what needs to happen, or how fast, change today?</li>
       <li>What is one question about responding to climate impacts in your own community that you want to find out?</li>
-    </ol>
+    </ol></div>
   </div>
 </section>
 
 <!-- 17 PART FOUR (Hall) -->
-<section class="slide hall" data-bg="sound" data-part="4" data-min="1" data-title="Relationships Matter"
- data-notes="Slow down. Ceremonial weight belongs to the open and the close, so keep this plain and warm. Read the line, then pause.">
+<section class="slide hall" data-bg="islands" data-part="4" data-min="0.5" data-title="How do we work together?"
+ data-notes="Slow down. Ceremonial weight belongs to the open and the close, so keep this plain and warm. Read the line, then pause. It's going to take all of us; we can do more together than any of us can alone, and that includes our relationship with our non-human relatives.">
   <div class="hallcopy">
-    <span class="label red">Part Four</span>
-    <div class="display">Relationships Matter</div>
-    <p class="quote">"We will always be better than I ever will be."</p>
+    <span class="label red">Part Four · Relationships Matter</span>
+    <div class="display">How Do We<br>Work Together?</div>
+    <p class="quote">&ldquo;We will always be better than I ever will be.&rdquo;</p>
+    <p>No single person, scientific report, or action plan has all the answers.</p>
   </div>
 </section>
 
@@ -628,7 +775,7 @@ input[type=range]{width:100%;accent-color:var(--red)}
 <section class="slide plate deep" data-bg="sound" data-part="4" data-min="2" data-title="The web moves together"
  data-notes="<span class='must'>Must land:</span> a stress travels through the web, and so does care. Run one stress ripple (Heat wave is fastest), then one care ripple (An Elder visits a classroom). Point out that teachers sit inside the web, not outside it. Then ask: which relative are you closest to, and who holds you up? In the classroom version (Lesson 4.1) students build this with yarn.">
   <div class="inner">
-    <div class="head"><span class="label red">Part Four · Try It</span><h2>The Web Moves Together</h2></div>
+    <div class="headrow"><div class="head"><span class="label red">Part Four · Try It</span><h2>The Web Moves Together</h2></div><p class="ask"><span class="label">Ask the room</span>Which relative are you closest to, and who holds you up?</p></div>
     <div class="webwrap">
       <svg id="webSvg" viewBox="0 0 640 600" role="img" aria-labelledby="webTitle"><title id="webTitle">Three rings of relatives: water at the center, living relatives in the middle, people and responsibilities on the outside, joined by lines of relationship</title><g id="wRings"></g><g id="wEdges"></g><g id="wPulse"></g><g id="wNodes"></g></svg>
       <div class="webpanel">
@@ -643,7 +790,7 @@ input[type=range]{width:100%;accent-color:var(--red)}
 </section>
 
 <!-- 19 BORN OUT OF IT (Hall) -->
-<section class="slide hall" data-bg="sound" data-pos="center 70%" data-part="4" data-min="1" data-title="Part Four carry forward"
+<section class="slide hall" data-bg="coast" data-part="4" data-min="1" data-title="Part Four carry forward"
  data-notes="<span class='must'>Must land:</span> we are not apart from nature; we are a part of nature. We are sovereign, and we decide what matters. Then read the three questions aloud: What did you learn about the place of relationships in this work? What idea about being a good ancestor moved for you? What question will you keep working on?">
   <div class="hallcopy">
     <span class="label red">Part Four · Carry Forward</span>
@@ -653,7 +800,7 @@ input[type=range]{width:100%;accent-color:var(--red)}
 </section>
 
 <!-- 20 PATHWAY -->
-<section class="slide plate" data-bg="forest" data-part="5" data-min="1.5" data-title="Into your classroom"
+<section class="slide plate" data-bg="forest" data-part="5" data-min="1" data-title="Into your classroom"
  data-notes="Walk the three tiers in one sentence each; every tier runs on the four parts just experienced. Then the respect callout. [PLACEHOLDER: where teachers download the lesson files and who to contact.]">
   <div class="inner">
     <div class="head"><span class="label red">Carrying It Back</span><h2>Into Your Classroom</h2></div>
@@ -673,7 +820,7 @@ input[type=range]{width:100%;accent-color:var(--red)}
 </section>
 
 <!-- 21 CLOSE -->
-<section class="slide plate" data-bg="sound" data-part="5" data-min="1.5" data-title="Close"
+<section class="slide plate" data-bg="rainier" data-part="5" data-min="1.5" data-title="Close"
  data-notes="<span class='must'>Must land:</span> the handoff. You do not need me for this; you already carry what it takes. [PLACEHOLDER: PF closing in his voice.] Invite everyone to write one answer to each question before leaving; answers stay on their own device.">
   <div class="inner">
     <div class="head"><span class="label red">Before You Go</span><h2>Carry One Question Forward</h2></div>
@@ -682,9 +829,9 @@ input[type=range]{width:100%;accent-color:var(--red)}
       <label for="r2">Was there an idea, about change or about being a good ancestor, that moved for you?<textarea id="r2" data-store="r2"></textarea></label>
       <label for="r3">What is one question you are carrying out of this room?<textarea id="r3" data-store="r3"></textarea></label>
     </div>
-    <p class="cap">Answers stay in this browser on this device. Understanding a Climate of Change · ATNI Climate · Affiliated Tribes of Northwest Indians</p>
+    <p class="cap">Answers stay in this browser on this device.</p>
+    <p class="cap credits"><i>Understanding a Climate of Change: Understanding an Ever Changing Climate</i>, by Patrick Freeland and Cayla Jones · with case material from Steve Robinson, <i>Climate Change and the Tribes: Columbia River Edition</i> (draft) · ATNI Climate · Affiliated Tribes of Northwest Indians</p>
   </div>
-  <img class="seal" src="img/atni-seal.png" alt="Affiliated Tribes of Northwest Indians seal">
 </section>
 
   </main>
@@ -703,13 +850,24 @@ const IMAGES={
   sound:{src:'img/sound-sunset.jpg',pos:'center 62%',credit:'',alt:'Sunset over inland waters and forested hills, seen from the air'},
   clouds:{src:'img/clouds-light.jpg',pos:'center 30%',credit:'',alt:'Late light breaking through towering clouds'},
   mist:{src:'img/mountain-mist.jpg',pos:'center 40%',credit:'',alt:'A dark mountain behind drifting cloud'},
-  forest:{src:'img/forest-fog.jpg',pos:'center 45%',credit:'',alt:'Conifer forest in fog'}
+  forest:{src:'img/forest-fog.jpg',pos:'center 45%',credit:'',alt:'Conifer forest in fog'},
+  hood:{src:'img/mt-hood-summer.jpg',pos:'center 40%',credit:'',alt:'A Cascade volcano in late summer, with forest below and a little snow left near the top'},
+  falls:{src:'img/falls-spring.jpg',pos:'center 55%',credit:'',alt:'A waterfall in spring runoff, with mist rising from the pool below'},
+  cloudfront:{src:'img/clouds-mountain-front.jpg',pos:'center 35%',credit:'',alt:'Long streaming clouds over a forested mountain front'},
+  aurora:{src:'img/aurora.jpg',pos:'center 45%',credit:'',alt:'Northern lights in green and magenta over a dark ridge and water'},
+  bonneville:{src:'img/bonneville-spillway.jpg',pos:'center 50%',credit:'',alt:'Water pouring through the spillway of a large dam under storm clouds'},
+  sockeye:{src:'img/sockeye-underwater.jpg',pos:'center 45%',credit:'',alt:'Red sockeye salmon swimming over stream gravel'},
+  columbia:{src:'img/columbia-basalt-canyon.jpg',pos:'center 50%',credit:'',alt:'The Columbia River flowing between basalt cliffs on the plateau'},
+  reservoir:{src:'img/reservoir-aerial.jpg',pos:'center 50%',credit:'',alt:'A reservoir winding through dry hills, seen from high above'},
+  islands:{src:'img/islands-golden-light.jpg',pos:'center 50%',credit:'',alt:'Golden light breaking through clouds over forested islands and water'},
+  coast:{src:'img/coast-sunset.jpg',pos:'center 40%',credit:'',alt:'Sun setting over the Pacific beyond dark coastal rocks'},
+  rainier:{src:'img/mountain-above-clouds.jpg',pos:'center 72%',credit:'',alt:'A snow-covered volcano rising above a sea of clouds under the sun'}
 };
 const MAP=__MAP__;
 (function(){
   const $=id=>document.getElementById(id);
   const slides=[...document.querySelectorAll('.slide')];
-  const PARTS=['Opening','Cloud','Knowing','A · M · R','Relationships','Close'];
+  const PARTS=['Opening','Cloud','Knowing','What Can We Do','Together','Close'];
   // backgrounds
   slides.forEach(s=>{
     const im=IMAGES[s.dataset.bg]; if(!im) return;
@@ -758,27 +916,104 @@ const MAP=__MAP__;
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const NS='http://www.w3.org/2000/svg';
 
-  /* ---------- cloud machine ---------- */
+  /* ---------- cloud machine: ocean to mountain to plateau ---------- */
   const es=T=>6.112*Math.exp(17.67*T/(T+243.5)), mix=(e,p)=>622*e/(p-e), pres=z=>1013.25*Math.exp(-z/8400);
   const dew=(T,RH)=>{const a=Math.log(RH/100)+17.67*T/(T+243.5);return 243.5*a/(17.67-a)};
-  let warm=0; const yOf=z=>330-z/4000*300;
-  (function(){let h='';for(let z=0;z<=4000;z+=1000){const y=yOf(z);h+='<line x1="64" x2="410" y1="'+y+'" y2="'+y+'" stroke="rgba(232,236,240,.1)"/><text x="58" y="'+(y+4)+'" text-anchor="end" font-family="Cascadia Code, monospace" font-size="11" fill="#8A94A6">'+(z===0?'ground':z.toLocaleString()+' m')+'</text>'}$('cmAxis').innerHTML=h})();
-  function cm(){
-    const T0=+$('cmT').value+warm,RH=+$('cmH').value,z=+$('cmZ').value;
-    const Td=dew(T0,RH),lcl=Math.max(0,125*(T0-Td)),w0=mix(es(T0)*RH/100,1013.25);
-    const T=z<=lcl?T0-9.8*z/1000:(T0-9.8*lcl/1000)-6.0*(z-lcl)/1000;
-    const ws=mix(es(T),pres(z)),cond=Math.max(0,w0-ws),f=c=>Math.round(c*9/5+32);
-    $('cmTv').textContent=T0+' °C · '+f(T0)+' °F'+(warm?' (warmed)':'');$('cmHv').textContent=RH+'%';$('cmZv').textContent=z.toLocaleString()+' m';
-    $('cmPT').textContent=T.toFixed(1)+' °C';$('cmW').textContent=w0.toFixed(1)+' g/kg';$('cmWs').textContent=ws.toFixed(1)+' g/kg';$('cmC').textContent=cond.toFixed(1)+' g/kg';
-    const bl=$('cmBase'),bt=$('cmBaseLab');
-    if(lcl<=4000){const y=yOf(lcl);bl.setAttribute('y1',y);bl.setAttribute('y2',y);bl.style.display='';bt.setAttribute('y',y-6);bt.style.display='';bt.textContent='cloud base · '+Math.round(lcl).toLocaleString()+' m'}else{bl.style.display='none';bt.style.display='none'}
-    $('cmParcel').setAttribute('transform','translate(240,'+(yOf(z)-2)+')');
-    const inCloud=cond>0.05;$('cmCloud').setAttribute('opacity',inCloud?Math.min(1,.35+cond/4):0);$('cmDot').setAttribute('opacity',inCloud?0:1);$('cmRain').setAttribute('opacity',cond>3?1:0);
-    $('cmMsg').textContent=z===0?'Drag the height slider up. Rising air expands and cools, about 10 °C for every 1,000 m.':!inCloud?'Still clear. The air is cooling, but it can still hold all '+w0.toFixed(1)+' g of water in every kilogram.':cond<=3?'Cloud. The air cooled past what it can hold, so the extra water condensed onto dust and smoke into droplets.':'Heavy cloud, and it drips. Like an air conditioner, cold air squeezes out water. Warmer air carries more to squeeze.';
+  const gmL=(Tc,z)=>{const T=Tc+273.15,rs=mix(es(Tc),pres(z))/1000,L=2.5e6,Rd=287,cp=1004;return 9.8*(1+L*rs/(Rd*T))/(1+L*L*rs*.622/(cp*Rd*T*T))};
+  // land profile, west to east: [position 0 to 800, elevation in meters]
+  const TER=[[0,0],[95,0],[110,40],[150,450],[185,850],[205,880],[235,420],[262,90],[330,110],[380,520],[430,1250],[480,1850],[520,2250],[545,2650],[562,3400],[580,2600],[610,1900],[650,1150],[700,620],[750,380],[800,320]];
+  const terr=x=>{for(let i=1;i<TER.length;i++){if(x<=TER[i][0]){const [x0,y0]=TER[i-1],[x1,y1]=TER[i],k=(x-x0)/(x1-x0);return y0+(y1-y0)*(.5-.5*Math.cos(Math.PI*k))}}return 320};
+  const NS_=160, RIDGE=2700, CREST=562, LEE=580;
+  const SEASONS={winter:[7,88,'#0A1825','#1B2B3B'],spring:[12,75,'#0C1C2C','#22384C'],summer:[24,55,'#10233A','#2C4660'],fall:[13,82,'#0B1824','#20303E'],ar:[11,97,'#091420','#16222D']};
+  const cX=x=>52+x*.925, cY=z=>340-z/4000*305;
+  let warm=0, season='winter', playing=null;
+  function model(T0,RH){
+    const out=[];let T=T0,w=mix(es(T0)*RH/100,1013.25),cw=0,z=0;const w0=w;
+    for(let i=0;i<=NS_;i++){const x=i*800/NS_,e=terr(x),zn=Math.min(e,RIDGE),dz=zn-z;
+      let C=0;if(dz>0){const sat=w>=mix(es(T),pres(z))-1e-6;T-=(sat?gmL(T,z):9.8)*dz/1000;const ws=mix(es(T),pres(zn));if(w>ws){C=w-ws;cw+=C;w=ws}}
+      else if(dz<0){if(cw>0){T+=gmL(T,zn)*(-dz)/1000;const ws=mix(es(T),pres(zn));if(w<ws){const ev=Math.min(cw,ws-w);w+=ev;cw-=ev}}else T+=9.8*(-dz)/1000}
+      const P=Math.min(cw,C*.55+cw*.08);cw-=P;z=zn;
+      const Ts=T0-6.5*e/1000;
+      out.push({x,e,z,T,w,cw,P,snow:Ts<=.5});
+    }
+    const lcl=Math.max(0,125*(T0-dew(T0,RH)));
+    return {out,w0,lcl,snowLine:Math.max(0,(T0-.5)/6.5*1000),tot:out.reduce((a,o)=>a+o.P,0),snowShare:out.reduce((a,o)=>a+(o.snow?o.P:0),0)/Math.max(1e-6,out.reduce((a,o)=>a+o.P,0))};
   }
+  const cls=P=>P<.012?0:P<.05?1:P<.12?2:3, CLS=['none','light','moderate','heavy'];
+  const fF=c=>Math.round(c*9/5+32), num=n=>Math.round(n).toLocaleString();
+  (function(){let h='';for(let z=0;z<=4000;z+=1000){const y=cY(z);h+='<line x1="52" x2="792" y1="'+y+'" y2="'+y+'" stroke="rgba(232,236,240,.07)"/><text x="46" y="'+(y+4)+'" text-anchor="end" class="cmax">'+(z===0?'sea':num(z)+' m')+'</text>'}$('cmAxis').innerHTML=h;
+    let g='',pts=[];for(let i=0;i<=NS_;i++){const x=i*800/NS_;pts.push(cX(x).toFixed(1)+','+cY(terr(x)).toFixed(1))}
+    const west=pts.filter((p,i)=>i*5<=LEE),east=pts.filter((p,i)=>i*5>=LEE);
+    g+='<rect x="52" y="'+cY(0)+'" width="'+(cX(97)-52)+'" height="8" fill="#1F4466"/>';
+    g+='<polygon points="'+west.join(' ')+' '+west[west.length-1].split(',')[0]+',348 52,348" fill="url(#cmLand)"/>';
+    g+='<polygon points="'+east.join(' ')+' 792,348 '+east[0].split(',')[0]+',348" fill="url(#cmDry)"/>';
+    g+='<rect x="52" y="348" width="740" height="82" fill="rgba(1,11,19,.55)"/>';
+    $('cmGround').innerHTML=g;
+    const L=[[40,'Pacific Ocean',0,'start',50],[195,'Coast Range',880],[296,'Lowlands',110],[CREST,'Cascade crest',3400],[728,'Columbia Plateau',380]];
+    $('cmLabels').innerHTML=L.map(l=>'<text class="cmlab" x="'+(l[4]||cX(l[0]))+'" y="'+(cY(l[2])-12)+'" text-anchor="'+(l[3]||'middle')+'">'+l[1]+'</text>').join('')+'<text class="cmlab sm" x="58" y="364">Rain and snow reaching the ground</text>';
+    $('cmWind').setAttribute('d','M'+Array.from({length:NS_+1},(_,i)=>{const x=i*800/NS_;return cX(x).toFixed(1)+' '+(cY(Math.min(terr(x),RIDGE))-26).toFixed(1)}).join(' L'));
+  })();
+  function cm(){
+    const s=SEASONS[season], T0=+$('cmT').value+warm, RH=+$('cmH').value, pos=+$('cmZ').value;
+    $('cmSky0').setAttribute('stop-color',s[2]);$('cmSky1').setAttribute('stop-color',s[3]);
+    const M=model(T0,RH), O=M.out, o=O[pos];
+    // snow cover on the land and the glacier on the volcano
+    let sn='';const showSnow=season!=='summer'?Math.min(M.snowLine+(season==='spring'?250:0),4000):9e9;
+    for(let i=0;i<NS_;i++){const a=O[i],b=O[i+1];if(Math.min(a.e,b.e)>=Math.min(showSnow,2950))sn+='M'+cX(a.x)+' '+cY(a.e)+' L'+cX(b.x)+' '+cY(b.e)+' '}
+    let sl='';if(M.snowLine<3400){const y=cY(M.snowLine);sl='<line x1="'+cX(330)+'" x2="'+cX(800)+'" y1="'+y+'" y2="'+y+'" stroke="#E8ECF0" stroke-width="1" stroke-dasharray="5 5" opacity=".55"/><text class="cmlab sm" x="'+cX(800)+'" y="'+(y-6)+'" text-anchor="end">snow line · '+num(M.snowLine)+' m</text>'}
+    $('cmSnow').innerHTML='<path d="'+sn+'" stroke="#F4F7FA" stroke-width="5" stroke-linecap="round" fill="none"/>'+sl;
+    // clouds
+    let cl='';const maxcw=Math.max(...O.map(q=>q.cw)),ic=O.findIndex(q=>q.cw===maxcw);
+    if(M.lcl<160){const top=cY(M.lcl+260);cl+='<rect class="fog" x="52" y="'+top+'" width="'+(cX(300)-52)+'" height="'+(cY(0)-top)+'"/>'}
+    const tower=T0>=20&&RH>=65&&maxcw>=.3;
+    if(tower){const x=cX(O[ic].x)-8;for(let z=O[ic].z+600;z<=3750;z+=230){const k=(z-O[ic].z)/(3750-O[ic].z),r=24+k*10,y=cY(z);cl+='<circle cx="'+(x-r*.5)+'" cy="'+y+'" r="'+r+'" fill="#AEB7C1"/><circle cx="'+(x+r*.45)+'" cy="'+(y-6)+'" r="'+(r*.92)+'" fill="#E6EBEF"/>'}cl+='<path d="M'+(x-150)+' '+cY(3880)+' Q'+x+' '+cY(4080)+' '+(x+170)+' '+cY(3870)+' Q'+x+' '+cY(3800)+' '+(x-150)+' '+cY(3880)+' Z" fill="#E6EBEF"/>'}
+    O.forEach((q,i)=>{if(q.cw<.03||i%2)return;const cc=Math.min(q.cw*2.2,1.5),x=cX(q.x),r=8+cc*13,y=cY(q.z+700+cc*450);
+      cl+='<circle cx="'+x+'" cy="'+(y+r*.55)+'" r="'+(r*.9)+'" fill="'+(cc>1?'#7D8794':'#B9C1CA')+'" opacity=".9"/><circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+(cc>1?'#C9D0D7':'#EEF2F5')+'" opacity=".93"/>'});
+    $('cmClouds').innerHTML=cl;
+    // falling rain and snow, and the intensity strip
+    let fa='',bars='';
+    O.forEach((q,i)=>{const k=cls(q.P),x=cX(q.x);if(k){const top=cY(q.z+560+Math.min(q.cw*2.2,1.5)*350),bot=cY(q.e)-2;if(i%(4-k)===0){fa+=q.snow?'<line class="snowfall" x1="'+x+'" x2="'+(x-6)+'" y1="'+top+'" y2="'+bot+'"/>':'<line class="rainfall k'+k+'" x1="'+x+'" x2="'+(x-8)+'" y1="'+top+'" y2="'+bot+'"/>'}}
+      const h=Math.min(1,q.P/.25)*52;if(h>.5)bars+='<rect x="'+(x-2)+'" y="'+(426-h)+'" width="4.2" height="'+h+'" fill="'+(q.snow?'#F4F7FA':'#5E97C9')+'"/>'});
+    $('cmFall').innerHTML=fa;$('cmBars').innerHTML=bars;
+    // the parcel
+    const px=cX(o.x),py=cY(o.z)-26;$('cmDot').setAttribute('cx',px);$('cmDot').setAttribute('cy',py);
+    const st=$('cmStem');st.setAttribute('x1',px);st.setAttribute('x2',px);st.setAttribute('y1',py+9);st.setAttribute('y2',cY(o.e));
+    // readouts
+    $('cmTv').textContent=T0+' °C · '+fF(T0)+' °F'+(warm?' (warmed)':'');$('cmHv').textContent=RH+'%';
+    $('cmZv').textContent=o.x<97?'over the ocean':num(o.e)+' m up';
+    const ws=mix(es(o.T),pres(o.z)),k=cls(o.P);
+    $('cmPT').textContent=o.T.toFixed(1)+' °C';$('cmW').textContent=(o.w+o.cw).toFixed(1)+' g/kg';$('cmWs').textContent=ws.toFixed(1)+' g/kg';
+    $('cmFallV').textContent=k?CLS[k]+' '+(o.snow?'snow':'rain'):'nothing';
+    // cloud type for the whole slice
+    const ty=tower?['Cumulonimbus','A thunderhead. Warm, wet air rises fast and tall; heavy rain, lightning, sometimes hail.']
+      :T0>=20&&maxcw>.03?['Cumulus','Heaped, fair-weather clouds building over the crest on a warm afternoon; showers if they grow.']
+      :M.tot>=2.5?['Nimbostratus','A thick gray layer over the mountains with steady rain or snow'+(M.lcl<160?', and fog low over the water.':'. The workhorse of a Northwest winter.')]
+      :M.lcl<160?['Fog and stratus','Air this wet is already saturated near the water. Gray layers sit low over the ocean and the lowlands.']
+      :maxcw>=.08?['Cumulus','Heaped clouds building where the land pushes the air up.']
+      :maxcw>.03?['Cap cloud','A small cloud that sits on the crest and melts away on the far side.']:['Clear','The air never cools enough to give up its water.'];
+    $('cmType').innerHTML='<b>'+ty[0]+'</b><span>'+ty[1]+'</span>';
+    // what is happening here
+    const up=pos<NS_&&O[pos+1].z>o.z, ocean=o.x<97, lee=o.x>=LEE;
+    let msg=ocean?'Over the Pacific, the air picks up water: '+M.w0.toFixed(1)+' grams in every kilogram of air.'
+      :lee&&o.cw<.03?'Rain shadow. Coming down the far side, the air warms and dries: '+o.T.toFixed(0)+' °C here against '+T0+' °C at the coast, with '+o.w.toFixed(1)+' of its '+M.w0.toFixed(1)+' grams left. This is why the plateau is dry.'
+      :lee?'Over the crest the air sinks and warms, and the cloud begins to evaporate.'
+      :o.cw<.03&&up?'The land pushes the air up. Rising air expands and cools, about 10 °C for every 1,000 m, but it can still hold its water.'
+      :o.cw<.03?'The air rests in the lowlands before the next climb.'
+      :k?'The air cooled past what it can hold. The extra water condenses into cloud, and '+CLS[k]+' '+(o.snow?'snow':'rain')+' falls here.'
+      :'Cloud. The air cooled past what it can hold, so the extra water condensed onto dust and smoke.';
+    if(warm){const B=model(T0-2,RH);$('cmNote').textContent='With 2 °C of warming: snow line '+num(B.snowLine)+' → '+num(M.snowLine)+' m · water falling '+(M.tot>B.tot?'+':'')+Math.round((M.tot/B.tot-1)*100)+'% · falling as snow '+Math.round(B.snowShare*100)+'% → '+Math.round(M.snowShare*100)+'%'}else $('cmNote').textContent='';
+    $('cmMsg').textContent=msg;
+  }
+  function setSeason(s){season=s;const p=SEASONS[s];$('cmT').value=p[0];$('cmH').value=p[1];[...$('cmSeason').children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.s===s)));cm()}
+  [...$('cmSeason').children].forEach(b=>b.onclick=()=>setSeason(b.dataset.s));
   ['cmT','cmH','cmZ'].forEach(id=>$(id).addEventListener('input',cm));
   $('cmWarm').onclick=function(){warm=warm?0:2;this.setAttribute('aria-pressed',String(!!warm));this.textContent=warm?'Back to today':'Warm the world 2 °C';cm()};
-  cm();
+  $('cmPlay').onclick=function(){
+    if(playing){cancelAnimationFrame(playing);playing=null;this.textContent='Send the air inland';return}
+    const z=$('cmZ');if(+z.value>=NS_)z.value=0;const start=+z.value,t0=performance.now(),dur=(NS_-start)/NS_*9000;this.textContent='Pause';
+    const step=now=>{const k=Math.min(1,(now-t0)/dur);z.value=Math.round(start+(NS_-start)*k);cm();if(k<1&&!reduce)playing=requestAnimationFrame(step);else{playing=null;z.value=NS_;cm();$('cmPlay').textContent='Send the air inland'}};
+    playing=requestAnimationFrame(step)};
+  setSeason('winter');
 
   /* ---------- instruments ---------- */
   const INST=[
@@ -800,58 +1035,74 @@ const MAP=__MAP__;
   /* ---------- source check ---------- */
   document.querySelectorAll('.claim').forEach(c=>c.addEventListener('click',()=>{const open=c.getAttribute('aria-expanded')==='true';c.setAttribute('aria-expanded',String(!open));c.querySelector('.back').hidden=open;c.querySelector('.hint').textContent=open?'Select to check':'Select to close'}));
 
-  /* ---------- salmon map ---------- */
+  /* ---------- three ways of seeing ---------- */
+  const EYES=[
+    {see:'Water temperature with your hand or a thermometer; when the first salmon arrive; when the berries ripen; how long the snow stays on the ridge you see from home.',tools:'Your senses, a journal, a school thermometer or rain gauge, and the memory of Elders and fishers who have watched the same place for a lifetime.',ask:'What have you noticed change where you live?'},
+    {see:'Where snow sits on the mountains in April, how a watershed gathers water, the whole river from ocean to headwaters, where fire has burned.',tools:'Maps, aerial photos, the salmon\'s journey on the next slide, and the ATNI Dynamic Drought Module.',ask:'Where does your water come from before it reaches you?'},
+    {see:'The whole atmosphere moving as one system, the ocean warming, sea ice shrinking, carbon dioxide rising in every place on Earth at once.',tools:'Satellites, earth.nullschool.net, NASA and NOAA global records, and climate models that look ahead.',ask:'What can only be seen from far away, and who decides what it means here?'}
+  ];
+  const eyeBtns=[...document.querySelectorAll('#eyes button')];
+  eyeBtns.forEach((b,i)=>b.onclick=()=>{const open=b.getAttribute('aria-expanded')==='true';eyeBtns.forEach(x=>x.setAttribute('aria-expanded','false'));$('eyes').classList.toggle('focused',!open);
+    if(open){$('eyeMore').innerHTML='<p class="cap">Select a way of seeing.</p>';return}
+    b.setAttribute('aria-expanded','true');const d=EYES[i];
+    $('eyeMore').innerHTML='<div class="focus"><div class="card"><h3>What You Can See</h3><p>'+d.see+'</p></div><div class="card"><h3>How You See It</h3><p>'+d.tools+'</p></div><div class="card"><h3>Ask</h3><p>'+d.ask+'</p></div></div>'});
+
+  /* ---------- the journey home ---------- */
+  // August mean water temperature, recent decades, degrees C. Lower Columbia from EPA (2021); others approximate [verify with Columbia River DART].
+  const AUG={mouth:19.5,bonneville:21.3,thedalles:21.3,celilo:21.3,johnday:21.2,mcnary:21.0,confluence:21.0,iceharbor:20.8,lowermonumental:20.6,littlegoose:20.3,lowergranite:19.0,salmonmouth:19.5,redfish:14.0,priestrapids:19.0,wanapum:19.0,rockisland:18.8,rockyreach:18.6,wells:18.4,chiefjoseph:18.2,grandcoulee:18.0};
+  // added warming of August river water: scaled from published river temperature studies to CMIP6 warming (working draft)
+  const DT={now:{mid:0,late:0},s245:{mid:1.0,late:1.7},s370:{mid:1.1,late:2.7}};
+  const SC={now:'Today',s245:'SSP2-4.5',s370:'SSP3-7.0'}, PER={mid:'2040 to 2069',late:'2070 to 2099'};
+  let fut='now',per='mid';
+  const LOW=[
+    ['mouth','The Estuary','River mile 0','The journey begins and ends here. Young salmon feed and grow in the estuary before the ocean; after one to several years at sea, adults come home through this same door, following the smell of their home water.',null,'At sea and at the river mouth: marine heatwaves like the 2014 to 2016 &ldquo;Blob&rdquo; left less food in the ocean, and seals, sea lions, and birds wait where the river meets the sea.'],
+    ['bonneville','Bonneville Dam','River mile 146 · 1938','The first federal dam on the mainstem. From here the river becomes a chain of reservoirs: slower, and warmer in summer. Adults climb the fish ladders.','dam','Sea lions gather below the dam to feed on salmon and sturgeon waiting to pass.'],
+    ['thedalles','The Dalles Dam','River mile 192 · 1957','When its reservoir filled on March 10, 1957, it drowned Celilo Falls a few miles upstream.','dam','Slow, wide reservoirs soak up the summer sun.'],
+    ['celilo','Celilo Falls (Wyam)','About river mile 201','For thousands of years one of the great fishing and trading places of this continent, a gathering place for many Peoples. The fishing places here were reserved in the Treaties of 1855. The falls are still under the water, and the people still fish here.','place','A resting place: just upstream, the cold Deschutes River comes in. When the main river runs too warm, adults rest in cold-water refuges like this one.'],
+    ['johnday','John Day Dam','River mile 216','Third of the four lower Columbia dams. Its summer reservoir is wide, slow, and open to the sun.','dam','Smallmouth bass and walleye, brought here from elsewhere, thrive in warm reservoirs, and young salmon are their food.'],
+    ['mcnary','McNary Dam','River mile 292','The fourth lower Columbia dam, just below where the Snake comes in.','dam','In August the river here averages about 21 °C (70 °F), past the point where adult salmon begin to struggle.']];
   const ROUTES={
-    A:{d:MAP.routeA,f:MAP.fa,stops:[
-      ['mouth','The Estuary','River mile 0','Young salmon feed and grow here before the ocean. After one to several years at sea, adults come back through this same door, following the smell of their home water.'],
-      ['bonneville','Bonneville Dam','River mile 146 · 1938','The first federal dam on the mainstem. Upstream, much of the river becomes a chain of reservoirs: slower, and warmer in summer. Adults climb fish ladders.','dam'],
-      ['thedalles','The Dalles Dam','River mile 192 · 1957','When its reservoir filled on March 10, 1957, it drowned Celilo Falls a few miles upstream.','dam'],
-      ['celilo','Celilo Falls (Wyam)','About river mile 201','For thousands of years one of the great fishing and trading places of this continent, a gathering place for many Peoples. The fishing places here were reserved in the Treaties of 1855. The falls are still under the water.','place'],
-      ['johnday','John Day Dam','River mile 216','Third of the four lower Columbia dams. Its summer reservoir is wide, slow, and open to the sun.','dam'],
-      ['mcnary','McNary Dam','River mile 292','The fourth lower Columbia dam, just below where the Snake comes in.','dam'],
-      ['confluence','The Snake Joins the Columbia','River mile 324','Fish bound for Idaho turn east here, up the Snake. Four more dams wait.'],
-      ['iceharbor','Ice Harbor Dam','Snake river mile 10','First of the four lower Snake River dams, at the center of the long campaign for removal led by the Nez Perce Tribe and others.','dam'],
-      ['lowermonumental','Lower Monumental Dam','Snake river mile 42','Second of the four lower Snake River dams.','dam'],
-      ['littlegoose','Little Goose Dam','Snake river mile 70','Third of the four lower Snake River dams.','dam'],
-      ['lowergranite','Lower Granite Dam','Snake river mile 108 · 1975','Eight dams stand between the ocean and this reservoir. Just upstream, at Lewiston, the Clearwater comes in.','dam'],
-      ['salmonmouth','The Salmon River','Snake river mile 188','Fish bound for central Idaho turn here, below Hells Canyon. Upstream on the Snake, the Hells Canyon dams have no fish passage at all.'],
-      ['redfish','Toward Redfish Lake','Headwaters of the Salmon River','Snake River sockeye still headed for Redfish Lake travel about 900 miles and climb about 6,500 feet from the ocean.','place']]},
-    B:{d:MAP.routeB,f:MAP.fb,stops:[
-      ['mouth','The Estuary','River mile 0','Young salmon feed and grow here before the ocean. Adults come back through this same door, following the smell of their home water.'],
-      ['bonneville','Bonneville Dam','River mile 146 · 1938','The first federal dam on the mainstem. Upstream, much of the river becomes a chain of reservoirs: slower, and warmer in summer.','dam'],
-      ['thedalles','The Dalles Dam','River mile 192 · 1957','When its reservoir filled on March 10, 1957, it drowned Celilo Falls a few miles upstream.','dam'],
-      ['celilo','Celilo Falls (Wyam)','About river mile 201','For thousands of years one of the great fishing and trading places of this continent. The fishing places here were reserved in the Treaties of 1855. The falls are still under the water.','place'],
-      ['johnday','John Day Dam','River mile 216','Third of the four lower Columbia dams.','dam'],
-      ['mcnary','McNary Dam','River mile 292','The fourth lower Columbia dam.','dam'],
-      ['confluence','Past the Snake','River mile 324','These fish stay on the Columbia and keep north, through the Hanford Reach, the last free-flowing stretch of the river in the United States above Bonneville.'],
-      ['priestrapids','Priest Rapids Dam','River mile 397','First of five mid-Columbia dams run by public utility districts; all five have fish ladders.','dam'],
-      ['wanapum','Wanapum Dam','River mile 415','Second of the mid-Columbia dams.','dam'],
-      ['rockisland','Rock Island Dam','River mile 453 · 1933','The first dam built across the Columbia\'s mainstem.','dam'],
-      ['rockyreach','Rocky Reach Dam','River mile 474','Fourth of the mid-Columbia dams.','dam'],
-      ['wells','Wells Dam','River mile 516','Nine dams passed. Fish bound for the Methow and Okanogan turn off just upstream.','dam'],
-      ['chiefjoseph','Chief Joseph Dam','River mile 545','No fish ladder. For salmon, the river ends here.','block'],
-      ['grandcoulee','Grand Coulee Dam','River mile 597 · 1942','No fish passage. Its reservoir drowned Kettle Falls in 1940, a great fishing place of the upper Columbia Peoples, who gathered for a Ceremony of Tears before the water rose. Upper Columbia Tribes are leading work to bring salmon back above these dams.','block']]}
+    A:{d:MAP.routeA,f:MAP.fa,stops:LOW.concat([
+      ['confluence','The Snake Joins the Columbia','River mile 324','Relatives bound for Idaho turn east here, up the Snake. Four more dams wait.',null,'Long, slow water means a longer, warmer journey for the young ones heading to sea.'],
+      ['iceharbor','Ice Harbor Dam','Snake river mile 10','First of the four lower Snake River dams, at the center of the long work for their removal led by the Nez Perce Tribe and other Nations.','dam','Disease spreads faster in warm water; in hot summers, infections take more fish.'],
+      ['lowermonumental','Lower Monumental Dam','Snake river mile 42','Second of the four lower Snake River dams.','dam','Each dam adds days, and every day in warm water burns energy the fish need to spawn.'],
+      ['littlegoose','Little Goose Dam','Snake river mile 70','Third of the four lower Snake River dams.','dam','Adults stop eating when they leave the ocean; everything they need for the journey home, they carry in their bodies.'],
+      ['lowergranite','Lower Granite Dam','Snake river mile 108 · 1975','Eight dams stand between the ocean and this reservoir. Just upstream, at Lewiston, the Clearwater comes in.','dam','Cold water released from Dworshak Dam on the Clearwater helps cool this reach in late summer, a lifeline planned for every year.'],
+      ['salmonmouth','The Salmon River','Snake river mile 188','Relatives bound for central Idaho turn here, below Hells Canyon. Upstream on the Snake, the Hells Canyon dams have no fish passage at all.',null,'Low water: the Fifth National Climate Assessment warns the Salmon River could lose nearly half its streamflow during the adult migration window by the 2040s.'],
+      ['redfish','Toward Redfish Lake','Headwaters of the Salmon River','Snake River sockeye still come home to Redfish Lake: about 900 miles and about 6,500 feet up from the ocean. In 1992 a single sockeye made it home; a captive breeding program kept them alive.','place','Home water: cold headwater streams are the last refuge, and where the next generation begins.']])},
+    B:{d:MAP.routeB,f:MAP.fb,stops:LOW.concat([
+      ['confluence','Past the Snake','River mile 324','These relatives stay on the Columbia and keep north, through the Hanford Reach, the last free-flowing stretch of the river in the United States above Bonneville.',null,'The Hanford Reach holds one of the strongest wild fall Chinook runs left in the basin.'],
+      ['priestrapids','Priest Rapids Dam','River mile 397','First of five mid-Columbia dams run by public utility districts; all five have fish ladders.','dam','Upper Columbia spring Chinook, who pass here, are listed as endangered.'],
+      ['wanapum','Wanapum Dam','River mile 415','Second of the mid-Columbia dams.','dam','Every dam is another ladder to climb and another stretch of slow water.'],
+      ['rockisland','Rock Island Dam','River mile 453 · 1933','The first dam built across the Columbia&rsquo;s mainstem.','dam','Hatchery fish make up much of the return here; wild fish carry the genetics for adapting to change.'],
+      ['rockyreach','Rocky Reach Dam','River mile 474','Fourth of the mid-Columbia dams.','dam','Upper Columbia steelhead, listed as threatened, travel this reach too.'],
+      ['wells','Wells Dam','River mile 516','Nine dams crossed. Relatives bound for the Methow and Okanogan turn off just upstream.','dam','In hot summers the Okanogan runs too warm; sockeye wait in cooler Columbia water before the last push home.'],
+      ['chiefjoseph','Chief Joseph Dam','River mile 545','No fish ladder. For salmon, the journey ends here, for now.','block','Upper Columbia Tribes are leading the work to bring salmon home above these dams, with cultural releases of salmon in recent years.'],
+      ['grandcoulee','Grand Coulee Dam','River mile 597 · 1942','No fish passage. Its reservoir drowned Kettle Falls in 1940, a great fishing place of the upper Columbia Peoples, who gathered for a Ceremony of Tears before the water rose.','block','The Upper Columbia United Tribes are studying how salmon can return to the waters above.']])}
   };
-  let route='A',stopI=0,fpos=0,anim=null,built=false,travel,routePath,fish,juvenile=null,curLab;
+  const tColor=t=>{const S=[[14,[79,143,214]],[17,[127,195,201]],[19,[232,210,122]],[20,[242,166,90]],[21.5,[232,96,60]],[24,[181,23,46]]];if(t<=S[0][0])return 'rgb('+S[0][1]+')';for(let i=1;i<S.length;i++){if(t<=S[i][0]){const [a,ca]=S[i-1],[b,cb]=S[i],k=(t-a)/(b-a);return 'rgb('+ca.map((v,j)=>Math.round(v+(cb[j]-v)*k)).join(',')+')'}}return 'rgb('+S[S.length-1][1]+')'};
+  const toF=c=>Math.round(c*9/5+32);
+  const weeksAbove=peak=>{if(peak<=20)return 0;const A=8.75,c=1-(peak-20)/A;return Math.round(2*Math.acos(Math.max(-1,c))/(2*Math.PI)*365/7)};
+  let route='A',stopI=0,fpos=0,anim=null,built=false,travel,routePath,fish,heat,curLab;
   function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
   function mapInit(){
     if(built){drawStop();return} built=true;
-    const svg=$('mapSvg'); svg.setAttribute('viewBox','0 0 '+MAP.W+' '+MAP.H);
+    const svg=$('mapSvg'); svg.setAttribute('viewBox','0 0 '+MAP.W+' '+MAP.H); svg.setAttribute('preserveAspectRatio','xMidYMid meet');
     el('path',{d:MAP.land,fill:'#131A22',stroke:'#2A3542','stroke-width':'.9'},svg);
     el('path',{d:MAP.lakes,fill:'#0B2236'},svg);
-    el('path',{d:MAP.states,fill:'none',stroke:'#2E3845','stroke-width':'1','stroke-dasharray':'4 4'},svg);
+    el('path',{d:MAP.states,fill:'none',stroke:'#3A4553','stroke-width':'1','stroke-dasharray':'4 4'},svg);
     for(const k in MAP.labels){const p=MAP.labels[k];const t=el('text',{x:k==='PACIFIC'?12:p[0],y:p[1],class:'maplab','text-anchor':k==='PACIFIC'?'start':'middle'},svg);t.textContent=k==='PACIFIC'?'PACIFIC OCEAN':k}
     MAP.tribs.forEach(d=>el('path',{d:d,fill:'none',stroke:'#1F4466','stroke-width':'1'},svg));
     MAP.ctx.forEach(d=>el('path',{d:d,fill:'none',stroke:'#2F6A9C','stroke-width':'1.8'},svg));
     [MAP.mainstem,MAP.snake,MAP.salmon].forEach(d=>{el('path',{d:d,fill:'none',stroke:'#2F6A9C','stroke-width':'2.6','stroke-linejoin':'round'},svg);el('path',{d:d,fill:'none',stroke:'#9CC7F0','stroke-width':'1.4',class:'river-flow',opacity:'.55'},svg)});
     for(const k in MAP.rivers){const p=MAP.rivers[k];const t=el('text',{x:p[0],y:p[1],class:'rivlab'},svg);t.textContent=k.trim()}
-    // blocked places and markers
     const hc=MAP.pts.hellscanyon; drawX(svg,hc[0],hc[1]); lab(svg,hc[0]+9,hc[1]+4,'Hells Canyon dams · no passage');
     const kf=MAP.pts.kettle; el('circle',{cx:kf[0],cy:kf[1],r:5,fill:'none',stroke:'#D7A6E8','stroke-width':'2'},svg); lab(svg,kf[0]+9,kf[1]+4,'Kettle Falls · under Lake Roosevelt');
     routePath=el('path',{fill:'none',stroke:'none'},svg);
-    travel=el('path',{fill:'none',stroke:'#E13D33','stroke-width':'4','stroke-linecap':'round','stroke-linejoin':'round'},svg);
+    heat=el('g',{},svg);
+    travel=el('path',{fill:'none',stroke:'#FFFFFF','stroke-width':'2.2','stroke-linecap':'round','stroke-linejoin':'round',opacity:'.9'},svg);
     svg.appendChild(el('g',{id:'damLayer'}));
-    curLab=el('text',{class:'damlab',style:'font-size:17px'},svg);
+    curLab=el('text',{class:'damlab',style:'font-size:18px'},svg);
     fish=el('g',{},svg);
     el('path',{d:'M-11 0 C-5 -6.5 6 -6.5 11 0 C6 6.5 -5 6.5 -11 0 Z',fill:'#F2A08E',stroke:'#fff','stroke-width':'1.2'},fish);
     el('path',{d:'M-11 0 L-18 -5.5 L-16.5 0 L-18 5.5 Z',fill:'#F2A08E',stroke:'#fff','stroke-width':'1.2'},fish);
@@ -859,9 +1110,16 @@ const MAP=__MAP__;
     setRoute('A');
   }
   function drawX(svg,x,y){el('path',{d:'M'+(x-5)+' '+(y-5)+' L'+(x+5)+' '+(y+5)+' M'+(x+5)+' '+(y-5)+' L'+(x-5)+' '+(y+5),stroke:'#E13D33','stroke-width':'2.6'},svg)}
-  function lab(svg,x,y,t){const e=el('text',{x:x,y:y,class:'damlab',fill:'#8A94A6'},svg);e.textContent=t;e.style.fill='#8A94A6';return e}
+  function lab(svg,x,y,t){const e=el('text',{x:x,y:y,class:'damlab'},svg);e.textContent=t;e.style.fill='#A9B3BF';return e}
+  function drawHeat(){
+    heat.innerHTML='';const R=ROUTES[route],L=routePath.getTotalLength(),dt=DT[fut][per];
+    const marks=R.stops.map(s=>[R.f[s[0]][0],AUG[s[0]]+dt]);
+    for(let i=0;i<marks.length-1;i++){const [f0,t0]=marks[i],[f1,t1]=marks[i+1],n=8;
+      for(let j=0;j<n;j++){const a=f0+(f1-f0)*j/n,b=f0+(f1-f0)*(j+1)/n,p=routePath.getPointAtLength(a*L),q=routePath.getPointAtLength(b*L);
+        el('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,stroke:tColor(t0+(t1-t0)*(j+.5)/n),'stroke-width':'7','stroke-linecap':'round'},heat)}}
+  }
   function setRoute(r){
-    route=r; stopI=0; fpos=0; cancelAnimationFrame(anim); juvenile=null;
+    route=r; stopI=0; fpos=0; cancelAnimationFrame(anim);
     $('rA').setAttribute('aria-pressed',String(r==='A')); $('rB').setAttribute('aria-pressed',String(r==='B'));
     routePath.setAttribute('d',ROUTES[r].d); travel.setAttribute('d',ROUTES[r].d);
     const L=routePath.getTotalLength(); travel.style.strokeDasharray=L+' '+L;
@@ -871,17 +1129,17 @@ const MAP=__MAP__;
       const g=el('g',{'data-i':i},layer);
       if(s[4]==='block'){drawX(g,p[0],p[1])}
       else if(s[4]==='place'){el('circle',{cx:p[0],cy:p[1],r:5.5,fill:'#010B13',stroke:'#D7A6E8','stroke-width':'2.2'},g)}
-      else if(s[4]==='dam'){el('rect',{x:p[0]-4,y:p[1]-4,width:8,height:8,fill:'#E8ECF0'},g)}
-      else {el('circle',{cx:p[0],cy:p[1],r:3.5,fill:'#9CC7F0'},g)}
+      else if(s[4]==='dam'){el('rect',{x:p[0]-4,y:p[1]-4,width:8,height:8,fill:'#E8ECF0',stroke:'#010B13','stroke-width':'1'},g)}
+      else {el('circle',{cx:p[0],cy:p[1],r:3.5,fill:'#E8ECF0'},g)}
     });
-    place(0); drawStop();
+    drawHeat(); place(0); drawStop();
   }
   function place(f){
     const L=routePath.getTotalLength(), d=f*L;
     travel.style.strokeDashoffset=String(L-d);
     const p=routePath.getPointAtLength(d), q=routePath.getPointAtLength(Math.min(L,d+2)), q0=routePath.getPointAtLength(Math.max(0,d-2));
     const a=Math.atan2(q.y-q0.y,q.x-q0.x)*180/Math.PI;
-    fish.setAttribute('transform','translate('+p.x+','+p.y+') rotate('+a+') scale(1.15)');
+    fish.setAttribute('transform','translate('+p.x+','+p.y+') rotate('+a+') scale(1.2)');
   }
   function moveTo(target,dur,after){
     cancelAnimationFrame(anim); const from=fpos, t0=performance.now();
@@ -889,15 +1147,22 @@ const MAP=__MAP__;
     const step=now=>{const k=Math.min(1,(now-t0)/dur), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2; fpos=from+(target-from)*e; place(fpos); if(k<1)anim=requestAnimationFrame(step); else after&&after()};
     anim=requestAnimationFrame(step);
   }
+  function tempLine(key){
+    const base=AUG[key],now=weeksAbove(base);
+    if(fut==='now')return '<span class="tline"><b style="color:'+tColor(base)+'">'+base.toFixed(1)+' °C · '+toF(base)+' °F</b> in August today'+(now?'<br>about <b>'+now+' weeks</b> a year above 68 °F':'')+'</span>';
+    const t=base+DT[fut][per],w=weeksAbove(t);
+    return '<span class="tline"><b>'+base.toFixed(1)+' → <span style="color:'+tColor(t)+'">'+t.toFixed(1)+' °C</span></b> in August ('+toF(base)+' → '+toF(t)+' °F)<br>weeks above 68 °F: <b>'+now+' → '+w+'</b></span>';
+  }
   function drawStop(){
     const R=ROUTES[route], s=R.stops[stopI];
     const card=$('stopCard'); card.className='stop'+(s[4]==='block'?' block':s[4]==='place'?' place':'');
     const passed=R.stops.slice(1,stopI+1).filter(x=>x[4]==='dam').length;
-    card.innerHTML='<span class="rm">'+s[2]+'</span><h3>'+s[1]+'</h3><p>'+s[3]+'</p><span class="cap data">Dams passed: '+passed+'</span>';
+    card.innerHTML='<span class="rm">'+s[2]+' · dams crossed: '+passed+'</span><h3>'+s[1]+'</h3><p>'+s[3]+'</p><p class="chal"><b>On the journey</b>'+s[5]+'</p>';
+    $('fRead').innerHTML='<b>'+s[1]+'</b> '+tempLine(s[0]);
     $('stopN').textContent=(stopI+1)+' / '+R.stops.length;
     $('back').disabled=stopI===0; $('next').disabled=stopI===R.stops.length-1;
     document.querySelectorAll('#damLayer g').forEach(g=>g.classList.toggle('pulse',+g.dataset.i===stopI));
-    const pp=MAP.pts[s[0]]; if(pp&&stopI>0){const left=pp[0]>MAP.W*0.62; curLab.setAttribute('x',left?pp[0]-12:pp[0]+12); curLab.setAttribute('y',pp[1]-10); curLab.setAttribute('text-anchor',left?'end':'start'); curLab.textContent=s[1]} else curLab.textContent='';
+    const pp=MAP.pts[s[0]]; if(pp&&stopI>0){const left=pp[0]>MAP.W*0.62; curLab.setAttribute('x',left?pp[0]-12:pp[0]+12); curLab.setAttribute('y',pp[1]-12); curLab.setAttribute('text-anchor',left?'end':'start'); curLab.textContent=s[1]} else curLab.textContent='';
   }
   function go2(i){const R=ROUTES[route]; i=Math.max(0,Math.min(R.stops.length-1,i)); const target=R.f[R.stops[i][0]][0]; const dur=Math.min(2600,700+Math.abs(target-fpos)*5200); stopI=i; drawStop(); moveTo(target,dur)}
   $('next').onclick=()=>go2(stopI+1); $('back').onclick=()=>go2(stopI-1);
@@ -905,9 +1170,52 @@ const MAP=__MAP__;
   $('juv').onclick=()=>{
     const R=ROUTES[route]; if(stopI===0){go2(R.stops.length>6?6:1);return}
     const dams=R.stops.slice(1,stopI+1).filter(x=>x[4]==='dam').length, home=fpos;
-    const card=$('stopCard'); card.className='stop'; card.innerHTML='<span class="rm">The young fish</span><h3>Going to Sea</h3><p>Young salmon hatched here ride the current down past the same '+dams+' dam'+(dams===1?'':'s')+': through turbines, over spillways, through bypass systems, or carried in barges. Slow reservoirs make the trip longer and warmer.</p>';
+    const card=$('stopCard'); card.className='stop'; card.innerHTML='<span class="rm">The young ones</span><h3>Going to Sea</h3><p>Young salmon born here ride the current down past the same '+dams+' dam'+(dams===1?'':'s')+': through turbines, over spillways, through bypass systems, or carried in barges. Slow, warm reservoirs make the trip longer, and every extra day is another day among predators.</p>';
     moveTo(0,Math.min(3200,900+home*4200),()=>setTimeout(()=>moveTo(home,900,drawStop),900));
   };
+  // flow through the year: illustrative shape of change (RMJOC-II 2018; NCA5 2023), not a forecast
+  const FLOW=[150,160,170,240,330,350,230,150,115,110,125,145], CHG=[.25,.25,.25,.15,-.05,-.2,-.25,-.2,-.12,0,.2,.25], AMP={now:{mid:0,late:0},s245:{mid:.5,late:.75},s370:{mid:.6,late:1}};
+  function hydro(){
+    const W=320,H=96,x0=26,x1=314,y0=78,top=8,mx=380,X=i=>x0+(x1-x0)*i/11,Y=v=>y0-(v/mx)*(y0-top);
+    const amp=AMP[fut][per],fut2=FLOW.map((v,i)=>v*(1+CHG[i]*amp));
+    const line=a=>a.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)).join(' ');
+    let h='<line x1="'+x0+'" x2="'+x1+'" y1="'+y0+'" y2="'+y0+'" stroke="rgba(232,236,240,.25)"/>';
+    'JFMAMJJASOND'.split('').forEach((m,i)=>h+='<text x="'+X(i)+'" y="92" text-anchor="middle" class="hyl">'+m+'</text>');
+    h+='<path d="'+line(FLOW)+' L'+x1+' '+y0+' L'+x0+' '+y0+' Z" fill="rgba(94,151,201,.22)"/><path d="'+line(FLOW)+'" fill="none" stroke="#9CC7F0" stroke-width="2"/>';
+    if(amp)h+='<path d="'+line(fut2)+'" fill="none" stroke="#F26B5E" stroke-width="2.2" stroke-dasharray="5 3"/>';
+    $('hySvg').innerHTML=h;
+    $('hyKey').innerHTML=amp?'<i class="k1"></i>today <i class="k2"></i>'+SC[fut]+' · a shape, not a forecast':'<i class="k1"></i>today';
+  }
+  function setFut(){[...$('fScen').children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.k===fut)));[...$('fPer').children].forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.k===per));b.disabled=fut==='now'});if(built){drawHeat();drawStop()}hydro()}
+  [...$('fScen').children].forEach(b=>b.onclick=()=>{fut=b.dataset.k;setFut()});
+  [...$('fPer').children].forEach(b=>b.onclick=()=>{per=b.dataset.k;setFut()});
+  setFut();
+
+  /* ---------- relatives of the river ---------- */
+  const ICON={
+    salmon:'<path d="M8 24 C30 8 70 6 94 18 L112 9 L107 24 L112 39 L94 30 C70 42 30 40 8 24 Z"/><circle cx="22" cy="21" r="1.8" class="f"/>',
+    steelhead:'<path d="M8 24 C32 12 70 11 94 19 L111 11 L106 24 L111 37 L94 29 C70 37 32 36 8 24 Z"/><path d="M30 24 L88 24" class="ln"/><circle cx="21" cy="21.5" r="1.8" class="f"/>',
+    lamprey:'<path d="M6 22 C24 16 48 30 74 22 C90 17 104 20 114 24 C104 28 90 31 74 26 C48 34 24 28 6 26 Z"/><circle cx="12" cy="24" r="2.6"/><g class="f"><circle cx="22" cy="23" r="1"/><circle cx="26" cy="23.4" r="1"/><circle cx="30" cy="23.8" r="1"/><circle cx="34" cy="24.2" r="1"/></g>',
+    sturgeon:'<path d="M4 26 C10 22 18 20 30 19 C60 16 86 18 98 21 L114 12 L110 25 L114 36 L98 29 C80 33 50 33 30 31 C18 30 10 29 4 26 Z"/><g class="f"><path d="M34 18 l3 -3 l3 3z"/><path d="M48 17 l3 -3 l3 3z"/><path d="M62 17 l3 -3 l3 3z"/><path d="M76 18 l3 -3 l3 3z"/></g><path d="M12 28 l-2 5 M16 29 l-1 5" class="ln"/>',
+    eulachon:'<path d="M26 24 C40 17 64 16 80 21 L94 15 L91 24 L94 33 L80 27 C64 32 40 31 26 24 Z"/><circle cx="36" cy="22.5" r="1.4" class="f"/>',
+    bulltrout:'<path d="M8 24 C30 10 70 9 94 18 L111 11 L107 24 L111 37 L94 30 C70 39 30 38 8 24 Z"/><g class="f"><circle cx="40" cy="20" r="1.4"/><circle cx="52" cy="26" r="1.4"/><circle cx="64" cy="19" r="1.4"/><circle cx="76" cy="26" r="1.4"/></g><circle cx="20" cy="21" r="1.8" class="f"/>',
+    sucker:'<path d="M12 22 C34 12 70 12 94 19 L111 12 L107 24 L111 36 L94 29 C70 36 34 36 14 30 C10 29 9 26 12 22 Z"/><path d="M12 29 C9 31 9 34 13 34" class="ln"/><circle cx="22" cy="21" r="1.6" class="f"/>',
+    mussel:'<path d="M18 30 C18 16 50 8 82 12 C102 15 108 24 100 31 C88 40 40 42 18 30 Z"/><path d="M30 29 C40 20 66 16 90 19 M40 31 C52 25 72 23 94 25" class="ln"/>'
+  };
+  const KIN=[
+    {k:'salmon',n:'Salmon',s:'Chinook, coho, sockeye, chum',j:'Born in cold, clean gravel, they grow in the ocean for one to several years, then come home to the stream where they were born to spawn once and die. Their bodies feed the stream, the forest, eagles, and bears.',c:'Warm water and low late-summer flows on the way home, and less food in a warming ocean. Snake River sockeye are listed as endangered; Snake River spring and summer Chinook as threatened. Southern Resident orcas depend on Chinook too.',p:'A First Food, welcomed home each spring. The Treaties of 1855 reserved the right to take fish at all usual and accustomed places; there must be fish to catch. Tribal programs brought coho back to the Clearwater, Yakima, Umatilla, and upper Columbia after they had been lost.'},
+    {k:'steelhead',n:'Steelhead',s:'Rainbow trout that go to sea',j:'Born in streams like salmon, they go to sea and return; unlike most salmon, some survive spawning, go back to the ocean, and come home to spawn again.',c:'Summer steelhead enter the river in the heat and hold for months before spawning, so they spend a long time in warm water. Snake River steelhead are listed as threatened.',p:'Fished alongside salmon from scaffolds and platforms, and a winter and spring food for many families.'},
+    {k:'lamprey',n:'Pacific Lamprey',s:'Older than the dinosaurs',j:'No jaws, no bones, no scales. Young lamprey live buried in stream mud for several years before going to sea; adults come home to spawn, climbing rocks with their mouths.',c:'Fish ladders built for salmon are hard for them to pass. Returns are a small fraction of what was counted in the 1960s. Young lamprey in the mud cannot escape when streams warm or dry.',p:'A First Food and a medicine, gathered by hand at places like Willamette Falls. The Tribes wrote the Tribal Pacific Lamprey Restoration Plan (2011) and lead the work to bring them home.'},
+    {k:'sturgeon',n:'White Sturgeon',s:'Giants of the river',j:'The largest freshwater fish in North America; they can live more than 100 years and grow longer than 10 feet. Some go to the ocean; others live their whole lives in the river.',c:'Dams split the river into pools, and many sturgeon above the dams rarely spawn successfully; they need the right spring flows and temperatures. Kootenai River white sturgeon are listed as endangered.',p:'An ancient relative, fished by the Peoples of the river for thousands of years.'},
+    {k:'eulachon',n:'Eulachon',s:'Columbia River smelt, the candlefish',j:'Small, oily fish that come in from the ocean in late winter to spawn in the lower Columbia and its tributaries, like the Cowlitz.',c:'Sensitive to a warming ocean. The southern population, including the Columbia, was listed as threatened in 2010.',p:'Called candlefish because a dried fish is so rich in oil it can burn like a candle. A late-winter food of the lower river Peoples.'},
+    {k:'bulltrout',n:'Bull Trout',s:'Keepers of the coldest water',j:'A char that needs the coldest, cleanest water in the basin. Some stay in one stream for life; others travel to rivers and lakes and back.',c:'As streams warm, the cold water they need shrinks upstream into smaller and smaller places. Listed as threatened in the Columbia Basin since 1998.',p:'A sign of healthy headwaters: where bull trout live, the water is cold and clean.'},
+    {k:'sucker',n:'Suckers',s:'Overlooked relatives',j:'Bottom feeders found across the basin: largescale, bridgelip, and mountain suckers, gleaning the river bottom.',c:'Like other native fish, they face warm water, low flows, and fish brought in from elsewhere. Little is known, because few have looked.',p:'A traditional food for many families; Tribal fisheries leaders name suckers alongside salmon, lamprey, and sturgeon in restoration.'},
+    {k:'mussel',n:'Freshwater Mussels',s:'Western pearlshell and others',j:'They can live more than 60 years, filtering the water. Their young ride on the gills of salmon and trout to travel upstream.',c:'When the fish disappear, mussels cannot raise a next generation; warm water, sediment, and drying streams can wipe out whole beds.',p:'A traditional food. The Confederated Tribes of the Umatilla Indian Reservation run a freshwater mussel project to study and restore them.'}
+  ];
+  KIN.forEach((d,i)=>{const b=document.createElement('button');b.setAttribute('aria-expanded',String(i===0));b.innerHTML='<svg viewBox="0 0 120 48" aria-hidden="true">'+ICON[d.k]+'</svg><span class="nm">'+d.n+'</span><span class="sb">'+d.s+'</span>';b.onclick=()=>kin(i);$('kin').appendChild(b)});
+  function kin(i){const d=KIN[i];[...$('kin').children].forEach((b,k)=>b.setAttribute('aria-expanded',String(k===i)));
+    $('kinMore').innerHTML='<div class="card"><h3>Their Journey</h3><p>'+d.j+'</p></div><div class="card"><h3>What Is Changing</h3><p>'+d.c+'</p></div><div class="card"><h3>With the People</h3><p>'+d.p+'</p></div>'}
+  kin(0);
 
   /* ---------- A / M / R sort ---------- */
   const ACTS=[

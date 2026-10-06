@@ -6,13 +6,15 @@ Draft for editing, 09/24/2026
 
 Author of record: Patrick Freeland, Senior Tribal Climate Resilience Liaison, ATNI
 
+Built on *Understanding a Climate of Change: Understanding an Ever Changing Climate*, by Patrick Freeland and Cayla Jones, and on Steve Robinson's *Climate Change and the Tribes: Columbia River Edition* (draft).
+
 `[PLACEHOLDER: PF opening in his voice]`
 
 ---
 
 ## How to Use This Document
 
-These lessons are for teachers who have completed the 30-minute workshop built on the four parts of *Understanding a Climate of Change*: (1) How does a cloud work? (2) How do you know what you know? (3) Adaptation, Mitigation, Resilience; and (4) Relationships Matter. The four units follow the same parts, so you can walk from the workshop into your classroom with one structure. An opening and a closing lesson hold them together, the way a circle holds a conversation.
+These lessons are for teachers who have completed the 30-minute workshop built on the four parts of *Understanding a Climate of Change*: (1) How does a cloud work? (2) How do you know what you know? (3) What can we do? Adaptation, Mitigation, Resilience; and (4) How do we work together? Relationships Matter. The four units follow the same parts, so you can walk from the workshop into your classroom with one structure. An opening and a closing lesson hold them together, the way a circle holds a conversation.
 
 This set carries forward the Grades 6 to 12 tier of the Climate Change Education Pathway (the Changing Currents Classroom Edition). It keeps what worked at the 2025 Changing Currents Tribal Youth Water Summit (sketchbooks, the Elwha story, the Elder-and-child pitch, the career gallery, the closing circle) and replaces the field trip with a virtual field study and classroom models. Everything is set on the Columbia River, with the Elwha as a comparison story of restoration.
 
@@ -24,7 +26,7 @@ This set carries forward the Grades 6 to 12 tier of the Climate Change Education
 
 ### Climate Maturity, Hope, and Action
 
-The NESC 215 Climate Change in Indian Country course at Northwest Indian College (NWIC) names a practice called climate maturity: taking care of yourself when dealing with future scenarios. Students need it too, especially when the material touches their own families, rivers, and foods. The *Climate Change and the Tribes* draft (Columbia River Edition) names its purpose in two words: hope and action. The workshop puts it this way: "The impacts are already here, so we respond quickly and on purpose, without getting lost in fear, the future, and the 'black mirror' of media."
+The NESC 215 Climate Change in Indian Country course at Northwest Indian College (NWIC) names a practice called climate maturity: taking care of yourself when dealing with future scenarios. Students need it too, especially when the material touches their own families, rivers, and foods. Steve Robinson's *Climate Change and the Tribes: Columbia River Edition* draft names its purpose in two words: hope and action. The workshop puts it this way: "The impacts are already here, so we respond quickly and on purpose, without getting lost in fear, the future, and the 'black mirror' of media."
 
 - **Start with experience:** Hands first, then ideas.
 - **Name feelings briefly:** "One word for how you feel right now" is enough. Feelings are information.
@@ -61,7 +63,7 @@ The NESC 215 Climate Change in Indian Country course at Northwest Indian College
 Read this before you teach.
 
 - **Start with your local Tribe:** Contact the education, cultural resources, or natural resources department of the Tribe or Tribes nearest your school. Ask what they want taught, what they do not, and whether someone can visit. `[PLACEHOLDER: local Tribe(s) and department contact]`
-- **Permission from some is not permission from all:** As the *Climate Change and the Tribes* draft says of the Talking Stick, "Permission from some Tribal leaders does not mean permission from all Tribal leaders."
+- **Permission from some is not permission from all:** As the *Climate Change and the Tribes* draft (Robinson) says of the Talking Stick, "Permission from some Tribal leaders does not mean permission from all Tribal leaders."
 - **Do not invent or borrow cultural content:** These lessons contain no Tribal stories, songs, ceremonies, or teachings, on purpose. Where a lesson needs them, a placeholder waits for a knowledge holder the Tribe recognizes.
 - **Compensate knowledge holders:** Offer an honorarium, cover travel, and share back what students made.
 - **Never ask a Native student to speak for a Nation.** A student may choose to share.
@@ -94,7 +96,7 @@ Read this before you teach.
 
 **Materials:** Sketchbooks; colored pencils; a talking piece; chart paper; a Columbia River Basin map.
 
-**Teacher prep:** Arrange a circle. The *Climate Change and the Tribes* draft suggests a Talking Stick, with permission from several Tribal leaders for that curriculum, and cautions that permission from some is not permission from all. Ask your local Tribal liaison first; meanwhile use a neutral talking piece, such as a river stone. If a Tribal guest opens the circle, follow their lead.
+**Teacher prep:** Arrange a circle. The *Climate Change and the Tribes* draft (Robinson) suggests a Talking Stick, with permission from several Tribal leaders for that curriculum, and cautions that permission from some is not permission from all. Ask your local Tribal liaison first; meanwhile use a neutral talking piece, such as a river stone. If a Tribal guest opens the circle, follow their lead.
 
 **Procedure:**
 
@@ -273,7 +275,7 @@ Read this before you teach.
 | 9 | "Our new natural gas plant is part of the clean energy future." | A press release (written for this lesson) | Agenda. Less carbon than coal, still emissions and methane leaks. Clean compared with what? |
 | 10 | "The Earth has passed from a warming phase into an era of global boiling." | United Nations Secretary-General António Guterres, July 2023 | Rhetoric: real direction, not literal. Does it move you to act or to shut down? |
 | 11 | "My grandmother says the berries ripen earlier than when she was young." | A student's family (written for this lesson) | Lifetime observation. It fits no column neatly; let students argue how to honor it. |
-| 12 | "Tribes have contributed little to climate change but feel the impacts first." | The *Climate Change and the Tribes* draft; Fifth National Climate Assessment, Chapter 16 | Impacts are well documented. What data would measure contribution? |
+| 12 | "Tribes have contributed little to climate change but feel the impacts first." | The *Climate Change and the Tribes* draft (Robinson); Fifth National Climate Assessment, Chapter 16 | Impacts are well documented. What data would measure contribution? |
 
 **Discussion prompts:** Can a source be honest and wrong at once, and what should it do when it finds the error? When a message makes you feel something strongly, what is your next move?
 
@@ -382,7 +384,7 @@ Read this before you teach.
 
 - **Grade band and time:** Both; two periods of 50 minutes
 - **Key lesson:** Salmon depend on cold, clean, connected water. Warm water holds less oxygen, and dams, predators, harvest, and hatcheries all shape who comes home.
-- **Key takeaway:** In the words of the late Billy Frank Jr., quoted in the *Climate Change and the Tribes* draft, "salmon are the measuring stick of our own health." Every choice along the river changes the odds.
+- **Key takeaway:** In the words of the late Billy Frank Jr., quoted in the *Climate Change and the Tribes* draft (Robinson), "salmon are the measuring stick of our own health." Every choice along the river changes the odds.
 
 #### Part A: Cold Water Holds More Life
 
@@ -467,7 +469,7 @@ Saturation is the most oxygen the water can hold. Real rivers often hold less wh
 
 **Project cards**
 
-Tribal examples come from the *Climate Change and the Tribes* draft; verify details with each Tribe before presenting them as current.
+Tribal examples come from the *Climate Change and the Tribes* draft (Robinson); verify details with each Tribe before presenting them as current.
 
 | # | Project | Teacher Key (debate welcome) |
 |---|---|---|
@@ -642,7 +644,7 @@ Tribal examples come from the *Climate Change and the Tribes* draft; verify deta
 
 - **Grade band and time:** 9 to 12 (one-period 6 to 8 version below); two periods of 50 minutes
 - **Key lesson:** Clean energy is needed, and Treaty rights and sacred places are real. How a decision is made, and who is at the table from the start, matters as much as what gets built.
-- **Key takeaway:** Good process is climate action too. A Tribal leader quoted in the *Climate Change and the Tribes* draft said the Tribes are tired of being left out of dinner only to be invited to dessert.
+- **Key takeaway:** Good process is climate action too. A Tribal leader quoted in the *Climate Change and the Tribes* draft (Robinson) said the Tribes are tired of being left out of dinner only to be invited to dessert.
 
 **This is a live issue.** The proposed Goldendale pumped storage project is real and ongoing. Licensing, permits, and any litigation may have changed; verify status before teaching. The draft's account of a January 2026 Federal Energy Regulatory Commission (FERC) proceeding, including quotations, must be verified before classroom use.
 
