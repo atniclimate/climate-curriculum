@@ -26,7 +26,19 @@ Live workshop: https://atniclimate.github.io/climate-curriculum/ (served from do
 - planning/    PLAN (work order), DECISIONS (Patrick rules), VERIFY (fact
                checks), MEDIA-CREDITS (licenses), VOICE-PASS (draft strings
                for Patrick), HANDOFF (session log), revision-notes-2026-10-14
-               (scope source of truth), LAUNCH-PROMPT (how sessions start)
+               (scope source of truth), LAUNCH-PROMPT (how sessions start),
+               research/ (public-source research reports)
+- tools/       check.py (static gate), probe.js + probe-summary.py (layout
+               probe via playwright-cli), extract.py (document text for
+               library intake); build.py --check proves no change
+- .claude/     project skills: cc-release-check (build, static, probe,
+               offline, route, run sheet, voice diff), cc-slide-change
+- library/     LOCAL ONLY, git-ignored. Collected sources from Patrick's
+               archive and Drive; start at library/README.md. Never copy
+               library text into a committed file without Patrick's say.
+               Tribe-specific material remains that Nation's.
+- private/     LOCAL ONLY, git-ignored. Tribe-specific drafts and event
+               material awaiting permission.
 
 ## Every session
 

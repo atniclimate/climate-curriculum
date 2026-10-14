@@ -6,6 +6,13 @@ site gets a row here before it ships. Status: OPEN, CHECKED, or CHANGED.
 (MM/DD/YYYY). If a claim cannot be confirmed, keep it OPEN and leave a
 [verify] marker in the slide.
 
+Work order when time is short: Tribe-specific or permission-dependent content;
+current law, policy, funding, and live data; numbers and projections;
+quotations; then stable background facts. Facts already live before 10/14/2026
+are marked "inherited" in Notes. Proposed rows with sources (V15 onward) and
+known corrections: planning/research/2026-10-14-references.md; re-open each
+source before marking CHECKED.
+
 | # | Slide | Claim as written | Status | Source and date checked | Notes |
 |---|-------|------------------|--------|-------------------------|-------|
 | V1 | S4 | Cloud level heights, temperate regions: high ~5 to 13 km, middle ~2 to 7 km, low surface to ~2 km | OPEN | WMO International Cloud Atlas | |

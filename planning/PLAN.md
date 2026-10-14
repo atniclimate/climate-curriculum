@@ -8,8 +8,10 @@ Status marks: [ ] not started, [~] in progress, [x] done, [hold] waiting on Patr
 STOP points: the session pauses and waits for Patrick's review.
 
 Slide ids: every slide carries data-slide-id (s01-title ... s23-close); the
-inventory is in HANDOFF.md (10/14/2026 entry). Navigation hashes (#s1 to #s23)
-are still by position, so a reorder changes them.
+inventory is the ids in the source (`grep -n data-slide-id source/template.html`).
+Navigation hashes (#s1 to #s23) are still by position, so a reorder changes them.
+Skills: cc-release-check, cc-slide-change (project); curriculum-design-check and
+the curriculum-specialist agent (user level).
 
 ## Gates used at every step
 - Build: `python source/build.py` (UTF-8, LF). A refactor or markup-only change
@@ -28,7 +30,19 @@ are still by position, so a reorder changes them.
 - [x] Slide inventory: S-number, current title, location in source
 - [x] Add stable data-slide-id to every slide (first commit); slide comments renumbered to S-numbers
 - [x] Read I:\community-connector (read only) and report engine size, deps, license (for D15)
-- [~] Decision walkthrough: D8, D9, D1, D2, D3, D12, D10
+- [hold] Decision walkthrough: deferred by Patrick to the next session; suggested order in DECISIONS.md (D21 first)
+- [x] Environment review team, source library, references, two Codex reviews (10/14/2026; see HANDOFF)
+
+## Workshop readiness track [hold until D21]
+Only if Patrick confirms ATNI shows anything at the 10/23-24/2026 Yakama Tribal
+Teachers Workshop. Otherwise skip to Phase 1 after the event. No structural
+work and no new features before 10/24; no merge to main 10/21 to 10/24.
+- [ ] Route identity: which slides and handouts, how many minutes, what equipment (D21, D24)
+- [ ] Safety and integrity on that route: known corrections (D25), Goldendale role play out of anything distributed (D22), S23 session-only reflections (D23), uncredited photos replaced or hidden
+- [ ] Teacher outcomes (three, observable) and a handoff card; one hand twin
+- [ ] cc-release-check route + sheet: run sheet with 15/30/60-minute variants, printed fallback, projector-only plan
+- [ ] Offline folder rehearsal on a school Chromebook and projector, network off
+- [ ] STOP: Patrick's release decision
 
 ## Phase 1. Language and layout (low risk, high visibility), one commit per step
 - [ ] 1a S1 locked line (D8) and S2 together: locked title (D9/D1), blockquote (D2), Four Questions cards (notes 2.2, D3), series line (notes 2.1), scale chip. S1 needs a 62ch override and `<br>` stanza markup; the S1 display becomes the page's h1 with no visual change
@@ -45,6 +59,11 @@ are still by position, so a reorder changes them.
 - [ ] 2a S10 river lines registered to basemap. Likely cause: drawHeat() samples 8 straight chords per stop regardless of length, so the heat band cuts corners (up to 24 units on the Salmon River leg). Fix with length-proportional sampling; confirm on both routes and all futures
 - [ ] 2b Source split (if D10 = A), alone in its commit, gated on an identical build
 - [ ] STOP
+
+Phases 3, 5, and 6 and the D10 split are after the workshop, and both Codex
+reviews advise waiting for teacher evidence before the largest builds (cloud
+taxonomy, nested zoom, video lightbox, constellation camera). Build the
+smallest causal model first; genera become an optional field guide.
 
 ## Phase 3. Cloud tool rebuild (S4), in sub-steps, STOP after each
 - [ ] 3a Controls grouped (Temperature, Pressure, Moisture, Season, Wind) and live "What is happening" panel. Note: the model has no pressure input today (pressure comes from elevation); a Pressure control needs a physical hook or it is decorative
