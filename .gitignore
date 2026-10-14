@@ -1,0 +1,8 @@
+# Local source library: extracts from private archives and Drive. Never commit.
+library/
+# Tribe-specific drafts, event material, and local builds awaiting permission. Never commit.
+private/
+# Per-machine Claude Code settings.
+.claude/settings.local.json
+# playwright-cli session snapshots.
+.playwright-cli/
