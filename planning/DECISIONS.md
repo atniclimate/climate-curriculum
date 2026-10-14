@@ -21,6 +21,8 @@ Ruling: PENDING
 Options: title slide only, or Ways of Knowing (S12) only.
 Default: title slide only; remove from S12.
 See D8: the new title-slide line carries the Elder/Child idea itself.
+Current occurrences on the page: S1 paragraph, S2 blockquote, S12 "Where They
+Meet" and S12 speaker notes.
 Ruling: PENDING
 
 ## D3. Q1 card wording
@@ -61,11 +63,13 @@ Patrick supplied this line directly (LOCKED, his line breaks):
     this is the surest sign that you are able to share knowledge.
 
 The revision notes offer a different DRAFT paragraph for S1 and keep a
-separate Elder/Child blockquote. The locked line already carries both ideas,
-so keeping the blockquote would repeat the Elder/Child thought on one slide.
+separate Elder/Child blockquote. The locked line already carries both ideas.
+Correction (10/14/2026, from the source): the blockquote ("Think... when both
+an Elder and a Child can understand, then this is where learning happens.")
+is on S2, above the Four Questions, not on S1. S1 has only the paragraph.
 Options:
-  A. Locked line replaces both the paragraph and the blockquote.
-  B. Locked line replaces the paragraph; keep the blockquote.
+  A. Locked line replaces the S1 paragraph; the S2 blockquote is removed.
+  B. Locked line replaces the S1 paragraph; the S2 blockquote stays.
 Casing: "one River" as typed, or "One River" to match title case elsewhere.
 Default: A, with "One River."
 Ruling: PENDING
@@ -130,4 +134,49 @@ Options: copy a trimmed version into source/js/ with a note of its origin;
 or reimplement a small force layout informed by it.
 Default: decide after the session reads community-connector and reports its
 size, dependencies, and license.
+Ruling: PENDING
+
+---
+
+D16 onward were added on 10/14/2026 from the deep review of the source; they
+gate Phase 1 steps 1b and 1d.
+
+## D16. Word budget for Part divider (Hall) slides
+The stylesheet notes hall copy at forty words or fewer so it sits on the photo
+scrim. The locked Q2, Q3, Q4 texts are 44 to 49 words; pairing them with other
+lines (S7 thesis, S14 fire draft) reaches 60 to 95 words.
+Options: dividers carry the Q text only and raise the budget to about 50
+words, strengthening the scrim; or dividers carry a short form and the full Q
+text stays on the S2 cards.
+Default: Q text only, budget about 50 words, stronger scrim.
+Ruling: PENDING
+
+## D17. S3 Part One divider text
+Options: Q1 locked card text; or the short thesis (DRAFT) "Temperature,
+pressure, and water vapor. When they meet, a cloud is born."
+Default: Q1 locked text, so every divider matches its S2 card.
+Ruling: PENDING
+
+## D18. S14 Part Three divider: the fire line
+The notes offer DRAFT A, B, or C (spark and fire) to pair with Q3.
+Options: A, B, or C on the divider with Q3; or Q3 on the divider and the
+chosen fire line moves to S15 or the speaker notes.
+Default: Q3 on the divider; fire line A in the speaker notes until the S17
+Building a Fire work settles the metaphor.
+Ruling: PENDING
+
+## D19. Where the S10 DRAFT intro goes ("Every salmon carries a map home...")
+The map and stop cards fill S10 at 1366x768; a visible paragraph would clip.
+Options: speaker notes; first stop card; a short visible line with the rest
+in the notes.
+Default: speaker notes until the Phase 5 chart work reshapes the slide.
+Ruling: PENDING
+
+## D20. Scope of capitalizing "Knowledge"
+The house style says capitalize Knowledge, but the guiding document and the
+notes write "intergenerational knowledge" and "knowledge holders" in lower
+case (5 places on the page now).
+Options: capitalize every use; or capitalize only Indigenous Knowledge,
+Traditional Knowledge, and similar proper uses.
+Default: proper uses only.
 Ruling: PENDING
