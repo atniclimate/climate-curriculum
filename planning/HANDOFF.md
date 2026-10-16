@@ -14,6 +14,36 @@ top. Keep each entry short.
 
 ---
 
+### 10/15/2026 (evening), branch: dev/tcu-templates-2026-10
+- Done (TCU template build-out, planning/tcu/LAUNCH-TCU-TEMPLATES.md; no
+  change to source/, docs/, or curriculum/; `python source/build.py --check`
+  passed before and after):
+  - tcu/registry.yaml, 40 sites (9dac2bb); tcu/DESIGN.md (38cafd0); shared
+    core tcu/core/ (2bee4a2); engine and templates (1c2c4bd, 0276210);
+    tcu/README.md for TCUs (699c824); pilot-review fixes (a5af4df).
+  - Private (git-ignored private/tcu/): scout packets for all 40 sites plus
+    Haskell's four, NEXUS index, AIHEC check, case packs, deep dives for all
+    40, built minisites with decks, .pptx, and zips; pilot and four wave
+    reviews; LEDGER.md and STATUS.md. All 40 sites build and pass
+    `python -P tcu/engine/check.py --all` (10/15/2026).
+  - Patrick's mid-run directions: run as fast as possible (steps ran side by
+    side); scouts on Sonnet 5.5 (the 20 unfinished scouts and five thin
+    packets re-ran on Sonnet; 26 had finished on Opus).
+- Waiting on Patrick: the AIHEC list differences and the two climate-unit
+  boundary cases (private/tcu/LEDGER.md, step 1 and step 5); DESIGN.md
+  section 16 open questions; review of tcu/core and tcu/core/verify.md (all
+  rows OPEN or inherited); every site stays [hold] for TCU review.
+- Next up: apply the wave reviews' core fixes before any site goes to a TCU
+  (private/tcu/_review/wave-1.md to wave-4.md): enforce the C2 gate in the
+  engine (projection numbers as plain text, not only views); remove the C2
+  route from TCR 201 Week 3 Lab 3B and Week 2; replace hard-coded "usual and
+  accustomed" wording in core and starters; keep engine notes out of the
+  climate_unit slot; per-socket minutes; then rebuild and recheck all 40.
+- Watch out: the branch is not pushed (Patrick pushes). Thin scout packets
+  for several sites (session web-search budget ran out); the local geopandas
+  install is broken (the engine uses pyogrio and shapely). Deep dives were
+  written on Opus; reviews sampled one site per region only.
+
 ### 10/15/2026, branch: dev/revisions-2026-10
 - Done (planning only; no slide, source, docs, or curriculum change; build
   check passed before starting, and no commit touched source/):

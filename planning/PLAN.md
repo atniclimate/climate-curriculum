@@ -117,6 +117,15 @@ and consent, each gated as noted):
 - [hold] 8l m-columbia-salmon-relay (E; M; C1, Station 6 C2). After D25, D31 (DART), and the host Nation's word on Station 6
 One module per session unless Patrick says otherwise.
 
+## TCU templates (branch dev/tcu-templates-2026-10) [hold]
+Launch prompt: planning/tcu/LAUNCH-TCU-TEMPLATES.md. Public layer in tcu/;
+every site-specific draft stays in git-ignored private/tcu/ until that TCU
+(and, where it applies, the chartering Nation) reviews it.
+- [x] 1 Registry (40 sites) 2 Design 3 Shared core 4 Engine and templates 5 Scouts 6 Data profiles 7 Pilots and review 8 Fan-out (37 sites) 9 Build and check all 40 (pass, 10/15/2026)
+- [ ] Core fixes from the wave reviews (C2 gate in the engine, TCR 201 Week 3 route, "usual and accustomed" wording, climate_unit slot text, socket minutes); rebuild and recheck all 40
+- [hold] Patrick: AIHEC list differences, climate-unit boundary cases, DESIGN.md section 16, core and verify.md review
+- [hold] Each of the 40 sites: TCU review (Iḷisaġvik College; Diné College; Tohono Oʼodham Community College; Haskell Indian Nations University; Bay Mills; Keweenaw Bay Ojibwa; Saginaw Chippewa; Fond du Lac; Leech Lake; White Earth; Aaniiih Nakoda; Chief Dull Knife; Fort Peck; Little Big Horn; Stone Child; Little Priest; Nebraska Indian; IAIA; Navajo Technical University; SIPI; Cankdeska Cikana; Nueta Hidatsa Sahnish; Sitting Bull; Turtle Mountain; United Tribes; College of the Muscogee Nation; Oglala Lakota; Sinte Gleska; Sisseton Wahpeton; Ihanktonwan; Lower Brule; Northwest Indian College (Bellingham); College of Menominee Nation; Lac Courte Oreilles; California Tribal College; NWIC Tulalip, Nisqually, Port Gamble S'Klallam, Muckleshoot, and Nez Perce sites)
+
 ## Deferred
 - S22 Into Your Classroom (needs time with the source Google Doc)
 - S23 Evaluation
