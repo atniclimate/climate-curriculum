@@ -1,6 +1,7 @@
 # m-columbia-reading-to-record: One Reading, a Whole Record (working title)
 
 Cluster C. Status: concept brief, planning only (no build before D27).
+Module author: Patrick A. Freeland, with ATNI Climate. Licensing to be set later.
 Seeds: P1, L-open, L1.2, C-W2, C-W3, C-A1, C-A2, T-M1, s05. Written from SEEDS.md as of commit 6784076.
 
 Location per D27's text (default, PENDING): source in

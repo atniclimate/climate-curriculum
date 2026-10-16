@@ -1,6 +1,7 @@
 # m-columbia-listening-well: How a Message Reaches You (working title)
 
 Cluster G. Status: concept brief, planning only (no build before D27).
+Module author: Patrick A. Freeland, with ATNI Climate. Licensing to be set later.
 Seeds: P2, L2.1, C-W4, s09. Written from SEEDS.md as of commit 9c8d64f.
 
 The slide title waits on D4 (PENDING; options and default at planning/DECISIONS.md
@@ -115,7 +116,7 @@ quotations. The case pack freezes the card text, its source line, and a checksum
 
 | Dataset | Issuer | Public URL | License | Label | What the case pack freezes |
 |---|---|---|---|---|---|
-| Neutral message cards (invented) | ATNI Climate; L2.1 draft 09/24/2026 | none | project license not checked | TEACHING MODEL | Card text, "written for this lesson," card-set version date |
+| Neutral message cards (invented) | Patrick A. Freeland (module author), with ATNI Climate; L2.1 cards as cited there (draft 09/24/2026) | none | project license not checked | TEACHING MODEL | Card text, "written for this lesson," card-set version date |
 | L2.1 card 2 (2024 global temperature) | WMO | not opened | not checked | SNAPSHOT | Quoted figure, issuer, issue date as WMO states it |
 | L2.1 card 5 basis (human influence "unequivocal") | IPCC AR6 WGI SPM | https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/ (opened by the 10/14/2026 references review, not by this brief) | not checked | SNAPSHOT | Statement and SPM locator |
 | L2.1 card 8 (2015 sockeye deaths) | NPCC | https://www.nwcouncil.org/news/hot-river-dead-salmon-lessons-learned (per V60; not opened) | not checked | SNAPSHOT | Figure, issuer, date 04/15/2016 |

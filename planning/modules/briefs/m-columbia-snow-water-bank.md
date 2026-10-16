@@ -1,6 +1,7 @@
 # m-columbia-snow-water-bank: Snow Is a Savings Account (same water, different timing)
 
 Cluster D. Status: concept brief, planning only (no build before D27).
+Module author: Patrick A. Freeland, with ATNI Climate. Licensing to be set later.
 Seeds: P1, L1.3, s04. Written from SEEDS.md as of commit 6784076.
 
 ## 1. Seeds served and the socket slides

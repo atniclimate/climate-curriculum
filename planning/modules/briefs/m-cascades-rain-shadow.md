@@ -1,6 +1,7 @@
 # m-cascades-rain-shadow: Two Gauges, Two Sides of the Mountains
 
 Cluster B. Status: concept brief, planning only (no build before D27).
+Module author: Patrick A. Freeland, with ATNI Climate. Licensing to be set later.
 Seeds: P1, L1.1, L1.2, C-W2, s04. Written from SEEDS.md as of commit 6784076.
 
 ## 1. Seeds served and the socket slides
@@ -102,7 +103,7 @@ If one does, the default is to swap it (Question 4).
 | GHCN-Daily precipitation, same two stations, one storm window | NOAA NCEI | https://www.ncei.noaa.gov/pub/data/ghcn/daily/ (station list opened, ids confirmed; daily files not opened) | Same as above, not verified | SNAPSHOT | About 10 days of daily values with quality and measurement flags as issued, storm dates, capture date, SHA-256 |
 | Daily streamflow: Cowlitz River at Packwood, WA (USGS 14226500; 287 sq mi; daily data from 07/01/1911) and American River near Nile, WA (USGS 12488500; 78.9 sq mi; daily data from 04/25/1909) | USGS | https://waterdata.usgs.gov/monitoring-location/14226500/ and https://waterdata.usgs.gov/monitoring-location/12488500/ (both opened) | "USGS-authored or produced data and information are considered to be in the U.S. Public Domain" (USGS Copyrights and Credits page, opened). Credit: U.S. Geological Survey. | SNAPSHOT | The storm window's daily mean flow with approval codes (approved or provisional, as issued), drainage areas, capture date, SHA-256 |
 | Satellite water-vapor still for the storm date (optional, serves L1.2) | NOAA NESDIS (GOES-West) | not opened | not opened | SNAPSHOT | One image with its issuer timestamp, if Patrick keeps it (Question 3) |
-| Cross section drawing | this module | none | project | TEACHING MODEL | The drawing itself; the stations' heights come from the normals files |
+| Cross section drawing | Patrick A. Freeland (module author), with ATNI Climate | none | project (licensing to be set) | TEACHING MODEL | The drawing itself; the stations' heights come from the normals files |
 
 The two rivers drain basins of very different sizes, so the raw flows cannot
 be compared directly. The page shows flow per square mile, and the CCIC 200

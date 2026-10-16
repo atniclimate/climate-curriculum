@@ -1,6 +1,7 @@
 # m-columbia-salmon-relay: The Salmon Relay, Many Years
 
 Cluster E. Status: concept brief, planning only (no build before D27).
+Module author: Patrick A. Freeland, with ATNI Climate. Licensing to be set later.
 Seeds: L3.1, s10, s11. Written from SEEDS.md as of commit 9c8d64f.
 
 ## 1. Seeds served and the socket slides

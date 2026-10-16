@@ -1,6 +1,7 @@
 # m-columbia-missing-is-not-zero: Missing Is Not Zero
 
 Cluster A. Status: concept brief, planning only (no build before D27).
+Module author: Patrick A. Freeland, with ATNI Climate. Licensing to be set later.
 Seeds: P2, L3.3, L4.3, C-A7, T-SA2, T-SA4, s08, s16, s17. Written from SEEDS.md as of commit 6784076.
 
 This is the D27 default pilot (D27 is PENDING): a paper-first lesson authored by
@@ -110,8 +111,8 @@ half-page teacher card. Black and white, photocopy-safe.
 
 | Dataset | Issuer | Public URL | License | Label | What the case pack freezes |
 |---|---|---|---|---|---|
-| Two-week school rain gauge (14 values, 2 blanks) | This module (ATNI Climate draft); invented | none | unknown: the repo root listing shows no LICENSE file; Patrick sets it | TEACHING MODEL | The 14 values, blank positions, and blank reasons, with a checksum in the module manifest |
-| 5 by 5 invented watershed grid (slope, road reach, stream, grey layer, TCR tenure layer) | This module; invented | none | same as above | TEACHING MODEL | Every cell's symbols and the six grey cells, checksummed |
+| Two-week school rain gauge (14 values, 2 blanks) | Patrick A. Freeland (module author), with ATNI Climate; invented | none | unknown: the repo root listing shows no LICENSE file; Patrick sets it | TEACHING MODEL | The 14 values, blank positions, and blank reasons, with a checksum in the module manifest |
+| 5 by 5 invented watershed grid (slope, road reach, stream, grey layer, TCR tenure layer) | Patrick A. Freeland (module author), with ATNI Climate; invented | none | same as above | TEACHING MODEL | Every cell's symbols and the six grey cells, checksummed |
 | ATNI Dynamic Drought Module status words | ATNI Climate | https://atniclimate.github.io/dynamic-drought-module/ (not opened) | DDM Community License 1.0, noncommercial, share-alike (README read locally, commit b3f9c08, 10/12/2026) | none: a teacher note only, no data shown | Nothing; the module never embeds or links a live view in class |
 | Optional real gap (one public station record with a missing day) | candidate only (USGS or NRCS) | not opened | not opened | SNAPSHOT if adopted | Not proposed for the pilot; see question 6 |
 

@@ -1,6 +1,7 @@
 # m-columbia-now-and-ahead: Now and Ahead (working title)
 
 Cluster F. Status: concept brief, planning only (no build before D27).
+Module author: Patrick A. Freeland, with ATNI Climate. Licensing to be set later.
 Seeds: P2, L3.3, C-W6, C-A5, T-M2, T-M3, T-SA1, T-SA2, s08, s10, s17. Written from SEEDS.md as of commit 9c8d64f.
 
 Location per D27's text (default, PENDING): source in
@@ -95,7 +96,7 @@ Built from the same case pack, so paper and page agree. Black and white.
 | CMIP6 regional or county projection, SSP2-4.5 and SSP3-7.0, 2040 to 2069 and 2070 to 2099 (source not chosen; question 2) | Candidate A: LOCA2 via NOAA CRIS. Candidate B: UW CIG Pacific Northwest Climate Projection Tool, East of the Cascades | A: https://loca.ucsd.edu/ (fetch failed on a certificate error; not opened); https://cris.climate.gov (not opened). B: https://cig.uw.edu/resources/analysis-tools/pacific-northwest-climate-projection-tool/ (opened: CMIP3, CMIP5, CMIP6; 2040 to 2069 and 2070 to 2099; change "relative to the 1950-1999 average"; names only scenario endpoints) | A: not opened. B: not stated (opened) | SNAPSHOT of a projection; every view also says "projection, not a prediction" | Low, middle, and high across models for each scenario and period; model count; baseline years; source version; capture date; checksum |
 | Climate Toolbox future climate data (CCIC 200's assigned tool; teacher card only) | The Climate Toolbox | https://climatetoolbox.org/data/future-climate-data (opened: CMIP5, "RCP 4.5" and "RCP 8.5", MACA version 2 with gridMET; a CC BY 4.0 badge) | CC BY 4.0 per the page badge (opened) | none on this page; named on the teacher card | Nothing. Students use the live tool themselves in Week 6 |
 | Tribal climate projections tool (lineage of the Toolbox's Future Tribal Climate tool; not verified as the same tool) | Northwest Knowledge Network host | https://climate.northwestknowledge.net/NWTOOLBOX/tribalProjections.php (opened, undated: CMIP5, MACAv2; "Reservation geographies were provided as a default for all tribes"; CC-BY). https://climatetoolbox.org/tool/Future-Tribal-Climate opened but rendered no content | CC-BY (opened) | none; not used in the neutral form | Nothing. It defaults to reservation units, so any use is a Nation overlay (section 6) |
-| "One box, two places" profile and the statement cards | This module; invented | none | unknown: no repo LICENSE file; Patrick sets it | TEACHING MODEL | The profile values and card text, checksummed |
+| "One box, two places" profile and the statement cards | Patrick A. Freeland (module author), with ATNI Climate; invented | none | unknown: no repo LICENSE file; Patrick sets it | TEACHING MODEL | The profile values and card text, checksummed |
 | s10 river futures | Workshop slide (inherited) | source/template.html, s10 | see VERIFY V7, V30, V31, V33 | not reused | Nothing. No s10 number enters this module (question 8) |
 
 Blank or missing: a missing observed year sits on Brief A's labeled rail as

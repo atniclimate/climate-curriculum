@@ -1,6 +1,7 @@
 # m-columbia-ask-before-you-share: Ask Before You Share
 
 Cluster H. Status: concept brief, planning only (no build before D27).
+Module author: Patrick A. Freeland, with ATNI Climate. Licensing to be set later.
 Seeds: P2, L2.2, C-W4, C-A3, s12. Written from SEEDS.md as of commit 9c8d64f.
 
 A rehearsal of consent, never a container for Knowledge. Learners practice
@@ -99,7 +100,7 @@ signal cards). Learners may speak, write, point, or sign a mark.
 
 | Dataset | Issuer | Public URL | License | Label | What the case pack freezes |
 |---|---|---|---|---|---|
-| Practice lines (about 12 invented weather memories) | ATNI Climate, written for this module (not yet written) | none until built | repo license (unknown; see question 9) | TEACHING MODEL | The line list, dated and checksummed, with the note "invented for practice" |
+| Practice lines (about 12 invented weather memories) | Patrick A. Freeland (module author), with ATNI Climate; written for this module (not yet written) | none until built | repo license (unknown; see question 9) | TEACHING MODEL | The line list, dated and checksummed, with the note "invented for practice" |
 | Consent script | Repo text, L2.2 student handout (draft 09/24/2026) | repo file, not a web page | repo license | not data | The script as of its draft date |
 
 No live or snapshot data. A card with no mark shows "not decided yet: held
