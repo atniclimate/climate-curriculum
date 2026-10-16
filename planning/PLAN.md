@@ -94,6 +94,29 @@ smallest causal model first; genera become an optional field guide.
 - [ ] S16 field-guide polish, multi-select stamps
 - [ ] S17 Building a Fire mapping
 
+## Phase 8. Place-based modules [hold until D27]
+Seed inventory: planning/modules/SEEDS.md. One concept brief per module:
+planning/modules/briefs/<id>.md. Decisions: planning/modules/PACKET-D27.md
+(D27, D28 to D34 proposed). No authoring before 10/25/2026; no structural work
+on the workshop page and no merge to main 10/21 to 10/24/2026. Module author:
+Patrick A. Freeland, with ATNI Climate (not owner); license per D32.
+Proposed build order (pilot first, per D27's default; the rest by readiness
+and consent, each gated as noted):
+- [hold] 8a Pilot: m-columbia-missing-is-not-zero (A; S; C0). Paper set by hand first, then the one-screen companion; build.py extended only as far as one flat docs/<id>.html needs (D27b); cc-slide-change for any socket-slide note; cc-release-check build, static, probe, offline; VERIFY, MEDIA-CREDITS, VOICE-PASS rows
+- [hold] STOP: Patrick rehearses the pilot; then rules D27d (module skill or not)
+- [hold] 8b m-columbia-three-jobs (I; S; C0 neutral cards). One card file shared with s16's neutral cards
+- [hold] 8c m-columbia-reading-to-record (C; M; C0). Case pack after D31
+- [hold] 8d m-cascades-rain-shadow (B; M; C1). D31, D33
+- [hold] 8e m-columbia-snow-water-bank (D; M; C1). D31, D33; F1 (2015 precipitation) checked first
+- [hold] 8f m-columbia-hazard-chain (K; M, or S as teaching model only; C0). CCIC Week 7 minutes split with 8e
+- [hold] 8g m-columbia-coordination-web (L; M; C0). After D28; doors card legal rows checked
+- [hold] 8h m-columbia-carbon-circle (J; M; C0). D31 (NOAA and Scripps terms)
+- [hold] 8i m-columbia-now-and-ahead (F; M; C0 basin). D29, D31
+- [hold] 8j m-columbia-listening-well (G; S; C0). After D4
+- [hold] 8k m-columbia-ask-before-you-share (H; S; C0 method). After D30 and D28 item 3
+- [hold] 8l m-columbia-salmon-relay (E; M; C1, Station 6 C2). After D25, D31 (DART), and the host Nation's word on Station 6
+One module per session unless Patrick says otherwise.
+
 ## Deferred
 - S22 Into Your Classroom (needs time with the source Google Doc)
 - S23 Evaluation

@@ -14,6 +14,49 @@ top. Keep each entry short.
 
 ---
 
+### 10/15/2026, branch: dev/revisions-2026-10
+- Done (planning only; no slide, source, docs, or curriculum change; build
+  check passed before starting, and no commit touched source/):
+  - planning/modules/SEEDS.md: 68 seeds (4 Parts, 14 lessons, 10 CCIC weeks,
+    8 CCIC assignments, 4 TCR modules, 5 TCR signature assessments, 23
+    slides) mapped to 12 module clusters (6784076); corrections from the
+    briefs (7daf5dd), including removal of a phrase that came from the
+    private synthesis.
+  - planning/modules/briefs/: 12 concept briefs by curriculum-specialist
+    agents in three waves of four (9c8d64f, 835c6a1, 0e45f0b). Checkpoint
+    fixes made by the main session: brief G named a Nation and a
+    culturally significant place outside the confirmation marks; brief H
+    quoted the private synthesis; brief I described Nation-named project
+    cards and the held case outside the marks. All fixed in place.
+  - Module author line on every brief, per Patrick's direction today:
+    Patrick A. Freeland, with ATNI Climate (not owner); prior cited authors
+    kept; licensing later (d350932, 0e45f0b).
+  - planning/modules/PACKET-D27.md: D27 in four parts (form, location
+    conflict, pilot, module skill), premise corrections to D22, proposed
+    D28 to D34, and the curriculum findings that wait on D26e.
+  - PLAN.md: Phase 8, all [hold] until D27; pilot first, STOP after its
+    rehearsal.
+- Waiting on Patrick, in order:
+  1. D21 and the safety packet (unchanged from 10/14/2026).
+  2. After the workshop: D27 (module architecture; D27b location conflict
+     between D27's text, CLAUDE.md, and the private synthesis), then D28
+     (does D22 reach every seed: TCR 201 Weeks 6 and 9, CCIC 200 Week 4,
+     L4.1, L1.3, L3.1, L2.1), D29 (scenario generations), D30 (module
+     storage), D31 (case-pack terms), D32 (license timing), D33 (station
+     rule and courtesy notice), D34 (visible labels on s04, s10, s20).
+  3. D22 premise: the proposed listener rename swaps the two jobs (packet).
+- Next up: Patrick rules D27. On or after 10/25/2026, Phase 8a: author the
+  pilot (Missing Is Not Zero) by hand, paper set first; STOP for rehearsal.
+- Watch out:
+  - Nothing is verified by the briefs unless they say "opened"; every
+    proposed VERIFY row is OPEN and not yet in VERIFY.md.
+  - The source Google Doc was edited 10/12/2026: after the repo's
+    curriculum drafts (09/24 and 10/06/2026), not after the revision notes
+    (10/14/2026) as the previous entry says. Drive was not fetched.
+  - The repo has no LICENSE file.
+  - Briefs propose public stations and gauges chosen by geography only;
+    whether any sits on Tribal or trust land is not checked (D33).
+
 ### 10/14/2026, branch: dev/revisions-2026-10
 - Done:
   - Repo set up as a clone of atniclimate/climate-curriculum; branch created.
