@@ -47,6 +47,11 @@ top. Keep each entry short.
   3. D22 premise: the proposed listener rename swaps the two jobs (packet).
 - Next up: Patrick rules D27. On or after 10/25/2026, Phase 8a: author the
   pilot (Missing Is Not Zero) by hand, paper set first; STOP for rehearsal.
+- Also next (separate session, Patrick's request): the TCU template
+  build-out for 35 AIHEC TCUs and 5 NWIC extended sites. Launch prompt:
+  planning/tcu/LAUNCH-TCU-TEMPLATES.md (new branch dev/tcu-templates-2026-10;
+  shared core public in tcu/, every site-specific draft private in
+  private/tcu/ until the TCU reviews it).
 - Watch out:
   - Nothing is verified by the briefs unless they say "opened"; every
     proposed VERIFY row is OPEN and not yet in VERIFY.md.
