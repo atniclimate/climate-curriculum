@@ -173,7 +173,7 @@ class Ctx:
                 body = series_svg(rows, v, title)
             body += table_html(rows, open_=not body)
         elif f.suffix.lower() in ('.jpg', '.jpeg', '.png'):
-            body = f'<img src="data/{f.name}" alt="{html.escape(meta.get("alt", ""))}">'
+            body = f'<img src="data/{f.relative_to(data).as_posix()}" alt="{html.escape(meta.get("alt", ""))}">'
         return (f'<figure class="view" data-label="{label}"><span class="vlab">{label}</span>'
                 f'<h3>{title}</h3>{body}<figcaption>{cap}</figcaption></figure>')
 
@@ -459,10 +459,11 @@ def build(slug, sites_dir):
     if FONTS:
         shutil.copytree(FONTS, out / 'fonts')
     data = site_dir / 'data'
-    for img in (data.glob('*') if data.is_dir() else []):
+    for img in (data.rglob('*') if data.is_dir() else []):
         if img.suffix.lower() in ('.jpg', '.jpeg', '.png'):
-            (out / 'data').mkdir(exist_ok=True)
-            shutil.copy(img, out / 'data' / img.name)
+            dest = out / 'data' / img.relative_to(data)
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy(img, dest)
     texts = []
     deck_files = {}
     for course in COURSES:
