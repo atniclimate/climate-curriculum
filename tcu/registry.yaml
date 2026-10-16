@@ -1,0 +1,956 @@
+# TCU template build: site registry (public facts only)
+# 40 sites: 35 Tribal Colleges and Universities as Patrick listed them on 10/15/2026
+# (planning/tcu/LAUNCH-TCU-TEMPLATES.md, Appendix A) and 5 Northwest Indian College
+# extended campus sites (Appendix B). Names are kept exactly as given, diacritics
+# included. Nothing here speaks for any institution or Nation.
+#
+# Sources (all public):
+# - coordinates: NCES IPEDS HD2024 directory file, LATITUDE and LONGITUD (the
+#   geocoded institution address), downloaded 10/15/2026; or the U.S. Census
+#   Geocoder for an address given in Appendix B, opened 10/15/2026. Otherwise
+#   "unknown". A town_point is a Census 2024 Gazetteer place internal point,
+#   used only to place the climate unit, never presented as the campus.
+# - county and climate unit: point-in-polygon against Census TIGER 2024 AIANNH
+#   and Census GENZ 2024 counties, read from H:/raw-data (read only).
+# - climate unit rule (launch prompt): the AIANNH area in
+#   H:/raw-data/climate-projections/cache that contains the campus; if none, the
+#   campus county, with LOCA2 from H:/raw-data/loca2 if that county exists there,
+#   otherwise "no projection in raw-data" (unknown).
+# A climate unit names a public data geography. It is a view of public data, not
+# a Nation's voice, and any profile built on it stays in private/ until the TCU
+# and, where it applies, the chartering Nation review it.
+# Differences from public lists (IPEDS Tribal flag; AIHEC's member page) are
+# recorded for Patrick in the run ledger; no site is added or dropped here.
+# status: draft for every site until TCU review.
+schema: tcu-registry/v1
+sites:
+- slug: ilisagvik
+  name: Iḷisaġvik College
+  town: Utqiaġvik (Barrow)
+  state: AK
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '434584'
+    name: Ilisagvik College
+    address: 100 Stevenson Street, Barrow
+  coordinates:
+    lat: 71.324702
+    lon: -156.679486
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: North Slope Borough, AK
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Barrow ANVSA
+    cache_slug: Barrow_ANVSA
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Barrow ANVSA contains the campus point; the cache holds it.
+  status: draft
+  notes:
+  - IPEDS lists the town as Barrow and the name without diacritics (Ilisagvik College).
+- slug: dine
+  name: Diné College
+  town: Tsaile
+  state: AZ
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '105297'
+    name: Dine College
+    address: Route 12, One Circle Drive, Tsaile
+  coordinates:
+    lat: 36.293328
+    lon: -109.21684
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Apache County, AZ
+  climate_unit:
+    basis: campus county
+    area: Apache County, AZ
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: TIGER 2024 AIANNH Navajo Nation Reservation contains the point, but the cache does not hold it;
+      county rule applied; H:/raw-data/loca2 holds only a staged chunk download for a western Washington
+      retrieval envelope, marked not scientifically admitted; it has no county series.
+  status: draft
+  notes:
+  - The cache holds no unit for the whole Navajo Nation; its only Navajo unit is one agency, whose boundary
+    is not in raw-data, so containment cannot be tested.
+  - IPEDS lists the name without the diacritic (Dine College).
+- slug: tohono-oodham
+  name: Tohono Oʼodham Community College
+  town: Sells
+  state: AZ
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '442781'
+    name: Tohono O'odham Community College
+    address: AZ Hwy 86, Mile Post 125.5, Sells
+  coordinates:
+    lat: 31.989869
+    lon: -111.715445
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Pima County, AZ
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Tohono O'odham Nation Reservation
+    cache_slug: Tohono_O'odham_Nation_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Tohono O'odham Nation Reservation contains the campus point; the cache holds
+      it.
+  status: draft
+- slug: haskell
+  name: Haskell Indian Nations University
+  town: Lawrence
+  state: KS
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '155140'
+    name: Haskell Indian Nations University
+    address: 155 Indian Ave, Lawrence
+  coordinates:
+    lat: 38.938834
+    lon: -95.232879
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Douglas County, KS
+  climate_unit:
+    basis: campus county
+    area: Douglas County, KS
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: No TIGER 2024 AIANNH area contains the point; county rule applied; H:/raw-data/loca2 holds only
+      a staged chunk download for a western Washington retrieval envelope, marked not scientifically admitted;
+      it has no county series.
+  status: draft
+- slug: bay-mills
+  name: Bay Mills Community College
+  town: Brimley
+  state: MI
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '380359'
+    name: Bay Mills Community College
+    address: 12214 W Lakeshore Dr, Brimley
+  coordinates:
+    lat: 46.45482
+    lon: -84.606312
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Chippewa County, MI
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Bay Mills Reservation
+    cache_slug: Bay_Mills_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Bay Mills Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: keweenaw-bay
+  name: Keweenaw Bay Ojibwa Community College
+  town: Baraga
+  state: MI
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '461315'
+    name: Keweenaw Bay Ojibwa Community College
+    address: 770 N. Main St., LAnse
+  coordinates:
+    lat: 46.764477
+    lon: -88.447052
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Baraga County, MI
+  climate_unit:
+    basis: campus county
+    area: Baraga County, MI
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: No TIGER 2024 AIANNH area contains the point; county rule applied; H:/raw-data/loca2 holds only
+      a staged chunk download for a western Washington retrieval envelope, marked not scientifically admitted;
+      it has no county series.
+  status: draft
+  notes:
+  - Appendix A gives Baraga; IPEDS gives 770 N. Main St., L'Anse. Verify which campus.
+  - 'Boundary case: the IPEDS point lies outside the L''Anse Reservation polygon by less than 0.05 km,
+    inside geocode error. The rule gives the county; Patrick may choose the reservation unit, which the
+    cache holds (L''Anse_Reservation).'
+- slug: saginaw-chippewa
+  name: Saginaw Chippewa Tribal College
+  town: Mount Pleasant
+  state: MI
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '441070'
+    name: Saginaw Chippewa Tribal College
+    address: 5805 East Pickard Street, Mount Pleasant
+  coordinates:
+    lat: 43.612084
+    lon: -84.731121
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Isabella County, MI
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Isabella Reservation
+    cache_slug: Isabella_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Isabella Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: fond-du-lac
+  name: Fond du Lac Tribal and Community College
+  town: Cloquet
+  state: MN
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '380368'
+    name: Fond du Lac Tribal and Community College
+    address: 2101 14th St, Cloquet
+  coordinates:
+    lat: 46.690069
+    lon: -92.451326
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Carlton County, MN
+  climate_unit:
+    basis: campus county
+    area: Carlton County, MN
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: No TIGER 2024 AIANNH area contains the point; county rule applied; H:/raw-data/loca2 holds only
+      a staged chunk download for a western Washington retrieval envelope, marked not scientifically admitted;
+      it has no county series.
+  status: draft
+  notes:
+  - The IPEDS point lies 1.7 km outside the Fond du Lac Reservation polygon, which the cache does not
+    hold in any case.
+- slug: leech-lake
+  name: Leech Lake Tribal College
+  town: Cass Lake
+  state: MN
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '413626'
+    name: Leech Lake Tribal College
+    address: 6945 Little Wolf Road NW, Cass Lake
+  coordinates:
+    lat: 47.395686
+    lon: -94.651563
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Cass County, MN
+  climate_unit:
+    basis: campus county
+    area: Cass County, MN
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: TIGER 2024 AIANNH Leech Lake Reservation contains the point, but the cache does not hold it;
+      county rule applied; H:/raw-data/loca2 holds only a staged chunk download for a western Washington
+      retrieval envelope, marked not scientifically admitted; it has no county series.
+  status: draft
+- slug: white-earth
+  name: White Earth Tribal and Community College
+  town: Mahnomen
+  state: MN
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '434751'
+    name: White Earth Tribal and Community College
+    address: 2250 College Road, Mahnomen
+  coordinates:
+    lat: 47.3175
+    lon: -95.953099
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Mahnomen County, MN
+  climate_unit:
+    basis: campus county
+    area: Mahnomen County, MN
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: TIGER 2024 AIANNH White Earth Reservation contains the point, but the cache does not hold it;
+      county rule applied; H:/raw-data/loca2 holds only a staged chunk download for a western Washington
+      retrieval envelope, marked not scientifically admitted; it has no county series.
+  status: draft
+- slug: aaniiih-nakoda
+  name: Aaniiih Nakoda College (formerly Fort Belknap College)
+  town: Blaine County / Harlem
+  state: MT
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '180203'
+    name: Aaniiih Nakoda College
+    address: 269 Blackfeet Avenue, Harlem
+  coordinates:
+    lat: 48.484196
+    lon: -108.757816
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Blaine County, MT
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Fort Belknap Reservation
+    cache_slug: Fort_Belknap_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Fort Belknap Reservation contains the campus point; the cache holds it.
+  status: draft
+  notes:
+  - Appendix A gives "Blaine County / Harlem"; IPEDS gives Harlem, Blaine County.
+- slug: chief-dull-knife
+  name: Chief Dull Knife College
+  town: Lame Deer
+  state: MT
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '180160'
+    name: Chief Dull Knife College
+    address: 1 College Drive, Lame Deer
+  coordinates:
+    lat: 45.625568
+    lon: -106.664593
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Rosebud County, MT
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Northern Cheyenne Indian Reservation
+    cache_slug: Northern_Cheyenne_Indian_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Northern Cheyenne Indian Reservation contains the campus point; the cache holds
+      it.
+  status: draft
+- slug: fort-peck
+  name: Fort Peck Community College
+  town: Poplar
+  state: MT
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '180212'
+    name: Fort Peck Community College
+    address: 605 Indian Street, Poplar
+  coordinates:
+    lat: 48.113569
+    lon: -105.193021
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Roosevelt County, MT
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Fort Peck Indian Reservation
+    cache_slug: Fort_Peck_Indian_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Fort Peck Indian Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: little-big-horn
+  name: Little Big Horn College
+  town: Crow Agency
+  state: MT
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '180328'
+    name: Little Big Horn College
+    address: 8645 South Weaver Drive, Crow Agency
+  coordinates:
+    lat: 45.603781
+    lon: -107.455421
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Big Horn County, MT
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Crow Reservation
+    cache_slug: Crow_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Crow Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: stone-child
+  name: Stone Child College
+  town: Box Elder
+  state: MT
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '366340'
+    name: Stone Child College
+    address: 8294 Upper Box Elder Road, Box Elder
+  coordinates:
+    lat: 48.289808
+    lon: -109.870182
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Chouteau County, MT
+  climate_unit:
+    basis: campus county
+    area: Chouteau County, MT
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: TIGER 2024 AIANNH Rocky Boy's Off-Reservation Trust Land contains the point, but the cache does
+      not hold it; county rule applied; H:/raw-data/loca2 holds only a staged chunk download for a western
+      Washington retrieval envelope, marked not scientifically admitted; it has no county series.
+  status: draft
+  notes:
+  - 'Boundary case: the IPEDS point falls in Rocky Boy''s Off-Reservation Trust Land, which the cache
+    does not hold; the cache does hold the adjacent Rocky_Boy''s_Reservation. Patrick may choose it.'
+- slug: little-priest
+  name: Little Priest Tribal College
+  town: Winnebago
+  state: NE
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '434016'
+    name: Little Priest Tribal College
+    address: 601 E. College Drive, Winnebago
+  coordinates:
+    lat: 42.234983
+    lon: -96.467881
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Thurston County, NE
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Winnebago Reservation
+    cache_slug: Winnebago_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Winnebago Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: nebraska-indian
+  name: Nebraska Indian Community College
+  town: Macy
+  state: NE
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '181419'
+    name: Nebraska Indian Community College
+    address: 1111 Hwy 75, Macy
+  coordinates:
+    lat: 42.11677
+    lon: -96.35176
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Thurston County, NE
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Omaha Reservation
+    cache_slug: Omaha_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Omaha Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: iaia
+  name: Institute of American Indian Arts (IAIA)
+  town: Santa Fe
+  state: NM
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '187745'
+    name: Institute of American Indian and Alaska Native Culture and Arts Development
+    address: 83 Avan Nu Po Road, Santa Fe
+  coordinates:
+    lat: 35.586563
+    lon: -106.010015
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Santa Fe County, NM
+  climate_unit:
+    basis: campus county
+    area: Santa Fe County, NM
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: No TIGER 2024 AIANNH area contains the point; county rule applied; H:/raw-data/loca2 holds only
+      a staged chunk download for a western Washington retrieval envelope, marked not scientifically admitted;
+      it has no county series.
+  status: draft
+  notes:
+  - 'IPEDS lists the legal name: Institute of American Indian and Alaska Native Culture and Arts Development.'
+- slug: navajo-tech
+  name: Navajo Technical University (formerly Navajo Technical College)
+  town: Crownpoint
+  state: NM
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '187596'
+    name: Navajo Technical University
+    address: Lower Point Road, State Road 371, Crownpoint
+  coordinates:
+    lat: 35.687431
+    lon: -108.149392
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: McKinley County, NM
+  climate_unit:
+    basis: campus county
+    area: McKinley County, NM
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: TIGER 2024 AIANNH Navajo Nation Off-Reservation Trust Land contains the point, but the cache
+      does not hold it; county rule applied; H:/raw-data/loca2 holds only a staged chunk download for
+      a western Washington retrieval envelope, marked not scientifically admitted; it has no county series.
+  status: draft
+  notes:
+  - The campus point falls in Navajo Nation Off-Reservation Trust Land, which the cache does not hold.
+- slug: sipi
+  name: Southwestern Indian Polytechnic Institute (SIPI)
+  town: Albuquerque
+  state: NM
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '188216'
+    name: Southwestern Indian Polytechnic Institute
+    address: 9169 Coors Blvd NW, Albuquerque
+  coordinates:
+    lat: 35.176084
+    lon: -106.664475
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Bernalillo County, NM
+  climate_unit:
+    basis: campus county
+    area: Bernalillo County, NM
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: No TIGER 2024 AIANNH area contains the point; county rule applied; H:/raw-data/loca2 holds only
+      a staged chunk download for a western Washington retrieval envelope, marked not scientifically admitted;
+      it has no county series.
+  status: draft
+- slug: cankdeska-cikana
+  name: Cankdeska Cikana Community College
+  town: Fort Totten
+  state: ND
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '200208'
+    name: Cankdeska Cikana Community College
+    address: 214 1st Ave, Fort Totten
+  coordinates:
+    lat: 47.978122
+    lon: -98.990801
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Benson County, ND
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Spirit Lake Reservation
+    cache_slug: Spirit_Lake_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Spirit Lake Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: nueta-hidatsa-sahnish
+  name: Nueta Hidatsa Sahnish College (formerly Three Tribes College)
+  town: New Town
+  state: ND
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '200086'
+    name: Nueta Hidatsa Sahnish College
+    address: 301 College Drive, New Town
+  coordinates:
+    lat: 47.983311
+    lon: -102.472814
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Mountrail County, ND
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Fort Berthold Reservation
+    cache_slug: Fort_Berthold_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Fort Berthold Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: sitting-bull
+  name: Sitting Bull College
+  town: Fort Yates
+  state: ND
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '200466'
+    name: Sitting Bull College
+    address: 9299 Hwy 24, Fort Yates
+  coordinates:
+    lat: 46.085288
+    lon: -100.674735
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Sioux County, ND
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Standing Rock Reservation
+    cache_slug: Standing_Rock_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Standing Rock Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: turtle-mountain
+  name: Turtle Mountain Community College
+  town: Belcourt
+  state: ND
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '200527'
+    name: Turtle Mountain Community College
+    address: '10145 BIA #7, Belcourt'
+  coordinates:
+    lat: 48.883758
+    lon: -99.750836
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Rolette County, ND
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Turtle Mountain Reservation
+    cache_slug: Turtle_Mountain_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Turtle Mountain Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: united-tribes
+  name: United Tribes Technical College
+  town: Bismarck
+  state: ND
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '200554'
+    name: United Tribes Technical College
+    address: 3315 University Drive, Bismarck
+  coordinates:
+    lat: 46.767157
+    lon: -100.755131
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Burleigh County, ND
+  climate_unit:
+    basis: campus county
+    area: Burleigh County, ND
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: No TIGER 2024 AIANNH area contains the point; county rule applied; H:/raw-data/loca2 holds only
+      a staged chunk download for a western Washington retrieval envelope, marked not scientifically admitted;
+      it has no county series.
+  status: draft
+- slug: muscogee
+  name: College of the Muscogee Nation
+  town: Okmulgee
+  state: OK
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '480967'
+    name: College of the Muscogee Nation
+    address: 2170 Raven Circle, Okmulgee
+  coordinates:
+    lat: 35.635288
+    lon: -95.936439
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Okmulgee County, OK
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Creek OTSA
+    cache_slug: Creek_OTSA
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Creek OTSA contains the campus point; the cache holds it.
+  status: draft
+- slug: oglala-lakota
+  name: Oglala Lakota College
+  town: Kyle
+  state: SD
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '219277'
+    name: Oglala Lakota College
+    address: 490 Piya Wiconi Road, Kyle
+  coordinates:
+    lat: 43.366813
+    lon: -102.240331
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Oglala Lakota County, SD
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Pine Ridge Reservation
+    cache_slug: Pine_Ridge_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Pine Ridge Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: sinte-gleska
+  name: Sinte Gleska University
+  town: Mission
+  state: SD
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '219374'
+    name: Sinte Gleska University
+    address: E. Highway 18,  101 Antelope Lake Circle, Mission
+  coordinates:
+    lat: 43.298878
+    lon: -100.622549
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Todd County, SD
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Rosebud Indian Reservation
+    cache_slug: Rosebud_Indian_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Rosebud Indian Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: sisseton-wahpeton
+  name: Sisseton Wahpeton College
+  town: Sisseton
+  state: SD
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '219408'
+    name: Sisseton Wahpeton College
+    address: 12572 BIA Rd 700, Sisseton
+  coordinates:
+    lat: 45.562731
+    lon: -97.060835
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Roberts County, SD
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Lake Traverse Reservation
+    cache_slug: Lake_Traverse_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Lake Traverse Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: ihanktonwan
+  name: Ihanktonwan Community College
+  town: Marty
+  state: SD
+  kind: TCU
+  address: not given
+  coordinates: unknown
+  town_point:
+    lat: 42.996489
+    lon: -98.430196
+    source: Census 2024 Gazetteer place internal point (downloaded 10/15/2026); not the campus
+  county: Charles Mix County, SD
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Yankton Reservation
+    cache_slug: Yankton_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Yankton Reservation contains the town point; the cache holds it.
+  status: draft
+  notes:
+  - Not in IPEDS HD2024 (no TRIBAL row). Campus coordinates unknown; the Marty town point placed the climate
+    unit.
+- slug: lower-brule
+  name: Lower Brule Community College
+  town: Lower Brule
+  state: SD
+  kind: TCU
+  address: not given
+  coordinates: unknown
+  town_point:
+    lat: 44.074134
+    lon: -99.583754
+    source: Census 2024 Gazetteer place internal point (downloaded 10/15/2026); not the campus
+  county: Lyman County, SD
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Lower Brule Reservation
+    cache_slug: Lower_Brule_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Lower Brule Reservation contains the town point; the cache holds it.
+  status: draft
+  notes:
+  - Not in IPEDS HD2024 (no TRIBAL row). Campus coordinates unknown; the Lower Brule town point placed
+    the climate unit.
+- slug: nwic-bellingham
+  name: Northwest Indian College
+  town: Bellingham
+  state: WA
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '380377'
+    name: Northwest Indian College
+    address: 2522 Kwina Rd, Bellingham
+  coordinates:
+    lat: 48.794131
+    lon: -122.614656
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Whatcom County, WA
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Lummi Reservation
+    cache_slug: Lummi_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Lummi Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: menominee
+  name: College of Menominee Nation
+  town: Keshena and Green Bay
+  state: WI
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '413617'
+    name: College of Menominee Nation
+    address: N172 State Highway 47&55, Keshena
+  coordinates:
+    lat: 44.859044
+    lon: -88.625628
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Menominee County, WI
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Menominee Reservation
+    cache_slug: Menominee_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Menominee Reservation contains the campus point; the cache holds it.
+  status: draft
+  notes:
+  - Appendix A gives Keshena and Green Bay; the coordinates are the Keshena campus (IPEDS). Green Bay
+    site not located.
+- slug: lac-courte-oreilles
+  name: Lac Courte Oreilles Ojibwa Community College
+  town: Hayward
+  state: WI
+  kind: TCU
+  address: not given
+  ipeds:
+    unitid: '260372'
+    name: Lac Courte Oreilles Ojibwe University
+    address: 13466 W Trepania Rd, Hayward
+  coordinates:
+    lat: 45.942252
+    lon: -91.365002
+    source: NCES IPEDS HD2024 directory file (downloaded 10/15/2026)
+  county: Sawyer County, WI
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Lac Courte Oreilles Reservation
+    cache_slug: Lac_Courte_Oreilles_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Lac Courte Oreilles Reservation contains the campus point; the cache holds
+      it.
+  status: draft
+  notes:
+  - IPEDS lists the name as Lac Courte Oreilles Ojibwe University. Name as given kept; verify the current
+    public name.
+- slug: california-tribal
+  name: California Tribal College
+  town: Woodland
+  state: CA
+  kind: TCU
+  address: not given
+  coordinates: unknown
+  town_point:
+    lat: 38.67116
+    lon: -121.750043
+    source: Census 2024 Gazetteer place internal point (downloaded 10/15/2026); not the campus
+  county: Yolo County, CA
+  climate_unit:
+    basis: campus county
+    area: Yolo County, CA
+    cache_slug: null
+    projection: no projection in raw-data (unknown)
+    why: No TIGER 2024 AIANNH area contains the point; county rule applied; H:/raw-data/loca2 holds only
+      a staged chunk download for a western Washington retrieval envelope, marked not scientifically admitted;
+      it has no county series.
+  status: draft
+  notes:
+  - Not in IPEDS HD2024; Woodland Community College (IPEDS 455512) is listed without the Tribal flag.
+    Campus coordinates unknown; the Woodland town point placed the county.
+- slug: nwic-tulalip
+  institution: Northwest Indian College
+  name: Tulalip Site
+  town: Tulalip
+  state: WA
+  kind: NWIC site
+  address: 7707 36th Ave NW, Tulalip, WA 98271
+  coordinates:
+    lat: 48.065982
+    lon: -122.281189
+    source: U.S. Census Geocoder, address as given (opened 10/15/2026)
+  county: Snohomish County, WA
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Tulalip Reservation
+    cache_slug: Tulalip_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Tulalip Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: nwic-nisqually
+  institution: Northwest Indian College
+  name: Nisqually Site
+  town: Olympia
+  state: WA
+  kind: NWIC site
+  address: Nisqually Indian Tribe-Education Building, 12503 Yelm Highway S.E. / 4820 She-Nah-Num Dr. SE,
+    Olympia, WA 98513
+  coordinates:
+    lat: 47.003898
+    lon: -122.670471
+    source: U.S. Census Geocoder, address as given (opened 10/15/2026)
+  county: Thurston County, WA
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Nisqually Reservation
+    cache_slug: Nisqually_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Nisqually Reservation contains the campus point; the cache holds it.
+  status: draft
+  notes:
+  - 'Two addresses given. Census Geocoder: 4820 She-Nah-Num Dr SE falls inside the Nisqually Reservation;
+    12503 Yelm Hwy SE falls outside it, in Thurston County. Verify which is the site; the climate unit
+    follows the inside address until then.'
+- slug: nwic-port-gamble
+  institution: Northwest Indian College
+  name: Port Gamble S'Klallam Site
+  town: Kingston
+  state: WA
+  kind: NWIC site
+  address: 31912 Little Boston Rd NE, Kingston, WA 98346
+  coordinates:
+    lat: 47.853026
+    lon: -122.570296
+    source: U.S. Census Geocoder, address as given (opened 10/15/2026)
+  county: Kitsap County, WA
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Port Gamble Reservation
+    cache_slug: Port_Gamble_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Port Gamble Reservation contains the campus point; the cache holds it.
+  status: draft
+- slug: nwic-muckleshoot
+  institution: Northwest Indian College
+  name: Muckleshoot Site
+  town: unknown
+  state: WA
+  kind: NWIC site
+  address: not given
+  coordinates: unknown
+  county: unknown
+  climate_unit:
+    basis: AIANNH area named in Appendix B
+    area: Muckleshoot Reservation
+    cache_slug: Muckleshoot_Reservation
+    projection: in raw-data
+    why: Appendix B places the site on the Muckleshoot Reservation; no point was tested.
+  status: draft
+  notes:
+  - No address given. Appendix B says the site is on the Muckleshoot Reservation; the climate unit follows
+    that statement, not a point test. Verify the address.
+- slug: nwic-nez-perce
+  institution: Northwest Indian College
+  name: Nez Perce Site
+  town: Kamiah
+  state: ID
+  kind: NWIC site
+  address: Kamiah Center, 401 Idaho Street, Kamiah, ID 83536
+  coordinates: unknown
+  town_point:
+    lat: 46.226796
+    lon: -116.028303
+    source: Census 2024 Gazetteer place internal point (downloaded 10/15/2026); not the campus
+  county: Lewis County, ID
+  climate_unit:
+    basis: AIANNH area containing the point
+    area: Nez Perce Reservation
+    cache_slug: Nez_Perce_Reservation
+    projection: in raw-data
+    why: TIGER 2024 AIANNH Nez Perce Reservation contains the town point; the cache holds it.
+  status: draft
+  notes:
+  - '"Located in Idaho, including the Kamiah Center." The Census Geocoder did not match 401 Idaho Street,
+    Kamiah; the Kamiah town point placed the climate unit. Other Nez Perce site locations not given; verify.'
