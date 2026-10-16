@@ -22,8 +22,9 @@ Sources, by the date each record carries:
   Q3 What can we do? Q4 How do we work together? "Frame" means the opening or
   closing that holds all four.
 - Socket slides: the workshop slides a module would attach to, by stable id.
-- Data posture: LIVE (a live site or feed), SNAPSHOT (dated, frozen capture),
-  TEACHING MODEL (invented or simplified numbers that show a pattern), none.
+- Data posture: what the seed uses now. LIVE (a live site or feed),
+  SNAPSHOT (dated, frozen capture), TEACHING MODEL (invented or simplified
+  numbers that show a pattern), none. A module's own posture is in its brief.
   Live data never reaches a classroom live; a module carries a dated,
   checksummed case pack. Absence of data is unknown, never zero.
 - Consent: C0 none needed; C1 courtesy notice to the Nation's office; C2 that
@@ -31,8 +32,11 @@ Sources, by the date each record carries:
   with scope (Nation Knowledge: language, place names, First Foods, stories,
   harvest timing). Every module ships first in a neutral form (public
   geography, public agency data); a Nation overlay is added only with that
-  Nation's recorded confirmation.
-- Candidate module: D27 form, m-<river-or-basin>-<topic>. "none" means the
+  Nation's recorded confirmation. Seed rows rate the seed as it stands; a
+  cluster row rates the module's neutral form, which can be higher (C1 when
+  public agency stations may sit on or near a Nation's homelands).
+- Candidate module: D27 form, m-<river-or-basin>-<topic>; D27's text allows a
+  river, basin, or landscape (so m-cascades-... fits). "none" means the
   seed is better served on paper or in person, or by page work outside the
   module family.
 - Cluster: the letter of the cluster in the list at the end. A seed may serve
@@ -55,12 +59,12 @@ Sources, by the date each record carries:
 | L1.1 | Cloud in a Bottle and the Dripping Air Conditioner | Q1 | s04 | s04 | A pressure drop cools air and vapor condenses; the rain shadow | Tie the desk cloud to air lifted over the Cascades, with dew point and real gauges on both sides | TEACHING MODEL | C0 | m-cascades-rain-shadow | PM-01 | B |
 | L1.2 | Watching the Atmosphere Move | Q1 | s04, s05 | s04 | The atmosphere never sits still; journal entries become a record | A frozen moisture-plume capture and a journal-to-station comparison that work offline | LIVE (earth.nullschool, NWS) | C0 | m-cascades-rain-shadow; m-columbia-reading-to-record | PM-01 | B, C |
 | L1.3 | Snow Is a Savings Account | Q1 | s04, s05 | s04 snow line | Snowpack stores winter water; warmer winters shift the timing | Real snow water equivalent and a hydrograph beside the tray model; a snow drought year | LIVE (DDM, SNOTEL); TEACHING MODEL (trays) | C1 | m-columbia-snow-water-bank | PM-02 | D |
-| L2.1 | Source Check: Who Says It, and Why? | Q2 | s09 | s09 cards | Every claim has an author, a purpose, a way of knowing, and a feeling | A sort along two axes with a reason for each placement; feedback, never a score | none | C0 neutral; card 3 quotes a named Tribal official (C2, overlay only) | m-columbia-listening-well | PM-05 | G |
-| L2.2 | Knowledge Across Generations | Q2 | s12, s13 | none | Permission, listening, and giving back come before recording anything | Practice the consent checkpoints (share, amend, park, strike) on a wall the speaker can take back; nothing saved | none | C0 method; C3 for anything a person shares | m-columbia-ask-before-you-share | PM-16 | H |
+| L2.1 | Source Check: Who Says It, and Why? | Q2 | s09 | s09 cards | Every claim has an author, a purpose, a way of knowing, and a feeling | A sort along two axes with a reason for each placement; feedback, never a score | none | C0 neutral; card 3 quotes a named Tribal official (C2, overlay only); card 11 reads as a stand-in Elder voice (held out of the neutral deck) | m-columbia-listening-well | PM-05 | G |
+| L2.2 | Knowledge Across Generations | Q2 | s12, s13 | none | Permission, listening, and giving back come before recording anything | Practice asking first and letting the speaker decide each sentence (share, change, hold, take back) on a wall the speaker can take back; nothing saved | none | C0 method; C3 for anything a person shares | m-columbia-ask-before-you-share | PM-16 | H |
 | L2.3 | The Elder and the Child Test | Q2 | s02, s12 | none | A 60-second pitch with a story and one true fact | Little: a timer and a checklist; the pitch belongs in the room | none | C0; listener-role rename waits on D22 | none | none | none |
 | L3.1 | The Salmon Journey (A: cold water; B: migration relay) | Q3 | s08, s10, s11 | s10 map | Salmon need cold, connected water; every choice along the river changes the odds | Run the relay for many years so dice odds become a spread; count real days above a temperature line | TEACHING MODEL (dice odds); SNAPSHOT (river temperature) | C1; Treaty fishing station framing C2; relationships C3 | m-columbia-salmon-relay | none | E |
 | L3.2 | Adapt, Mitigate, or Build Resilience? | Q3 | s15, s16 | s16 sort | Most real projects do more than one job | Multi-select stamps, a reason for each, and "who decided?" | none | C0 neutral cards; Tribal project cards name Nations (C2, overlay only) | m-columbia-three-jobs | PM-11 | I |
-| L3.3 | Virtual Field Study on the Dynamic Drought Module | Q3 | s05, s17 | links only | Data is a way of knowing; who collects and controls it; empty Tribal layers | A frozen view where every blank is labeled "unknown", plus a station-by-station field sheet that works offline | LIVE (DDM) | C1; a reservation briefing is C2 | m-columbia-missing-is-not-zero; m-columbia-now-and-ahead | PM-04, PM-03 | A, F |
+| L3.3 | Virtual Field Study on the Dynamic Drought Module | Q3 | s05, s17 | links only | Data is a way of knowing; who collects and controls it; empty Tribal layers (the seed's tier explanation conflicts with the drought tool's own files; brief A, V-A3) | A frozen view where every blank is labeled "unknown", plus a station-by-station field sheet that works offline | LIVE (DDM) | C1; a reservation briefing is C2 | m-columbia-missing-is-not-zero; m-columbia-now-and-ahead | PM-04, PM-03 | A, F |
 | L4.1 | Who Is Connected to Whom? | Q4 | s20 | s20 web | A stress travels through the web, and so does care | Label each strand's kind (ecological, economic, legal, cultural); find the most connected roles | TEACHING MODEL | C0; roles are positions, not identities | m-columbia-coordination-web; m-columbia-hazard-chain | PM-17, PM-20 | L, K |
 | L4.2 | Two Rivers: a dam removal compared with the Columbia | Q4 | s10, s15 | none | Change once thought impossible happened; stories of repair are evidence | A dated timeline comparison; little a page adds beyond paper | SNAPSHOT (film is link only) | C2 `[NEEDS TRIBAL CONFIRMATION: Lower Elwha Klallam Tribe]` for the restoration story | none for now | none | none |
 | L4.3 | Good Energy, Wrong Place? (pumped-storage consultation) | Q4 | s16 | s16 reading | How a decision is made, and who is at the table, matters as much as what is built | Held under D22. A neutral siting grid, no Nation and no role play, rehearses "grey is not green" and "who must be asked" | none | C2 for the case itself; held | m-columbia-missing-is-not-zero (neutral grid only) | PM-04, PM-12 | A |
@@ -75,7 +79,7 @@ Sources, by the date each record carries:
 | C-W3 | Local Sensing and Environmental Observation | Q1 | s05, s08 | s05 | Senses plus instruments; every number needs who, where, when, how | A metadata check: what happens to a reading with no date, or a missing day | LIVE (DDM) | C0 | m-columbia-reading-to-record | PM-01 | C |
 | C-W4 | Human Perceptions of Climate Change | Q2 | s09, s12 | s09 | Source and self mapping; the Elder-and-child test; consent practice | A source map sorted by feeling and evidence; a consent rehearsal | none | C0 | m-columbia-listening-well; m-columbia-ask-before-you-share | PM-05, PM-08 | G, H |
 | C-W5 | Ecosystem Impacts | Q2 to Q3 bridge | s11, s20 | s11 cards | A relative's needs, the changes that touch them, who depends on them | The physical cascade only (snow to flow to temperature to fish); the relationship rings stay with each Nation | none | C3 for any First Food relationship | m-columbia-hazard-chain | PM-20 | K |
-| C-W6 | Climate Projections | Q2 | s10 | s10 futures | Projections are not predictions; baseline, trend, and year-to-year noise | Re-baseline a frozen record; watch two scenarios stay close, then pull apart | SNAPSHOT | C0 | m-columbia-now-and-ahead | PM-03 | F |
+| C-W6 | Climate Projections | Q2 | s10 | s10 futures | Projections are not predictions; baseline, trend, and year-to-year noise | Re-baseline a frozen record; watch two scenarios stay close, then pull apart | LIVE (Climate Toolbox, DDM) | C0 | m-columbia-now-and-ahead | PM-03 | F |
 | C-W7 | Climate Hazards and Risks in the Northwest | Q3 | s15, s17 | none | Hazards already at the door; a cascade map; mark data links versus experience links | Draw the chain, tag each link "from data" or "from experience", and see where links are unknown | LIVE (DDM) | C1; a reservation briefing is C2 | m-columbia-hazard-chain | PM-20 | K |
 | C-W8 | The Carbon Cycle, Climate Through Time, and Mitigation Science | Q3 | s15 | none | Carbon accounts with beans; the Keeling curve; the yearly zigzag | Run the accounts for many years; rebuild the curve from a frozen monthly record | SNAPSHOT (NOAA monthly CO2) | C0 | m-columbia-carbon-circle | none | J |
 | C-W9 | Risk, Impact, and Vulnerability | Q3 | s15, s17 | none | Exposure, sensitivity, and adaptive capacity; students draft, they do not decide | A matrix whose blank cells read "unknown" until a source fills them | none | C0 | none (see cluster A for unknown cells) | none | none |
@@ -89,7 +93,7 @@ Sources, by the date each record carries:
 | C-A2 | Field Observation Project | Q1 | s05, s08 | none | Senses versus instruments at one place over time | A photo-point and reading series with honest missing values | LIVE (official records) | C0; sensitive sites are never located | m-columbia-reading-to-record | PM-01 | C |
 | C-A3 | Listen and Learn: a conversation with an Elder or knowledge holder | Q2, Q4 | s12 | none | Respectful listening; consent; a "not now" is a complete answer | A consent rehearsal before the real conversation; never the conversation itself | none | C0 method; C3 for anything shared | m-columbia-ask-before-you-share | PM-16 | H |
 | C-A4 | Cultural Resource Impacts Review | Q2, Q3 | s12, s17 | none | Read a public Tribal plan the way a planner does | A module would feature one Nation's plan; better left to the student and the plan | none | C2 | none | PM-07 (related, C2) | none |
-| C-A5 | Local Climate Trend Analysis | Q2 | s10 | none | Historic baseline against mid-century projections; a paragraph for an Elder and a child | A frozen basin record and projection pair with scenario, period, and baseline always named | SNAPSHOT | C0 basin; C2 for a reservation-scale view | m-columbia-now-and-ahead | PM-03 | F |
+| C-A5 | Local Climate Trend Analysis | Q2 | s10 | none | Historic baseline against mid-century projections; a paragraph for an Elder and a child | A frozen basin record and projection pair with scenario, period, and baseline always named | LIVE (Climate Toolbox, DDM) | C0 basin; C2 for a reservation-scale view; the seed's example locations include places that would need a Nation's confirmation | m-columbia-now-and-ahead | PM-03 | F |
 | C-A6 | Carbon Cycle Lab | Q3 | s15 | none | The carbon cycle and the recent rise in CO2 | The bean accounts run as a model; the Keeling plot from frozen data | SNAPSHOT | C0 | m-columbia-carbon-circle | none | J |
 | C-A7 | Framing Worksheet | Q3 | s17 | none | Known, under threat, projected, methods, actions; gaps named honestly | A worksheet whose empty cells read "unknown" and count as honest work | none | C0 | m-columbia-missing-is-not-zero | PM-04 | A |
 | C-A8 | Climate Adaptation Plan Outline | Q3, Q4 | s17, s22 | none | From framing worksheet to a nine-part outline | Little; the outline is writing | none | C0 | none | none | none |
@@ -105,7 +109,7 @@ Sources, by the date each record carries:
 | T-SA1 | Climate Signal Brief | Q2 | s08, s10 | s08, s10 | One signal from the globe to the ground; scenario, baseline, and uncertainty named | A frog's eye, bird's eye, moon's eye chain where each scale states what it leaves out | SNAPSHOT | C0 basin; C2 for a Nation's card | m-columbia-now-and-ahead | PM-03 | F |
 | T-SA2 | Local Impacts and Readiness Profile | Q3 | s17 | none | Evidence view, projection, exposure table with unknowns named | A frozen evidence view with every unavailable layer labeled | SNAPSHOT | C1; briefing C2 | m-columbia-now-and-ahead; m-columbia-missing-is-not-zero | PM-03, PM-04 | F, A |
 | T-SA3 | Funding Strategy Matrix | Q3 | s17 | none | Fund one action over its whole life; capacity is the bottleneck | Little; the course already teaches "hand first, then tools" | none | C0 | none | PM-11 (related) | none |
-| T-SA4 | Plan, Policy, and Land Review | Q3, Q4 | s16, s17 | none | Plan review, a policy watch list, and a land note: who governs, what a record cannot tell | The land note as a layer exercise with a blank layer held by the Nation | none | C0 neutral | m-columbia-missing-is-not-zero | PM-04, PM-12 | A |
+| T-SA4 | Plan, Policy, and Land Review | Q3, Q4 | s16, s17 | none | Plan review, a policy watch list, and a land note: who governs, what a record cannot tell | The land note as a layer exercise with a grey layer whose reason is unstated | none | C0 neutral | m-columbia-missing-is-not-zero | PM-04, PM-12 | A |
 | T-SA5 | Capstone Implementation Package | Q4 | s20, s22 | s20 web | A full package; coordination map; decision pathway | The coordination map as a drawable web of roles and decision doors | none | C0 | m-columbia-coordination-web | PM-17 | L |
 
 ## Workshop slides
@@ -120,7 +124,7 @@ Sources, by the date each record carries:
 | s06 | Part One Carry Forward | Q1 | s06-part-one-carry | none | Key lesson, takeaway, reflection | Reciprocal inquiry is page work (Phase 4), not a module | none | C0 | none | none | none |
 | s07 | Part Two divider | Q2 | s07-part-two | none | Who taught you what you know about this river? | Nothing; not a socket | none | C0 | none | none | none |
 | s08 | Frog's Eye, Bird's Eye, Moon's Eye | Q2 | s08-three-eyes | three cards | Senses start knowing; data sees at scales one person cannot | Each eye names what it cannot see | none | C0 | m-columbia-now-and-ahead; m-columbia-missing-is-not-zero | PM-04 | F, A |
-| s09 | Four Things You Might Hear (rework pending, D4) | Q2 | s09-listening | four cards with Notice, Ask, Check | Notice the feeling, ask who benefits, then check | A two-axis sort (hot to cool; from this place to from far away); binds to Notice, Ask, Check, not to the current cards | none | C0 | m-columbia-listening-well | PM-05, PM-08 | G |
+| s09 | Four Things You Might Hear (rework pending, D4) | Q2 | s09-listening | four cards with Notice, Ask, Check | Notice the feeling, ask who benefits, then check | A two-axis sort (hot to cool; from this place to from far away); binds to Notice, Ask, Check, not to the current cards | none | C0 neutral; statement 3 names a specific Nation's First Foods place (C2, overlay only) | m-columbia-listening-well | PM-05, PM-08 | G |
 | s10 | The Journey Home (to become "The Salmon's Journey") | Q2 | s10-salmon-journey | basin map, routes, river futures, flow chart | Salmon carry the river's condition; futures pull apart late century | A relay the class runs for many years; a frozen projection beside the record | SNAPSHOT and TEACHING MODEL (inherited; sources in VERIFY) | C1; any stop beyond public geography is C2 | m-columbia-salmon-relay; m-columbia-now-and-ahead | none | E, F |
 | s11 | Relatives of the River | Q2 | s11-relatives | species cards | Each relative needs something a little different from the river | Each relative's physical needs (temperature, flow, timing) in one comparable view | none | C0 for physical needs; C3 for names and teachings | m-columbia-salmon-relay | none | E |
 | s12 | When Ways of Knowing Meet | Q2 | s12-ways-of-knowing | none | Plural knowledges meet on the same finding | A consent rehearsal: who decides what leaves the room | none | C0 method; C3 for any Knowledge shared | m-columbia-ask-before-you-share | PM-16, PM-08 | H |
@@ -153,9 +157,15 @@ Sources, by the date each record carries:
    Document.
 4. Grades 6-12 Unit 3 is titled "Adaptation, Mitigation, Resilience" and is
    Q3, though L3.1 teaches through the salmon slide (s10), which is Q2.
-5. Capitalization of "Knowledge" follows the house style in every row; D20
+5. Corrections made 10/15/2026 after the briefs (wave 1 and 2) found them:
+   the data posture column now means the seed's current use; consent wording
+   explained for cluster rows; the s09 and L2.1 consent cells; a phrase that
+   came from the private synthesis was removed from the L2.2 row; the L3.3
+   empty-layer framing and T-SA4 wording; CCIC and TCR seeds added to
+   clusters D, E, and H where the briefs proposed them.
+6. Capitalization of "Knowledge" follows the house style in every row; D20
    (scope of capitalizing Knowledge) is PENDING.
-6. Facts inherited from the live page or the syllabi (for example the 20 °C
+7. Facts inherited from the live page or the syllabi (for example the 20 °C
    salmon line, the 2015 fish kill) are not re-verified here. Briefs list
    them as candidate VERIFY rows.
 
@@ -171,11 +181,11 @@ CCIC 200, TCR 201, workshop.
 | A | m-columbia-missing-is-not-zero | P2, L3.3, L4.3, C-A7, T-SA2, T-SA4, s08, s16, s17 | 6-12, CCIC 200, TCR 201, workshop | C0 | Ready; D27 default pilot | One paper-first lesson carries the rule every data view in the family depends on (blank is unknown, never zero) and gives L4.3 a neutral siting form with no role play |
 | B | m-cascades-rain-shadow | P1, L1.1, L1.2, C-W2, s04 | 6-12, CCIC 200, workshop | C1 | Capture | Turns the strongest workshop model (s04) into real gauges on both sides of the crest |
 | C | m-columbia-reading-to-record | P1, L-open, L1.2, C-W2, C-W3, C-A1, C-A2, T-M1, s05 | 6-12, CCIC 200, TCR 201, workshop | C0 | Capture | Makes "one reading is weather; the record is climate" something learners do with a frozen station record, and gives the journal and field project an offline comparison |
-| D | m-columbia-snow-water-bank | P1, L1.3, s04 | 6-12, CCIC 200, workshop | C1 | Capture | Pairs the tray model with a real snow drought year; same water, different timing |
-| E | m-columbia-salmon-relay | L3.1, s10, s11 | 6-12, CCIC 200, workshop | C1 (C3 for relationships) | Capture; touches Phase 5 | The relay run for many years shows odds as a spread, which paper dice cannot do in one period |
-| F | m-columbia-now-and-ahead | P2, L3.3, C-W6, C-A5, T-M2, T-M3, T-SA1, T-SA2, s08, s10, s17 | 6-12, CCIC 200, TCR 201 | C0 basin; C2 for any Nation card | Capture; Decision (scenario generations) | Keeps observed and projected side by side and never blurred, the skill TCR 201 grades and CCIC 200 builds toward |
+| D | m-columbia-snow-water-bank | P1, L1.3, C-W7 (shared with K; split the minutes), s04, s05 | 6-12, CCIC 200, workshop | C1 | Capture | Pairs the tray model with a real snow drought year; same water, different timing |
+| E | m-columbia-salmon-relay | L3.1, s10, s11 (CCIC 200 host week proposed in the brief: Week 5, shared with K) | 6-12, CCIC 200, workshop | C1 (C3 for relationships) | Capture; touches Phase 5 | The relay run for many years shows odds as a spread, which paper dice cannot do in one period |
+| F | m-columbia-now-and-ahead | P2, L3.3, C-W6, C-A5, T-M2, T-M3, T-SA1, T-SA2, s08, s10, s17 | 6-12, CCIC 200, TCR 201 (workshop excerpt optional, after D24) | C0 basin; C2 for any Nation card | Capture; Decision (scenario generations) | Keeps observed and projected side by side and never blurred, the skill TCR 201 grades and CCIC 200 builds toward |
 | G | m-columbia-listening-well | P2, L2.1, C-W4, s09 | 6-12, CCIC 200, workshop | C0 | Decision (D4) | Gives the S9 rework a classroom form bound to Notice, Ask, Check |
-| H | m-columbia-ask-before-you-share | P2, L2.2, C-W4, C-A3, s12 | 6-12, CCIC 200, TCR 201 | C0 method; C3 content never enters | Decision (storage; D22 rename) | A safe rehearsal of consent before any real interview, where the speaker can take a sentence back |
+| H | m-columbia-ask-before-you-share | P2, L2.2, C-W4, C-A3, s12 (TCR 201 Week 8 data sort proposed in the brief) | 6-12, CCIC 200, TCR 201 | C0 method; C3 content never enters | Decision (storage; D22 rename) | A safe rehearsal of consent before any real interview, where the speaker can take a sentence back |
 | I | m-columbia-three-jobs | P3, L3.2, T-M3, s15, s16 | 6-12, CCIC 200, TCR 201, workshop | C0 neutral; C2 Nation cards | Ready (neutral cards); D6 title | Multi-job sorting with reasons and "who decided", which the s16 sort only begins |
 | J | m-columbia-carbon-circle | P3, C-W8, C-A6, T-M1, s15 | CCIC 200, TCR 201, 6-12 (9-12) | C0 | Capture | Runs the carbon accounts for many years and rebuilds the Keeling curve from frozen public data |
 | K | m-columbia-hazard-chain | P4, L4.1, C-W5, C-W7, T-M3, s20 | 6-12, CCIC 200, TCR 201, workshop | C0 general; C2 if a Nation's experience is the case | Ready (teaching model); Capture (primary sources) | One hazard sets up the next; links tagged "from data" or "from experience", matching the s20 preset chains |
