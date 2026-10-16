@@ -56,6 +56,7 @@ tell at a glance what kind of gap it is. The check script counts them.
 | `{{socket:<course>/<week>/<id>}}` | A local lesson socket (section 5) | The site's local lesson, or an open "Local lesson slot" box with the socket's purpose |
 | `[LOCAL EXPERT: TCU faculty or knowledge holder]` | Room for local teaching | Water-blue outlined box with the words "Local expert" |
 | `[NEEDS TRIBAL CONFIRMATION: <Nation>]` | Only that Nation can supply or approve this | Magenta outlined box with the Nation's name as the institution or source publicly gives it, or "the Nation(s) whose homelands the campus is on" when no public source names them |
+| `[TCU REVIEW: <institution>]` | The TCU itself must review or choose this (a field site on institution land, a protocol path). A TCU is not a Nation: never put an institution in a confirmation mark | Water-blue outlined box with the words "TCU review" |
 | `[PLACEHOLDER: ...]` | The institution or instructor supplies it (course number, honoraria, policies) | Grey outlined box |
 | `[INSTRUCTOR SELECTS]` | A reading slot: the kind of source is described; the instructor chooses | Grey outlined box |
 | `[PERSONAL VOICE: Patrick writes this]` | Patrick's own first-person voice | Red outlined box |
@@ -128,6 +129,7 @@ Starter sockets (the core may refine them; the week files are the authority):
 | CCIC 200 | 9 | local-case | The local case: a public, place-based climate story analyzed for exposure, sensitivity, and adaptive capacity |
 | CCIC 200 | 10 | carry-forward | Who the final products are shared with locally; local expert slot |
 | TCR 201 | 1 | plan-inventory | Public plans of the place: a Nation's plan is noted and linked, not summarized; county and state plans named |
+| TCR 201 | 2 | heat-here | Optional: how added heat reaches this place's land and water, from the case pack |
 | TCR 201 | 3 | regional-signal | The regional climate science partners (climate adaptation science center, Extension, state climatologist) as public sources |
 | TCR 201 | 4 | projection-card | The site's projection card (Template I form) from the case pack |
 | TCR 201 | 5 | observed-record | The observed record: public stations and monitors, captured as SNAPSHOT |

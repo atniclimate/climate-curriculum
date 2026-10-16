@@ -29,7 +29,7 @@ region:
   name: unknown                         # a plain region name, e.g. "Northern Plains"
   casc: unknown                         # USGS Climate Adaptation Science Center serving the region
   state_climatologist: unknown
-  intertribal: unknown                  # regional InterTribal organizations, named from their own pages
+  intertribal: unknown                  # bodies the region's Nations act through, each cited to a page that lists the site's Nation(s) as members
 
 case:
   shared: Columbia River Basin

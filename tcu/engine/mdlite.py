@@ -12,12 +12,13 @@ import re
 MARKERS = {
     'LOCAL EXPERT': ('mk-local', 'Local expert'),
     'NEEDS TRIBAL CONFIRMATION': ('mk-confirm', 'Needs Tribal confirmation'),
+    'TCU REVIEW': ('mk-local', 'TCU review'),
     'PLACEHOLDER': ('mk-place', 'Placeholder'),
     'INSTRUCTOR SELECTS': ('mk-place', 'Instructor selects'),
     'PERSONAL VOICE': ('mk-voice', 'Personal voice'),
     'UNKNOWN': ('mk-unknown', 'unknown'),
 }
-MARK_RE = re.compile(r'`?\[(LOCAL EXPERT|NEEDS TRIBAL CONFIRMATION|PLACEHOLDER|INSTRUCTOR SELECTS|PERSONAL VOICE|UNKNOWN)(?::\s*([^\]]*))?\]`?(?!\()')
+MARK_RE = re.compile(r'`?\[(LOCAL EXPERT|NEEDS TRIBAL CONFIRMATION|TCU REVIEW|PLACEHOLDER|INSTRUCTOR SELECTS|PERSONAL VOICE|UNKNOWN)(?::\s*([^\]]*))?\]`?(?!\()')
 VERIFY_RE = re.compile(r'`?\[verify(?:[ :]([^\]]*))?\]`?(?!\()')
 
 

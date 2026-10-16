@@ -55,7 +55,7 @@ Students will be able to:
 
 ## Local lesson
 
-The climate profile of this place, at the Bird's Eye: the site's case pack for {{place.climate_unit}}, in {{place.county}}, in the {{place.ecoregion_l3}} ecoregion and the {{place.watershed_huc8}} watershed. SNAPSHOT views only, each labeled, each a projection, not a prediction, with scenario, period, and baseline named. If the case pack has no projection for this unit, the page says so and lists public leads; it never shows a blank as zero.
+The climate profile of this place, at the Bird's Eye: the site's case pack for {{place.climate_unit}}, in {{place.county}}, in the {{place.ecoregion_l3}} ecoregion and the {{place.watershed_huc8}} watershed. SNAPSHOT views only, each labeled, each a projection, not a prediction, with scenario, period, and baseline named. If the case pack has no projection for this unit, the page says so and lists public leads; it never shows a blank as zero. When the unit is a reservation or another Tribal area, its charts are a view of public data about that Nation's lands: they are instructor-facing and wait for the Nation's confirmation before place-specific use in class (consent C2); until then students read the TEACHING MODEL charts. When the unit is a county, the charts are public county data and say so. (The same rule holds in TCR 201 Week 4.)
 
 {{socket:ccic-200/week-06/climate-profile}}
 

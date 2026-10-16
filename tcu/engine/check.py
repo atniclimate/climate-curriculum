@@ -14,6 +14,8 @@ import sys
 from html.parser import HTMLParser
 from pathlib import Path
 
+import yaml
+
 ENGINE = Path(__file__).resolve().parent
 TCU = ENGINE.parent
 DEFAULT_SITES = next((p for p in (TCU.parent / 'private' / 'tcu', TCU / 'sites') if p.is_dir()), TCU / 'sites')
@@ -70,6 +72,48 @@ def check_html(text, name):
     return [f'{name}: {e}' for e in errs]
 
 
+def socket_consent():
+    """{'ccic-200': {'week-06/climate-profile': 'C2', ...}} from the core week front matter."""
+    out = {}
+    for course in ('ccic-200', 'tcr-201'):
+        for p in sorted((TCU / 'core' / course).glob('week-*.md')):
+            t = p.read_text(encoding='utf-8')
+            fm = yaml.safe_load(t[4:t.find('\n---\n', 4)]) if t.startswith('---\n') else {}
+            for s in (fm or {}).get('sockets') or []:
+                out.setdefault(course, {})[f'{p.stem}/{s.get("id")}'] = str(s.get('consent', ''))
+    return out
+
+
+def check_sources(site_dir):
+    """Respect rules on the site's own files: consent ceilings and who a confirmation mark names."""
+    errs = []
+    site = yaml.safe_load((site_dir / 'site.yaml').read_text(encoding='utf-8')) or {}
+    inst = site.get('institution') or {}
+    names = [n for n in (inst.get('name'), inst.get('short_name')) if n and n != 'unknown']
+    cons = socket_consent()
+    for course, smap in cons.items():
+        p = site_dir / 'deep-dive' / f'{course}-local.md'
+        if not p.exists():
+            continue
+        cur = None
+        for ln in p.read_text(encoding='utf-8').split('\n'):
+            m = re.match(r'^##\s+socket:\s*(week-\d+/[\w-]+)', ln)
+            if m:
+                cur = m.group(1)
+            elif ln.startswith('## '):
+                cur = None
+            elif cur and smap.get(cur, 'C0') in ('C0', 'C1') and re.search(r'\{\{view:(proj-|projection-card)', ln):
+                errs.append(f'{p.name} {cur}: a reservation-unit projection view in a {smap.get(cur, "C0")} socket (C2 data; instructor-facing until confirmed)')
+    for p in sorted(site_dir.rglob('*.md')) + sorted(site_dir.rglob('*.yaml')):
+        if 'build' in p.relative_to(site_dir).parts:
+            continue
+        for m in re.finditer(r'\[NEEDS TRIBAL CONFIRMATION:\s*([^\]]*)\]', p.read_text(encoding='utf-8')):
+            if any(n.lower() in m.group(1).lower() for n in names):
+                errs.append(f'{p.relative_to(site_dir)}: confirmation mark names the institution ("{m.group(1)[:60]}"); use [TCU REVIEW: ...] for the TCU')
+                break
+    return errs
+
+
 def check_site(site_dir):
     errs = []
     built = site_dir / 'build' / 'site'
@@ -90,6 +134,7 @@ def check_site(site_dir):
         if f.is_file() and rel.parts[0] != 'build' and f.suffix in ('.md', '.yaml', '.yml', '.json', '.csv', '.txt'):
             if EMDASH in f.read_text(encoding='utf-8', errors='replace'):
                 errs.append(f'{rel}: em dash (U+2014) in source')
+    errs += check_sources(site_dir)
     data = site_dir / 'data'
     for f in sorted(data.rglob('*')) if data.is_dir() else []:
         if f.is_file() and not f.name.endswith('.meta.json') and f.name not in ('README.md', 'SHA256SUMS'):

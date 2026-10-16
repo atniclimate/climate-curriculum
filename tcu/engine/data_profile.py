@@ -318,7 +318,7 @@ def profile(site):
         else:
             notes.append('Alaska context: no North Slope Borough drought file in raw-data (unknown).')
     seed_site(sd, site, eco, ws, notes)
-    (d / 'README.md').write_text(f"# Case pack: {site['slug']}\n\nCaptured {NOW[:10]} by tcu/engine/data_profile.py. Every file has a "
+    (d / 'README.md').write_text(f"# Case pack: {site['slug']}\n\nCaptured {NOW[5:7]}/{NOW[8:10]}/{NOW[:4]} by tcu/engine/data_profile.py. Every file has a "
                                  f".meta.json. SNAPSHOT only; nothing here runs live.\n\n## Files\n\n" + ''.join(f'- {m}\n' for m in made)
                                  + '\n## Unknowns and notes\n\n' + (''.join(f'- {n}\n' for n in notes) or '- none\n'), encoding='utf-8')
     return site['slug'], len(made), notes

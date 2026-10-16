@@ -342,10 +342,15 @@ def credits_page(ctx, built):
 def timeline_page(ctx, built):
     t = yaml.safe_load(read(ctx.dir / 'deep-dive' / 'timeline.yaml')) or {}
     ev = t.get('events', [])
+    # events with no year go last, in their own group, never in a sorted position
+    dated = [e for e in ev if re.search(r'\d{4}', str(e.get('date', '')))]
+    ev = dated + [e for e in ev if e not in dated]
     items = []
     for e in ev:
         src = ' '.join(f'<a href="{html.escape(s["url"])}">{html.escape(s.get("title", s["url"]))}</a> ({html.escape(s.get("issuer", ""))})'
                        for s in e.get('sources', []) if s.get('url'))
+        if e not in dated and not any('tl-undated' in i for i in items):
+            items.append('<li class="tl-undated"><span class="when">Undated</span><p>Events whose sources give no year.</p></li>')
         items.append(f'<li><span class="when">{html.escape(str(e.get("date", "undated")))}</span>'
                      f'{ctx.html(e.get("event", ""))}<p class="byline">Source: {src or "not stated"}</p></li>')
     strip = ''
