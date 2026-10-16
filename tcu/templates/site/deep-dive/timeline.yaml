@@ -1,0 +1,14 @@
+# Optional timeline (built as timeline.html when this file exists in a site's deep-dive/).
+# Each event: date exactly as its source states it ("undated" if none), plain
+# Markdown text, and its sources. Maps name case-pack images (data/<name> with
+# <name>.meta.json carrying alt, license, and date as stated).
+title: Timeline
+support_line: ""        # required on any page that carries boarding-school history
+intro: >
+  DRAFT FOR TCU REVIEW. Every date is written as its source states it.
+events:
+  - date: undated
+    event: An example event, in plain words.
+    sources:
+      - {title: Source title, issuer: Issuer, url: "https://example.org/", opened: "MM/DD/YYYY"}
+maps: []

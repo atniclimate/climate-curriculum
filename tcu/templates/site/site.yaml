@@ -1,0 +1,39 @@
+# Site slots for one TCU site (DESIGN.md section 7). Copy to
+# private/tcu/<slug>/site.yaml. Every value is public, carries its source, or
+# says "unknown". Markers stay markers until the TCU or the Nation replaces them.
+schema: tcu-site/v1
+slug: example
+draft: true            # every page shows "Draft for TCU review" while true
+
+institution:
+  name: Example Tribal College          # the institution's own public name
+  short_name: Example                   # as the institution shortens it, else the name
+  kind: TCU                             # TCU or NWIC site
+  town: Example Town
+  state: XX
+  web: unknown                          # public web address, with its opened date in sources
+  charter_statement: "[NEEDS TRIBAL CONFIRMATION: the Nation(s) whose homelands the campus is on]"
+
+place:
+  county: unknown
+  coordinates: unknown                  # from tcu/registry.yaml
+  ecoregion_l3: unknown                 # EPA Level III ecoregion (case pack: ecoregion)
+  ecoregion_l4: unknown                 # EPA Level IV ecoregion
+  watershed_huc8: unknown               # USGS WBD subbasin name (code)
+  watershed_huc10: unknown
+  watershed_huc12: unknown
+  climate_unit: unknown                 # from tcu/registry.yaml climate_unit.area, with its basis
+  homelands: "[NEEDS TRIBAL CONFIRMATION: the Nation(s) whose homelands the campus is on]"
+
+region:
+  name: unknown                         # a plain region name, e.g. "Northern Plains"
+  casc: unknown                         # USGS Climate Adaptation Science Center serving the region
+  state_climatologist: unknown
+  intertribal: unknown                  # regional InterTribal organizations, named from their own pages
+
+case:
+  shared: Columbia River Basin
+  local: unknown                        # title of the local case (deep-dive/place-profile.md section "Local case")
+
+sources:                                # one line per source used above: what, issuer, URL, opened MM/DD/YYYY
+  - unknown

@@ -1,0 +1,85 @@
+/* TCU minisite: ATNI Climate design system (tokens from the workshop page). */
+@font-face{font-family:"League Spartan";src:url(fonts/league-spartan.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Lexend Deca";src:url(fonts/lexend-deca.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Cascadia Code";src:url(fonts/cascadia-code.woff2) format("woff2");font-weight:200 700;font-display:swap}
+:root{
+  color-scheme:dark;
+  --base:#010B13; --raised:#141414; --overlay:#1E242C;
+  --text:#E8ECF0; --white:#FFFFFF; --muted:#9AA4B5; --hair:rgba(232,236,240,.16);
+  --red:#E13D33; --red-dk:#F26B5E; --magenta-dk:#D7A6E8; --water-hi:#9CC7F0;
+  --f-display:"League Spartan","Century Gothic",Arial,sans-serif;
+  --f-body:"Lexend Deca","Segoe UI",system-ui,sans-serif;
+  --f-data:"Cascadia Code","SF Mono",Consolas,monospace;
+  --gutter:clamp(16px,4vw,48px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--base);color:var(--text);font-family:var(--f-body);font-size:17px;line-height:1.65}
+a{color:var(--red-dk);font-weight:600;text-underline-offset:2px}
+:focus-visible{outline:2px solid var(--red-dk);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--f-display);color:var(--white);line-height:1.15;text-wrap:balance;margin:1.6em 0 .5em}
+h1{font-size:clamp(30px,5vw,46px);margin-top:.4em;letter-spacing:-.02em}
+h2{font-size:clamp(23px,3.2vw,30px);border-top:1px solid var(--hair);padding-top:.9em}
+h3{font-size:20px}
+p,li{max-width:72ch;text-wrap:pretty}
+code{font-family:var(--f-data);font-size:.92em}
+.skip{position:absolute;left:-999px}.skip:focus{left:var(--gutter);top:8px;background:var(--base);padding:8px;z-index:9}
+.draft{background:var(--red);color:var(--white);font-family:var(--f-display);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:13px;padding:8px var(--gutter);text-align:center}
+header.top{border-bottom:1px solid var(--hair);padding:14px var(--gutter);display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+header.top .site{font-family:var(--f-display);font-weight:700;color:var(--white);text-decoration:none;font-size:18px;margin-right:auto}
+nav.main a{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;color:var(--text);font-weight:500;text-decoration:none}
+nav.main a[aria-current="page"]{color:var(--white);box-shadow:inset 0 -3px 0 var(--red)}
+main{padding:8px var(--gutter) 64px;max-width:1100px;margin:0 auto}
+footer{border-top:1px solid var(--hair);padding:20px var(--gutter);color:var(--muted);font-size:14px}
+.label{font-family:var(--f-display);font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0 1em}
+.chip{border:1px solid var(--hair);padding:2px 10px;font-size:13.5px;color:var(--text)}
+.tw{overflow-x:auto;margin:1em 0}
+table{border-collapse:collapse;min-width:100%;font-size:15px}
+th,td{border:1px solid var(--hair);padding:7px 10px;text-align:left;vertical-align:top}
+th{font-family:var(--f-display);color:var(--white);background:var(--overlay)}
+blockquote{margin:1em 0;padding:.2em 1em;border-left:3px solid var(--red)}
+/* markers: every gap is visible and says what kind it is */
+.mk{display:inline;border:1.5px dashed currentColor;padding:1px 6px;margin:0 2px;line-height:1.9;font-size:.95em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mk b{font-family:var(--f-display);font-size:.78em;letter-spacing:.12em;text-transform:uppercase;margin-right:.4em}
+.mk-local{color:var(--water-hi)} .mk-confirm{color:var(--magenta-dk)} .mk-place{color:var(--muted)}
+.mk-voice{color:var(--red-dk)} .mk-verify{color:var(--red-dk);border-style:dotted;font-size:.8em}
+.mk-unknown{color:var(--text);background:repeating-linear-gradient(45deg,transparent 0 6px,rgba(154,164,181,.28) 6px 8px)}
+.socket{border:1px solid var(--hair);border-left:4px solid var(--water-hi);padding:4px 18px 10px;margin:1.2em 0;background:var(--raised)}
+.socket.open{border-left-style:dashed}
+.socket>.label{display:block;margin-top:10px}
+/* data views: one visible label each */
+figure.view{margin:1.4em 0;padding:14px;border:1px solid var(--hair);background:var(--raised)}
+figure.view .vlab{display:inline-block;font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.14em;padding:2px 8px;background:var(--text);color:var(--base)}
+figure.view svg{width:100%;height:auto;display:block;margin:10px 0}
+figure.view figcaption{font-size:14px;color:var(--muted)}
+details.tbl summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600}
+.panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:1em 0}
+.panel div{border:1px solid var(--hair);padding:12px;background:var(--raised)}
+.panel b{display:block;font-family:var(--f-data);font-size:28px;color:var(--white)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;padding:0;list-style:none}
+.cards li{border:1px solid var(--hair);padding:12px 14px;background:var(--raised);max-width:none}
+.cards a{display:block;min-height:44px}
+.byline{color:var(--muted);font-size:15px}
+.support{border:1px solid var(--magenta-dk);padding:10px 14px;margin:1em 0}
+/* timeline */
+ol.tl{list-style:none;padding:0;border-left:3px solid var(--red);margin-left:8px}
+ol.tl li{position:relative;padding:4px 0 18px 22px;max-width:none}
+ol.tl li::before{content:"";position:absolute;left:-9px;top:12px;width:14px;height:14px;background:var(--base);border:3px solid var(--red)}
+ol.tl .when{font-family:var(--f-data);color:var(--white);display:block}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.strip img{width:100%;height:auto;display:block}
+@media (max-width:420px){body{font-size:16px}th,td{padding:6px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{
+  :root{color-scheme:light}
+  body{background:#fff;color:#000;font-size:11pt}
+  h1,h2,h3,h4,th,.panel b{color:#000}
+  a{color:#000}
+  nav.main,.skip{display:none}
+  .draft{background:#fff;color:#000;border:2px solid #000}
+  .socket,figure.view,.panel div,.cards li{background:#fff}
+  th{background:#eee}
+  .mk,.mk-local,.mk-confirm,.mk-place,.mk-voice,.mk-verify,.mk-unknown{color:#000}
+  details.tbl>*{display:block}
+}
