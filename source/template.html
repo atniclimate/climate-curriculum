@@ -90,6 +90,10 @@ body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
   [data-slide-id="s01-title"] .hallcopy{bottom:96px}
   .sig{width:132px;bottom:22px}
 }
+/* S3: one-line title; highlight in the sunlit orange sampled from the photo (#E9983E, Patrick 10/20/2026) */
+[data-slide-id="s03-part-one"] .hallcopy{max-width:none}
+[data-slide-id="s03-part-one"] .label.red,[data-slide-id="s03-part-one"] .r{color:#E9983E}
+@media (min-width:641px){[data-slide-id="s03-part-one"] .display{font-size:min(calc(var(--b)*2.9),calc((100vw - 2*var(--gutter) - 96px)/14.2))}}
 
 /* Plate mode: working slides over a darkened image */
 .inner{position:relative;z-index:1;max-width:1840px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.2vh,26px);padding-block:clamp(14px,2.6vh,34px);padding-inline:var(--pgut)}
@@ -511,8 +515,8 @@ blockquote{margin:0}
  data-notes="Ask the room to picture the last cloud they watched. Take two or three answers. We start with a cloud because everyone knows what it is, but many may not have thought through how it works. That gap is the lesson. Do not correct anyone yet.">
   <div class="hallcopy">
     <span class="label red">Part One</span>
-    <div class="display">How Does a<br>Cloud Work?</div>
-    <p>Have you ever looked up and thought about how water moves into the sky and <span class="r">comes down as rain and snow</span>?</p>
+    <div class="display">How Does a Cloud Work?</div>
+    <p><span class="ln">Have you ever looked up at the sky and thought:</span> <span class="ln">how does a cloud form and <span class="r">become rain and snow</span>?</span></p>
   </div>
 </section>
 
