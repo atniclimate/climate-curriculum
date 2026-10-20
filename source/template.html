@@ -384,8 +384,11 @@ blockquote{margin:0}
 /* gutters: the content fills the page; the photo sits beside the three cards */
 [data-slide-id="s11-relatives"]{--pgut:clamp(8px,1vw,18px)}
 [data-slide-id="s11-relatives"] .inner{max-width:none;gap:clamp(8px,1.4vh,16px);padding-block:clamp(8px,1.6vh,18px)}
-[data-slide-id="s11-relatives"] .kinmore .card{padding:clamp(12px,1.2vw,20px)}
-[data-slide-id="s11-relatives"] .kinmore .card p{font-size:calc(var(--b)*1.08);line-height:1.5}
+[data-slide-id="s11-relatives"] .kinmore .card{padding:clamp(10px,1.4vh,20px) clamp(12px,1.2vw,20px)}
+[data-slide-id="s11-relatives"] .kinmore .card p{font-size:calc(var(--b)*1.08);line-height:1.45}
+/* the row never shrinks below the card text: with notes open the slide scrolls instead of the text running over the quote */
+[data-slide-id="s11-relatives"] .kinmore{min-height:auto}
+@media (min-width:1101px){.kfig:not(.wide) img{contain:size}}  /* the photo fills the row the text sets; it never makes the row taller */
 .kfig{margin:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:6px;background:var(--plate);padding:8px 8px 10px;min-height:0}
 .kfig img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;background:#06121E}
 .kfig.wide{align-self:start;grid-template-rows:auto auto}
@@ -1248,15 +1251,15 @@ const MAP=__MAP__;
    },
    "lamprey": {
     "src": "img/fish/lamprey.jpg",
-    "alt": "An adult Pacific lamprey facing the camera underwater, its round sucker mouth ringed with small teeth.",
+    "alt": "A Pacific lamprey in a clear tube, its round sucker mouth ringed with small teeth pressed to the wall, and a row of gill openings along its dark side.",
     "sp": "Pacific lamprey (Entosphenus tridentatus)",
-    "cr": "Photo: Dave Herasimtschuk, USFWS (via National Park Service). Public domain."
+    "cr": "Photo: John Heil, USFWS. Public domain."
    },
    "sturgeon": {
     "src": "img/fish/sturgeon.jpg",
     "alt": "An old pencil-style drawing of a white sturgeon from the side, showing the rows of bony plates, the long snout, and the barbels under it.",
     "sp": "White sturgeon (Acipenser transmontanus)",
-    "cr": "Illustration: Josephe Huet, 1868, Nouvelles Archives du Museum d'histoire naturelle. Public domain."
+    "cr": "Illustration: Josephe Huet, 1868, Nouvelles Archives du Muséum d'histoire naturelle. Public domain."
    },
    "eulachon": {
     "src": "img/fish/eulachon.jpg",
@@ -1286,7 +1289,7 @@ const MAP=__MAP__;
   KIN.forEach((d,i)=>{const b=document.createElement('button');b.setAttribute('aria-expanded',String(i===0));b.innerHTML='<svg viewBox="0 0 120 48" aria-hidden="true">'+ICON[d.k]+'</svg><span class="nm">'+d.n+'</span><span class="sb">'+d.s+'</span>';b.onclick=()=>kin(i);$('kin').appendChild(b)});
   function kin(i){const d=KIN[i],q=PIC[d.k];[...$('kin').children].forEach((b,k)=>b.setAttribute('aria-expanded',String(k===i)));
     /* the photo is built on selection; lazy so a hidden slide fetches nothing */
-    $('kinMore').innerHTML='<figure class="kfig'+(d.k==='sturgeon'?' wide':'')+'"><img src="'+q.src+'" alt="'+q.alt+'" loading="lazy" decoding="async"><figcaption><b>'+q.sp+'</b><span>'+q.cr+'</span></figcaption></figure><div class="card"><h3>Their Journey</h3><p>'+d.j+'</p></div><div class="card"><h3>What Is Changing</h3><p>'+d.c+'</p></div><div class="card"><h3>With the People</h3><p>'+d.p+'</p></div>'}
+    $('kinMore').innerHTML='<figure class="kfig'+(d.k==='sturgeon'?' wide':'')+'"><img src="'+q.src+'" alt="'+q.alt+'" loading="lazy" decoding="async"><figcaption><b>'+q.sp.replace(/\((.+)\)/,'(<i>$1</i>)')+'</b><span>'+q.cr+'</span></figcaption></figure><div class="card"><h3>Their Journey</h3><p>'+d.j+'</p></div><div class="card"><h3>What Is Changing</h3><p>'+d.c+'</p></div><div class="card"><h3>With the People</h3><p>'+d.p+'</p></div>'}
   kin(0);
 
   /* ---------- A / M / R sort ---------- */
