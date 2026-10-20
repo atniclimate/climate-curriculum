@@ -224,28 +224,54 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .inst button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
 .inst button[aria-expanded="true"]{background:var(--plate-hi);box-shadow:inset 0 -3px 0 var(--text)}
 .inst.focused button[aria-expanded="false"]{opacity:.42}
-.inst svg{width:100%;max-width:min(180px,22vh);height:auto;aspect-ratio:1/1;display:block}
+/* 150px at 768 tall (the least that still fills a 1366 card edge to edge), about 300px at 1080 */
+.inst svg{width:100%;height:clamp(130px,calc(48vh - 219px),320px);display:block}
+@media (max-width:980px){.inst svg{height:auto;aspect-ratio:4/3;max-height:clamp(130px,calc(48vh - 219px),320px)}}
+[data-slide-id="s05-gauges"] .inner{max-width:none;padding-inline:clamp(12px,1.6vw,28px);padding-block:clamp(8px,1.4vh,34px);gap:clamp(10px,1.6vh,26px)}
 .inst h3{font-size:calc(var(--b)*.98)}
 .inst .unit{font-family:var(--f-data);font-size:12px;color:var(--muted)}
 .focus{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:8px}
 .focus .card h3{font-size:calc(var(--b)*.8);font-family:var(--f-display);text-transform:uppercase;letter-spacing:.12em;color:var(--red-dk)}
 .focus .card p{font-size:calc(var(--b)*.86)}
 /* instrument animations */
-.drop{animation:rain 1.4s linear infinite}
-@keyframes rain{0%{transform:translateY(-30px);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateY(58px);opacity:0}}
-.fillup{transform-box:fill-box;transform-origin:bottom;animation:fillup 7s ease-in-out infinite}
-@keyframes fillup{0%{transform:scaleY(.08)}80%{transform:scaleY(1)}100%{transform:scaleY(1)}}
-.mercury{transform-box:fill-box;transform-origin:bottom;animation:merc 6s ease-in-out infinite alternate}
-@keyframes merc{0%{transform:scaleY(.35)}100%{transform:scaleY(1)}}
-.flow{animation:flow 2.2s linear infinite}
-@keyframes flow{to{stroke-dashoffset:-40}}
-.bub{animation:bub 2.6s ease-in infinite}
-@keyframes bub{0%{transform:translateY(0);opacity:0}20%{opacity:.9}100%{transform:translateY(-44px);opacity:0}}
-.soak{transform-box:fill-box;transform-origin:top;animation:soak 6.5s ease-in-out infinite}
-@keyframes soak{0%{transform:scaleY(.05);opacity:.9}70%{transform:scaleY(1);opacity:.9}100%{transform:scaleY(1);opacity:0}}
-.blink{animation:blink 1.6s ease-in-out infinite}
-@keyframes blink{50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){.drop,.fillup,.mercury,.flow,.bub,.soak,.blink{animation:none}}
+/* transforms and opacity only, no filters; hidden slides are display:none, so nothing runs off-slide.
+   Negative delays set each scene's phase, so the paused reduced-motion frame is a clear reading. */
+#inst .g5-drop{animation:g5fall .9s linear infinite}
+@keyframes g5fall{0%{transform:translateY(-8px);opacity:0}12%{opacity:1}100%{transform:translateY(31px);opacity:1}}
+#inst .g5-splash{transform-box:fill-box;transform-origin:center;animation:g5splash .9s ease-out infinite}
+@keyframes g5splash{0%{transform:scale(.4);opacity:.9}30%,100%{transform:scale(1.7);opacity:0}}
+#inst .g5-far{animation:g5far 1.3s linear infinite}
+@keyframes g5far{0%{transform:translateY(-8px);opacity:0}10%,90%{opacity:.55}100%{transform:translateY(104px);opacity:0}}
+#inst .g5-level{animation:g5level 12s ease-in-out -7.5s infinite}
+@keyframes g5level{0%{transform:translateY(52px)}86%,93%{transform:translateY(0)}100%{transform:translateY(52px)}}
+#inst .g5-liquid{transform-box:fill-box;transform-origin:50% 100%;animation:g5temp 7s ease-in-out -5s infinite alternate}
+@keyframes g5temp{from{transform:scaleY(.42)}to{transform:scaleY(1)}}
+#inst .g5-sun{animation:g5sun 7s ease-in-out -5.6s infinite alternate}
+@keyframes g5sun{from{transform:translateY(62px);opacity:.45}to{transform:translateY(0);opacity:1}}
+#inst .g5-wave{animation:g5wave 2.4s linear infinite}
+@keyframes g5wave{from{transform:translateX(-40px)}to{transform:translateX(0)}}
+#inst .g5-cur{animation:g5cur 1.6s linear infinite}
+@keyframes g5cur{to{stroke-dashoffset:-36}}
+#inst .g5-sed{animation:g5sed 6s linear infinite}
+@keyframes g5sed{0%{transform:translateX(0);opacity:0}10%,90%{opacity:.7}100%{transform:translateX(250px);opacity:0}}
+#inst .g5-bub{animation:g5bub 2.8s ease-in infinite}
+@keyframes g5bub{0%{transform:translate(0,0);opacity:0}15%{opacity:.95}50%{transform:translate(5px,-24px)}100%{transform:translate(14px,-56px);opacity:0}}
+#inst .g5-sway{transform-box:view-box;transform-origin:76px 58px;animation:g5sway 3.2s ease-in-out infinite alternate}
+@keyframes g5sway{from{transform:rotate(-2deg)}to{transform:rotate(4deg)}}
+/* soil: rain, then a wetting front that slows with depth; each sensor lights as the front reaches it, top dries first */
+#inst .g5-srain{animation:g5srain 10s linear infinite}
+@keyframes g5srain{0%{transform:translateY(-14px);opacity:0}1%{opacity:1}6%{transform:translateY(24px);opacity:1}6.5%,100%{transform:translateY(24px);opacity:0}}
+#inst .g5-front{animation:g5front 10s linear -4s infinite}
+@keyframes g5front{0%{transform:translateY(0);opacity:0}8%{transform:translateY(2px);opacity:1}25%{transform:translateY(34px)}45%{transform:translateY(62px)}70%{transform:translateY(84px);opacity:1}100%{transform:translateY(88px);opacity:0}}
+#inst .g5-s1{animation:g5s1 10s linear -4s infinite}
+#inst .g5-s2{animation:g5s2 10s linear -4s infinite}
+#inst .g5-s3{animation:g5s3 10s linear -4s infinite}
+@keyframes g5s1{0%,18%{fill:#8A94A6}21%,82%{fill:#9CC7F0}86%,100%{fill:#8A94A6}}
+@keyframes g5s2{0%,35%{fill:#8A94A6}38%,86%{fill:#9CC7F0}90%,100%{fill:#8A94A6}}
+@keyframes g5s3{0%,59%{fill:#8A94A6}62%,90%{fill:#9CC7F0}94%,100%{fill:#8A94A6}}
+#inst .g5-led{animation:g5led 2s linear infinite}
+@keyframes g5led{0%,8%{opacity:1}14%,100%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){#inst *{animation-play-state:paused!important}}
 
 /* source check */
 .claims{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:8px}
@@ -591,47 +617,108 @@ blockquote{margin:0}
     <div class="headrow"><div class="head"><span class="label red">Part One · Weather and Climate</span><h2>Same Gauges, Longer Time</h2></div><p class="ask"><span class="label">Ask the room</span>What would you measure where you live, and for how long?</p></div>
     <div class="inst" id="inst">
       <button aria-expanded="false" data-i="0">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <g stroke="#9CC7F0" stroke-width="2" stroke-linecap="round"><line class="drop" x1="44" y1="10" x2="42" y2="18"/><line class="drop" style="animation-delay:.45s" x1="62" y1="6" x2="60" y2="14"/><line class="drop" style="animation-delay:.9s" x1="78" y1="12" x2="76" y2="20"/></g>
-          <path d="M36 34 L84 34 L74 44 L46 44 Z" fill="none" stroke="#E8ECF0" stroke-width="2.5"/>
-          <rect x="46" y="44" width="28" height="64" fill="none" stroke="#E8ECF0" stroke-width="2.5"/>
-          <rect class="fillup" x="48.5" y="54" width="23" height="52" fill="rgba(94,151,201,.75)"/>
-          <g stroke="#8A94A6" stroke-width="1.5"><line x1="74" y1="56" x2="80" y2="56"/><line x1="74" y1="68" x2="78" y2="68"/><line x1="74" y1="80" x2="80" y2="80"/><line x1="74" y1="92" x2="78" y2="92"/></g>
+        <svg viewBox="0 0 160 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="g5rg-glass" x1="0" x2="1"><stop offset="0" stop-color="#E8ECF0" stop-opacity=".26"/><stop offset=".22" stop-color="#E8ECF0" stop-opacity=".06"/><stop offset=".72" stop-color="#E8ECF0" stop-opacity=".03"/><stop offset=".88" stop-color="#E8ECF0" stop-opacity=".2"/><stop offset="1" stop-color="#E8ECF0" stop-opacity=".08"/></linearGradient>
+            <linearGradient id="g5rg-water" x1="0" x2="1"><stop offset="0" stop-color="#2F5F8C"/><stop offset=".45" stop-color="#6FA6D6"/><stop offset="1" stop-color="#2A557E"/></linearGradient>
+            <linearGradient id="g5rg-funnel" x1="0" x2="1"><stop offset="0" stop-color="#8A94A6"/><stop offset=".45" stop-color="#E8ECF0"/><stop offset="1" stop-color="#5C6672"/></linearGradient>
+            <linearGradient id="g5rg-post" x1="0" x2="1"><stop offset="0" stop-color="#5A4632"/><stop offset=".5" stop-color="#3A2E24"/><stop offset="1" stop-color="#241F1B"/></linearGradient>
+            <clipPath id="g5rg-tube"><rect x="73.5" y="47" width="13" height="61"/></clipPath>
+            <path id="g5rg-d" d="M0-4.5C1.4-1.6 2.3 0 2.3 1.4A2.3 2.3 0 0 1-2.3 1.4C-2.3 0-1.4-1.6 0-4.5Z"/>
+          </defs>
+          <g fill="#9CC7F0"><use href="#g5rg-d" class="g5-far" x="18" y="6" style="animation-delay:-.2s"/><use href="#g5rg-d" class="g5-far" x="38" y="6" style="animation-delay:-.75s"/><use href="#g5rg-d" class="g5-far" x="132" y="6" style="animation-delay:-.5s"/><use href="#g5rg-d" class="g5-far" x="150" y="6" style="animation-delay:-1.05s"/></g>
+          <rect x="-40" y="112" width="240" height="8" fill="#10161D"/><path d="M-40 112H200" stroke="#A7C48A" stroke-opacity=".6"/>
+          <path d="M24 112q-1-5-4-7M26 112q0-6 2-9M28 112q2-4 5-5M128 112q-1-5-4-7M130 112q0-6 2-9M132 112q2-4 5-5M44 112q0-4 2-6M46 112q1-3 4-4M-12 112q-1-5-4-7M-10 112q0-6 2-9M176 112q-1-5-4-7M178 112q0-6 2-9M180 112q2-4 5-5" fill="none" stroke="#A7C48A" stroke-linecap="round"/>
+          <rect x="104" y="44" width="10" height="70" fill="url(#g5rg-post)"/><rect x="103" y="42" width="12" height="3" fill="#5A4632"/>
+          <g fill="#8A94A6"><rect x="96" y="58" width="8" height="3"/><rect x="96" y="96" width="8" height="3"/></g>
+          <rect x="64" y="40" width="32" height="72" rx="2" fill="url(#g5rg-glass)" stroke="#E8ECF0" stroke-opacity=".75" stroke-width="1.2"/>
+          <rect x="72.5" y="46" width="15" height="63" fill="#010B13" fill-opacity=".45" stroke="#E8ECF0" stroke-width="1.2"/>
+          <g clip-path="url(#g5rg-tube)"><g class="g5-level"><rect x="73.5" y="56" width="13" height="56" fill="url(#g5rg-water)"/><ellipse cx="80" cy="56" rx="6.5" ry="1.3" fill="#9CC7F0"/></g></g>
+          <path d="M84.5 102h2.5M84.5 96h2.5M84.5 90h2.5M84.5 84h2.5M82 78h5M84.5 72h2.5M84.5 66h2.5M84.5 60h2.5M84.5 54h2.5M82 48h5" stroke="#E8ECF0" stroke-width=".8"/>
+          <rect x="66.5" y="44" width="2.2" height="64" rx="1.1" fill="#FFFFFF" fill-opacity=".3"/><rect x="74.6" y="49" width="1.2" height="58" fill="#FFFFFF" fill-opacity=".35"/>
+          <path d="M62 36L98 36L84.5 48L75.5 48Z" fill="url(#g5rg-funnel)" fill-opacity=".85" stroke="#E8ECF0"/>
+          <ellipse cx="80" cy="36" rx="18" ry="3.2" fill="#010B13" stroke="#E8ECF0" stroke-width="1.5"/>
+          <g fill="#9CC7F0"><use href="#g5rg-d" class="g5-drop" x="66" y="2" style="animation-delay:-.5s"/><use href="#g5rg-d" class="g5-drop" x="71" y="2" style="animation-delay:-.1s"/><use href="#g5rg-d" class="g5-drop" x="78" y="2" style="animation-delay:-.35s"/><use href="#g5rg-d" class="g5-drop" x="85" y="2" style="animation-delay:-.62s"/><use href="#g5rg-d" class="g5-drop" x="92" y="2" style="animation-delay:-.82s"/></g>
+          <g fill="none" stroke="#9CC7F0" stroke-width=".9"><ellipse class="g5-splash" cx="66" cy="36" rx="3" ry=".9" style="animation-delay:-.5s"/><ellipse class="g5-splash" cx="71" cy="36" rx="3" ry=".9" style="animation-delay:-.1s"/><ellipse class="g5-splash" cx="78" cy="36" rx="3" ry=".9" style="animation-delay:-.35s"/><ellipse class="g5-splash" cx="85" cy="36" rx="3" ry=".9" style="animation-delay:-.62s"/><ellipse class="g5-splash" cx="92" cy="36" rx="3" ry=".9" style="animation-delay:-.82s"/></g>
         </svg>
         <h3>Rain Gauge</h3><span class="unit">reads: inches of rain</span>
       </button>
       <button aria-expanded="false" data-i="1">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <rect x="52" y="12" width="16" height="78" fill="none" stroke="#E8ECF0" stroke-width="2.5"/>
-          <circle cx="60" cy="98" r="13" fill="#E13D33"/>
-          <rect class="mercury" x="56" y="24" width="8" height="70" fill="#E13D33"/>
-          <g stroke="#8A94A6" stroke-width="1.5"><line x1="70" y1="24" x2="78" y2="24"/><line x1="70" y1="38" x2="75" y2="38"/><line x1="70" y1="52" x2="78" y2="52"/><line x1="70" y1="66" x2="75" y2="66"/><line x1="70" y1="80" x2="78" y2="80"/></g>
-          <circle class="blink" cx="96" cy="24" r="9" fill="none" stroke="#F26B5E" stroke-width="2"/><g stroke="#F26B5E" stroke-width="2"><line x1="96" y1="8" x2="96" y2="12"/><line x1="96" y1="36" x2="96" y2="40"/><line x1="80" y1="24" x2="84" y2="24"/><line x1="108" y1="24" x2="112" y2="24"/></g>
+        <svg viewBox="0 0 160 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="g5th-glass" x1="0" x2="1"><stop offset="0" stop-color="#E8ECF0" stop-opacity=".3"/><stop offset=".25" stop-color="#E8ECF0" stop-opacity=".06"/><stop offset=".7" stop-color="#E8ECF0" stop-opacity=".03"/><stop offset="1" stop-color="#E8ECF0" stop-opacity=".22"/></linearGradient>
+            <linearGradient id="g5th-red" x1="0" x2="1"><stop offset="0" stop-color="#9E241C"/><stop offset=".45" stop-color="#F26B5E"/><stop offset="1" stop-color="#B8291F"/></linearGradient>
+            <radialGradient id="g5th-bulb" cx="38%" cy="35%" r="70%"><stop offset="0" stop-color="#F7A39A"/><stop offset=".35" stop-color="#E13D33"/><stop offset="1" stop-color="#7A1A14"/></radialGradient>
+            <radialGradient id="g5th-glow"><stop offset="0" stop-color="#F26B5E" stop-opacity=".5"/><stop offset="1" stop-color="#F26B5E" stop-opacity="0"/></radialGradient>
+            <clipPath id="g5th-sky"><rect x="92" y="0" width="68" height="97"/></clipPath>
+          </defs>
+          <g clip-path="url(#g5th-sky)"><g class="g5-sun"><circle cx="128" cy="30" r="20" fill="url(#g5th-glow)"/><circle cx="128" cy="30" r="8" fill="#F26B5E" fill-opacity=".25" stroke="#F26B5E" stroke-width="1.8"/><path d="M128 14v4M128 42v4M112 30h4M140 30h4M116.7 18.7l2.8 2.8M139.3 18.7l-2.8 2.8M116.7 41.3l2.8-2.8M139.3 41.3l-2.8-2.8" stroke="#F26B5E" stroke-width="1.8" stroke-linecap="round"/></g></g>
+          <path d="M-40 92C-24 88-12 90 0 95C20 89 38 91 60 95S104 90 126 95S148 88 160 91S188 90 200 94V120H-40Z" fill="#10161D"/><path d="M-40 92C-24 88-12 90 0 95C20 89 38 91 60 95S104 90 126 95S148 88 160 91S188 90 200 94" fill="none" stroke="#8A94A6" stroke-opacity=".55"/>
+          <path d="M8 95q-1-5-3-7M10 95q0-6 2-8M12 95q2-4 4-5M138 93q-1-5-3-7M140 93q0-6 2-8M142 93q2-4 4-5" fill="none" stroke="#A7C48A" stroke-linecap="round"/>
+          <rect x="44" y="4" width="42" height="112" rx="3" fill="#1E242C" stroke="#E8ECF0" stroke-opacity=".3"/><circle cx="65" cy="9" r="1.6" fill="#010B13"/>
+          <path d="M72 26h8M72 46h8M72 66h8M72 86h8M72 30h4M72 34h4M72 38h4M72 42h4M72 50h4M72 54h4M72 58h4M72 62h4M72 70h4M72 74h4M72 78h4M72 82h4M72 90h4" stroke="#E8ECF0" stroke-opacity=".85" stroke-width=".9"/>
+          <path d="M50 28h6M50 46h6M50 64h6M50 82h6M53 34h3M53 40h3M53 52h3M53 58h3M53 70h3M53 76h3M53 88h3" stroke="#8A94A6" stroke-width=".9"/>
+          <circle cx="64" cy="102" r="10.5" fill="#010B13" fill-opacity=".4" stroke="#E8ECF0" stroke-width="1.2"/>
+          <rect x="58" y="14" width="12" height="86" rx="6" fill="url(#g5th-glass)" stroke="#E8ECF0" stroke-width="1.2"/>
+          <rect x="62.5" y="18" width="3" height="82" fill="#010B13" fill-opacity=".6"/>
+          <rect class="g5-liquid" x="62.5" y="26" width="3" height="74" fill="url(#g5th-red)"/>
+          <circle cx="64" cy="102" r="9" fill="url(#g5th-bulb)"/>
+          <rect x="59.6" y="18" width="1.6" height="78" rx=".8" fill="#FFFFFF" fill-opacity=".35"/><ellipse cx="60.6" cy="98.6" rx="2.2" ry="3" fill="#FFFFFF" fill-opacity=".5"/>
         </svg>
         <h3>Thermometer</h3><span class="unit">reads: degrees</span>
       </button>
       <button aria-expanded="false" data-i="2">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <path class="flow" d="M4 64 Q24 58 44 64 T84 64 T124 64" fill="none" stroke="#5E97C9" stroke-width="2.5" stroke-dasharray="10 10"/>
-          <rect x="4" y="66" width="112" height="46" fill="rgba(94,151,201,.28)"/>
-          <path class="flow" d="M4 84 Q24 78 44 84 T84 84 T124 84" fill="none" stroke="#5E97C9" stroke-width="1.5" stroke-dasharray="8 12" style="animation-duration:3s"/>
-          <line x1="60" y1="10" x2="60" y2="70" stroke="#E8ECF0" stroke-width="2.5"/>
-          <rect x="52" y="70" width="16" height="30" fill="#1E242C" stroke="#E8ECF0" stroke-width="2.5"/>
-          <g stroke="#E8ECF0" stroke-width="2"><line x1="55" y1="100" x2="55" y2="106"/><line x1="60" y1="100" x2="60" y2="108"/><line x1="65" y1="100" x2="65" y2="106"/></g>
-          <circle class="bub" cx="48" cy="104" r="2.5" fill="#9CC7F0"/><circle class="bub" style="animation-delay:.9s" cx="74" cy="106" r="2" fill="#9CC7F0"/><circle class="bub" style="animation-delay:1.7s" cx="40" cy="108" r="1.8" fill="#9CC7F0"/>
-          <rect x="44" y="10" width="32" height="16" fill="#1E242C" stroke="#8A94A6" stroke-width="1.5"/><circle class="blink" cx="68" cy="18" r="2.5" fill="#F26B5E"/>
+        <svg viewBox="0 0 160 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="g5wq-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E97C9" stop-opacity=".55"/><stop offset=".5" stop-color="#2F5F8C" stop-opacity=".55"/><stop offset="1" stop-color="#0E2740" stop-opacity=".85"/></linearGradient>
+            <linearGradient id="g5wq-metal" x1="0" x2="1"><stop offset="0" stop-color="#3B434D"/><stop offset=".4" stop-color="#C9D1DA"/><stop offset=".65" stop-color="#8A94A6"/><stop offset="1" stop-color="#2A3038"/></linearGradient>
+            <linearGradient id="g5wq-bed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2E24"/><stop offset="1" stop-color="#241F1B"/></linearGradient>
+            <radialGradient id="g5wq-rock" cx="40%" cy="30%" r="75%"><stop offset="0" stop-color="#6B7480"/><stop offset="1" stop-color="#2A3038"/></radialGradient>
+            <linearGradient id="g5wq-ray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9CC7F0" stop-opacity=".18"/><stop offset="1" stop-color="#9CC7F0" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect x="-40" y="42" width="240" height="78" fill="url(#g5wq-water)"/><rect x="-40" y="42" width="240" height="3" fill="#9CC7F0" fill-opacity=".12"/>
+          <path d="M20 42H34L22 100H10ZM60 42H68L58 96H50ZM118 42H130L120 100H108ZM-24 42H-14L-24 96H-34ZM164 42H174L166 100H156Z" fill="url(#g5wq-ray)"/>
+          <g fill="none" stroke="#9CC7F0" stroke-linecap="round"><path class="g5-cur" d="M-44 55C-10 57 30 53 60 57S120 54 150 56S190 54 204 55" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="14 22" style="animation-duration:1.1s"/><path class="g5-cur" d="M-44 73C-10 75 30 71 60 75S120 72 150 74S190 72 204 73" stroke-opacity=".32" stroke-dasharray="10 26" style="animation-duration:1.7s"/><path class="g5-cur" d="M-44 91C-10 93 30 90 60 93S120 91 150 92S190 90 204 91" stroke-opacity=".22" stroke-width=".9" stroke-dasharray="8 28" style="animation-duration:2.8s"/></g>
+          <g fill="#C9B79A"><circle class="g5-sed" cx="-45" cy="64" r=".9" style="animation-delay:-1s"/><circle class="g5-sed" cx="-45" cy="82" r="1.1" style="animation-duration:7s;animation-delay:-3s"/><circle class="g5-sed" cx="-45" cy="70" r=".8" style="animation-delay:-4.5s"/><circle class="g5-sed" cx="-45" cy="98" r="1" style="animation-duration:9s;animation-delay:-2s"/></g>
+          <path d="M-40 106C-24 103-10 104 0 106C18 102 36 109 58 105S96 102 118 106S148 103 160 105S188 104 200 106V120H-40Z" fill="url(#g5wq-bed)"/>
+          <g fill="url(#g5wq-rock)"><ellipse cx="16" cy="107" rx="11" ry="5"/><ellipse cx="44" cy="110" rx="7" ry="4"/><ellipse cx="68" cy="112" rx="5" ry="2.5"/><ellipse cx="128" cy="108" rx="9" ry="4.5"/><ellipse cx="150" cy="111" rx="6" ry="3.5"/><ellipse cx="-20" cy="109" rx="8" ry="4"/><ellipse cx="178" cy="108" rx="9" ry="4.5"/></g>
+          <rect x="99" y="18" width="4" height="96" fill="url(#g5wq-metal)"/>
+          <path d="M92 22C90 40 82 48 76 58" fill="none" stroke="#8A94A6" stroke-width="1.6"/>
+          <path d="M90 7H114L110 1H94Z" fill="#2F5F8C" stroke="#9CC7F0" stroke-width=".8"/><path d="M102 1V7M92 4H112" stroke="#9CC7F0" stroke-width=".5"/>
+          <rect x="88" y="8" width="26" height="14" rx="1.5" fill="#1E242C" stroke="#E8ECF0" stroke-width="1.2"/><circle class="g5-led" cx="108" cy="15" r="1.8" fill="#F26B5E"/>
+          <path class="g5-wave" d="M-40 42q10-2.6 20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0" fill="none" stroke="#9CC7F0" stroke-width="1.5"/>
+          <g class="g5-sway">
+            <rect x="71" y="58" width="10" height="34" rx="2.5" fill="url(#g5wq-metal)" stroke="#E8ECF0"/><rect x="71" y="66" width="10" height="3" fill="#E13D33"/>
+            <g fill="#9CC7F0"><rect x="72.5" y="93" width="2" height="7"/><rect x="75" y="93" width="2" height="8.5"/><rect x="77.5" y="93" width="2" height="6"/></g>
+            <path d="M70 92H82M70 103H82M70 92V103M82 92V103M74.5 92V103M78 92V103" fill="none" stroke="#E8ECF0" stroke-width=".9"/>
+          </g>
+          <g fill="#9CC7F0" fill-opacity=".2" stroke="#9CC7F0" stroke-width=".7"><circle class="g5-bub" cx="73" cy="100" r="1.6" style="animation-delay:-.3s"/><circle class="g5-bub" cx="79" cy="102" r="1.2" style="animation-delay:-1.2s"/><circle class="g5-bub" cx="76" cy="104" r="1" style="animation-delay:-2s"/><circle class="g5-bub" cx="40" cy="106" r="1.3" style="animation-duration:3.4s;animation-delay:-1.8s"/></g>
         </svg>
         <h3>Water Quality</h3><span class="unit">reads: temperature, oxygen, clarity</span>
       </button>
       <button aria-expanded="false" data-i="3">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <path d="M6 34 Q20 28 34 34 T62 34 T90 34 T118 34" fill="none" stroke="#A7C48A" stroke-width="2"/>
-          <g stroke="#A7C48A" stroke-width="2" stroke-linecap="round"><line x1="20" y1="34" x2="20" y2="22"/><line x1="20" y1="26" x2="15" y2="21"/><line x1="96" y1="34" x2="96" y2="20"/><line x1="96" y1="25" x2="101" y2="20"/></g>
-          <rect x="6" y="36" width="108" height="24" fill="#3A2E24"/><rect x="6" y="60" width="108" height="26" fill="#2E2620"/><rect x="6" y="86" width="108" height="28" fill="#241F1B"/>
-          <rect class="soak" x="6" y="36" width="108" height="60" fill="rgba(94,151,201,.35)"/>
-          <line x1="60" y1="16" x2="60" y2="106" stroke="#E8ECF0" stroke-width="2.5"/>
-          <g fill="#E8ECF0"><rect x="55" y="46" width="10" height="5"/><rect x="55" y="72" width="10" height="5"/><rect x="55" y="98" width="10" height="5"/></g>
-          <rect x="48" y="8" width="24" height="12" fill="#1E242C" stroke="#8A94A6" stroke-width="1.5"/><circle class="blink" cx="66" cy="14" r="2.3" fill="#F26B5E"/>
+        <svg viewBox="0 0 160 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="g5sm-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A2119"/><stop offset="1" stop-color="#3A2E24"/></linearGradient>
+            <linearGradient id="g5sm-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4E3B2A"/><stop offset="1" stop-color="#5A4632"/></linearGradient>
+            <linearGradient id="g5sm-c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3D3731"/><stop offset="1" stop-color="#2E2924"/></linearGradient>
+            <linearGradient id="g5sm-wet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14304D" stop-opacity=".6"/><stop offset=".82" stop-color="#14304D" stop-opacity=".55"/><stop offset="1" stop-color="#14304D" stop-opacity="0"/></linearGradient>
+            <pattern id="g5sm-grain" width="9" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".5" fill="#E8ECF0" fill-opacity=".14"/><circle cx="6.5" cy="5" r=".4" fill="#E8ECF0" fill-opacity=".1"/><circle cx="5" cy="1.5" r=".6" fill="#010B13" fill-opacity=".35"/></pattern>
+            <clipPath id="g5sm-soil"><path d="M-40 32C-20 34-10 31 0 33C20 31 40 34 60 32S100 31 120 33S150 31 160 32S190 33 200 32V120H-40Z"/></clipPath>
+          </defs>
+          <g fill="#9CC7F0"><use href="#g5rg-d" class="g5-srain" x="14" y="8" style="animation-delay:-4s"/><use href="#g5rg-d" class="g5-srain" x="58" y="8" style="animation-delay:-3.75s"/><use href="#g5rg-d" class="g5-srain" x="126" y="8" style="animation-delay:-3.5s"/><use href="#g5rg-d" class="g5-srain" x="36" y="8" style="animation-delay:-3.25s"/><use href="#g5rg-d" class="g5-srain" x="104" y="8" style="animation-delay:-3s"/><use href="#g5rg-d" class="g5-srain" x="148" y="8" style="animation-delay:-2.75s"/></g>
+          <path d="M-40 32C-20 34-10 31 0 33C20 31 40 34 60 32S100 31 120 33S150 31 160 32S190 33 200 32V58C180 57 170 59 160 58C130 60 100 55 70 58S20 56 0 58S-30 57-40 58Z" fill="url(#g5sm-a)"/>
+          <path d="M-40 58C-30 57-10 59 0 58C20 56 50 60 70 58S130 60 160 58S190 57 200 58V86C180 87 170 85 160 86C130 88 100 83 70 86S20 84 0 87S-30 85-40 86Z" fill="url(#g5sm-b)"/>
+          <path d="M-40 86C-30 85-10 88 0 87C20 84 50 88 70 86S130 88 160 86S190 87 200 86V120H-40Z" fill="url(#g5sm-c)"/>
+          <rect x="-40" y="31" width="240" height="89" fill="url(#g5sm-grain)" clip-path="url(#g5sm-soil)"/>
+          <g fill="url(#g5wq-rock)"><ellipse cx="14" cy="98" rx="5" ry="3"/><ellipse cx="36" cy="108" rx="7" ry="3.5"/><ellipse cx="58" cy="95" rx="3.5" ry="2.2"/><ellipse cx="102" cy="104" rx="6" ry="3"/><ellipse cx="128" cy="96" rx="4" ry="2.5"/><ellipse cx="148" cy="110" rx="6.5" ry="3.2"/><ellipse cx="120" cy="72" rx="2.5" ry="1.6"/><ellipse cx="30" cy="74" rx="2" ry="1.3"/><ellipse cx="-24" cy="100" rx="5" ry="3"/><ellipse cx="184" cy="104" rx="6" ry="3"/><ellipse cx="172" cy="70" rx="2.2" ry="1.4"/></g>
+          <g fill="none" stroke="#D9C9AE" stroke-opacity=".55" stroke-linecap="round"><path d="M22 33C21 42 24 48 20 58C18 64 21 70 19 76M120 33C121 44 117 52 120 62C122 70 118 76 121 82"/><path d="M20 46C16 50 13 52 9 58M119 48C124 52 128 54 132 60" stroke-width=".7"/><path d="M22 52C26 56 28 60 32 64M118 60C114 64 112 68 108 72M46 33C46 38 48 42 46 47M144 33C144 38 142 42 145 48" stroke-width=".6"/></g>
+          <g clip-path="url(#g5sm-soil)"><path class="g5-front" d="M-40-88H200V30C185 27 172 33 160 28C140 34 120 26 100 31S60 26 40 32S10 27 0 30S-28 27-40 31Z" fill="url(#g5sm-wet)"/></g>
+          <path d="M-40 32C-20 34-10 31 0 33C20 31 40 34 60 32S100 31 120 33S150 31 160 32S190 33 200 32" fill="none" stroke="#A7C48A" stroke-opacity=".8" stroke-width="1.2"/>
+          <path d="M6 33q-1-6-3-9M8 33q0-7 2-11M10 33q2-5 5-7M20 32q-1-7-4-10M22 32q0-8 1-12M24 32q2-6 5-8M34 33q-1-5-3-7M36 33q1-6 3-8M46 33q-1-7-3-10M48 33q1-6 4-8M100 32q-1-6-3-9M102 32q0-7 2-10M118 33q-1-7-4-10M120 33q0-8 2-12M122 33q2-6 5-8M134 32q-1-5-3-7M136 32q1-6 3-8M144 32q-1-7-3-10M146 32q0-7 2-10M148 32q2-5 5-6M-30 33q-1-6-3-9M-28 33q0-7 2-11M-14 32q-1-7-4-10M-12 32q1-6 4-8M170 32q-1-6-3-9M172 32q0-7 2-10M186 32q-1-7-4-10M188 32q1-6 4-8" fill="none" stroke="#A7C48A" stroke-width="1.1" stroke-linecap="round"/>
+          <rect x="77" y="18" width="6" height="92" rx="1.5" fill="url(#g5wq-metal)" stroke="#E8ECF0" stroke-width=".8"/><path d="M77 110L80 115L83 110Z" fill="#8A94A6"/>
+          <g stroke="#E8ECF0" stroke-width=".6"><rect class="g5-s1" x="75" y="43" width="10" height="4" rx="1" fill="#8A94A6"/><rect class="g5-s2" x="75" y="69" width="10" height="4" rx="1" fill="#8A94A6"/><rect class="g5-s3" x="75" y="95" width="10" height="4" rx="1" fill="#8A94A6"/></g>
+          <rect x="68" y="6" width="24" height="12" rx="1.5" fill="#1E242C" stroke="#E8ECF0" stroke-width="1.2"/><circle class="g5-led" cx="87" cy="12" r="1.8" fill="#F26B5E"/>
         </svg>
         <h3>Soil</h3><span class="unit">reads: water at root depth</span>
       </button>
