@@ -213,7 +213,13 @@ Default if the role is still unknown: no presentation and no event-specific
 public release; prepare a small kit the hosts can accept or decline (a
 listening sheet, a printed handoff card, a five-minute "reading versus record"
 demonstration with a paper twin); no merge to main from 10/21 to 10/24.
-Ruling: PENDING
+Ruling (Patrick, 10/20/2026): B and C, plus a 30-minute ATNI slot. The GitHub
+page is an asynchronous interactive site anyone can use. In the slot, ATNI
+shows the tool, walks through the Columbia River interactive page and the
+Dynamic Drought Module (separate site), and takes questions. Resources are
+downloadable from GitHub, and documents are also shared with the on-the-ground
+facilitators. Work for the event: interface polish and print-ready PDFs of the
+Grades 6-12 lessons and the guiding document.
 
 ## D22. Goldendale lesson (Grades 6-12 Lesson 4.3): students playing Tribal governments
 The lesson assigns students the role of "Yakama Nation Tribal Council" and
@@ -227,7 +233,9 @@ Also: rename the "Elder listener" and "child listener" peer roles (Lesson on
 plain explanation) to "clarity listener" and "relationship listener".
 Default: C now, then A as the revision, drafted for Patrick's voice pass;
 rename the listener roles. Decide one at a time (cultural).
-Ruling: PENDING
+Ruling: PENDING. For the 10/2026 printing only (Patrick, 10/20/2026): include
+Lesson 4.3 in the PDF, marked DRAFT (under review, not ready to teach). The
+listener rename stays pending.
 
 ## D23. S23 reflections on shared Chromebooks
 The closing slide saves answers in browser storage, so the next person on a
@@ -255,7 +263,9 @@ Options: correct objectively wrong facts from opened primary sources now, with
 learner-facing wording through the voice pass; or wait for Phase 1.
 Default: correct now, after re-opening each source; wording changes listed in
 VOICE-PASS.
-Ruling: PENDING
+Ruling (Patrick, 10/20/2026): correct now, after re-opening each source. Applies
+to the live slides and to the Grades 6-12 lessons and guiding document
+(references report sections 0, 3c, and 3d), as part of the copy-edit for print.
 
 ## D26. Process packet
 a. Linked decisions may be presented as one packet; LOCKED and cultural
