@@ -1,0 +1,10 @@
+# Keep LF in the repo and in every working copy, whatever core.autocrlf says.
+* text=auto eol=lf
+*.jpg binary
+*.png binary
+*.woff2 binary
+*.zip binary
+*.pdf binary
+*.docx binary
+# The built page is a build output; GitHub collapses it in diffs.
+docs/index.html linguist-generated=true

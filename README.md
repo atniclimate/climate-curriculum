@@ -51,7 +51,7 @@ docs/         The workshop, served by GitHub Pages
 source/       Workshop build sources
   template.html       Page template with a __MAP__ placeholder (edit this)
   columbia_svg.json   Columbia River map (Natural Earth 1:10m, LCC projection)
-  build.py            Rebuilds docs/index.html: python3 source/build.py
+  build.py            Rebuilds docs/index.html: python source/build.py
 ```
 
 ## Editing notes
