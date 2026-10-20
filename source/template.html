@@ -366,12 +366,16 @@ blockquote{margin:0}
 .eyemore{min-height:3em}
 /* S8 on a light riverbank ground: tighter frame, pictures shrink once a card is open so the three reveal cards fit */
 [data-slide-id="s08-three-eyes"] .inner{gap:clamp(10px,1.6vh,20px);padding-block:clamp(10px,2vh,26px)}
-[data-slide-id="s08-three-eyes"] .eyes .pic{height:clamp(90px,calc(45vh - 150px),340px);transition:height .35s ease}
+[data-slide-id="s08-three-eyes"] .eyes .pic{height:clamp(90px,calc(45vh - 150px),340px);transition:height .35s ease,opacity .4s}
 [data-slide-id="s08-three-eyes"] .eyes.focused .pic{height:clamp(56px,calc(36vh - 170px),230px)}
 @media (max-width:860px){[data-slide-id="s08-three-eyes"] .eyes .pic,[data-slide-id="s08-three-eyes"] .eyes.focused .pic{height:clamp(80px,16vh,140px)}}
 [data-slide-id="s08-three-eyes"] .eyecredit{font-size:12px;margin-top:-4px}
-[data-slide-id="s08-three-eyes"] .shade{background:rgba(244,247,250,.7)}
-[data-slide-id="s08-three-eyes"] .eyes.focused button[aria-expanded="false"]{opacity:.6}
+/* captions sit on the shaded water, so muted goes darker to keep 4.5:1; the ground color shows where the slide scrolls past its photo (390 px) */
+.slide.plate.light[data-slide-id="s08-three-eyes"]{--muted:#323A46;background:#C2C6C3}
+.slide.plate.light[data-slide-id="s08-three-eyes"] .shade{background:rgba(244,247,250,.7)}
+/* unselected eyes: fade only the picture, so the photo does not ghost through and the card text keeps its contrast */
+[data-slide-id="s08-three-eyes"] .eyes.focused button[aria-expanded="false"]{opacity:1}
+[data-slide-id="s08-three-eyes"] .eyes.focused button[aria-expanded="false"] .pic{opacity:.4}
 @media (prefers-reduced-motion:reduce){[data-slide-id="s08-three-eyes"] .eyes .pic{transition:none}}
 /* relatives of the river */
 .kin{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px}
