@@ -1,9 +1,9 @@
-"""One-page event handout for the Yakama workshop (Letter, ATNI Climate type and color).
+"""Event handout for the Yakama workshop: one Letter sheet, front and back (ATNI Climate type and color).
 
 Run:  python tools/handout.py                    (office and bleed PDFs to private/craft/handout/)
       python tools/handout.py office --out docs/downloads   (the published copy, after approval)
       python tools/handout.py photo              (remake source/handout/gorge-band.jpg; reads private/)
-Two outputs from one page: office (US Letter, 0.25 in white safe frame, nothing printed in it)
+Two 2-page outputs from one source: office (US Letter, 0.25 in white safe frame, nothing printed in it)
 and bleed (8.75 x 11.25 in: art runs 0.125 in past the trim on every side, type stays 0.375 in
 inside it; TrimBox and BleedBox are set). Needs Google Chrome (headless print) and PyMuPDF.
 Renders from tracked files only: docs/fonts/, docs/img/, source/handout/, source/columbia_svg.json.
@@ -26,8 +26,12 @@ PRINTED = "10/20/2026"
 KINDS = {"office": "Understanding-a-Climate-of-Change-Handout.pdf",
          "bleed": "Understanding-a-Climate-of-Change-Handout-bleed.pdf"}
 
-# Band photo: placed 8.75 in wide in both outputs (the office frame shows its middle 8.0 in).
-BAND_W, BAND_H, BAND_TOP = 8.75, 1.68, 7.93   # inches; BAND_TOP from the trim
+# Front band photo: placed 8.75 in wide in both outputs (the office frame shows its middle 8.0 in),
+# from BAND_TOP down to the bleed edge. The back shows the same file enlarged to BACK_W, right edge
+# on the bleed edge, from BACK_TOP down: the rim, the river glint, and the outcrop.
+BAND_W, BAND_TOP = 8.75, 7.85                 # inches from the trim
+BAND_H = 11.125 - BAND_TOP
+BACK_W, BACK_TOP = 14.0, 9.7
 
 # lon/lat to columbia_svg.json map units. Affine fit to the 17 dam points in its `pts`
 # (rms 1.7 units, max 3.8, on a 1000-unit-wide map; the JSON does not store its projection).
@@ -63,6 +67,32 @@ PAPERS = [  # (citation, path or URL line, annotation)
 ]
 ORGS = ['Yakama Nation <span class="m">(host)</span>', "Indigenous Climate Project", "Washington Wild",
         "Pacific Education Institute (PEI)", "Affiliated Tribes of Northwest Indians (ATNI), ATNI Climate"]
+# What's inside: parts from source/template.html (S3, S7, S14, S19 hall labels and titles); units, lesson
+# numbers, short titles, and hands-on cores verbatim from the Unit Map, curriculum/CRCCT_Grades6-12_Hands-On_Lessons.md.
+OPENING = ("Opening", "Where We Come From", "Talking circle; half-circle timeline (past)", "")
+CLOSING = ("Closing", "From Learning to Leading",
+           "Career gallery; commitments; half-circle timeline (future); closing circle", "2 periods")
+PARTS = [  # (Part label, workshop question, unit name when it differs from the question, lessons)
+    ("Part One", "How Does a Cloud Work?", "", [
+        ("1.1", "Cloud in a Bottle and the Dripping Air Conditioner", "Pressure cloud; condensation cups; dew point can", ""),
+        ("1.2", "Watching the Atmosphere Move", "earth.nullschool live; weather journal", ""),
+        ("1.3", "Snow Is a Savings Account", "Ice tray versus rain tray runoff model", "")]),
+    ("Part Two", "How Do You Know What You Know?", "", [
+        ("2.1", "Source Check", "Climate claim card sort", ""),
+        ("2.2", "Knowledge Across Generations", "Permission-based interview plan and practice", "1 plus take-home"),
+        ("2.3", "The Elder and the Child Test", "Story of Self, Us, and Now 60-second pitch", "")]),
+    ("Part Three", "What Can We Do?", "Adaptation, Mitigation, Resilience", [
+        ("3.1", "The Salmon Journey", "A: temperature and oxygen demo; B: migration relay", "2 periods"),
+        ("3.2", "Adapt, Mitigate, or Build Resilience?", "Venn sort of real Columbia Basin projects", ""),
+        ("3.3", "Virtual Field Study", "Dynamic Drought Module data stations; framing worksheet", "")]),
+    ("Part Four", "How Do We Work Together?", "Relationships Matter", [
+        ("4.1", "Who Is Connected to Whom?", "Yarn relationship web", ""),
+        ("4.2", "Two Rivers", "Elwha film sketch-notes; comparison", ""),
+        ("4.3", "Good Energy, Wrong Place?", "Mock consultation on Goldendale and Pushpum",
+         "2 periods; 9 to 12 (6 to 8 short version)")]),
+]
+INSIDE = ("The four units follow the same parts, so you can walk from the workshop into your classroom with one "
+          "structure. An opening and a closing lesson hold them together, the way a circle holds a conversation.")
 TEAM = [("Tom Uniack", "Washington Wild"), ("Megan Rivard", "Pacific Education Institute"),
         ("Cayla Jones", "Yakama Nation Fisheries"), ("Kyle Shields", "Yakama Nation"),
         ("Phil Rigdon", "Yakama Nation"), ("Elese Washines", "Yakama Nation"),
@@ -112,11 +142,14 @@ def make_photo():
 # ---------- Page ----------
 
 def page(kind):
+    """Both sides as one document: two .sheet pages (front, back). data-rv tags name review targets only."""
     bleed = kind == "bleed"
     B = .125 if bleed else 0        # trim offset on the sheet
     E = -.125 if bleed else .25     # where art stops, measured from the trim (negative = into the bleed)
     pw, ph = 8.5 + 2 * B, 11 + 2 * B
     f = {n: b64(ROOT / f"docs/fonts/{n}.woff2", "font/woff2") for n in ("league-spartan", "lexend-deca", "cascadia-code")}
+    photo = b64(SRC / "gorge-band.jpg", "image/jpeg")
+    logo = b64(ROOT / "docs/img/atni-climate-lockup-on-dark.png", "image/png")
     qs = "".join(f'<li><span class="n">{i}</span>{q}</li>' for i, q in enumerate(QUESTIONS, 1))
     papers = "".join(
         f'<li><span class="n">{i}</span><div><p>{c}</p>'
@@ -124,6 +157,22 @@ def page(kind):
         for i, (c, u, a) in enumerate(PAPERS, 1))
     orgs = "".join(f"<li>{o}</li>" for o in ORGS)
     team = "".join(f"<li><b>{n}</b>{(', <span class=\"m\">' + a + '</span>') if a else ''}</li>" for n, a in TEAM)
+
+    def tag(t):
+        return f'<span class="pd">{t}</span>' if t else ""
+
+    def bookend(rv, row):
+        k, t, core, per = row
+        return (f'<div class="bk" data-rv="{rv}" data-rv-label="{k} lesson"><span class="k">{k}</span>'
+                f'<p><b>{t}</b><span class="core">{core}</span></p>{tag(per)}</div>')
+
+    parts = "".join(
+        f'<div class="part" data-rv="B{i + 3}" data-rv-label="{lab}"><header><span class="big">{i}</span>'
+        f'<span class="pl">{lab} · Unit {i}</span><h3>{q}</h3>' + (f'<p class="sub">{sub}</p>' if sub else "")
+        + "</header><ol>" + "".join(f'<li><span class="ln">{n}</span><p><b>{t}</b><span class="core">{core}</span>{tag(per)}</p></li>'
+                            for n, t, core, per in ls) + "</ol></div>"
+        for i, (lab, q, sub, ls) in enumerate(PARTS, 1))
+    back_img_h = BACK_W * BAND_H / BAND_W   # the back strip shows the bottom of the enlarged image
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <title>Understanding a Climate of Change: Teachers Climate Change Workshop at Yakama Nation</title>
@@ -133,77 +182,38 @@ def page(kind):
 @font-face{{font-family:"Cascadia Code";src:url({f['cascadia-code']}) format("woff2");font-weight:200 700}}
 @page{{size:{pw}in {ph}in;margin:0}}
 :root{{--red:#E13D33;--red-t:#B8291F;--base:#010B13;--ink:#15191E;--muted:#5B6370;--hair:#D6DAE0;--sky:#9CC7F0;--water:#5E97C9;
-  --e:{E}in;--d:50pt;--l:13pt;--b:9.6pt;--s:7.5pt}}
+  --e:{E}in;--d:60pt;--b:10pt;--s:7.5pt}}
 *{{box-sizing:border-box;margin:0;padding:0}}
 html{{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-body{{width:{pw}in;height:{ph}in;overflow:hidden;position:relative;background:#fff;color:var(--ink);
-  font:400 var(--b)/1.42 "Lexend Deca",sans-serif;font-kerning:normal}}
-.sheet{{position:absolute;left:{B}in;top:{B}in;width:8.5in;height:11in}}
+body{{background:#fff;color:var(--ink);font:400 var(--b)/1.42 "Lexend Deca",sans-serif;font-kerning:normal}}
+.sheet{{position:relative;width:{pw}in;height:{ph}in;overflow:hidden;break-inside:avoid}}
+.sheet:not(:last-child){{break-after:page}}
+.trim{{position:absolute;left:{B}in;top:{B}in;width:8.5in;height:11in}}
 ul,ol{{list-style:none}}
 .lbl{{display:flex;align-items:baseline;gap:.08in;font:600 var(--s)/1 "League Spartan";letter-spacing:.16em;text-transform:uppercase;
-  color:var(--base);padding-bottom:.06in;margin-bottom:.07in;border-bottom:.6pt solid var(--hair)}}
+  color:var(--base);padding-bottom:.06in;margin-bottom:.09in;border-bottom:.6pt solid var(--hair)}}
 .lbl .no{{font:700 var(--s)/1 "Cascadia Code";letter-spacing:0;color:var(--red-t)}}
-.cf{{font:400 var(--s)/1 "Cascadia Code";color:var(--red-t);border-bottom:.6pt dotted var(--red-t);text-transform:none;letter-spacing:0}}
 
 /* art boxes run to var(--e); their padding brings type back to the same place on the trim */
 .tab{{position:absolute;left:var(--e);right:var(--e);top:var(--e);height:calc(.8in - var(--e));background:var(--red-t);color:#fff;
   display:flex;justify-content:space-between;align-items:center;padding:calc(.28in - var(--e)) calc(.5in - var(--e)) 0;
   font:600 var(--s)/1.4 "League Spartan",sans-serif;letter-spacing:.15em;text-transform:uppercase}}
 .tab .ev{{text-align:right}}
-
 .main{{position:absolute;left:.5in;right:.5in;top:.92in}}
-.head{{display:grid;grid-template-columns:1fr 1.32in;column-gap:.3in;align-items:start}}
+
+/* ----- front ----- */
+.head{{position:relative;display:grid;grid-template-columns:1fr 1.32in;column-gap:.3in;align-items:start}}
 h1{{font:800 var(--d)/.86 "League Spartan",sans-serif;letter-spacing:-.035em;color:var(--base)}}
 h1 span{{display:block}}
 h1 .r{{color:var(--red)}}
-.by{{margin-top:.13in;color:var(--muted)}}
+.by{{margin-top:.16in;font-size:10.5pt;color:var(--muted)}}
 .by b{{font-weight:500;color:var(--base)}}
 .qr .tile{{width:1.32in;height:1.32in;padding:.08in;background:#fff;border:.75pt solid var(--hair)}}
 .qr .tile svg{{display:block}}
-.qr .lab{{display:block;font:600 var(--s)/1.2 "League Spartan";letter-spacing:.15em;text-transform:uppercase;color:var(--red-t);margin:.09in 0 .03in}}
+.qr .lab{{display:block;font:600 var(--s)/1.2 "League Spartan";letter-spacing:.11em;text-transform:uppercase;color:var(--red-t);margin:.09in 0 .03in;white-space:nowrap}}
 .qr .url{{font:400 var(--s)/1.3 "Cascadia Code",monospace;color:var(--ink)}}
-.rule{{margin-top:.12in;border-top:2.5pt solid var(--base);position:relative}}
-.rule::after{{content:"";position:absolute;left:0;top:-2.5pt;width:1.32in;border-top:2.5pt solid var(--red)}}
-
-.body{{margin-top:.14in;display:grid;grid-template-columns:3.95in 1fr;column-gap:.32in}}
-.abs{{line-height:1.38;text-wrap:pretty}}
-.abs b{{font-weight:600;color:var(--base)}}
-.qs{{display:grid;grid-template-columns:1.6in 1fr;gap:.05in .15in;margin:.07in 0 .08in;padding:.06in 0;
-  border-top:.6pt solid var(--hair);border-bottom:.6pt solid var(--hair)}}
-.qs li{{display:grid;grid-template-columns:.16in 1fr;font:600 var(--b)/1.2 "League Spartan";color:var(--base)}}
-.qs .n{{color:var(--muted)}}
-.use{{margin-top:.1in}}
-.use li{{display:grid;grid-template-columns:.82in 1fr;column-gap:.1in;align-items:baseline;padding:.06in 0;border-bottom:.6pt solid var(--hair)}}
-.use li:last-child{{border-bottom:0}}
-.use .k{{display:flex;gap:2.5pt}}
-kbd{{display:inline-block;min-width:13pt;height:13pt;padding:0 2.5pt;border:.8pt solid var(--base);border-bottom-width:1.8pt;border-radius:2pt;
-  font:600 var(--s)/11pt "Cascadia Code";text-align:center;color:var(--base)}}
-.use .tag{{font:700 var(--s)/13pt "Cascadia Code";color:var(--red-t)}}
-.use p{{line-height:1.36}}
-.use p b{{font:700 var(--b) "League Spartan";color:var(--base)}}
-.use code{{font:400 .9em "Cascadia Code",monospace;color:var(--base)}}
-
-.root{{font:400 var(--s)/1.3 "Lexend Deca";color:var(--muted);margin-bottom:.03in}}
-.root span{{font-family:"Cascadia Code";color:var(--ink)}}
-.papers li{{display:grid;grid-template-columns:.17in 1fr;padding:.03in 0;border-bottom:.6pt solid var(--hair)}}
-.papers li:last-child{{border-bottom:0}}
-.papers .n{{font:800 var(--b)/1 "League Spartan";color:var(--red-t);padding-top:.5pt}}
-.papers p{{font-size:var(--s);line-height:1.31;padding-left:.12in;text-indent:-.12in}}
-.papers p+p{{text-indent:0;margin-top:1pt}}
-.papers i{{color:var(--base)}}
-.papers .u{{font-family:"Cascadia Code";color:var(--muted);overflow-wrap:anywhere}}
-.papers .an{{color:var(--muted)}}
-
-.band{{position:absolute;left:var(--e);right:var(--e);top:{BAND_TOP}in;height:{BAND_H}in;
-  background:url({b64(SRC / 'gorge-band.jpg', 'image/jpeg')}) center/{BAND_W}in auto no-repeat}}
-.band::after{{content:"";position:absolute;inset:0 0 -1px;background:linear-gradient(180deg,rgba(1,11,19,0) 64%,rgba(1,11,19,.5) 88%,var(--base) 100%)}}
-.band .lead{{position:absolute;left:calc(4.6in - var(--e));right:calc(.5in - var(--e));top:.1in;z-index:1}}
-.band .lead .lbl{{border-color:rgba(1,11,19,.35);margin-bottom:.07in}}
-.band .lead .lbl .no{{color:var(--base)}}
-.band .lead p{{font:600 var(--l)/1.18 "League Spartan";letter-spacing:-.005em;color:var(--base);text-align:right}}  /* ragged left follows the falling horizon */
-.head{{position:relative}}
-.where{{position:absolute;left:4.3in;top:.9in;width:1.7in}}  /* the open corner right of "a Climate" */
-.basin{{display:block;width:.9in;height:auto}}
+.where{{position:absolute;left:3.95in;top:.86in;width:1.5in}}  /* the open corner right of "a Climate" */
+.basin{{display:block;width:1.05in;height:auto}}
 .basin .land{{fill:none;stroke:#9AA3AE;stroke-width:5}}  /* the coast: the Pacific edge places the river */
 .basin .lake{{fill:var(--water)}}
 .basin .trib path{{fill:none;stroke:var(--sky);stroke-width:6;stroke-linejoin:round}}
@@ -211,95 +221,188 @@ kbd{{display:inline-block;min-width:13pt;height:13pt;padding:0 2.5pt;border:.8pt
 .basin .dot{{fill:var(--red);stroke:#fff;stroke-width:10}}
 .where p{{margin-top:.04in;font:400 var(--s)/1.3 "Lexend Deca";color:var(--muted)}}
 .where p::before{{content:"";display:inline-block;width:5pt;height:5pt;border-radius:50%;background:var(--red);margin-right:3pt}}
+.rule{{margin-top:.16in;border-top:2.5pt solid var(--base);position:relative}}
+.rule::after{{content:"";position:absolute;left:0;top:-2.5pt;width:1.32in;border-top:2.5pt solid var(--red)}}
 
-/* the footer starts .2 in up inside the band, where the scrim is already half to fully near-black */
-.foot{{position:absolute;left:var(--e);right:var(--e);top:{BAND_TOP + BAND_H - .2:.2f}in;bottom:var(--e);color:#fff;z-index:1;
-  background:linear-gradient(180deg,transparent .2in,var(--base) .2in);
-  padding:0 calc(.5in - var(--e)) calc(.32in - var(--e));display:grid;grid-template-columns:2.25in 1fr;column-gap:.3in;
-  grid-template-rows:auto 1fr}}
-.foot h2{{font:600 var(--s)/1 "League Spartan";letter-spacing:.16em;text-transform:uppercase;color:var(--sky);margin-bottom:.06in}}
-.foot li{{font:500 var(--s)/1.36 "Lexend Deca"}}
-.foot .m{{color:#C9D2DC}}
-.foot .team ul{{columns:2;column-gap:.16in}}
-.foot .team li{{break-inside:avoid}}
-.foot .team b{{font-weight:600}}
-.foot .meta{{grid-column:1/-1;align-self:end;margin-top:.04in;padding-right:1.1in;font:500 var(--s)/1.3 "Lexend Deca";color:#C9D2DC}}  /* clear the logo */
-.foot .logo{{position:absolute;right:calc(.5in - var(--e));bottom:calc(.39in - var(--e));width:.9in;height:auto;display:block}}
+.work{{margin-top:.2in}}
+.lead{{font:300 12.5pt/1.36 "Lexend Deca";color:var(--base);max-width:6.3in;text-wrap:pretty}}
+.lead b{{font-weight:600}}
+.qs{{display:grid;grid-template-columns:repeat(4,1fr);column-gap:.2in;margin:.16in 0 .16in}}
+.qs li{{display:grid;grid-template-columns:.3in 1fr;align-items:start;border-top:2.5pt solid var(--base);padding-top:.08in;
+  font:700 12.5pt/1.08 "League Spartan";letter-spacing:-.005em;color:var(--base)}}
+.qs .n{{font:800 27pt/.8 "League Spartan";color:var(--red)}}
+.more{{max-width:6.3in;line-height:1.42;text-wrap:pretty}}
+.use{{margin-top:.24in}}
+.use ul{{display:grid;grid-template-columns:repeat(3,1fr);column-gap:.2in}}
+.use li{{padding-top:.02in}}
+.use .k{{display:flex;gap:2.5pt;height:14pt;margin-bottom:.06in}}
+kbd{{display:inline-block;min-width:14pt;height:14pt;padding:0 2.5pt;border:.8pt solid var(--base);border-bottom-width:1.8pt;border-radius:2pt;
+  font:600 var(--s)/12pt "Cascadia Code";text-align:center;color:var(--base)}}
+.use .tag{{font:700 8pt/14pt "Cascadia Code";color:var(--red-t)}}
+.use p{{line-height:1.38;text-wrap:pretty}}
+.use p b{{display:block;font:700 10.5pt/1.25 "League Spartan";color:var(--base)}}
+.use code{{font:400 .9em "Cascadia Code",monospace;color:var(--base)}}
+
+.band{{position:absolute;left:var(--e);right:var(--e);top:{BAND_TOP}in;bottom:var(--e);
+  background:url({photo}) center top/{BAND_W}in auto no-repeat}}
+.band::after{{content:"";position:absolute;inset:0 0 -1px;
+  background:linear-gradient(180deg,rgba(1,11,19,0) 58%,rgba(1,11,19,.45) 80%,rgba(1,11,19,.85) 100%)}}
+.band .thanks{{position:absolute;left:calc(.5in - var(--e));top:.32in;width:5.4in;z-index:1}}
+.band .thanks::before{{content:"";display:block;width:.5in;border-top:2.5pt solid var(--red);margin-bottom:.12in}}
+.band .thanks p{{font:700 19pt/1.12 "League Spartan";letter-spacing:-.01em;color:var(--base);text-wrap:balance}}
+.band .fin{{position:absolute;left:calc(.5in - var(--e));right:calc(.5in - var(--e));bottom:calc(.36in - var(--e));z-index:1;
+  display:flex;justify-content:space-between;align-items:flex-end;color:#fff}}
+.band .fin p{{font:500 var(--s)/1.4 "Lexend Deca"}}
+.band .fin p b{{font:600 var(--s)/1 "League Spartan";letter-spacing:.15em;text-transform:uppercase;color:var(--sky);margin-right:4pt}}
+.logo{{width:.9in;height:auto;display:block}}
+
+/* ----- back ----- */
+.tab.run{{height:calc(.6in - var(--e));padding-top:calc(.24in - var(--e))}}
+.back .main{{top:.78in}}
+.intro{{display:grid;grid-template-columns:1fr auto;column-gap:.3in;align-items:end;margin-bottom:.12in}}
+.intro p{{font:300 9.6pt/1.36 "Lexend Deca";color:var(--base);text-wrap:pretty}}
+.intro .src{{font:400 var(--s)/1.35 "Lexend Deca";color:var(--muted);text-align:right;white-space:nowrap}}
+.bk{{display:grid;grid-template-columns:.75in 1fr auto;column-gap:.12in;align-items:baseline;padding:.07in 0;
+  border-top:2.5pt solid var(--base);border-bottom:.6pt solid var(--hair)}}
+.bk+.bk{{border-top:.6pt solid var(--hair);border-bottom:2.5pt solid var(--base)}}
+.bk .k{{font:700 var(--s)/1 "League Spartan";letter-spacing:.15em;text-transform:uppercase;color:var(--red-t)}}
+.bk p b{{font:700 10.5pt/1.2 "League Spartan";color:var(--base);margin-right:.1in}}
+.core{{font:400 var(--s)/1.32 "Lexend Deca";color:var(--muted)}}
+.pd{{font:400 6.8pt/1.3 "Cascadia Code";color:var(--red-t);white-space:nowrap}}
+.parts{{display:grid;grid-template-columns:repeat(4,1fr);column-gap:.2in;padding:.1in 0 .1in}}
+.part{{display:grid;grid-row:span 2;grid-template-rows:subgrid}}  /* headers share one height, so the lesson lists start on one line */
+.part .big{{display:block;font:800 38pt/.8 "League Spartan";color:var(--red);letter-spacing:-.03em;margin-bottom:.07in}}
+.part .pl{{display:block;font:600 var(--s)/1 "League Spartan";letter-spacing:.15em;text-transform:uppercase;color:var(--red-t);margin-bottom:.05in}}
+.part h3{{font:700 12.5pt/1.06 "League Spartan";letter-spacing:-.005em;color:var(--base)}}
+.part .sub{{font:500 var(--s)/1.3 "Lexend Deca";color:var(--base);margin-top:.03in}}
+.part ol{{margin-top:.08in;border-top:.6pt solid var(--hair)}}
+.part li{{display:grid;grid-template-columns:.27in 1fr;padding:.045in 0;border-bottom:.6pt solid var(--hair)}}
+.part .ln{{font:700 8pt/1.25 "Cascadia Code";color:var(--red-t)}}
+.part li b{{display:block;font:600 9pt/1.2 "League Spartan";color:var(--base);margin-bottom:.02in}}
+.part li .core,.part li .pd{{display:block}}
+.part li .pd{{white-space:normal;margin-top:.02in}}
+
+.take{{display:grid;grid-template-columns:4.55in 1fr;column-gap:.3in;margin-top:.19in}}
+.root{{font:400 var(--s)/1.3 "Lexend Deca";color:var(--muted);margin-bottom:.03in}}
+.root span{{font-family:"Cascadia Code";color:var(--ink)}}
+.papers li{{display:grid;grid-template-columns:.2in 1fr;padding:.04in 0;border-bottom:.6pt solid var(--hair)}}
+.papers li:last-child{{border-bottom:0}}
+.papers .n{{font:800 var(--b)/1 "League Spartan";color:var(--red-t);padding-top:.5pt}}
+.papers p{{font-size:var(--s);line-height:1.32;padding-left:.12in;text-indent:-.12in}}
+.papers p+p{{text-indent:0;margin-top:1pt}}
+.papers i{{color:var(--base)}}
+.papers .u{{font-family:"Cascadia Code";color:var(--muted);overflow-wrap:anywhere}}
+.papers .an{{color:var(--muted)}}
+.ack h3{{font:600 var(--s)/1 "League Spartan";letter-spacing:.16em;text-transform:uppercase;color:var(--red-t);margin:.02in 0 .05in}}
+.ack ul{{font:400 var(--s)/1.45 "Lexend Deca"}}
+.ack b{{white-space:nowrap}}
+.ack .m{{color:var(--muted)}}
+.ack .orgs{{margin-bottom:.12in}}
+.ack .orgs li{{font-weight:500;color:var(--base)}}
+.ack .team b{{font-weight:600;color:var(--base)}}
+
+.band.strip{{top:{BACK_TOP}in;
+  background:url({photo}) calc({8.625 - BACK_W:.3f}in - var(--e)) {11.125 - BACK_TOP - back_img_h:.3f}in/{BACK_W}in auto no-repeat}}
+.band.strip::after{{background:linear-gradient(180deg,rgba(1,11,19,0) 30%,rgba(1,11,19,.55) 62%,rgba(1,11,19,.85) 100%)}}
+.band.strip .fin{{align-items:flex-end}}
+.band.strip .meta{{font:500 var(--s)/1.45 "Lexend Deca";color:#E6ECF2}}
 </style></head>
-<body><div class="sheet">
+<body>
 
-<header class="tab">
+<div class="sheet" data-side="front"><div class="trim">
+<header class="tab" data-rv="F1" data-rv-label="Header tab">
   <span>Columbia River Climate Change<br>Teachers Program · ATNI Climate</span>
   <span class="ev">Teachers Climate Change Workshop at Yakama Nation<br>Toppenish · 10/23/2026 and 10/24/2026</span>
 </header>
-
 <div class="main">
 <section class="head">
   <div>
-    <h1><span>Understanding</span><span>a Climate</span><span class="r">of Change</span></h1>
-    <p class="by"><b>Patrick A. Freeland</b> · ATNI Climate</p>
+    <h1 data-rv="F2" data-rv-label="Title"><span>Understanding</span><span>a Climate</span><span class="r">of Change</span></h1>
+    <p class="by" data-rv="F3" data-rv-label="Byline"><b>Patrick A. Freeland</b> · ATNI Climate</p>
   </div>
-  <div class="qr">
+  <div class="qr" data-rv="F4" data-rv-label="QR code">
     <div class="tile">{qr_svg()}</div>
     <span class="lab">Scan for the live page</span>
     <span class="url">atniclimate.github.io/<br>climate-curriculum/</span>
   </div>
-  <div class="where">{basin_mark()}<p>Toppenish, in the Columbia River basin</p></div>
+  <div class="where" data-rv="F5" data-rv-label="Basin mark">{basin_mark()}<p>Toppenish, in the Columbia River basin</p></div>
 </section>
 <div class="rule"></div>
-
-<section class="body">
-  <div>
-    <h2 class="lbl"><span class="no">01</span>The workshop</h2>
-    <p class="abs"><b>Understanding a Climate of Change</b> is a free, interactive workshop that runs in a web browser,
-    built for school Chromebooks, and works offline once downloaded. Four questions guide it:</p>
-    <ol class="qs">{qs}</ol>
-    <p class="abs">Teachers and students follow air from the Pacific over the Cascades, see what river and weather gauges record,
-    travel the salmon's journey home past the dams, sort climate actions by job, and watch a stress, and care,
-    ripple through a web of relatives.</p>
-    <div class="use">
-      <h2 class="lbl"><span class="no">02</span>How to use it</h2>
-      <ul>
-        <li><span class="k"><kbd>&larr;</kbd><kbd>&rarr;</kbd><kbd>N</kbd><kbd>T</kbd></span>
-          <p><b>Present it.</b> Arrow keys move slides; N opens facilitator notes; T starts the clock.</p></li>
-        <li><span class="tag">6 to 12</span>
-          <p><b>Teach from it.</b> Every part has matching hands-on lessons for Grades 6 to 12.</p></li>
-        <li><span class="tag">offline</span>
-          <p><b>Take it offline.</b> Download the project from GitHub and open <code>docs/index.html</code>.</p></li>
-      </ul>
-    </div>
+<section class="work">
+  <h2 class="lbl"><span class="no">01</span>The workshop</h2>
+  <p class="lead" data-rv="F6" data-rv-label="01 The workshop: abstract"><b>Understanding a Climate of Change</b> is a free, interactive workshop that runs in a web browser,
+  built for school Chromebooks, and works offline once downloaded. Four questions guide it:</p>
+  <ol class="qs" data-rv="F7" data-rv-label="Four questions">{qs}</ol>
+  <p class="more" data-rv="F8" data-rv-label="01 The workshop: what you do">Teachers and students follow air from the Pacific over the Cascades, see what river and weather gauges record,
+  travel the salmon's journey home past the dams, sort climate actions by job, and watch a stress, and care,
+  ripple through a web of relatives.</p>
+</section>
+<section class="use">
+  <h2 class="lbl"><span class="no">02</span>How to use it</h2>
+  <ul>
+    <li data-rv="F9" data-rv-label="02 How to use it: present"><span class="k"><kbd>&larr;</kbd><kbd>&rarr;</kbd><kbd>N</kbd><kbd>T</kbd></span>
+      <p><b>Present it.</b> Arrow keys move slides; N opens facilitator notes; T starts the clock.</p></li>
+    <li data-rv="F10" data-rv-label="02 How to use it: teach"><span class="k tag">6 to 12</span>
+      <p><b>Teach from it.</b> Every part has matching hands-on lessons for Grades 6 to 12.</p></li>
+    <li data-rv="F11" data-rv-label="02 How to use it: offline"><span class="k tag">offline</span>
+      <p><b>Take it offline.</b> Download the project from GitHub and open <code>docs/index.html</code>.</p></li>
+  </ul>
+</section>
+</div>
+<section class="band" aria-label="Columbia Gorge at dusk" data-rv="F12" data-rv-label="Photo band and gratitude line">
+  <div class="thanks"><p>With gratitude to the Yakama Nation, whose homelands, waters, and people host this gathering.</p></div>
+  <div class="fin" data-rv="F13" data-rv-label="Front foot: turn-over line and logo">
+    <p><b>Over</b>What's inside, papers to take home, and acknowledgements</p>
+    <img class="logo" src="{logo}" alt="ATNI Climate">
   </div>
-  <div>
-    <h2 class="lbl"><span class="no">03</span>Papers to take home</h2>
+</section>
+</div></div>
+
+<div class="sheet back" data-side="back"><div class="trim">
+<header class="tab run" data-rv="B1" data-rv-label="Running head">
+  <span>Understanding a Climate of Change</span>
+  <span class="ev">Toppenish · 10/23/2026 and 10/24/2026</span>
+</header>
+<div class="main">
+<section class="inside">
+  <h2 class="lbl"><span class="no">03</span>What's inside</h2>
+  <div class="intro" data-rv="B2" data-rv-label="03 What's inside: intro"><p>{INSIDE}</p>
+    <p class="src">Lessons from paper 3 below:<br>Grades 6 to 12 hands-on lessons</p></div>
+  {bookend("B3", OPENING)}
+  <div class="parts">{parts}</div>
+  {bookend("B8", CLOSING)}
+</section>
+<section class="take">
+  <div data-rv="B9" data-rv-label="04 Papers to take home">
+    <h2 class="lbl"><span class="no">04</span>Papers to take home</h2>
     <p class="root">1 to 3 at <span>{ROOT_URL}</span></p>
     <ol class="papers">{papers}</ol>
   </div>
-</section>
-</div>
-
-<section class="band" aria-label="Columbia Gorge at dusk">
-  <div class="lead">
-    <h2 class="lbl"><span class="no">04</span>Acknowledgements</h2>
-    <p>With gratitude to the Yakama Nation, whose homelands, waters, and people host this gathering.</p>
+  <div class="ack">
+    <h2 class="lbl"><span class="no">05</span>Acknowledgements</h2>
+    <div class="orgs" data-rv="B10" data-rv-label="Acknowledgements: organizations"><h3>Organizations</h3><ul>{orgs}</ul></div>
+    <div class="team" data-rv="B11" data-rv-label="Acknowledgements: planning team"><h3>Planning team</h3><ul>{team}</ul></div>
   </div>
 </section>
-
-<footer class="foot">
-  <div><h2>Organizations</h2><ul>{orgs}</ul></div>
-  <div class="team"><h2>Planning team</h2><ul>{team}</ul></div>
-  <p class="meta">Suggested citation: Freeland, P. A. (2026). <i>Understanding a climate of change</i> [Event handout].<br>ATNI Climate. {ROOT_URL} · Photo: Patrick A. Freeland · Draft for review, printed {PRINTED}</p>
-  <img class="logo" src="{b64(ROOT / 'docs/img/atni-climate-lockup-on-dark.png', 'image/png')}" alt="ATNI Climate">
-</footer>
-
 </div>
-<script>/* the columns must clear the band; build() fails on this marker */
-document.fonts.ready.then(()=>{{const b=document.querySelector('.body').getBoundingClientRect().bottom,
-t=document.querySelector('.band').getBoundingClientRect().top;
-if(b>t-4)document.body.insertAdjacentHTML('beforeend','<p style="position:absolute;top:0;left:0;z-index:9">LAYOUT OVERFLOW</p>')}})</script>
+<section class="band strip" aria-label="Columbia Gorge at dusk, the river below the rim" data-rv="B12" data-rv-label="Back photo strip">
+  <div class="fin">
+    <div class="meta"><p data-rv="B13" data-rv-label="Suggested citation">Suggested citation: Freeland, P. A. (2026). <i>Understanding a climate of change</i> [Event handout].<br>ATNI Climate. {ROOT_URL}</p>
+      <p data-rv="B14" data-rv-label="Photo credit and draft line">Photo: Patrick A. Freeland · Draft for review, printed {PRINTED}</p></div>
+    <img class="logo" src="{logo}" alt="ATNI Climate">
+  </div>
+</section>
+</div></div>
+
+<script>/* on each side the columns must clear the photo; build() fails on this marker */
+document.fonts.ready.then(()=>{{for(const s of document.querySelectorAll('.sheet')){{
+const b=s.querySelector('.main').getBoundingClientRect().bottom,t=s.querySelector('.band').getBoundingClientRect().top;
+if(b>t-12)s.insertAdjacentHTML('beforeend','<p style="position:absolute;top:0;left:0;z-index:9">LAYOUT OVERFLOW</p>')}}}})</script>
 </body></html>
 """
     html = html.replace("Yakama Nation", "Yakama&nbsp;Nation")  # never splits across lines
     assert chr(0x2014) not in html, "em dash in printed text"
+    assert html.count('class="sheet') == 2, "the handout is one sheet, front and back"
     return html
 
 # ---------- Build ----------
@@ -322,19 +425,19 @@ def build(kind):
         if not pdf.exists():
             sys.exit(f"Chrome did not write {pdf}: {r.stderr[-800:]}")
         with fitz.open(pdf) as d:
-            assert d.page_count == 1, f"{kind}: {d.page_count} pages; the handout must fit one"
-            assert "LAYOUT OVERFLOW" not in d[0].get_text(), f"{kind}: the columns run into the photo band"
-            if kind == "bleed":  # trim inset 9 pt (0.125 in) from the 8.75 x 11.25 in media
-                p = d[0]
-                p.set_bleedbox(p.mediabox)
-                p.set_trimbox(fitz.Rect(9, 9, p.mediabox.width - 9, p.mediabox.height - 9))
+            assert d.page_count == 2, f"{kind}: {d.page_count} pages; the handout is one sheet, front and back"
+            for side, p in zip(("front", "back"), d):
+                assert "LAYOUT OVERFLOW" not in p.get_text(), f"{kind} {side}: the columns run into the photo"
+                if kind == "bleed":  # trim inset 9 pt (0.125 in) from the 8.75 x 11.25 in media
+                    p.set_bleedbox(p.mediabox)
+                    p.set_trimbox(fitz.Rect(9, 9, p.mediabox.width - 9, p.mediabox.height - 9))
             d.set_metadata({"title": "Understanding a Climate of Change: Teachers Climate Change Workshop at Yakama Nation",
                             "author": "Patrick A. Freeland, with ATNI Climate",
                             "subject": "Columbia River Climate Change Teachers Program",
                             "creator": "tools/handout.py"})
             OUT.mkdir(parents=True, exist_ok=True)
             d.save(OUT / KINDS[kind], garbage=3, deflate=True)
-        print(f"{OUT / KINDS[kind]}: 1 page, {kind}")
+        print(f"{OUT / KINDS[kind]}: 2 pages (front, back), {kind}")
 
 
 if __name__ == "__main__":
