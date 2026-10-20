@@ -75,6 +75,26 @@ h3{font-size:calc(var(--b)*1.17);font-weight:700;letter-spacing:-.01em;line-heig
 .hallcopy .quote{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*2.1);line-height:1.12;letter-spacing:-.015em;color:var(--white);max-width:22ch;text-wrap:balance}
 .hallcopy *{transition:color .6s ease}
 body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
+.hallcopy .ln{display:block}  /* one span per intended line; wraps on phones instead of breaking */
+/* S1 title: two balanced lines of equal weight, byline on a red rule, three-line stanza; lockup as the signature */
+[data-slide-id="s01-title"] .hallcopy{max-width:none;gap:0;justify-items:start}
+[data-slide-id="s01-title"] h1{display:flex;flex-direction:column;margin:clamp(12px,2vh,22px) 0 clamp(16px,2.6vh,30px)}
+[data-slide-id="s01-title"] h1 .kick,[data-slide-id="s01-title"] h1 .main{font-size:min(calc(var(--b)*4),calc((100vw - 2*var(--gutter) - 96px)/10.4));font-weight:800;letter-spacing:.02em;line-height:1}
+[data-slide-id="s01-title"] .byline{display:inline-flex;align-items:center;gap:14px;text-wrap:balance}
+[data-slide-id="s01-title"] .byline::before{content:"";flex:none;width:clamp(32px,3.4vw,64px);height:3px;background:var(--red);transition:background .6s ease}
+body.hl [data-slide-id="s01-title"] .byline::before{background:var(--drop)}
+[data-slide-id="s01-title"] .stanza{margin-top:clamp(14px,2.4vh,28px);max-width:none;font-size:calc(var(--b)*1.2);line-height:1.5}
+.sig{position:absolute;right:var(--gutter);bottom:clamp(16px,3.4vh,40px);z-index:2;width:clamp(140px,11vw,220px);height:auto}
+@media (max-width:980px){[data-slide-id="s01-title"] .hallcopy{bottom:118px}}  /* stanza runs full width here; clear the lockup */
+@media (max-width:640px){
+  [data-slide-id="s01-title"] h1 .kick,[data-slide-id="s01-title"] h1 .main{font-size:calc((100vw - 2*var(--gutter))/10.4)}
+  [data-slide-id="s01-title"] .hallcopy{bottom:96px}
+  .sig{width:132px;bottom:22px}
+}
+/* S3: one-line title; highlight in the sunlit orange sampled from the photo (#E9983E, Patrick 10/20/2026) */
+[data-slide-id="s03-part-one"] .hallcopy{max-width:none}
+[data-slide-id="s03-part-one"] .label.red,[data-slide-id="s03-part-one"] .r{color:#E9983E}
+@media (min-width:641px){[data-slide-id="s03-part-one"] .display{font-size:min(calc(var(--b)*2.9),calc((100vw - 2*var(--gutter) - 96px)/14.2))}}
 
 /* Plate mode: working slides over a darkened image */
 .inner{position:relative;z-index:1;max-width:1840px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.2vh,26px);padding-block:clamp(14px,2.6vh,34px);padding-inline:var(--pgut)}
@@ -110,6 +130,26 @@ body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
 .agenda h3{font-size:calc(var(--b)*1.05)}
 .agenda p{font-size:calc(var(--b)*.86);color:var(--text)}
 .agenda .mins{font-family:var(--f-data);font-size:12px;color:var(--muted)}
+/* S2: narrow gutters, larger cards that fill the page; question titles share one baseline row */
+[data-slide-id="s02-four-questions"] .inner{max-width:none;padding-inline:clamp(12px,1.3vw,26px);gap:clamp(12px,2.4vh,40px)}
+[data-slide-id="s02-four-questions"] .agenda{gap:clamp(8px,.8vw,14px)}
+[data-slide-id="s02-four-questions"] .agenda button{padding:clamp(14px,min(1.8vw,2.8vh),34px);gap:clamp(10px,1.6vh,20px)}
+[data-slide-id="s02-four-questions"] .agenda .n{font-size:min(calc(var(--b)*3.6),7.4vh)}
+[data-slide-id="s02-four-questions"] .agenda .tx{display:grid;gap:clamp(8px,1.2vh,14px);align-content:start}
+[data-slide-id="s02-four-questions"] .agenda h3{font-size:calc(var(--b)*1.5)}
+[data-slide-id="s02-four-questions"] .agenda p{font-size:calc(var(--b)*1.08);max-width:none}
+@media (min-width:1181px){[data-slide-id="s02-four-questions"] .agenda h3{min-height:2.4em}}
+[data-slide-id="s02-four-questions"]{container-type:size}  /* lets the cards shrink when the notes pane shortens the stage */
+@container (max-height:600px) and (min-width:981px){
+  [data-slide-id="s02-four-questions"] .inner{gap:10px;padding-block:10px}
+  [data-slide-id="s02-four-questions"] .agenda button{padding:14px 18px;gap:6px}
+  [data-slide-id="s02-four-questions"] .agenda .n{font-size:calc(var(--b)*2)}
+  [data-slide-id="s02-four-questions"] .agenda h3{font-size:calc(var(--b)*1.15)}
+  [data-slide-id="s02-four-questions"] .agenda p{font-size:calc(var(--b)*.9)}
+  [data-slide-id="s02-four-questions"] .lead{font-size:calc(var(--b)*1.6)}
+  [data-slide-id="s02-four-questions"] .themes li{padding:6px 10px}
+  [data-slide-id="s02-four-questions"] .themes + .cap{font-size:calc(var(--b)*.9)}
+}
 
 /* key + inquiry */
 .key{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:8px}
@@ -120,40 +160,88 @@ body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
 .carry .key{grid-template-columns:1fr}
 @media (max-width:860px){.carry{grid-template-columns:1fr}}
 .inq li::before{counter-increment:q;content:"(" counter(q) ")";position:absolute;left:18px;top:12px;font-family:var(--f-display);font-weight:700;color:var(--red-dk)}
+/* S6: light sky plate, a real title, larger text that fills the page */
+[data-slide-id="s06-part-one-carry"]{background:var(--overlay)}  /* light ground under the photo when a phone scrolls past it */
+[data-slide-id="s06-part-one-carry"] .inner{max-width:none;padding-inline:clamp(12px,2vw,40px);gap:clamp(16px,3vh,36px)}
+[data-slide-id="s06-part-one-carry"] h2{font-size:calc(var(--b)*2.9);line-height:1.05}
+[data-slide-id="s06-part-one-carry"] .carry{gap:clamp(10px,1vw,16px)}
+[data-slide-id="s06-part-one-carry"] .key{gap:clamp(10px,1vw,16px)}
+[data-slide-id="s06-part-one-carry"] .key .card{padding:clamp(18px,2vw,34px) clamp(18px,2.2vw,38px);gap:.7em}
+[data-slide-id="s06-part-one-carry"] .key .card p{font-size:calc(var(--b)*1.28);line-height:1.5;max-width:none}
+[data-slide-id="s06-part-one-carry"] .key .label{font-size:max(12px,calc(var(--b)*.75));color:var(--red-dk)}
+[data-slide-id="s06-part-one-carry"] .inq{gap:clamp(10px,1vw,16px)}
+[data-slide-id="s06-part-one-carry"] .inq li{display:flex;align-items:center;font-size:calc(var(--b)*1.28);line-height:1.4;padding:clamp(16px,2vw,30px) clamp(18px,2vw,34px) clamp(16px,2vw,30px) calc(var(--b)*3.4)}
+[data-slide-id="s06-part-one-carry"] .inq li::before{left:clamp(16px,1.4vw,28px);top:50%;transform:translateY(-50%)}
+[data-slide-id="s06-part-one-carry"] .credit{left:clamp(12px,2vw,40px);color:var(--muted);text-shadow:none}
+@media (max-width:860px){[data-slide-id="s06-part-one-carry"] .credit{position:static}}  /* in flow (inside .inner) so scrolled cards never run under it */
 
 /* cloud machine */
-.cm{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);grid-template-rows:minmax(0,1fr);gap:clamp(12px,1.6vw,24px);align-items:stretch}
+[data-slide-id="s04-cloud-tool"]{--pgut:clamp(10px,1.3vw,24px)}
+[data-slide-id="s04-cloud-tool"] .inner{gap:clamp(8px,1.1vh,16px);padding-block:clamp(8px,1vh,20px)}
+[data-slide-id="s04-cloud-tool"] input[type=range]{margin:-8px 0}
+[data-slide-id="s04-cloud-tool"] .ask{max-width:56ch}
+.cm{display:grid;grid-template-columns:minmax(0,1fr) clamp(330px,40vw,580px);grid-template-rows:minmax(0,1fr);gap:clamp(10px,1.2vw,20px);align-items:stretch}
 @media (max-width:980px){.cm{grid-template-rows:auto}}
 @media (max-width:980px){.cm{grid-template-columns:1fr}}
 .cmview{display:flex;flex-direction:column;gap:6px;min-height:0;min-width:0;overflow:hidden}
-.cmview svg{width:100%;flex:1;min-height:0;display:block;background:#0B1A2A}
-@media (max-width:980px){.cmview svg{flex:none;height:auto}}
-.cmax{font-family:var(--f-data);font-size:12px;fill:#8A94A6}
-.cmlab{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.06em;fill:#C5CDD6;paint-order:stroke;stroke:#0B1A2A;stroke-width:3px}
-.cmlab.sm{font-family:var(--f-body);font-weight:400;font-size:12.5px;letter-spacing:0;fill:#A9B3BF}
-.fog{fill:#C9D0D7;opacity:.3}
-.cmnote{font-family:var(--f-data);font-size:14px;fill:#F26B5E;paint-order:stroke;stroke:#0B1A2A;stroke-width:3px}
-.cb{fill:#DDE3E8;stroke:#9AA3AE;stroke-width:1.5}
+.cmsky{position:relative;flex:1;min-height:0;display:flex;background:#0B1A2A}
+.cmview svg{width:100%;flex:1;min-height:0;display:block}
+@media (max-width:980px){.cmsky{flex:none}.cmview svg{flex:none;height:auto}}
+.cmtag{position:absolute;left:5px;top:5px;padding:3px 8px;background:rgba(1,11,19,.7);color:var(--text);pointer-events:none}
+.cmtag.r8{left:auto;right:5px}
+/* the parcel rides in its own small overlay: moving it inside the cloud SVG repaints every cloud each frame (14 fps against 60 at 4x CPU throttle) */
+.cmtop{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;will-change:transform}
+@media (max-width:980px){.cmtop{top:auto;height:auto;aspect-ratio:800/430}}
+@media (max-width:560px){.cmsky{flex-wrap:wrap;gap:4px;background:none}.cmtag{position:static;order:-1}}
+.cmax{font-family:var(--f-data);font-size:13px;fill:#DDE3E8;paint-order:stroke;stroke:#0B1A2A;stroke-width:3px}
+.cmlab{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.06em;fill:#E8ECF0;paint-order:stroke;stroke:#0B1A2A;stroke-width:3px}
+.cmlab.sm{font-family:var(--f-body);font-weight:400;font-size:13.5px;letter-spacing:0;fill:#DDE3E8}
+.cmnote{font-family:var(--f-data);font-size:13.5px;fill:#F26B5E;paint-order:stroke;stroke:#0B1A2A;stroke-width:3.5px}
 .wind{animation:flow 2.4s linear infinite}
-.rainfall{stroke:#7FB3E3;stroke-width:1.4;stroke-dasharray:6 7;animation:fall .5s linear infinite}
-.rainfall.k2{stroke-width:1.8}.rainfall.k3{stroke-width:2.4;stroke-dasharray:9 5}
-.snowfall{stroke:#F4F7FA;stroke-width:2.6;stroke-linecap:round;stroke-dasharray:.1 11;animation:fall 1.8s linear infinite}
-@keyframes fall{to{stroke-dashoffset:-26}}
-@media (prefers-reduced-motion:reduce){.wind,.rainfall,.snowfall{animation:none}}
-.ctl{display:grid;gap:7px;align-content:start;min-height:0;overflow:auto}
+@media (prefers-reduced-motion:reduce){.wind{animation:none}}
+.cmrow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 8px;align-items:center}
+.cmrow>.label{max-width:6.6em;line-height:1.25}
+.cmrow .seg button{padding:6px 5px;font-size:13px}
+[data-slide-id="s04-cloud-tool"] .btn.sec[aria-pressed="true"]:hover{background:#C5CDD6}
+.ctl{display:grid;gap:6px;align-content:start;min-height:0;overflow:auto}
 .ctl label{display:grid;grid-template-columns:1fr auto;gap:0 10px;align-items:baseline;font-size:calc(var(--b)*.8);color:var(--muted)}
 .ctl label input{grid-column:1/-1}
 .ctl label b{font-family:var(--f-data);font-weight:500;color:var(--white);font-size:calc(var(--b)*.82)}
 input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
-.readouts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
-.readouts>div{background:var(--plate);padding:6px 10px}
-.readouts .v{font-family:var(--f-data);font-size:calc(var(--b)*.95);color:var(--white)}
-.readouts .l{font-size:13px;color:var(--muted)}
+.readouts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+@media (max-width:560px){.readouts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.readouts>div{background:var(--plate);padding:6px 9px}
+.readouts .v{font-family:var(--f-data);font-size:calc(var(--b)*.8);color:var(--white)}
+.readouts .l{font-size:12px;line-height:1.3;color:var(--muted)}
 .readouts .hot .v{color:var(--water-hi)}
-.ctype{display:grid;grid-template-columns:auto 1fr;gap:0 10px;align-items:baseline;padding:6px 12px;background:var(--plate);border-left:3px solid var(--text)}
-.ctype b{font-family:var(--f-display);font-size:calc(var(--b)*1.05);color:var(--white)}
-.ctype span:last-child{font-size:max(12px,calc(var(--b)*.76));line-height:1.4;color:var(--text)}
-.status{font-size:calc(var(--b)*.8);line-height:1.45;padding:8px 12px;background:var(--plate-hi);border-left:3px solid var(--water-hi);min-height:3em}
+.status{font-size:max(12.5px,calc(var(--b)*.78));line-height:1.45;padding:7px 12px;background:var(--plate-hi);border-left:3px solid var(--water-hi);min-height:3em}
+.cmcard{background:var(--plate);border-left:3px solid var(--text);padding:8px 12px 10px;display:flow-root}
+.cmcard>.label{display:block;margin-bottom:5px}
+.cmph{float:left;width:clamp(150px,37%,380px);margin:2px 12px 2px 0}
+.cmph img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:var(--overlay)}
+.cmph span{display:block;font-size:12px;line-height:1.3;color:var(--muted);margin-top:3px}
+.cmhd{margin-bottom:3px}
+.cmhd b{font-family:var(--f-display);font-size:calc(var(--b)*1.05);line-height:1.15;color:var(--white);margin-right:8px}
+.cmhd span{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cmcard p{font-size:max(12.5px,calc(var(--b)*.74));line-height:1.42;max-width:none}
+.cmlook{margin-top:4px;clear:both}
+.cmlook b{color:var(--white);font-weight:600}
+@media (min-height:900px) and (min-width:1400px){.cmph{width:48%}}
+@media (max-width:560px){.cmph{float:none;width:100%;margin:0 0 8px}}
+/* CloudKit clouds: each cloud on its own compositor layer, so its filter rasters once, not on every frame the wind line repaints */
+.ck-cloud{will-change:transform;cursor:pointer;outline:none;transition:opacity .9s}
+.ck-cloud *,.ck-fx,.ck-fx *{pointer-events:none}
+.ck-cloud .ck-hit{pointer-events:all;fill:none;stroke:none}
+.ck-cloud.ck-on .ck-hit{stroke:#E8ECF0;stroke-width:1.5;stroke-dasharray:5 4;stroke-opacity:.85}
+.ck-cloud:focus-visible .ck-hit{stroke:#F26B5E;stroke-width:2.5;stroke-dasharray:none;stroke-opacity:1}
+.ck-new{animation:ck-in 1.1s ease-out both}@keyframes ck-in{from{opacity:0}}
+.ck-cloud.ck-out{opacity:0}.ck-cloud.ck-out .ck-hit{pointer-events:none}
+.ck-rainl{stroke:var(--ck-rain,#9FB4C8);stroke-dasharray:5 10;animation:ck-fall .55s linear infinite}@keyframes ck-fall{to{stroke-dashoffset:-15}}
+.ck-snowl{fill:none;stroke:#F4F7FA;stroke-linecap:round;stroke-dasharray:.1 11.9;animation:ck-fall12 2.6s linear infinite}@keyframes ck-fall12{to{stroke-dashoffset:-12}}
+.ck-flow{fill:none;stroke:var(--ck-moist,#BFE6FA);stroke-opacity:.55;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:14 22;animation:ck-flow 3s linear infinite}@keyframes ck-flow{to{stroke-dashoffset:-36}}
+/* lightning: two quick pulses every few seconds, under the three-flashes-per-second limit (WCAG 2.3.1) */
+.ck-bolt,.ck-flashsky{opacity:0;animation:ck-flash 7s linear infinite}@keyframes ck-flash{0%,90%,100%{opacity:0}90.6%{opacity:1}91.4%{opacity:.1}92.2%{opacity:.95}94%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.ck-rainl,.ck-snowl,.ck-flow,.ck-new{animation:none}.ck-cloud{transition:none}.ck-bolt{animation:none;opacity:.85}.ck-flashsky{animation:none}}
 /* segmented controls: selected is always a light fill */
 .seg{display:flex;flex-wrap:wrap;gap:4px}
 .seg button{all:unset;box-sizing:border-box;min-height:44px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:8px 14px;background:var(--plate);font-size:14px;font-weight:600;color:var(--text);text-align:center;flex:1 1 auto}
@@ -169,73 +257,152 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .inst button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
 .inst button[aria-expanded="true"]{background:var(--plate-hi);box-shadow:inset 0 -3px 0 var(--text)}
 .inst.focused button[aria-expanded="false"]{opacity:.42}
-.inst svg{width:100%;max-width:min(180px,22vh);height:auto;aspect-ratio:1/1;display:block}
+/* 150px at 768 tall (the least that still fills a 1366 card edge to edge), about 300px at 1080 */
+.inst svg{width:100%;height:clamp(130px,calc(48vh - 219px),320px);display:block}
+@media (max-width:980px){.inst svg{height:auto;aspect-ratio:4/3;max-height:clamp(130px,calc(48vh - 219px),320px)}}
+[data-slide-id="s05-gauges"] .inner{max-width:none;padding-inline:clamp(12px,1.6vw,28px);padding-block:clamp(8px,1.4vh,34px);gap:clamp(10px,1.6vh,26px)}
 .inst h3{font-size:calc(var(--b)*.98)}
 .inst .unit{font-family:var(--f-data);font-size:12px;color:var(--muted)}
 .focus{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:8px}
 .focus .card h3{font-size:calc(var(--b)*.8);font-family:var(--f-display);text-transform:uppercase;letter-spacing:.12em;color:var(--red-dk)}
 .focus .card p{font-size:calc(var(--b)*.86)}
 /* instrument animations */
-.drop{animation:rain 1.4s linear infinite}
-@keyframes rain{0%{transform:translateY(-30px);opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translateY(58px);opacity:0}}
-.fillup{transform-box:fill-box;transform-origin:bottom;animation:fillup 7s ease-in-out infinite}
-@keyframes fillup{0%{transform:scaleY(.08)}80%{transform:scaleY(1)}100%{transform:scaleY(1)}}
-.mercury{transform-box:fill-box;transform-origin:bottom;animation:merc 6s ease-in-out infinite alternate}
-@keyframes merc{0%{transform:scaleY(.35)}100%{transform:scaleY(1)}}
-.flow{animation:flow 2.2s linear infinite}
-@keyframes flow{to{stroke-dashoffset:-40}}
-.bub{animation:bub 2.6s ease-in infinite}
-@keyframes bub{0%{transform:translateY(0);opacity:0}20%{opacity:.9}100%{transform:translateY(-44px);opacity:0}}
-.soak{transform-box:fill-box;transform-origin:top;animation:soak 6.5s ease-in-out infinite}
-@keyframes soak{0%{transform:scaleY(.05);opacity:.9}70%{transform:scaleY(1);opacity:.9}100%{transform:scaleY(1);opacity:0}}
-.blink{animation:blink 1.6s ease-in-out infinite}
-@keyframes blink{50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){.drop,.fillup,.mercury,.flow,.bub,.soak,.blink{animation:none}}
+/* transforms and opacity only, no filters; hidden slides are display:none, so nothing runs off-slide.
+   Negative delays set each scene's phase, so the paused reduced-motion frame is a clear reading. */
+#inst .g5-drop{animation:g5fall .9s linear infinite}
+@keyframes g5fall{0%{transform:translateY(-8px);opacity:0}12%{opacity:1}100%{transform:translateY(31px);opacity:1}}
+#inst .g5-splash{transform-box:fill-box;transform-origin:center;animation:g5splash .9s ease-out infinite}
+@keyframes g5splash{0%{transform:scale(.4);opacity:.9}30%,100%{transform:scale(1.7);opacity:0}}
+#inst .g5-far{animation:g5far 1.3s linear infinite}
+@keyframes g5far{0%{transform:translateY(-8px);opacity:0}10%,90%{opacity:.55}100%{transform:translateY(104px);opacity:0}}
+#inst .g5-level{animation:g5level 12s ease-in-out -7.5s infinite}
+@keyframes g5level{0%{transform:translateY(52px)}86%,93%{transform:translateY(0)}100%{transform:translateY(52px)}}
+#inst .g5-liquid{transform-box:fill-box;transform-origin:50% 100%;animation:g5temp 7s ease-in-out -5s infinite alternate}
+@keyframes g5temp{from{transform:scaleY(.42)}to{transform:scaleY(1)}}
+#inst .g5-sun{animation:g5sun 7s ease-in-out -5.6s infinite alternate}
+@keyframes g5sun{from{transform:translateY(62px);opacity:.45}to{transform:translateY(0);opacity:1}}
+#inst .g5-wave{animation:g5wave 2.4s linear infinite}
+@keyframes g5wave{from{transform:translateX(-40px)}to{transform:translateX(0)}}
+#inst .g5-cur{animation:g5cur 1.6s linear infinite}
+@keyframes g5cur{to{stroke-dashoffset:-36}}
+#inst .g5-sed{animation:g5sed 6s linear infinite}
+@keyframes g5sed{0%{transform:translateX(0);opacity:0}10%,90%{opacity:.7}100%{transform:translateX(250px);opacity:0}}
+#inst .g5-bub{animation:g5bub 2.8s ease-in infinite}
+@keyframes g5bub{0%{transform:translate(0,0);opacity:0}15%{opacity:.95}50%{transform:translate(5px,-24px)}100%{transform:translate(14px,-56px);opacity:0}}
+#inst .g5-sway{transform-box:view-box;transform-origin:76px 58px;animation:g5sway 3.2s ease-in-out infinite alternate}
+@keyframes g5sway{from{transform:rotate(-2deg)}to{transform:rotate(4deg)}}
+/* soil: rain, then a wetting front that slows with depth; each sensor lights as the front reaches it, top dries first */
+#inst .g5-srain{animation:g5srain 10s linear infinite}
+@keyframes g5srain{0%{transform:translateY(-14px);opacity:0}1%{opacity:1}6%{transform:translateY(24px);opacity:1}6.5%,100%{transform:translateY(24px);opacity:0}}
+#inst .g5-front{animation:g5front 10s linear -4s infinite}
+@keyframes g5front{0%{transform:translateY(0);opacity:0}8%{transform:translateY(2px);opacity:1}25%{transform:translateY(34px)}45%{transform:translateY(62px)}70%{transform:translateY(84px);opacity:1}100%{transform:translateY(88px);opacity:0}}
+#inst .g5-s1{animation:g5s1 10s linear -4s infinite}
+#inst .g5-s2{animation:g5s2 10s linear -4s infinite}
+#inst .g5-s3{animation:g5s3 10s linear -4s infinite}
+@keyframes g5s1{0%,18%{fill:#8A94A6}21%,82%{fill:#9CC7F0}86%,100%{fill:#8A94A6}}
+@keyframes g5s2{0%,35%{fill:#8A94A6}38%,86%{fill:#9CC7F0}90%,100%{fill:#8A94A6}}
+@keyframes g5s3{0%,59%{fill:#8A94A6}62%,90%{fill:#9CC7F0}94%,100%{fill:#8A94A6}}
+#inst .g5-led{animation:g5led 2s linear infinite}
+@keyframes g5led{0%,8%{opacity:1}14%,100%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){#inst *{animation-play-state:paused!important}}
 
 /* source check */
-.claims{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:8px}
-.claim{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--plate);min-height:200px}
+.claims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;flex:1;min-height:0}
+@media (max-width:1100px){.claims{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.claims{grid-template-columns:1fr}}
+.claim{all:unset;cursor:pointer;display:grid;grid-template-rows:auto auto 1fr;align-content:start;gap:12px;padding:18px;background:var(--plate)}
 .claim:hover{background:var(--plate-hi)}
 .claim:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
-.claim .said{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*.95);line-height:1.22;color:var(--white)}
-.claim .hint{margin-top:auto;font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.claim .back{display:grid;gap:6px;font-size:calc(var(--b)*.84)}
+.claim .cico{width:68px;height:68px;color:var(--red-dk);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.claim .said{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*1.3);line-height:1.22;color:var(--white)}
+.claim .hint,.claim .back{grid-area:3/1;align-self:start}
+.claim .hint{display:grid;gap:12px;align-content:start;font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-top:8px;border-top:1px solid var(--hair)}
+.claim .hint,.claim .back{align-self:stretch;grid-template-rows:auto 1fr}
+.claim .hint .go,.claim .back .close{align-self:end}  /* the prompt sits at the foot of the card, so the open space reads as the card's own */
+.claim .hint .bk{display:grid;gap:6px;font:400 calc(var(--b)*.92)/1.6 var(--f-body);letter-spacing:0;text-transform:none;color:var(--text)}
+.claim .hint b{font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-dk)}
+.claim .back{display:grid;gap:6px;font-size:calc(var(--b)*.92);visibility:hidden;padding-top:8px;border-top:1px solid var(--hair)}
+.claim .bk{display:grid;gap:6px}
 .claim .back b{font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-dk)}
-.claim[aria-expanded="true"]{background:var(--plate-hi)}
+.claim .close{font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+/* four across: text scales to the height the cards get (notes pane open or not), so the reserved reveal fits */
+@media (min-width:1101px){.claims{container-type:size}.claim{gap:min(12px,1.8cqh);padding:min(18px,2.8cqh)}.claim .cico{width:min(68px,10cqh);height:min(68px,10cqh)}.claim .said{font-size:max(15px,min(calc(var(--b)*1.3),3.8cqh))}.claim .back,.claim .hint .bk{font-size:max(12.5px,min(calc(var(--b)*.92),2.9cqh))}}
+.claim[aria-expanded="true"]{background:var(--plate-hi);box-shadow:inset 0 3px 0 var(--red-dk)}
+.claim[aria-expanded="true"] .back{visibility:visible}
+.claim[aria-expanded="true"] .hint{visibility:hidden}
 .steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 @media (max-width:700px){.steps3{grid-template-columns:1fr}}
 .steps3 div{background:var(--plate);padding:10px 14px;font-size:max(12px,calc(var(--b)*.78))}
 .steps3 b{display:block;font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-dk)}
 
 /* salmon map */
-.mapwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(320px,1fr);gap:10px;align-items:stretch}
-@media (max-width:980px){.mapwrap{grid-template-columns:1fr}}
+[data-slide-id="s10-salmon-journey"] .inner{max-width:none;padding:clamp(8px,1.3vh,16px) clamp(8px,.9vw,18px);gap:clamp(6px,1vh,12px)}
+[data-slide-id="s10-salmon-journey"] .ask{max-width:none}
+/* map column width follows the map's shape (1000 x 730): 1.37 x the row height, which measures about 0.83vh - 213px at 768 to 1080 tall */
+.mapwrap{display:grid;grid-template-columns:minmax(0,min(64%,calc(114vh - 292px))) minmax(360px,1fr);grid-template-rows:minmax(0,1fr) auto;gap:8px;align-items:stretch}
+@media (max-width:980px){.mapwrap{grid-template-columns:minmax(0,1fr);grid-template-rows:auto}}
 .map{background:#07192A;position:relative;overflow:hidden;min-height:0}
 .map svg{display:block;width:100%;height:100%}
 @media (max-width:980px){.map svg{height:auto}}
-.futures{position:absolute;left:10px;top:10px;display:grid;gap:4px;background:rgba(1,11,19,.82);padding:8px 10px;max-width:calc(100% - 20px)}
-.futures .seg button{padding:5px 10px;font-size:13px}
-.fread{font-size:13.5px;line-height:1.45;color:var(--text);max-width:300px;padding-top:2px}
-.fread>b{display:block;font-family:var(--f-display);color:var(--white)}
-.fread .tline{font-size:13.5px}
+.futures{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(240px,.42fr);gap:6px 14px;align-items:start;background:var(--plate);padding:7px 10px}
+@media (max-width:980px){.futures{grid-template-columns:minmax(0,1fr)}}
+.fopts,.fper{display:grid;gap:5px;align-content:start;min-width:0}
+.fhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 14px}
+.fhead .cap{font-size:12px}
+.seg.fopt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:700px){.seg.fopt{grid-template-columns:minmax(0,1fr)}}
+.seg.fopt button{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:2px;padding:6px 11px;text-align:left;font-weight:400;line-height:1.35}
+.fopt b{font-family:var(--f-display);font-weight:700;font-size:max(14px,calc(var(--b)*.84));line-height:1.2}
+.fopt b span{font-family:var(--f-data);font-weight:500;font-size:max(12.5px,calc(var(--b)*.7));margin-left:5px}
+/* each future keeps one color from the map's temperature scale and a plain symbol: a drop, a line that levels off, a line that climbs */
+#fScen button{border-left:4px solid var(--c)}
+#fScen [data-k="now"]{--c:#9CC7F0;--cd:#2F6A9C} #fScen [data-k="s245"]{--c:#F2A65A;--cd:#A85A10} #fScen [data-k="s370"]{--c:#E8603C;--cd:#B5172E}
+.fopt b svg{width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:6px;fill:none;stroke:var(--c);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fopt button[aria-pressed="true"] b svg{stroke:var(--cd)}
+.fopt .fd{font-size:max(12px,calc(var(--b)*.68))}
+.fopt .fw{font-size:max(12px,calc(var(--b)*.68));font-weight:600;color:var(--water-hi)}
+.fopt button[aria-pressed="true"] .fw{color:#1D4F7A}
+.fper .seg button{flex-direction:column;gap:0;padding:4px 14px;line-height:1.25}
+.fper small{font-family:var(--f-data);font-size:12px;font-weight:400}
 .seg button:disabled{opacity:.35;cursor:default}
 .tscale{position:absolute;left:10px;bottom:10px;display:flex;align-items:center;gap:8px;font-family:var(--f-data);font-size:12px;color:var(--text);background:rgba(1,11,19,.82);padding:5px 9px}
 .tscale i{display:block;width:120px;height:8px;background:linear-gradient(90deg,#4F8FD6 0%,#7FC3C9 30%,#E8D27A 50%,#F2A65A 60%,#E8603C 75%,#B5172E 100%)}
-.hydro{background:var(--plate);padding:8px 12px 4px}
+.hydro{min-width:0;display:grid;gap:2px}
 .hyhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}
 .hyhead .cap{font-size:12.5px}
 .hyhead i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin:0 5px 0 4px}
 .hyhead i.k1{background:#9CC7F0}.hyhead i.k2{background:#F26B5E}
 .hydro svg{width:100%;height:auto;display:block;max-height:84px}
-.juv{position:absolute;right:10px;bottom:10px;padding:8px 14px;font-size:13.5px;background:rgba(30,36,44,.92)}
-@media (max-width:980px){.futures,.tscale,.juv{position:static;margin:8px}.map{display:flex;flex-direction:column}.futures{max-width:none}}
-.hyl{font-family:var(--f-data);font-size:12px;fill:#8A94A6}
+@media (max-height:900px) and (min-width:981px){.hydro svg{max-height:62px}}
+@media (max-width:980px){.tscale{position:static;margin:8px}.map{display:flex;flex-direction:column}}
+.hyl{font-family:var(--f-data);font-size:18px;fill:#A9B3BF}
 .chal{border-top:1px solid var(--hair);padding-top:6px}
 .chal b{display:block;font-family:var(--f-display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-dk)}
 .tline{font-size:max(12px,calc(var(--b)*.74));color:var(--text);font-family:var(--f-body)}
 .tline b{font-family:var(--f-data);font-weight:500}
-.mpanel{display:flex;flex-direction:column;gap:8px;min-height:0}
-.stop{background:var(--plate-hi);padding:12px 16px;display:grid;gap:6px;align-content:start;border-left:3px solid var(--water-hi);flex:1;min-height:0;overflow:auto}
+.mpanel{display:flex;flex-direction:column;gap:8px;min-height:0;min-width:0}
+.routes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+@media (max-width:520px){.routes{grid-template-columns:minmax(0,1fr)}}
+.routes button{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;display:grid;gap:3px;align-content:start;padding:8px 14px;background:var(--plate);color:var(--text)}
+.routes button:hover{background:var(--plate-hi)}
+.routes button[aria-pressed="true"]{background:var(--text);color:var(--base)}
+.routes button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
+.routes b{font-family:var(--f-display);font-weight:700;font-size:calc(var(--b)*.92);line-height:1.2}
+.routes span{font-size:max(12px,calc(var(--b)*.72));line-height:1.4}
+.stop{background:var(--plate-hi);padding:12px 16px;display:flex;gap:14px;align-items:stretch;border-left:3px solid var(--water-hi);flex:1;min-height:0;overflow:hidden}
+.stxt{flex:1 1 0;min-width:0;min-height:0;overflow:auto;display:grid;gap:6px;align-content:start}
+/* the last lines fade while more text sits below (Chromebook scrollbars stay hidden until used); no scroll timeline or nothing to scroll: no fade */
+@property --sfade{syntax:'<length>';inherits:false;initial-value:0px}
+@keyframes sfade{from{--sfade:44px}to{--sfade:0px}}
+.stxt{-webkit-mask-image:linear-gradient(#000 calc(100% - var(--sfade)),transparent);mask-image:linear-gradient(#000 calc(100% - var(--sfade)),transparent);animation:sfade linear both;animation-timeline:scroll(self)}
+.sph{flex:0 0 44%;align-self:flex-start;margin:0;display:grid;gap:4px}
+.sph img{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;background:#0B1A2A;opacity:0;transition:opacity .3s}
+.sph img.in{opacity:1}
+.sph.ph img{display:none}
+.sph.ph::before{content:"";display:block;aspect-ratio:8/5;border:1px dashed rgba(232,236,240,.32);background:rgba(1,11,19,.35)}
+.sph figcaption{font-size:12px;line-height:1.35;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.sph img{transition:none}}
+@media (max-width:980px){.stop{flex-direction:column-reverse;overflow:visible}.sph{flex:none;align-self:stretch}.stxt{flex:none;overflow:visible}}
 .stop.block{border-left-color:var(--red)}
 .stop.place{border-left-color:var(--magenta)}
 .stop .rm{font-family:var(--f-data);font-size:12px;color:var(--water-hi)}
@@ -247,9 +414,10 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .river-flow{stroke-dasharray:3 13;animation:rflow 3s linear infinite}
 @keyframes rflow{to{stroke-dashoffset:-32}}
 @media (prefers-reduced-motion:reduce){.river-flow{animation:none}}
-.damlab{font-family:var(--f-display);font-weight:600;font-size:14px;fill:var(--text);paint-order:stroke;stroke:#06101A;stroke-width:3px}
-.maplab{font-family:var(--f-display);font-weight:600;letter-spacing:.2em;fill:#7C8796;font-size:15px}
-.rivlab{font-family:var(--f-body);font-style:italic;fill:var(--water);font-size:14px;paint-order:stroke;stroke:#07192A;stroke-width:3px}
+/* --u (set from the map's drawn scale) grows SVG labels back toward 12 screen px on smaller screens */
+.damlab{font-family:var(--f-display);font-weight:600;font-size:calc(14px*var(--u,1));fill:var(--text);paint-order:stroke;stroke:#06101A;stroke-width:3px}
+.maplab{font-family:var(--f-display);font-weight:600;letter-spacing:.2em;fill:#7C8796;font-size:calc(15px*var(--u,1))}
+.rivlab{font-family:var(--f-body);font-style:italic;fill:var(--water);font-size:calc(14px*var(--u,1));paint-order:stroke;stroke:#07192A;stroke-width:3px}
 .pulse{animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.35}}
 @media (prefers-reduced-motion:reduce){.pulse{animation:none}.story li{animation:none;opacity:1}}
@@ -346,10 +514,16 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .ask .label{display:block;color:var(--red-dk);margin-bottom:2px}
 .sub{font-size:calc(var(--b)*.95);max-width:80ch}
 blockquote{margin:0}
-.lead{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*1.5);line-height:1.2;color:var(--white);max-width:34ch;text-wrap:balance}
-.themes{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.themes span:not(.label){font-size:13.5px;padding:4px 10px;background:var(--overlay);color:var(--text)}
-.themes .label{margin-right:6px}
+.lead{font-family:var(--f-display);font-weight:700;font-size:calc(var(--b)*2.3);line-height:1.1;letter-spacing:-.02em;color:var(--white);max-width:none;text-wrap:balance}
+.themes{display:grid;gap:8px}
+.themes ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+@media (max-width:1180px){.themes ul{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:640px){.themes ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.themes li{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--plate);font-size:max(13.5px,calc(var(--b)*.74));line-height:1.3;color:var(--text)}
+.themes svg{flex:none;width:clamp(24px,1.8vw,32px);height:auto;fill:none;stroke:var(--white);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.themes svg .f{fill:var(--white);stroke:none}
+.themes + .cap{font-size:calc(var(--b)*1.05);color:var(--text);max-width:none}
+.themes + .cap .ln{display:block}
 /* three ways of seeing */
 .eyes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 @media (max-width:860px){.eyes{grid-template-columns:1fr}}
@@ -364,6 +538,19 @@ blockquote{margin:0}
 .eyes .pic svg{width:100%;height:100%;display:block}
 .eyes p{font-size:calc(var(--b)*.86)}
 .eyemore{min-height:3em}
+/* S8 on a light riverbank ground: tighter frame, pictures shrink once a card is open so the three reveal cards fit */
+[data-slide-id="s08-three-eyes"] .inner{gap:clamp(10px,1.6vh,20px);padding-block:clamp(10px,2vh,26px)}
+[data-slide-id="s08-three-eyes"] .eyes .pic{height:clamp(90px,calc(45vh - 150px),340px);transition:height .35s ease,opacity .4s}
+[data-slide-id="s08-three-eyes"] .eyes.focused .pic{height:clamp(56px,calc(36vh - 170px),230px)}
+@media (max-width:860px){[data-slide-id="s08-three-eyes"] .eyes .pic,[data-slide-id="s08-three-eyes"] .eyes.focused .pic{height:clamp(80px,16vh,140px)}}
+[data-slide-id="s08-three-eyes"] .eyecredit{font-size:12px;margin-top:-4px}
+/* captions sit on the shaded water, so muted goes darker to keep 4.5:1; the ground color shows where the slide scrolls past its photo (390 px) */
+.slide.plate.light[data-slide-id="s08-three-eyes"]{--muted:#323A46;background:#C2C6C3}
+.slide.plate.light[data-slide-id="s08-three-eyes"] .shade{background:rgba(244,247,250,.7)}
+/* unselected eyes: fade only the picture, so the photo does not ghost through and the card text keeps its contrast */
+[data-slide-id="s08-three-eyes"] .eyes.focused button[aria-expanded="false"]{opacity:1}
+[data-slide-id="s08-three-eyes"] .eyes.focused button[aria-expanded="false"] .pic{opacity:.4}
+@media (prefers-reduced-motion:reduce){[data-slide-id="s08-three-eyes"] .eyes .pic{transition:none}}
 /* relatives of the river */
 .kin{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px}
 @media (max-width:1100px){.kin{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -378,8 +565,24 @@ blockquote{margin:0}
 .kin svg .f,.kin svg .f *{fill:currentColor;stroke:none}
 .kin .nm{font-family:var(--f-display);font-weight:700;font-size:calc(var(--b)*.95);color:var(--white);line-height:1.15}
 .kin .sb{font-size:12.5px;color:var(--muted);line-height:1.3}
-.kinmore{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-content:start}
+.kinmore{display:grid;grid-template-columns:minmax(0,1.1fr) repeat(3,minmax(0,1fr));gap:8px;grid-template-rows:minmax(0,1fr)}
+@media (max-width:1100px){.kinmore{grid-template-columns:repeat(3,minmax(0,1fr))}.kinmore .kfig{grid-column:1/-1}}
 @media (max-width:860px){.kinmore{grid-template-columns:1fr}}
+/* gutters: the content fills the page; the photo sits beside the three cards */
+[data-slide-id="s11-relatives"]{--pgut:clamp(8px,1vw,18px)}
+[data-slide-id="s11-relatives"] .inner{max-width:none;gap:clamp(8px,1.4vh,16px);padding-block:clamp(8px,1.6vh,18px)}
+[data-slide-id="s11-relatives"] .kinmore .card{padding:clamp(10px,1.4vh,20px) clamp(12px,1.2vw,20px)}
+[data-slide-id="s11-relatives"] .kinmore .card p{font-size:calc(var(--b)*1.08);line-height:1.45}
+/* the row never shrinks below the card text: with notes open the slide scrolls instead of the text running over the quote */
+[data-slide-id="s11-relatives"] .kinmore{min-height:auto}
+@media (min-width:1101px){.kfig:not(.wide) img{contain:size}}  /* the photo fills the row the text sets; it never makes the row taller */
+.kfig{margin:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:6px;background:var(--plate);padding:8px 8px 10px;min-height:0}
+.kfig img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;background:#06121E}
+.kfig.wide{align-self:start;grid-template-rows:auto auto}
+.kfig.wide img{height:auto}
+.kfig figcaption{display:grid;gap:3px;align-content:start;font-size:13px;line-height:1.4;color:var(--muted)}
+.kfig figcaption b{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*.92);color:var(--white)}
+@media (max-width:1100px){.kfig img{height:auto;max-height:240px}}
 .kinmore .card h3{font-size:calc(var(--b)*.8);font-family:var(--f-display);text-transform:uppercase;letter-spacing:.12em;color:var(--red-dk)}
 .voice{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*1.02);line-height:1.35;color:var(--white);border-left:3px solid var(--magenta);padding:6px 0 6px 14px;max-width:90ch}
 .voice cite{display:block;font-family:var(--f-body);font-style:normal;font-weight:400;font-size:13px;color:var(--muted);margin-top:4px}
@@ -433,27 +636,34 @@ blockquote{margin:0}
  data-notes="<span class='must'>Must land:</span> why we are here, in one breath. [PLACEHOLDER: PF opening, greeting, and land and water acknowledgment in his voice; name the Nations whose homelands host this session.] Then: four questions, one river, and no test.">
   <div class="hallcopy">
     <span class="label red">Columbia River Climate Change Teachers Program</span>
-    <h1 class="display">Understanding a<br>Climate of Change</h1>
+    <h1 class="display"><span class="kick">Understanding a</span> <span class="main">Climate of Change</span></h1>
     <span class="byline">Patrick Freeland and Cayla Jones · ATNI Climate</span>
-    <p>Four questions, one river. Shared with respectful communication so that <span class="r">both an Elder and a child</span> can understand; the surest sign you understand something is being able to pass it on.</p>
+    <p class="stanza"><span class="ln">Four questions, one river. Shared with respectful communication</span> <span class="ln">so that <span class="r">both an Elder and a child</span> can understand;</span> <span class="ln">the surest sign you understand something is being able to pass it on.</span></p>
   </div>
-  <img class="seal" src="img/atni-seal.png" alt="Affiliated Tribes of Northwest Indians seal">
+  <img class="sig" src="img/atni-climate-lockup-on-dark.png" alt="ATNI Climate">
 </section>
 
 <!-- S2 FOUR QUESTIONS (Plate) -->
 <section class="slide plate" data-slide-id="s02-four-questions" data-bg="sound" data-part="0" data-min="1" data-title="Four questions"
- data-notes="Read the quote slowly, then walk the four cards; each is a door to come back through. Name the themes once: cycles, relationships, local observation, critical thinking, intergenerational knowledge, change (felt as well as measured), and scale, from the frog's eye to the moon's eye. Say it plainly: there is no test here, only reflections and questions that lead to more questions. Cards are clickable.">
+ data-notes="Read the opening line, then walk the four cards; each is a door to come back through. Name the themes once: cycles, relationships, local observation, critical thinking, intergenerational knowledge, change (felt as well as measured), and scale, from the frog's eye to the moon's eye. Say it plainly: there is no test here, only reflections and questions that lead to more questions. Cards are clickable.">
   <div class="inner">
-    <blockquote class="lead">&ldquo;Think&hellip; when both an Elder and a Child can understand, then this is where learning happens.&rdquo;</blockquote>
-    <div class="head"><span class="label red">Four Questions, One River</span></div>
+    <h2 class="lead">Four Questions to think about&hellip;</h2>
     <div class="agenda">
-      <button data-jump="1"><span class="n">1</span><h3>How Does a Cloud Work?</h3><p>Have you ever looked up and thought about how water moves into the sky and comes down as rain and snow?</p></button>
-      <button data-jump="2"><span class="n">2</span><h3>How Do You Know What You Know?</h3><p>Connect what you can see in your own backyard with the graphs, maps, and numbers that help us understand our changing world.</p></button>
-      <button data-jump="3"><span class="n">3</span><h3>What Can We Do?</h3><p>Break down big words like mitigation, adaptation, and resilience into real-world steps you, your family, and your community can take.</p></button>
-      <button data-jump="4"><span class="n">4</span><h3>How Do We Work Together?</h3><p>Relationships matter. No single person, scientific report, or action plan has all the answers.</p></button>
+      <button data-jump="1"><span class="n">1</span><span class="tx"><h3>How Does a Cloud Work?</h3><p>Have you ever looked up at the sky and thought: how does a cloud form and become rain and snow?</p></span></button>
+      <button data-jump="2"><span class="n">2</span><span class="tx"><h3>How Do You Know What You Know?</h3><p>Connect what you can see in your own backyard with the graphs, maps, and numbers that help us understand our changing world.</p></span></button>
+      <button data-jump="3"><span class="n">3</span><span class="tx"><h3>What Can We Do?</h3><p>Break down big words like mitigation, adaptation, and resilience into real-world steps you, your family, and your community can take.</p></span></button>
+      <button data-jump="4"><span class="n">4</span><span class="tx"><h3>How Do We Work Together?</h3><p>Relationships matter. No single person, scientific report, or action plan has all the answers.</p></span></button>
     </div>
-    <div class="themes"><span class="label">Themes</span><span>Cycles</span><span>Relationships</span><span>Local observation</span><span>Critical thinking</span><span>Intergenerational knowledge</span><span>Change, felt as well as measured</span><span>Scale: frog&rsquo;s eye, bird&rsquo;s eye, moon&rsquo;s eye</span></div>
-    <p class="cap">There is no test here, only reflections and encouraging inquiry; education is not a race, and questions leading to questions let each of us choose what to carry forward.</p>
+    <div class="themes"><span class="label">Themes</span><ul>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M18.2 2.6v3.9h-3.9"/></svg>Cycles</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></svg>Relationships</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Local observation</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.2 9.4a2.9 2.9 0 1 1 4.2 2.6c-.9.5-1.4 1.1-1.4 2.2"/><circle class="f" cx="12" cy="17.3" r="1"/></svg>Critical thinking</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="5.5" r="2.6"/><path d="M3.5 21v-6a4.5 4.5 0 0 1 9 0v6"/><circle cx="17.5" cy="10.5" r="2"/><path d="M14.5 21v-3.5a3 3 0 0 1 6 0V21"/></svg>Intergenerational knowledge</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14.2V4.5a2 2 0 0 1 4 0v9.7a4 4 0 1 1-4 0z"/><path d="M12 9v7"/><path d="M17 6h3M17 9.5h2"/></svg>Change, felt as well as measured</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="9.5"/></svg>Scale: frog&rsquo;s eye, bird&rsquo;s eye, moon&rsquo;s eye</li>
+    </ul></div>
+    <p class="cap"><span class="ln">No tests or memorizing facts, only exploration and reflection.</span> <span class="ln"><span class="r">Education is not a race.</span> It is a journey of experiences.</span></p>
   </div>
 </section>
 
@@ -462,14 +672,14 @@ blockquote{margin:0}
  data-notes="Ask the room to picture the last cloud they watched. Take two or three answers. We start with a cloud because everyone knows what it is, but many may not have thought through how it works. That gap is the lesson. Do not correct anyone yet.">
   <div class="hallcopy">
     <span class="label red">Part One</span>
-    <div class="display">How Does a<br>Cloud Work?</div>
-    <p>Have you ever looked up and thought about how water moves into the sky and <span class="r">comes down as rain and snow</span>?</p>
+    <div class="display">How Does a Cloud Work?</div>
+    <p><span class="ln">Have you ever looked up at the sky and thought:</span> <span class="ln">how does a cloud form and <span class="r">become rain and snow</span>?</span></p>
   </div>
 </section>
 
 <!-- S4 CLOUD MACHINE (Plate) -->
 <section class="slide plate" data-slide-id="s04-cloud-tool" data-bg="hood" data-part="1" data-min="3" data-title="Lift the air"
- data-notes="<span class='must'>Must land:</span> air pushed up a mountain cools; cool air holds less water; the extra water becomes cloud, then rain or snow, mostly on the side facing the ocean. Coming down the far side, the air warms and dries; that is the rain shadow the Columbia Plateau lives in. Start on Winter and press 'Send the air inland.' Point to the snow line on the Cascades. Switch to Atmospheric River: warm, wet air, heavy rain, and rain falling on snow. Then press 'Warm the world 2 °C' and read the comparison line: the snow line climbs about 300 m and the same storm carries more water. Warmer air can hold about 7 percent more water vapor for each degree Celsius. Summer with high humidity builds a thunderhead over the crest. This is a teaching model (standard lapse rates and the Magnus approximation, with the air steered over the ridge line), not a forecast.">
+ data-notes="<span class='must'>Must land:</span> air pushed up a mountain cools; cool air holds less water; the extra water becomes cloud, then rain or snow, mostly on the side facing the ocean. Coming down the far side, the air warms and dries; that is the rain shadow the Columbia Plateau lives in. Start on Winter and press 'Send the air inland.' Point to the snow line on the Cascades. Switch to Atmospheric River: warm, wet air, heavy rain, and rain falling on snow. Then press 'Warm the world 2 °C' and read the comparison line: the snow line climbs about 300 m and the same storm carries more water. Warmer air can hold about 7 percent more water vapor for each degree Celsius. Summer with high humidity builds a thunderhead over the crest. Select any cloud (click, tap, or Tab to it and press Enter) to show its name, a photo, and what it tells you; the card starts on the main cloud in the picture. Play the weather runs a short example: each one sets the season, temperature, and humidity, steps through what changes, and stops when you touch a season or a slider. Warm front is the one to slow down on: cirrus, then a milky veil, then altostratus, then nimbostratus with steady rain. Time of day relights the sky and clouds; it does not change the model. This is a teaching model (standard lapse rates and the Magnus approximation, with the air steered over the ridge line; the marine fog example adds a lid of warm, dry air over the ocean layer), not a forecast. Hand twin: Cloud in a Bottle (Grades 6 to 12, Lesson 1.1). Squeeze and release a bottle with a little warm water and smoke, and a cloud appears as the air expands and cools. To practice names, hold up printed cloud photos and sort them from low to high.">
   <div class="inner fit">
     <div class="headrow"><div class="head"><span class="label red">Part One · Try It</span><h2>Follow the Air from the Ocean over the Mountains</h2></div><p class="ask"><span class="label">Ask the room</span>Which side of the mountains do you live on, and what does that mean for your rain and snow?</p></div>
     <div class="cm stretch">
@@ -477,25 +687,38 @@ blockquote{margin:0}
         <div class="seg seasons" id="cmSeason" role="group" aria-label="Choose a season">
           <button data-s="winter" aria-pressed="true">Winter</button><button data-s="spring" aria-pressed="false">Spring</button><button data-s="summer" aria-pressed="false">Summer</button><button data-s="fall" aria-pressed="false">Fall</button><button data-s="ar" aria-pressed="false">Atmospheric River</button>
         </div>
-        <svg id="cmSvg" viewBox="0 0 800 430" preserveAspectRatio="xMidYMax meet" role="img" aria-labelledby="cmTitle">
-          <title id="cmTitle">A slice of the land from the Pacific Ocean over the Coast Range and the Cascades to the Columbia Plateau, showing air rising over the mountains, the clouds that form, and where rain and snow fall</title>
+        <div class="cmsky">
+        <svg id="cmSvg" viewBox="0 0 800 430" preserveAspectRatio="xMidYMax meet" role="group" aria-labelledby="cmTitle">
+          <title id="cmTitle">A slice of the land from the Pacific Ocean over the Coast Range and the Cascades to the Columbia Plateau, showing air rising over the mountains, the clouds that form, and where rain and snow fall. Each cloud is a button that names it.</title>
+          <defs id="ck-defs"></defs>
           <defs>
-            <linearGradient id="cmSky" x1="0" y1="0" x2="0" y2="1"><stop id="cmSky0" offset="0" stop-color="#0B1A2A"/><stop id="cmSky1" offset="1" stop-color="#14283C"/></linearGradient>
             <linearGradient id="cmLand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C3B2E"/><stop offset="1" stop-color="#18211A"/></linearGradient>
             <linearGradient id="cmDry" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A4232"/><stop offset="1" stop-color="#2A261E"/></linearGradient>
+            <radialGradient id="cmGlowW"><stop offset="0" stop-color="#FFE7B8" stop-opacity=".95"/><stop offset=".18" stop-color="#FFC98A" stop-opacity=".55"/><stop offset="1" stop-color="#FF9F5A" stop-opacity="0"/></radialGradient>
+            <radialGradient id="cmGlowD"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"/><stop offset=".2" stop-color="#FFF8DC" stop-opacity=".4"/><stop offset="1" stop-color="#FFF8DC" stop-opacity="0"/></radialGradient>
+            <radialGradient id="cmGlowN"><stop offset="0" stop-color="#F4F7FA" stop-opacity=".8"/><stop offset=".25" stop-color="#C9D6E6" stop-opacity=".22"/><stop offset="1" stop-color="#C9D6E6" stop-opacity="0"/></radialGradient>
           </defs>
-          <rect x="0" y="0" width="800" height="430" fill="url(#cmSky)"/>
+          <rect x="-800" y="-430" width="2400" height="860" fill="url(#ck-sky)"/>
+          <g id="cmSun"></g>
+          <rect id="cmGrey" x="-800" y="-430" width="2400" height="860" opacity="0"/>
           <g id="cmAxis"></g>
           <g id="cmGround"></g>
           <g id="cmSnow"></g>
+          <g id="cmBack"></g>
           <path id="cmWind" class="wind" fill="none" stroke="rgba(232,236,240,.35)" stroke-width="1.6" stroke-dasharray="2 10"/>
           <g id="cmClouds"></g>
-          <g id="cmFall"></g>
+          <g id="cmFront"></g>
           <g id="cmLabels"></g>
           <g id="cmBars"></g>
           <text id="cmNote" class="cmnote" x="400" y="20" text-anchor="middle"></text>
-          <g id="cmParcel"><line id="cmStem" stroke="rgba(232,236,240,.5)" stroke-dasharray="3 3"/><circle id="cmDot" r="9" fill="rgba(156,199,240,.3)" stroke="#E8ECF0" stroke-width="2"/></g>
         </svg>
+        <svg class="cmtop" viewBox="0 0 800 430" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><g id="cmParcel"><line id="cmStem" stroke="rgba(232,236,240,.5)" stroke-dasharray="3 3"/><circle id="cmDot" r="9" fill="rgba(156,199,240,.3)" stroke="#E8ECF0" stroke-width="2"/></g></svg>
+        <span class="label cmtag" aria-hidden="true">Select any cloud</span><span class="label cmtag r8">Teaching model</span>
+        </div>
+        <div class="cmrow">
+          <span class="label" id="cmTodL">Time of day</span><div class="seg" id="cmTod" role="group" aria-labelledby="cmTodL"><button data-l="dawn" aria-pressed="false">Dawn</button><button data-l="day" aria-pressed="true">Day</button><button data-l="dusk" aria-pressed="false">Dusk</button><button data-l="night" aria-pressed="false">Night</button></div>
+          <span class="label" id="cmExL">Play the weather</span><div class="seg" id="cmEx" role="group" aria-labelledby="cmExL"><button data-x="fog" aria-pressed="false">Marine fog</button><button data-x="fair" aria-pressed="false">Fair day</button><button data-x="storm" aria-pressed="false">Thunderstorm</button><button data-x="ar" aria-pressed="false">Atmospheric river</button><button data-x="front" aria-pressed="false">Warm front</button><button data-x="wave" aria-pressed="false">Mountain wave</button><button data-x="snow" aria-pressed="false">Snow day</button></div>
+        </div>
       </div>
       <div class="ctl">
         <label for="cmT">Air temperature at the coast <b id="cmTv"></b><input id="cmT" type="range" min="-2" max="32" step="1" value="7"></label>
@@ -508,8 +731,11 @@ blockquote{margin:0}
           <div><div class="v" id="cmWs"></div><div class="l">Water it can hold here</div></div>
           <div class="hot"><div class="v" id="cmFallV"></div><div class="l">Reaching the ground</div></div>
         </div>
-        <div class="ctype" id="cmType"></div>
         <div class="status" id="cmMsg"></div>
+        <div class="cmcard">
+          <div class="cmph" id="cmPh" hidden><img id="cmImg" alt="" width="960" height="600" decoding="async"><span id="cmCred"></span></div>
+          <div aria-live="polite"><p class="cmhd"><b id="cmName"></b><span id="cmFam"></span></p><p id="cmDesc"></p><p class="cmlook" id="cmLookP"><b>Look for:</b> <span id="cmLook"></span></p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -522,47 +748,108 @@ blockquote{margin:0}
     <div class="headrow"><div class="head"><span class="label red">Part One · Weather and Climate</span><h2>Same Gauges, Longer Time</h2></div><p class="ask"><span class="label">Ask the room</span>What would you measure where you live, and for how long?</p></div>
     <div class="inst" id="inst">
       <button aria-expanded="false" data-i="0">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <g stroke="#9CC7F0" stroke-width="2" stroke-linecap="round"><line class="drop" x1="44" y1="10" x2="42" y2="18"/><line class="drop" style="animation-delay:.45s" x1="62" y1="6" x2="60" y2="14"/><line class="drop" style="animation-delay:.9s" x1="78" y1="12" x2="76" y2="20"/></g>
-          <path d="M36 34 L84 34 L74 44 L46 44 Z" fill="none" stroke="#E8ECF0" stroke-width="2.5"/>
-          <rect x="46" y="44" width="28" height="64" fill="none" stroke="#E8ECF0" stroke-width="2.5"/>
-          <rect class="fillup" x="48.5" y="54" width="23" height="52" fill="rgba(94,151,201,.75)"/>
-          <g stroke="#8A94A6" stroke-width="1.5"><line x1="74" y1="56" x2="80" y2="56"/><line x1="74" y1="68" x2="78" y2="68"/><line x1="74" y1="80" x2="80" y2="80"/><line x1="74" y1="92" x2="78" y2="92"/></g>
+        <svg viewBox="0 0 160 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="g5rg-glass" x1="0" x2="1"><stop offset="0" stop-color="#E8ECF0" stop-opacity=".26"/><stop offset=".22" stop-color="#E8ECF0" stop-opacity=".06"/><stop offset=".72" stop-color="#E8ECF0" stop-opacity=".03"/><stop offset=".88" stop-color="#E8ECF0" stop-opacity=".2"/><stop offset="1" stop-color="#E8ECF0" stop-opacity=".08"/></linearGradient>
+            <linearGradient id="g5rg-water" x1="0" x2="1"><stop offset="0" stop-color="#2F5F8C"/><stop offset=".45" stop-color="#6FA6D6"/><stop offset="1" stop-color="#2A557E"/></linearGradient>
+            <linearGradient id="g5rg-funnel" x1="0" x2="1"><stop offset="0" stop-color="#8A94A6"/><stop offset=".45" stop-color="#E8ECF0"/><stop offset="1" stop-color="#5C6672"/></linearGradient>
+            <linearGradient id="g5rg-post" x1="0" x2="1"><stop offset="0" stop-color="#5A4632"/><stop offset=".5" stop-color="#3A2E24"/><stop offset="1" stop-color="#241F1B"/></linearGradient>
+            <clipPath id="g5rg-tube"><rect x="73.5" y="47" width="13" height="61"/></clipPath>
+            <path id="g5rg-d" d="M0-4.5C1.4-1.6 2.3 0 2.3 1.4A2.3 2.3 0 0 1-2.3 1.4C-2.3 0-1.4-1.6 0-4.5Z"/>
+          </defs>
+          <g fill="#9CC7F0"><use href="#g5rg-d" class="g5-far" x="18" y="6" style="animation-delay:-.2s"/><use href="#g5rg-d" class="g5-far" x="38" y="6" style="animation-delay:-.75s"/><use href="#g5rg-d" class="g5-far" x="132" y="6" style="animation-delay:-.5s"/><use href="#g5rg-d" class="g5-far" x="150" y="6" style="animation-delay:-1.05s"/></g>
+          <rect x="-40" y="112" width="240" height="8" fill="#10161D"/><path d="M-40 112H200" stroke="#A7C48A" stroke-opacity=".6"/>
+          <path d="M24 112q-1-5-4-7M26 112q0-6 2-9M28 112q2-4 5-5M128 112q-1-5-4-7M130 112q0-6 2-9M132 112q2-4 5-5M44 112q0-4 2-6M46 112q1-3 4-4M-12 112q-1-5-4-7M-10 112q0-6 2-9M176 112q-1-5-4-7M178 112q0-6 2-9M180 112q2-4 5-5" fill="none" stroke="#A7C48A" stroke-linecap="round"/>
+          <rect x="104" y="44" width="10" height="70" fill="url(#g5rg-post)"/><rect x="103" y="42" width="12" height="3" fill="#5A4632"/>
+          <g fill="#8A94A6"><rect x="96" y="58" width="8" height="3"/><rect x="96" y="96" width="8" height="3"/></g>
+          <rect x="64" y="40" width="32" height="72" rx="2" fill="url(#g5rg-glass)" stroke="#E8ECF0" stroke-opacity=".75" stroke-width="1.2"/>
+          <rect x="72.5" y="46" width="15" height="63" fill="#010B13" fill-opacity=".45" stroke="#E8ECF0" stroke-width="1.2"/>
+          <g clip-path="url(#g5rg-tube)"><g class="g5-level"><rect x="73.5" y="56" width="13" height="56" fill="url(#g5rg-water)"/><ellipse cx="80" cy="56" rx="6.5" ry="1.3" fill="#9CC7F0"/></g></g>
+          <path d="M84.5 102h2.5M84.5 96h2.5M84.5 90h2.5M84.5 84h2.5M82 78h5M84.5 72h2.5M84.5 66h2.5M84.5 60h2.5M84.5 54h2.5M82 48h5" stroke="#E8ECF0" stroke-width=".8"/>
+          <rect x="66.5" y="44" width="2.2" height="64" rx="1.1" fill="#FFFFFF" fill-opacity=".3"/><rect x="74.6" y="49" width="1.2" height="58" fill="#FFFFFF" fill-opacity=".35"/>
+          <path d="M62 36L98 36L84.5 48L75.5 48Z" fill="url(#g5rg-funnel)" fill-opacity=".85" stroke="#E8ECF0"/>
+          <ellipse cx="80" cy="36" rx="18" ry="3.2" fill="#010B13" stroke="#E8ECF0" stroke-width="1.5"/>
+          <g fill="#9CC7F0"><use href="#g5rg-d" class="g5-drop" x="66" y="2" style="animation-delay:-.5s"/><use href="#g5rg-d" class="g5-drop" x="71" y="2" style="animation-delay:-.1s"/><use href="#g5rg-d" class="g5-drop" x="78" y="2" style="animation-delay:-.35s"/><use href="#g5rg-d" class="g5-drop" x="85" y="2" style="animation-delay:-.62s"/><use href="#g5rg-d" class="g5-drop" x="92" y="2" style="animation-delay:-.82s"/></g>
+          <g fill="none" stroke="#9CC7F0" stroke-width=".9"><ellipse class="g5-splash" cx="66" cy="36" rx="3" ry=".9" style="animation-delay:-.5s"/><ellipse class="g5-splash" cx="71" cy="36" rx="3" ry=".9" style="animation-delay:-.1s"/><ellipse class="g5-splash" cx="78" cy="36" rx="3" ry=".9" style="animation-delay:-.35s"/><ellipse class="g5-splash" cx="85" cy="36" rx="3" ry=".9" style="animation-delay:-.62s"/><ellipse class="g5-splash" cx="92" cy="36" rx="3" ry=".9" style="animation-delay:-.82s"/></g>
         </svg>
         <h3>Rain Gauge</h3><span class="unit">reads: inches of rain</span>
       </button>
       <button aria-expanded="false" data-i="1">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <rect x="52" y="12" width="16" height="78" fill="none" stroke="#E8ECF0" stroke-width="2.5"/>
-          <circle cx="60" cy="98" r="13" fill="#E13D33"/>
-          <rect class="mercury" x="56" y="24" width="8" height="70" fill="#E13D33"/>
-          <g stroke="#8A94A6" stroke-width="1.5"><line x1="70" y1="24" x2="78" y2="24"/><line x1="70" y1="38" x2="75" y2="38"/><line x1="70" y1="52" x2="78" y2="52"/><line x1="70" y1="66" x2="75" y2="66"/><line x1="70" y1="80" x2="78" y2="80"/></g>
-          <circle class="blink" cx="96" cy="24" r="9" fill="none" stroke="#F26B5E" stroke-width="2"/><g stroke="#F26B5E" stroke-width="2"><line x1="96" y1="8" x2="96" y2="12"/><line x1="96" y1="36" x2="96" y2="40"/><line x1="80" y1="24" x2="84" y2="24"/><line x1="108" y1="24" x2="112" y2="24"/></g>
+        <svg viewBox="0 0 160 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="g5th-glass" x1="0" x2="1"><stop offset="0" stop-color="#E8ECF0" stop-opacity=".3"/><stop offset=".25" stop-color="#E8ECF0" stop-opacity=".06"/><stop offset=".7" stop-color="#E8ECF0" stop-opacity=".03"/><stop offset="1" stop-color="#E8ECF0" stop-opacity=".22"/></linearGradient>
+            <linearGradient id="g5th-red" x1="0" x2="1"><stop offset="0" stop-color="#9E241C"/><stop offset=".45" stop-color="#F26B5E"/><stop offset="1" stop-color="#B8291F"/></linearGradient>
+            <radialGradient id="g5th-bulb" cx="38%" cy="35%" r="70%"><stop offset="0" stop-color="#F7A39A"/><stop offset=".35" stop-color="#E13D33"/><stop offset="1" stop-color="#7A1A14"/></radialGradient>
+            <radialGradient id="g5th-glow"><stop offset="0" stop-color="#F26B5E" stop-opacity=".5"/><stop offset="1" stop-color="#F26B5E" stop-opacity="0"/></radialGradient>
+            <clipPath id="g5th-sky"><rect x="92" y="0" width="68" height="97"/></clipPath>
+          </defs>
+          <g clip-path="url(#g5th-sky)"><g class="g5-sun"><circle cx="128" cy="30" r="20" fill="url(#g5th-glow)"/><circle cx="128" cy="30" r="8" fill="#F26B5E" fill-opacity=".25" stroke="#F26B5E" stroke-width="1.8"/><path d="M128 14v4M128 42v4M112 30h4M140 30h4M116.7 18.7l2.8 2.8M139.3 18.7l-2.8 2.8M116.7 41.3l2.8-2.8M139.3 41.3l-2.8-2.8" stroke="#F26B5E" stroke-width="1.8" stroke-linecap="round"/></g></g>
+          <path d="M-40 92C-24 88-12 90 0 95C20 89 38 91 60 95S104 90 126 95S148 88 160 91S188 90 200 94V120H-40Z" fill="#10161D"/><path d="M-40 92C-24 88-12 90 0 95C20 89 38 91 60 95S104 90 126 95S148 88 160 91S188 90 200 94" fill="none" stroke="#8A94A6" stroke-opacity=".55"/>
+          <path d="M8 95q-1-5-3-7M10 95q0-6 2-8M12 95q2-4 4-5M138 93q-1-5-3-7M140 93q0-6 2-8M142 93q2-4 4-5" fill="none" stroke="#A7C48A" stroke-linecap="round"/>
+          <rect x="44" y="4" width="42" height="112" rx="3" fill="#1E242C" stroke="#E8ECF0" stroke-opacity=".3"/><circle cx="65" cy="9" r="1.6" fill="#010B13"/>
+          <path d="M72 26h8M72 46h8M72 66h8M72 86h8M72 30h4M72 34h4M72 38h4M72 42h4M72 50h4M72 54h4M72 58h4M72 62h4M72 70h4M72 74h4M72 78h4M72 82h4M72 90h4" stroke="#E8ECF0" stroke-opacity=".85" stroke-width=".9"/>
+          <path d="M50 28h6M50 46h6M50 64h6M50 82h6M53 34h3M53 40h3M53 52h3M53 58h3M53 70h3M53 76h3M53 88h3" stroke="#8A94A6" stroke-width=".9"/>
+          <circle cx="64" cy="102" r="10.5" fill="#010B13" fill-opacity=".4" stroke="#E8ECF0" stroke-width="1.2"/>
+          <rect x="58" y="14" width="12" height="86" rx="6" fill="url(#g5th-glass)" stroke="#E8ECF0" stroke-width="1.2"/>
+          <rect x="62.5" y="18" width="3" height="82" fill="#010B13" fill-opacity=".6"/>
+          <rect class="g5-liquid" x="62.5" y="26" width="3" height="74" fill="url(#g5th-red)"/>
+          <circle cx="64" cy="102" r="9" fill="url(#g5th-bulb)"/>
+          <rect x="59.6" y="18" width="1.6" height="78" rx=".8" fill="#FFFFFF" fill-opacity=".35"/><ellipse cx="60.6" cy="98.6" rx="2.2" ry="3" fill="#FFFFFF" fill-opacity=".5"/>
         </svg>
         <h3>Thermometer</h3><span class="unit">reads: degrees</span>
       </button>
       <button aria-expanded="false" data-i="2">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <path class="flow" d="M4 64 Q24 58 44 64 T84 64 T124 64" fill="none" stroke="#5E97C9" stroke-width="2.5" stroke-dasharray="10 10"/>
-          <rect x="4" y="66" width="112" height="46" fill="rgba(94,151,201,.28)"/>
-          <path class="flow" d="M4 84 Q24 78 44 84 T84 84 T124 84" fill="none" stroke="#5E97C9" stroke-width="1.5" stroke-dasharray="8 12" style="animation-duration:3s"/>
-          <line x1="60" y1="10" x2="60" y2="70" stroke="#E8ECF0" stroke-width="2.5"/>
-          <rect x="52" y="70" width="16" height="30" fill="#1E242C" stroke="#E8ECF0" stroke-width="2.5"/>
-          <g stroke="#E8ECF0" stroke-width="2"><line x1="55" y1="100" x2="55" y2="106"/><line x1="60" y1="100" x2="60" y2="108"/><line x1="65" y1="100" x2="65" y2="106"/></g>
-          <circle class="bub" cx="48" cy="104" r="2.5" fill="#9CC7F0"/><circle class="bub" style="animation-delay:.9s" cx="74" cy="106" r="2" fill="#9CC7F0"/><circle class="bub" style="animation-delay:1.7s" cx="40" cy="108" r="1.8" fill="#9CC7F0"/>
-          <rect x="44" y="10" width="32" height="16" fill="#1E242C" stroke="#8A94A6" stroke-width="1.5"/><circle class="blink" cx="68" cy="18" r="2.5" fill="#F26B5E"/>
+        <svg viewBox="0 0 160 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="g5wq-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5E97C9" stop-opacity=".55"/><stop offset=".5" stop-color="#2F5F8C" stop-opacity=".55"/><stop offset="1" stop-color="#0E2740" stop-opacity=".85"/></linearGradient>
+            <linearGradient id="g5wq-metal" x1="0" x2="1"><stop offset="0" stop-color="#3B434D"/><stop offset=".4" stop-color="#C9D1DA"/><stop offset=".65" stop-color="#8A94A6"/><stop offset="1" stop-color="#2A3038"/></linearGradient>
+            <linearGradient id="g5wq-bed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2E24"/><stop offset="1" stop-color="#241F1B"/></linearGradient>
+            <radialGradient id="g5wq-rock" cx="40%" cy="30%" r="75%"><stop offset="0" stop-color="#6B7480"/><stop offset="1" stop-color="#2A3038"/></radialGradient>
+            <linearGradient id="g5wq-ray" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9CC7F0" stop-opacity=".18"/><stop offset="1" stop-color="#9CC7F0" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect x="-40" y="42" width="240" height="78" fill="url(#g5wq-water)"/><rect x="-40" y="42" width="240" height="3" fill="#9CC7F0" fill-opacity=".12"/>
+          <path d="M20 42H34L22 100H10ZM60 42H68L58 96H50ZM118 42H130L120 100H108ZM-24 42H-14L-24 96H-34ZM164 42H174L166 100H156Z" fill="url(#g5wq-ray)"/>
+          <g fill="none" stroke="#9CC7F0" stroke-linecap="round"><path class="g5-cur" d="M-44 55C-10 57 30 53 60 57S120 54 150 56S190 54 204 55" stroke-opacity=".45" stroke-width="1.2" stroke-dasharray="14 22" style="animation-duration:1.1s"/><path class="g5-cur" d="M-44 73C-10 75 30 71 60 75S120 72 150 74S190 72 204 73" stroke-opacity=".32" stroke-dasharray="10 26" style="animation-duration:1.7s"/><path class="g5-cur" d="M-44 91C-10 93 30 90 60 93S120 91 150 92S190 90 204 91" stroke-opacity=".22" stroke-width=".9" stroke-dasharray="8 28" style="animation-duration:2.8s"/></g>
+          <g fill="#C9B79A"><circle class="g5-sed" cx="-45" cy="64" r=".9" style="animation-delay:-1s"/><circle class="g5-sed" cx="-45" cy="82" r="1.1" style="animation-duration:7s;animation-delay:-3s"/><circle class="g5-sed" cx="-45" cy="70" r=".8" style="animation-delay:-4.5s"/><circle class="g5-sed" cx="-45" cy="98" r="1" style="animation-duration:9s;animation-delay:-2s"/></g>
+          <path d="M-40 106C-24 103-10 104 0 106C18 102 36 109 58 105S96 102 118 106S148 103 160 105S188 104 200 106V120H-40Z" fill="url(#g5wq-bed)"/>
+          <g fill="url(#g5wq-rock)"><ellipse cx="16" cy="107" rx="11" ry="5"/><ellipse cx="44" cy="110" rx="7" ry="4"/><ellipse cx="68" cy="112" rx="5" ry="2.5"/><ellipse cx="128" cy="108" rx="9" ry="4.5"/><ellipse cx="150" cy="111" rx="6" ry="3.5"/><ellipse cx="-20" cy="109" rx="8" ry="4"/><ellipse cx="178" cy="108" rx="9" ry="4.5"/></g>
+          <rect x="99" y="18" width="4" height="96" fill="url(#g5wq-metal)"/>
+          <path d="M92 22C90 40 82 48 76 58" fill="none" stroke="#8A94A6" stroke-width="1.6"/>
+          <path d="M90 7H114L110 1H94Z" fill="#2F5F8C" stroke="#9CC7F0" stroke-width=".8"/><path d="M102 1V7M92 4H112" stroke="#9CC7F0" stroke-width=".5"/>
+          <rect x="88" y="8" width="26" height="14" rx="1.5" fill="#1E242C" stroke="#E8ECF0" stroke-width="1.2"/><circle class="g5-led" cx="108" cy="15" r="1.8" fill="#F26B5E"/>
+          <path class="g5-wave" d="M-40 42q10-2.6 20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0t20 0" fill="none" stroke="#9CC7F0" stroke-width="1.5"/>
+          <g class="g5-sway">
+            <rect x="71" y="58" width="10" height="34" rx="2.5" fill="url(#g5wq-metal)" stroke="#E8ECF0"/><rect x="71" y="66" width="10" height="3" fill="#E13D33"/>
+            <g fill="#9CC7F0"><rect x="72.5" y="93" width="2" height="7"/><rect x="75" y="93" width="2" height="8.5"/><rect x="77.5" y="93" width="2" height="6"/></g>
+            <path d="M70 92H82M70 103H82M70 92V103M82 92V103M74.5 92V103M78 92V103" fill="none" stroke="#E8ECF0" stroke-width=".9"/>
+          </g>
+          <g fill="#9CC7F0" fill-opacity=".2" stroke="#9CC7F0" stroke-width=".7"><circle class="g5-bub" cx="73" cy="100" r="1.6" style="animation-delay:-.3s"/><circle class="g5-bub" cx="79" cy="102" r="1.2" style="animation-delay:-1.2s"/><circle class="g5-bub" cx="76" cy="104" r="1" style="animation-delay:-2s"/><circle class="g5-bub" cx="40" cy="106" r="1.3" style="animation-duration:3.4s;animation-delay:-1.8s"/></g>
         </svg>
         <h3>Water Quality</h3><span class="unit">reads: temperature, oxygen, clarity</span>
       </button>
       <button aria-expanded="false" data-i="3">
-        <svg viewBox="0 0 120 120" aria-hidden="true">
-          <path d="M6 34 Q20 28 34 34 T62 34 T90 34 T118 34" fill="none" stroke="#A7C48A" stroke-width="2"/>
-          <g stroke="#A7C48A" stroke-width="2" stroke-linecap="round"><line x1="20" y1="34" x2="20" y2="22"/><line x1="20" y1="26" x2="15" y2="21"/><line x1="96" y1="34" x2="96" y2="20"/><line x1="96" y1="25" x2="101" y2="20"/></g>
-          <rect x="6" y="36" width="108" height="24" fill="#3A2E24"/><rect x="6" y="60" width="108" height="26" fill="#2E2620"/><rect x="6" y="86" width="108" height="28" fill="#241F1B"/>
-          <rect class="soak" x="6" y="36" width="108" height="60" fill="rgba(94,151,201,.35)"/>
-          <line x1="60" y1="16" x2="60" y2="106" stroke="#E8ECF0" stroke-width="2.5"/>
-          <g fill="#E8ECF0"><rect x="55" y="46" width="10" height="5"/><rect x="55" y="72" width="10" height="5"/><rect x="55" y="98" width="10" height="5"/></g>
-          <rect x="48" y="8" width="24" height="12" fill="#1E242C" stroke="#8A94A6" stroke-width="1.5"/><circle class="blink" cx="66" cy="14" r="2.3" fill="#F26B5E"/>
+        <svg viewBox="0 0 160 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="g5sm-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A2119"/><stop offset="1" stop-color="#3A2E24"/></linearGradient>
+            <linearGradient id="g5sm-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4E3B2A"/><stop offset="1" stop-color="#5A4632"/></linearGradient>
+            <linearGradient id="g5sm-c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3D3731"/><stop offset="1" stop-color="#2E2924"/></linearGradient>
+            <linearGradient id="g5sm-wet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14304D" stop-opacity=".6"/><stop offset=".82" stop-color="#14304D" stop-opacity=".55"/><stop offset="1" stop-color="#14304D" stop-opacity="0"/></linearGradient>
+            <pattern id="g5sm-grain" width="9" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".5" fill="#E8ECF0" fill-opacity=".14"/><circle cx="6.5" cy="5" r=".4" fill="#E8ECF0" fill-opacity=".1"/><circle cx="5" cy="1.5" r=".6" fill="#010B13" fill-opacity=".35"/></pattern>
+            <clipPath id="g5sm-soil"><path d="M-40 32C-20 34-10 31 0 33C20 31 40 34 60 32S100 31 120 33S150 31 160 32S190 33 200 32V120H-40Z"/></clipPath>
+          </defs>
+          <g fill="#9CC7F0"><use href="#g5rg-d" class="g5-srain" x="14" y="8" style="animation-delay:-4s"/><use href="#g5rg-d" class="g5-srain" x="58" y="8" style="animation-delay:-3.75s"/><use href="#g5rg-d" class="g5-srain" x="126" y="8" style="animation-delay:-3.5s"/><use href="#g5rg-d" class="g5-srain" x="36" y="8" style="animation-delay:-3.25s"/><use href="#g5rg-d" class="g5-srain" x="104" y="8" style="animation-delay:-3s"/><use href="#g5rg-d" class="g5-srain" x="148" y="8" style="animation-delay:-2.75s"/></g>
+          <path d="M-40 32C-20 34-10 31 0 33C20 31 40 34 60 32S100 31 120 33S150 31 160 32S190 33 200 32V58C180 57 170 59 160 58C130 60 100 55 70 58S20 56 0 58S-30 57-40 58Z" fill="url(#g5sm-a)"/>
+          <path d="M-40 58C-30 57-10 59 0 58C20 56 50 60 70 58S130 60 160 58S190 57 200 58V86C180 87 170 85 160 86C130 88 100 83 70 86S20 84 0 87S-30 85-40 86Z" fill="url(#g5sm-b)"/>
+          <path d="M-40 86C-30 85-10 88 0 87C20 84 50 88 70 86S130 88 160 86S190 87 200 86V120H-40Z" fill="url(#g5sm-c)"/>
+          <rect x="-40" y="31" width="240" height="89" fill="url(#g5sm-grain)" clip-path="url(#g5sm-soil)"/>
+          <g fill="url(#g5wq-rock)"><ellipse cx="14" cy="98" rx="5" ry="3"/><ellipse cx="36" cy="108" rx="7" ry="3.5"/><ellipse cx="58" cy="95" rx="3.5" ry="2.2"/><ellipse cx="102" cy="104" rx="6" ry="3"/><ellipse cx="128" cy="96" rx="4" ry="2.5"/><ellipse cx="148" cy="110" rx="6.5" ry="3.2"/><ellipse cx="120" cy="72" rx="2.5" ry="1.6"/><ellipse cx="30" cy="74" rx="2" ry="1.3"/><ellipse cx="-24" cy="100" rx="5" ry="3"/><ellipse cx="184" cy="104" rx="6" ry="3"/><ellipse cx="172" cy="70" rx="2.2" ry="1.4"/></g>
+          <g fill="none" stroke="#D9C9AE" stroke-opacity=".55" stroke-linecap="round"><path d="M22 33C21 42 24 48 20 58C18 64 21 70 19 76M120 33C121 44 117 52 120 62C122 70 118 76 121 82"/><path d="M20 46C16 50 13 52 9 58M119 48C124 52 128 54 132 60" stroke-width=".7"/><path d="M22 52C26 56 28 60 32 64M118 60C114 64 112 68 108 72M46 33C46 38 48 42 46 47M144 33C144 38 142 42 145 48" stroke-width=".6"/></g>
+          <g clip-path="url(#g5sm-soil)"><path class="g5-front" d="M-40-88H200V30C185 27 172 33 160 28C140 34 120 26 100 31S60 26 40 32S10 27 0 30S-28 27-40 31Z" fill="url(#g5sm-wet)"/></g>
+          <path d="M-40 32C-20 34-10 31 0 33C20 31 40 34 60 32S100 31 120 33S150 31 160 32S190 33 200 32" fill="none" stroke="#A7C48A" stroke-opacity=".8" stroke-width="1.2"/>
+          <path d="M6 33q-1-6-3-9M8 33q0-7 2-11M10 33q2-5 5-7M20 32q-1-7-4-10M22 32q0-8 1-12M24 32q2-6 5-8M34 33q-1-5-3-7M36 33q1-6 3-8M46 33q-1-7-3-10M48 33q1-6 4-8M100 32q-1-6-3-9M102 32q0-7 2-10M118 33q-1-7-4-10M120 33q0-8 2-12M122 33q2-6 5-8M134 32q-1-5-3-7M136 32q1-6 3-8M144 32q-1-7-3-10M146 32q0-7 2-10M148 32q2-5 5-6M-30 33q-1-6-3-9M-28 33q0-7 2-11M-14 32q-1-7-4-10M-12 32q1-6 4-8M170 32q-1-6-3-9M172 32q0-7 2-10M186 32q-1-7-4-10M188 32q1-6 4-8" fill="none" stroke="#A7C48A" stroke-width="1.1" stroke-linecap="round"/>
+          <rect x="77" y="18" width="6" height="92" rx="1.5" fill="url(#g5wq-metal)" stroke="#E8ECF0" stroke-width=".8"/><path d="M77 110L80 115L83 110Z" fill="#8A94A6"/>
+          <g stroke="#E8ECF0" stroke-width=".6"><rect class="g5-s1" x="75" y="43" width="10" height="4" rx="1" fill="#8A94A6"/><rect class="g5-s2" x="75" y="69" width="10" height="4" rx="1" fill="#8A94A6"/><rect class="g5-s3" x="75" y="95" width="10" height="4" rx="1" fill="#8A94A6"/></g>
+          <rect x="68" y="6" width="24" height="12" rx="1.5" fill="#1E242C" stroke="#E8ECF0" stroke-width="1.2"/><circle class="g5-led" cx="87" cy="12" r="1.8" fill="#F26B5E"/>
         </svg>
         <h3>Soil</h3><span class="unit">reads: water at root depth</span>
       </button>
@@ -578,10 +865,10 @@ blockquote{margin:0}
 </section>
 
 <!-- S6 PART ONE KEY (Plate) -->
-<section class="slide plate deep" data-slide-id="s06-part-one-carry" data-bg="cloudfront" data-part="1" data-min="0.5" data-title="Part One inquiry"
+<section class="slide plate light" data-slide-id="s06-part-one-carry" data-bg="skylight" data-part="1" data-min="0.5" data-title="Part One inquiry"
  data-notes="Read the takeaway, then leave the three questions up for a breath. Invite one written answer; no share-out needed for time.">
   <div class="inner">
-    <div class="head"><span class="label red">Part One · Carry Forward</span></div>
+    <div class="head"><h2>Part One: Reflection</h2></div>
     <div class="carry"><div class="key">
       <div class="card"><span class="label">Key Lesson</span><p>Weather is based on fundamental physics, here and throughout the universe. Pressure and water are always moving, never fixed or stuck at one height.</p></div>
       <div class="card"><span class="label">Key Takeaway</span><p>The same physics, gauges, and data points that predict tomorrow's weather also show patterns and change over many years. With enough data, we look ahead on momentum, not speculation.</p></div>
@@ -590,6 +877,7 @@ blockquote{margin:0}
       <li>What changed about how you think about clouds, the atmosphere, or the water cycle?</li>
       <li>What is one question about the weather you want to find the answer to?</li>
     </ol></div>
+    <span class="credit">Photo: Patrick A. Freeland</span>
   </div>
 </section>
 
@@ -599,12 +887,12 @@ blockquote{margin:0}
   <div class="hallcopy">
     <span class="label red">Part Two</span>
     <div class="display">How Do You Know<br>What You Know?</div>
-    <p>With your own senses you can see the snow in the winter. How do we learn about weather and climate in the classroom, and in the media, and <span class="r">why do we trust them</span>?</p>
+    <p><span class="ln">Your senses tell you about weather outside.</span> <span class="ln">How do we share what we experience with others?</span> <span class="ln">How do we <span class="r">trust</span> what others share with us?</span></p>
   </div>
 </section>
 
 <!-- S8 SCALE (Plate) -->
-<section class="slide plate" data-slide-id="s08-three-eyes" data-bg="mist" data-part="2" data-min="2" data-title="Three ways of seeing"
+<section class="slide plate light" data-slide-id="s08-three-eyes" data-bg="riparian" data-part="2" data-min="2" data-title="Three ways of seeing"
  data-notes="<span class='must'>Must land:</span> our senses are where knowing starts, and data lets us see at scales no one person can. Walk frog's eye, bird's eye, moon's eye in that order, from the water at your feet to the whole planet. Each card opens with a question for the room. The next two slides live at the bird's eye: the salmon's journey across the whole basin.">
   <div class="inner">
     <div class="headrow"><div class="head"><span class="label red">Part Two · Scale</span><h2>Frog&rsquo;s Eye, Bird&rsquo;s Eye, Moon&rsquo;s Eye</h2></div><p class="ask"><span class="label">Ask the room</span>What can only be seen up close, and what can only be seen from far away?</p></div>
@@ -615,45 +903,56 @@ blockquote{margin:0}
       <button aria-expanded="false" data-e="2"><span class="pic globe"><svg viewBox="0 0 200 120" aria-hidden="true"><defs><radialGradient id="gl" cx="38%" cy="35%" r="70%"><stop offset="0" stop-color="#2D5B86"/><stop offset=".7" stop-color="#0E2740"/><stop offset="1" stop-color="#06121E"/></radialGradient></defs><circle cx="100" cy="60" r="50" fill="url(#gl)"/><g fill="none" stroke="rgba(156,199,240,.35)" stroke-width=".8"><ellipse cx="100" cy="60" rx="50" ry="16"/><ellipse cx="100" cy="60" rx="50" ry="34"/><ellipse cx="100" cy="60" rx="18" ry="50"/><ellipse cx="100" cy="60" rx="36" ry="50"/><line x1="50" y1="60" x2="150" y2="60"/></g><path d="M70 38 C78 30 92 28 98 34 C104 40 96 48 88 50 C80 54 72 50 70 44 Z" fill="#2E4A33" opacity=".9"/><circle cx="80" cy="40" r="3" fill="#F26B5E"/><circle cx="150" cy="22" r="7" fill="#E8ECF0" opacity=".85"/></svg></span><span class="label red">Moon&rsquo;s Eye</span><h3>The Whole Planet</h3><p>The atmosphere moving as one system, oceans warming, snow and ice measured from space.</p></button>
     </div>
     <div id="eyeMore" class="eyemore" aria-live="polite"><p class="cap">Select a way of seeing.</p></div>
+    <p class="cap eyecredit">Background: the Yakima River Canyon, in Yakama Homelands. Photo: Michael Campbell, BLM (public domain)</p>
   </div>
 </section>
 
 <!-- S9 SOURCE CHECK (Plate) -->
 <section class="slide plate" data-slide-id="s09-listening" data-bg="mist" data-part="2" data-min="2" data-title="Source check"
  data-notes="<span class='must'>Must land:</span> narrative and emotion move us whether we notice or not. Think about thinking. Open two cards, not four, unless the room is fast. The point is the habit: notice the feeling, ask who benefits, then check. This is Lesson 2.1 in the Grades 6 to 12 set.">
-  <div class="inner">
+  <div class="inner fit">
     <div class="headrow"><div class="head"><span class="label red">Part Two · Try It</span><h2>Four Things You Might Hear</h2></div><p class="ask"><span class="label">Ask the room</span>Which one did you feel before you thought about it?</p></div>
     <div class="steps3"><div><b>Notice</b>What feeling does it give you?</div><div><b>Ask</b>Who is saying it, and what do they want?</div><div><b>Check</b>Where would you go to see for yourself?</div></div>
     <div class="claims">
-      <button class="claim" aria-expanded="false"><span class="said">"The salmon are coming back, so the river is fine now."</span><span class="hint">Select to check</span><span class="back" hidden><b>Notice</b><span>Relief. It lets everyone stop worrying.</span><b>Check</b><span>Compare recent dam counts (Fish Passage Center, CRITFC) with historic returns estimated at 10 to 16 million fish a year. Ask how many are hatchery fish, and which runs are still listed.</span></span></button>
-      <button class="claim" aria-expanded="false"><span class="said">"They can't predict next week's weather. How can they predict 2050?"</span><span class="hint">Select to check</span><span class="back" hidden><b>Notice</b><span>Doubt that sounds like common sense.</span><b>Check</b><span>Weather asks what happens on one day. Climate asks what the pattern does. One roll of loaded dice is hard to call; which way they are loaded is not. Same physics as Part One.</span></span></button>
-      <button class="claim" aria-expanded="false"><span class="said">"Any clean energy project is good for the climate, so it's good for everyone."</span><span class="hint">Select to check</span><span class="back" hidden><b>Notice</b><span>It sounds like the obvious right answer.</span><b>Ask</b><span>Good for whom, decided by whom? The Goldendale pumped storage project, licensed in 2026 and challenged in court, sits on Pushpum, where Yakama people gather foods and medicines. Clean energy can still be the wrong place, done without consent.</span></span></button>
-      <button class="claim" aria-expanded="false"><span class="said">"It's already too late. Nothing we do matters."</span><span class="hint">Select to check</span><span class="back" hidden><b>Notice</b><span>Fear and exhaustion. The black mirror of the feed.</span><b>Check</b><span>Every fraction of a degree avoided means less harm, and Tribes across this basin are already acting: restoring rivers, building solar with storage, planting trees, planning. Too late is a story, not a measurement.</span></span></button>
+      <button class="claim" aria-expanded="false"><svg class="cico" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M19 28q4.5 4 9 0M36 28q4.5 4 9 0"/><path d="M23 40q9 7 18 0"/></svg><span class="said">"The salmon are coming back, so the river is fine now."</span><span class="hint">Select to check</span><span class="back"><span class="bk"><b>Notice</b><span>Relief. It lets everyone stop worrying.</span><b>Check</b><span>Compare recent dam counts (Fish Passage Center, CRITFC) with historic returns estimated at 10 to 16 million fish a year. Ask how many are hatchery fish, and which runs are still listed.</span></span><span class="close">Select to close</span></span></button>
+      <button class="claim" aria-expanded="false"><svg class="cico" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12h44a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H30l-10 10V42h-10a2 2 0 0 1-2-2V14a2 2 0 0 1 2-2z"/><path d="M26 23c0-4 3-6 6-6s6 2 6 5c0 4-6 4-6 9"/><circle cx="32" cy="35" r=".8"/></svg><span class="said">"They can't predict next week's weather. How can they predict 2050?"</span><span class="hint">Select to check</span><span class="back"><span class="bk"><b>Notice</b><span>Doubt that sounds like common sense.</span><b>Check</b><span>Weather asks what happens on one day. Climate asks what the pattern does. One roll of loaded dice is hard to call; which way they are loaded is not. Same physics as Part One.</span></span><span class="close">Select to close</span></span></button>
+      <button class="claim" aria-expanded="false"><svg class="cico" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M19 33l9 9 17-20"/></svg><span class="said">"Any clean energy project is good for the climate, so it's good for everyone."</span><span class="hint">Select to check</span><span class="back"><span class="bk"><b>Notice</b><span>It sounds like the obvious right answer.</span><b>Ask</b><span>Good for whom, decided by whom? The Goldendale pumped storage project, licensed in 2026 and challenged in court, sits on Pushpum, where Yakama people gather foods and medicines. Clean energy can still be the wrong place, done without consent.</span></span><span class="close">Select to close</span></span></button>
+      <button class="claim" aria-expanded="false"><svg class="cico" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M19 25l8-3M45 25l-8-3"/><path d="M21 32h6M37 32h6"/><path d="M23 46q9-8 18 0"/></svg><span class="said">"It's already too late. Nothing we do matters."</span><span class="hint">Select to check</span><span class="back"><span class="bk"><b>Notice</b><span>Fear and exhaustion. The black mirror of the feed.</span><b>Check</b><span>Every fraction of a degree avoided means less harm, and Tribes across this basin are already acting: restoring rivers, building solar with storage, planting trees, planning. Too late is a story, not a measurement.</span></span><span class="close">Select to close</span></span></button>
     </div>
   </div>
 </section>
 
 <!-- S10 SALMON JOURNEY (Plate) -->
 <section class="slide plate deep" data-slide-id="s10-salmon-journey" data-bg="bonneville" data-part="2" data-min="3.5" data-title="The journey home"
- data-notes="<span class='must'>Must land:</span> the salmon are a way of knowing; they carry the river's condition in their bodies. Choose a route, then continue the journey stop by stop. Pause at Celilo and let it be quiet. Then switch the river futures to SSP2-4.5 and SSP3-7.0, mid-century and late century: the river colors by August water temperature, and the stop card shows how many weeks the water runs above 68 °F. Point out that the two futures barely differ by mid-century and pull apart by late century; the choices made now decide which one we get. The flow chart shows the shape of change: more water in winter, an earlier and smaller spring peak, longer low flows in late summer. Sources: lower Columbia August temperatures from EPA (2021); warming steps scaled from published river temperature studies (EPA 2021 synthesis; Isaak and others) to CMIP6 SSP2-4.5 and SSP3-7.0 warming (IPCC AR6); flow shape from RMJOC-II (2018) and NCA5 (2023). Working draft: replace with CMIP6 river temperature and flow runs when available [verify]. River shapes are Natural Earth 1:10m data; dam positions are approximate.">
+ data-notes="<span class='must'>Must land:</span> the salmon are a way of knowing; they carry the river's condition in their bodies. Choose a route, then continue the journey stop by stop. Pause at Celilo and let it be quiet. Then switch the river futures to &quot;Pollution levels off&quot; (SSP2-4.5) and &quot;Pollution keeps rising&quot; (SSP3-7.0), mid-century and late century: the river colors by August water temperature, and the stop card shows how many weeks the water runs above 68 °F. Point out that the two futures barely differ by mid-century and pull apart by late century; the choices made now decide which one we get. The world warming on each future button is the IPCC best estimate compared with 1850 to 1900 (AR6 WGI SPM, A.1.2 and Table SPM.1). Each stop card shows a photo of the place with its credit; Wells has none. The flow chart shows the shape of change: more water in winter, an earlier and smaller spring peak, longer low flows in late summer. Sources: lower Columbia August temperatures from EPA (2021); warming steps scaled from published river temperature studies (EPA 2021 synthesis; Isaak and others) to CMIP6 SSP2-4.5 and SSP3-7.0 warming (IPCC AR6); flow shape from RMJOC-II (2018) and NCA5 (2023). Working draft: replace with CMIP6 river temperature and flow runs when available [verify]. River shapes are Natural Earth 1:10m data; dam positions are approximate.">
   <div class="inner fit">
     <div class="headrow"><div class="head"><span class="label red">Part Two · The River as Teacher · Bird&rsquo;s Eye</span><h2>The Journey Home</h2></div><p class="ask"><span class="label">Ask the room</span>What would you need to make this journey, and what would make it harder?</p></div>
     <div class="mapwrap stretch">
       <div class="map">
         <svg id="mapSvg" role="img" aria-labelledby="mapTitle"><title id="mapTitle">Map of the Columbia River Basin from the Pacific to Idaho and the upper Columbia, with dams, Celilo Falls, the salmon's journey, and the river colored by August water temperature</title></svg>
-        <div class="futures">
-          <span class="label">River futures · August water</span>
-          <div class="seg" id="fScen" role="group" aria-label="Choose a future"><button data-k="now" aria-pressed="true">Today</button><button data-k="s245" aria-pressed="false">SSP2-4.5</button><button data-k="s370" aria-pressed="false">SSP3-7.0</button></div>
-          <div class="seg" id="fPer" role="group" aria-label="Choose a period"><button data-k="mid" aria-pressed="true">2040 to 2069</button><button data-k="late" aria-pressed="false">2070 to 2099</button></div>
-          <div class="fread" id="fRead" aria-live="polite"></div>
-        </div>
-        <button class="btn sec juv" id="juv">Follow the young ones to the ocean</button>
         <div class="tscale" aria-hidden="true"><span>14 °C · 57 °F</span><i></i><span>24 °C · 75 °F</span></div>
       </div>
       <div class="mpanel">
-        <div class="seg" role="group" aria-label="Choose a route"><button id="rA" aria-pressed="true">Snake and Salmon Rivers</button><button id="rB" aria-pressed="false">Upper Columbia</button></div>
-        <div class="stop" id="stopCard" aria-live="polite"></div>
-        <div class="row"><button class="btn sec" id="back">Back a step</button><button class="btn" id="next">Continue the journey</button><span class="cap data" id="stopN"></span></div>
+        <div class="routes" role="group" aria-label="Choose a route">
+          <button id="rA" aria-pressed="true"><b>Snake and Salmon Rivers</b><span>Sockeye, Chinook, and steelhead bound for Idaho and northeast Oregon. The journey ends at Redfish Lake, about 900 miles from the ocean.</span></button>
+          <button id="rB" aria-pressed="false"><b>Upper Columbia</b><span>Chinook, sockeye, and steelhead bound for north-central Washington and Canada. The journey ends at Chief Joseph Dam, which has no fish ladder.</span></button>
+        </div>
+        <div class="stop" id="stopCard">
+          <div class="stxt" id="stopTxt" aria-live="polite"></div>
+          <figure class="sph" id="stopFig" hidden><img id="stopImg" alt="" width="960" height="600" decoding="async"><figcaption id="stopCap"></figcaption></figure>
+        </div>
+        <div class="row"><button class="btn sec" id="back">Back a step</button><button class="btn" id="next">Continue the journey</button><button class="btn sec" id="juv">Follow the young ones to the ocean</button></div>
+      </div>
+      <div class="futures">
+        <div class="fopts">
+          <div class="fhead"><span class="label">How warm could the river get for salmon in August?</span><span class="cap">World warming since the late 1800s (IPCC 2021). River numbers and flow: a teaching model.</span></div>
+          <div class="seg fopt" id="fScen" role="group" aria-label="Choose a future">
+            <button data-k="now" aria-pressed="true"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 0 1-12 0c0-3.2 2.5-6.5 6-11z"/></svg>Today</b><span class="fd">The river in recent summers, as measured.</span><span class="fw">World, 2011 to 2020: +1.1 °C (+2 °F)</span></button>
+            <button data-k="s245" aria-pressed="false"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19c5 0 5-8 10-8h8"/><path d="M18 8l3 3-3 3"/></svg>Pollution levels off <span>SSP2-4.5</span></b><span class="fd">Heat-trapping pollution holds near today&rsquo;s level to 2050, then slowly falls.</span><span class="fw">World, 2081 to 2100: +2.7 °C (+4.9 °F)</span></button>
+            <button data-k="s370" aria-pressed="false"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21L20 4"/><path d="M11 4h9v9"/></svg>Pollution keeps rising <span>SSP3-7.0</span></b><span class="fd">Heat-trapping pollution keeps rising, to about double today&rsquo;s by 2100.</span><span class="fw">World, 2081 to 2100: +3.6 °C (+6.5 °F)</span></button>
+          </div>
+        </div>
+        <div class="fper"><span class="label">When</span><div class="seg" id="fPer" role="group" aria-label="Choose a period"><button data-k="mid" aria-pressed="true">Mid-century<small>2040 to 2069</small></button><button data-k="late" aria-pressed="false">Late century<small>2070 to 2099</small></button></div></div>
         <div class="hydro"><div class="hyhead"><span class="label">Flow through the year · Columbia at The Dalles</span><span class="cap" id="hyKey"></span></div><svg id="hySvg" viewBox="0 0 320 96" aria-label="Shape of the river's flow through the year, today and in the selected future"></svg></div>
       </div>
     </div>
@@ -857,10 +1156,12 @@ const IMAGES={
   sound:{src:'img/sound-sunset.jpg',pos:'center 62%',credit:'',alt:'Sunset over inland waters and forested hills, seen from the air'},
   clouds:{src:'img/clouds-light.jpg',pos:'center 30%',credit:'',alt:'Late light breaking through towering clouds'},
   mist:{src:'img/mountain-mist.jpg',pos:'center 40%',credit:'',alt:'A dark mountain behind drifting cloud'},
+  riparian:{src:'img/yakima-river-canyon.jpg',pos:'center 60%',credit:'Michael Campbell, BLM (public domain)',alt:'The Yakima River between willow-lined banks and a dry basalt hill under a blue sky'},
   forest:{src:'img/forest-fog.jpg',pos:'center 45%',credit:'',alt:'Conifer forest in fog'},
   hood:{src:'img/mt-hood-summer.jpg',pos:'center 40%',credit:'',alt:'A Cascade volcano in late summer, with forest below and a little snow left near the top'},
   falls:{src:'img/falls-spring.jpg',pos:'center 55%',credit:'',alt:'A waterfall in spring runoff, with mist rising from the pool below'},
   cloudfront:{src:'img/clouds-mountain-front.jpg',pos:'center 35%',credit:'',alt:'Long streaming clouds over a forested mountain front'},
+  skylight:{src:'img/sky-clouds-light.jpg',pos:'center 50%',credit:'Patrick A. Freeland',alt:'Blue sky with broken white clouds, bright with sunlight'},
   aurora:{src:'img/aurora.jpg',pos:'center 45%',credit:'',alt:'Northern lights in green and magenta over a dark ridge and water'},
   bonneville:{src:'img/bonneville-spillway.jpg',pos:'center 50%',credit:'',alt:'Water pouring through the spillway of a large dam under storm clouds'},
   sockeye:{src:'img/sockeye-underwater.jpg',pos:'center 45%',credit:'',alt:'Red sockeye salmon swimming over stream gravel'},
@@ -925,6 +1226,272 @@ const MAP=__MAP__;
   const NS='http://www.w3.org/2000/svg';
 
   /* ---------- cloud machine: ocean to mountain to plateau ---------- */
+  // CloudKit: lit SVG clouds and light weather, built and benchmarked for this slide on 10/20/2026
+  // (private/craft/slides/clouds/cloudkit/README.md). Full mode: soft radial-gradient puffs roughened by one
+  // feTurbulence + feDisplacementMap filter per cloud. Reduced mode (reduced motion, slider drags): fewer puffs, no filter.
+  // The same options and seed always give the same markup, so redraws never jitter. Clouds hold still: animating a group
+  // that holds a filter re-rasters it every frame (16 fps against 60 at 4x CPU throttle, software raster, 10/20/2026).
+  const CK=(function(){
+    const f1=n=>Math.round(n*10)/10, f2=n=>Math.round(n*100)/100, clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+    // mulberry32: tiny seeded PRNG
+    const rng=seed=>{let a=seed>>>0;return()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}};
+    const hash=s=>{let h=2166136261;for(let i=0;i<s.length;i++)h=Math.imul(h^s.charCodeAt(i),16777619);return h>>>0};
+    const R=(r,a,b)=>a+(b-a)*r();
+    const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+    // four times of day. ramp[0] = deepest shade ... ramp[5] = sunlit top; under = cloud base
+    const LIGHTS={
+      dawn:{sun:[1,-.3],ramp:['#4E4B66','#6E6585','#9A7F97','#CF9E9F','#F2C3AC','#FFE3C8'],under:'#E7907E',sky:['#1C2A52','#6F6290','#EDA27E'],rain:'#8E93AE',fog:'#D7C2C4',moist:'#86B9DA',bolt:'#FFFFFF'},
+      day:{sun:[.2,-1],ramp:['#76828F','#97A2AE','#B7C0CA','#D5DBE2','#EDF0F3','#FFFFFF'],under:'#8E99A6',sky:['#2C5A8C','#5F90C0','#A9C9E3'],rain:'#56687C',fog:'#DCE2E8',moist:'#7FC0E6',bolt:'#FFFFFF'},
+      dusk:{sun:[-1,-.25],ramp:['#3E3754','#5E4A6C','#8E5E75','#C9786B','#EE9B66','#FFC384'],under:'#F08A5D',sky:['#141A3C','#653C68','#E06A46'],rain:'#7F7A98',fog:'#C9A9AE',moist:'#7FA9D6',bolt:'#FFF4E0'},
+      night:{sun:[.35,-1],ramp:['#222834','#2E3644','#3C4657','#4F5A6D','#667286','#8390A6'],under:'#2A313E',sky:['#03070F','#08121F','#112034'],rain:'#4F6075',fog:'#5E6878',moist:'#4F7FA6',bolt:'#E8F0FF'}
+    };
+    const hex=c=>[1,3,5].map(i=>parseInt(c.slice(i,i+2),16));
+    const mixc=(a,b,k)=>'#'+hex(a).map((v,i)=>Math.round(v+(hex(b)[i]-v)*k).toString(16).padStart(2,'0')).join('');
+    // <defs> for one light: a radial gradient per tone (focal point pushed toward the sun), a base tone, the streak, rain,
+    // fog and plume gradients, and the sky. Swapping these is the whole time-of-day change; no cloud is rebuilt.
+    function defs(name){
+      const L=LIGHTS[name]||LIGHTS.day,[sx,sy]=L.sun,m=Math.hypot(sx,sy),fx=f2(.5+.2*sx/m),fy=f2(.5+.2*sy/m);
+      const rad=(id,hi,mid,rim)=>`<radialGradient id="${id}" fx="${fx}" fy="${fy}"><stop offset="0" stop-color="${hi}"/><stop offset=".5" stop-color="${mid}" stop-opacity=".96"/><stop offset=".8" stop-color="${rim}" stop-opacity=".55"/><stop offset="1" stop-color="${rim}" stop-opacity="0"/></radialGradient>`;
+      let s=L.ramp.map((c,i)=>rad('ck-b'+i,mixc(c,L.ramp[Math.min(i+1,5)],.55),c,mixc(c,L.ramp[Math.max(i-1,0)],.6))).join('');
+      s+=rad('ck-bu',mixc(L.under,L.ramp[2],.3),mixc(L.under,L.ramp[1],.45),L.ramp[0]);
+      s+=`<linearGradient id="ck-st"><stop offset="0" stop-color="${L.ramp[5]}" stop-opacity="0"/><stop offset=".45" stop-color="${L.ramp[5]}" stop-opacity=".55"/><stop offset=".85" stop-color="${L.ramp[5]}" stop-opacity=".95"/><stop offset="1" stop-color="${L.ramp[5]}" stop-opacity=".15"/></linearGradient>`;
+      s+=`<linearGradient id="ck-rain" x2="0" y2="1"><stop offset="0" stop-color="${L.rain}" stop-opacity=".55"/><stop offset=".7" stop-color="${L.rain}" stop-opacity=".28"/><stop offset="1" stop-color="${L.rain}" stop-opacity="0"/></linearGradient>`;
+      s+=`<radialGradient id="ck-fog"><stop offset="0" stop-color="${L.fog}" stop-opacity=".62"/><stop offset=".6" stop-color="${L.fog}" stop-opacity=".34"/><stop offset="1" stop-color="${L.fog}" stop-opacity="0"/></radialGradient>`;
+      s+=`<linearGradient id="ck-plume"><stop offset="0" stop-color="${L.moist}" stop-opacity="0"/><stop offset=".18" stop-color="${L.moist}" stop-opacity=".42"/><stop offset=".8" stop-color="${L.moist}" stop-opacity=".34"/><stop offset="1" stop-color="${L.moist}" stop-opacity=".05"/></linearGradient>`;
+      s+=`<radialGradient id="ck-flash"><stop offset="0" stop-color="${L.bolt}" stop-opacity=".55"/><stop offset="1" stop-color="${L.bolt}" stop-opacity="0"/></radialGradient>`;
+      s+=`<linearGradient id="ck-sky" x2="0" y2="1"><stop offset="0" stop-color="${L.sky[0]}"/><stop offset=".62" stop-color="${L.sky[1]}"/><stop offset="1" stop-color="${L.sky[2]}"/></linearGradient>`;
+      return s+FILTERS;
+    }
+    // full mode only: fractal noise pushes each puff edge around, which turns soft balls into billows and fibers.
+    // [baseFrequency, octaves, displacement in slide units, blur]; noise is in user space.
+    const FX={heap:['.045',3,11,.5],small:['.09',2,5,.3],layer:['.02 .07',3,9,0],veil:['.008 .05',2,7,.6],streak:['.01 .14',2,7,.4],lens:['.03 .1',2,2.5,.3]};
+    const FILTERS=Object.keys(FX).map((k,i)=>{const [f,n,sc,bl]=FX[k];
+      return `<filter id="ck-f-${k}" x="-15%" y="-25%" width="130%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="${f}" numOctaves="${n}" seed="${3+i*7}"/><feDisplacementMap in="SourceGraphic" scale="${sc}" xChannelSelector="R" yChannelSelector="G"/>${bl?`<feGaussianBlur stdDeviation="${bl}"/>`:''}</filter>`}).join('');
+    const KIND={cumulus:'heap',congestus:'heap',cumulonimbus:'heap',stratocumulus:'small',altocumulus:'small',stratus:'layer',nimbostratus:'layer',altostratus:'layer',cirrostratus:'veil',cirrus:'streak',lenticular:'lens'};
+    // geometry: every cloud is soft lit ellipses ("puffs") and, for ice clouds, streaks.
+    // heap: the cumulus family. towers = [{u: center in -1..1, w: half-width, h: height share}] shape the outline.
+    function heap(o,r,towers,k){
+      k=k||{};
+      const H=o.base-o.top,W=o.width,P=[],q=o.lite?1.7:1,dark=k.dark||0;
+      const prof=u=>towers.reduce((h,t)=>{const v=(u-t.u)/t.w;return v>-1&&v<1?Math.max(h,t.h*Math.pow(1-v*v,k.round||.62)):h},0);
+      const tone=t=>clamp(Math.round(t*(1-dark)*5+R(r,-.4,.4)),0,5);
+      const cell=Math.max(4,Math.min(W*.14,H*.2))*q*(k.cell||1);
+      // body: a jittered lattice that fills the outline solidly (no gaps between puffs)
+      for(let y=o.base-cell*.55;y>o.top+cell*.3;y-=cell*.7){
+        for(let x=o.x-W/2+cell*.3;x<o.x+W/2;x+=cell*.75){
+          const h=prof((x-o.x)/(W/2))*H;if(h<o.base-y+cell*.35)continue;
+          const rad=cell*R(r,.72,1.05),yy=Math.min(y+R(r,-.2,.2)*cell,o.base-rad*.75);
+          P.push({x:x+R(r,-.25,.25)*cell,y:yy,rx:rad,ry:rad*.9,b:tone((o.base-yy)/H*.8+.05),a:.97,z:1});
+        }
+      }
+      // crown: cauliflower bumps walked along the outline by arc length, set in along the normal
+      const pts=[];for(let i=0;i<=120;i++){const u=-1+i/60;pts.push([o.x+u*W/2,o.base-prof(u)*H])}
+      let acc=0,next=0;
+      for(let i=1;i<pts.length;i++){
+        const [x0,y0]=pts[i-1],[x1,y1]=pts[i],seg=Math.hypot(x1-x0,y1-y0);acc+=seg;
+        if(acc<next||o.base-y1<cell*.5)continue;
+        const rb=cell*R(r,.55,.95)*(k.bump||1),nx=(y1-y0)/(seg||1),ny=-(x1-x0)/(seg||1);
+        P.push({x:x1-nx*rb*.55,y:Math.min(y1-ny*rb*.55,o.base-rb*.7),rx:rb,ry:rb*.92,b:tone((o.base-y1)/H+.25),a:.97,z:2});
+        next=acc+rb*R(r,.7,1.05)/(k.crown||1);
+      }
+      // base: flattened shaded puffs that make the flat bottom
+      for(let x=o.x-W/2;x<=o.x+W/2;x+=cell*1.1){
+        const h=prof((x-o.x)/(W/2))*H;if(h<cell)continue;
+        const rx=cell*R(r,1,1.5),ry=Math.min(rx*.34,h*.3);
+        P.push({x:x+R(r,-.2,.2)*cell,y:o.base-ry*.9,rx,ry,b:'u',a:.9,z:1.5});
+      }
+      return P;
+    }
+    // layer: sheets (stratus, nimbostratus, altostratus, cirrostratus). Thins toward both ends.
+    function layer(o,r,s){
+      const W=o.width,T=o.base-o.top,P=[],rows=s.rows,ch=T/rows,q=o.lite?1.6:1;
+      for(let j=0;j<rows;j++){
+        const lift=rows>1?(rows-1-j)/(rows-1)*(s.lift||0):0;
+        for(let x=o.x-W/2+ch*.5;x<=o.x+W/2-ch*.5;){
+          const u=(x-o.x)/(W/2),e=1-.75*Math.pow(Math.abs(u),3);
+          const rx=Math.min(W*.3,ch*s.aspect*R(r,.75,1.25))*q*(.6+.4*e),ry=ch*R(r,s.ry[0],s.ry[1])*(.5+.5*e);
+          P.push({x,y:o.top+ch*(j+.5)+R(r,-.15,.15)*ch,rx,ry,b:clamp(Math.round(R(r,s.b[0],s.b[1])+lift),0,5),a:R(r,s.a[0],s.a[1])*(.55+.45*e),z:rows-j});
+          x+=rx*R(r,.5,.75);
+        }
+      }
+      return P;
+    }
+    // streak: a fibrous ice trail. Head (dense end) downwind on the right, tail falling and trailing left.
+    function streaks(o,r,n,k){
+      const W=o.width,T=o.base-o.top,S=[];
+      for(let i=0;i<n;i++){
+        const L=W*R(r,k.len[0],k.len[1]),x0=o.x-W/2+r()*Math.max(1,W-L),y0=o.top+T*R(r,.1,.6),drop=T*R(r,k.drop[0],k.drop[1]),hook=L*R(r,.03,.09);
+        const fibers=o.lite?1:2+Math.floor(r()*3);
+        for(let j=0;j<fibers;j++){
+          const dy=(j-fibers/2)*R(r,.8,2.2),dx=R(r,-L*.06,L*.06),x=x0+dx,y=y0+dy;
+          S.push({d:`M${f1(x)} ${f1(y+drop)}C${f1(x+L*.28)} ${f1(y+drop*.25)} ${f1(x+L*.62)} ${f1(y-hook)} ${f1(x+L)} ${f1(y-hook*.3)}`,w:R(r,k.w[0],k.w[1]),a:R(r,k.a[0],k.a[1])});
+        }
+      }
+      return S;
+    }
+    const byDepth=P=>P.sort((p,q)=>p.z-q.z||(q.y+q.ry)-(p.y+p.ry));
+    const SHAPES={
+      cumulus(o,r){
+        return {puffs:byDepth(heap(o,r,[{u:R(r,-.12,.12),w:R(r,.55,.7),h:1},{u:R(r,-.6,-.4),w:R(r,.38,.5),h:R(r,.5,.72)},
+          {u:R(r,.35,.55),w:R(r,.38,.5),h:R(r,.55,.8)},{u:R(r,-.25,.25),w:.95,h:R(r,.3,.42)}]))};
+      },
+      congestus(o,r){
+        return {puffs:byDepth(heap(o,r,[{u:R(r,-.08,.08),w:.42,h:1},{u:R(r,-.38,-.25),w:.36,h:R(r,.68,.82)},{u:R(r,.25,.38),w:.34,h:R(r,.74,.9)},{u:-.66,w:.32,h:R(r,.3,.45)},{u:.66,w:.3,h:R(r,.35,.5)}],{crown:1.45,bump:.9,round:.45}))};
+      },
+      cumulonimbus(o,r){
+        const H=o.base-o.top,W=o.width,aT=H*.2,tw=W*.46,tx=o.x-W*.16,q1=o.lite?.5:1;
+        const P=heap({x:tx,base:o.base,top:o.top+aT*.7,width:tw,density:o.density,lite:o.lite},r,
+          [{u:0,w:.6,h:1},{u:-.34,w:.5,h:.8},{u:.36,w:.5,h:.86},{u:-.72,w:.3,h:.42},{u:.72,w:.28,h:.5}],{dark:.34,crown:1.3,round:.4});
+        const ya=o.top+aT*.55,x0=o.x-W*.44,x1=o.x+W*.5;
+        for(let j=0;j<5;j++){  // flare: the tower widens as it hits the stable layer
+          const k=j/4,y=ya+aT*(.2+1.1*k),hw=tw*(.62-.3*k),m=Math.round((4+4*(1-k))*q1);
+          for(let i=0;i<m;i++)P.push({x:tx+hw*((i+R(r,.2,.8))/m*2-1),y:y+R(r,-.1,.1)*aT,rx:tw*R(r,.1,.15),ry:aT*R(r,.28,.4),b:clamp(Math.round(3.2-k*2+R(r,-.5,.5)),0,5),a:.96,z:2.5});
+        }
+        const n=Math.round(W/7*q1);
+        for(let j=0;j<3;j++)for(let i=0;i<n;i++){  // anvil: flat top, sagging dark underside, spreads downwind
+          const x=x0+(x1-x0)*(i+r())/n,q=Math.min(1,Math.abs(x-tx)/(x>tx?x1-tx:tx-x0)),th=aT*(1-.6*q);
+          const y=j===2?ya-th*.32:j===1?ya:ya+th*.3;
+          P.push({x,y,rx:W*R(r,.05,.085)*(1-.3*q),ry:th*R(r,.26,.38),b:clamp(Math.round([1.4,3,4.6][j]+R(r,-.6,.6)),0,5),a:.96-q*.3,z:3+j});
+        }
+        P.push({x:tx,y:ya-aT*.45,rx:tw*.22,ry:aT*.42,b:5,a:.95,z:6});  // overshooting top
+        return {puffs:byDepth(P)};
+      },
+      stratus(o,r){return {puffs:byDepth(layer(o,r,{rows:2,aspect:3,ry:[.75,1],b:[1.4,2.6],lift:.8,a:[.55,.7]}))}},
+      stratocumulus(o,r){
+        const W=o.width,T=o.base-o.top,n=Math.max(3,Math.round(W/(T*1.3))),P=[];
+        for(let i=0;i<n;i++){  // flat-topped rolls of uneven height that merge into a lumpy layer
+          const cw=W/n*R(r,1.3,1.6),cx=o.x-W/2+(i+.5)*W/n+R(r,-.12,.12)*W/n;
+          P.push(...heap({x:cx,base:o.base-R(r,0,T*.06),top:o.top+R(r,0,T*.4),width:cw,density:o.density,lite:o.lite},r,
+            [{u:R(r,-.15,.15),w:.95,h:1},{u:R(r,-.5,.5),w:.45,h:R(r,1,1.12)}],{dark:.3,crown:.9,bump:.8,round:.35}));
+        }
+        return {puffs:byDepth(P)};
+      },
+      nimbostratus(o,r){
+        const P=layer(o,r,{rows:3,aspect:2,ry:[.75,1],b:[0,1.4],lift:1.8,a:[.9,.98]});
+        const W=o.width,T=o.base-o.top,n=Math.round(W/26*(o.lite?.5:1));
+        for(let i=0;i<n;i++){  // scud: dark ragged bits under the base
+          const rx=W*R(r,.025,.06);
+          P.push({x:o.x+R(r,-.46,.46)*W,y:o.base+R(r,-.02,.14)*T,rx,ry:rx*R(r,.3,.5),b:0,a:R(r,.5,.8),z:9});
+        }
+        return {puffs:byDepth(P)};
+      },
+      altostratus(o,r){
+        return {puffs:byDepth(layer(o,r,{rows:2,aspect:4,ry:[.7,.95],b:[2.2,3.4],lift:.8,a:[.32,.46]})),
+          streaks:streaks(o,r,Math.round(2+2*o.density),{len:[.35,.7],drop:[0,.25],w:[4,9],a:[.08,.16]})};
+      },
+      altocumulus(o,r){
+        const W=o.width,T=o.base-o.top,rows=clamp(Math.round(T/12),1,3),cs=Math.min(T/rows*1.6,W/4),cols=Math.max(2,Math.round(W/cs*1.15)),P=[];
+        for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
+          if(r()<.1+.3*(1-o.density))continue;  // gaps between the cloudlets
+          const cx=o.x-W/2+(i+.5)*W/cols+R(r,-.15,.15)*cs,cy=o.top+(j+.5)*T/rows+R(r,-.12,.12)*cs,m=o.lite?2:4+Math.floor(r()*3);
+          P.push({x:cx,y:cy+cs*.12,rx:cs*.55,ry:cs*.22,b:'u',a:.85,z:0});
+          for(let q=0;q<m;q++){const rad=cs*R(r,.2,.34),dy=R(r,-.2,.08)*cs;P.push({x:cx+R(r,-.38,.38)*cs,y:cy+dy,rx:rad*1.2,ry:rad*.8,b:clamp(Math.round(3.4-dy/cs*6+R(r,-.5,.5)),2,5),a:.92,z:1})}
+        }
+        return {puffs:byDepth(P)};
+      },
+      cirrus(o,r){return {streaks:streaks(o,r,Math.round((3+5*o.density)*(o.lite?.6:1)),{len:[.22,.5],drop:[.25,.65],w:[.8,3.2],a:[.3,.75]})}},
+      cirrostratus(o,r){
+        return {puffs:byDepth(layer(o,r,{rows:1,aspect:5,ry:[.6,.9],b:[4.6,5],a:[.09,.15]})),
+          streaks:streaks(o,r,Math.round(3+3*o.density),{len:[.4,.75],drop:[0,.3],w:[3,7],a:[.08,.15]})};
+      },
+      lenticular(o,r){
+        const W=o.width,T=o.base-o.top,P=[],k=o.lite?2:3;
+        for(let j=0;j<k;j++){  // stacked smooth lenses, a "pile of plates"
+          const rx=W/2*(1-.2*j)*R(r,.94,1),ry=T*(.24-.03*j),y=o.base-T*.26-j*T*.25,x=o.x+R(r,-.04,.04)*W;
+          P.push({x,y:y+ry*.25,rx:rx*1.02,ry:ry*.7,b:'u',a:.7,z:j*2});
+          P.push({x,y,rx,ry,b:clamp(2+j,0,5),a:.95,z:j*2+1});
+          if(!o.lite)P.push({x:x+rx*.1,y:y-ry*.35,rx:rx*.72,ry:ry*.38,b:5,a:.6,z:j*2+1});
+        }
+        return {puffs:byDepth(P)};
+      }
+    };
+    // render: {x, base, top, width, density, seed, mode, label} -> one <g role="button"> with a padded hit area
+    function shape(type,o){
+      o=Object.assign({x:400,base:260,top:180,width:120,density:.7,seed:1,mode:'full'},o);
+      if(o.base<o.top){const t=o.base;o.base=o.top;o.top=t}
+      o.lite=o.mode==='reduced';o.density=clamp(o.density,0,1);
+      const g=SHAPES[type](o,rng(hash(type)^(o.seed*2654435761))),puffs=g.puffs||[],st=g.streaks||[];
+      let x0=o.x-o.width/2,x1=o.x+o.width/2,y0=o.top,y1=o.base;
+      puffs.forEach(p=>{x0=Math.min(x0,p.x-p.rx);x1=Math.max(x1,p.x+p.rx);y0=Math.min(y0,p.y-p.ry);y1=Math.max(y1,p.y+p.ry)});
+      return {puffs,streaks:st,box:{x:x0,y:y0,w:x1-x0,h:y1-y0},o};
+    }
+    const puffSVG=p=>`<ellipse cx="${f1(p.x)}" cy="${f1(p.y)}" rx="${f1(p.rx)}" ry="${f1(p.ry)}" fill="url(#ck-b${p.b})"${p.a<.99?` fill-opacity="${f2(p.a)}"`:''}/>`;
+    const streakSVG=s=>`<path d="${s.d}" fill="none" stroke="url(#ck-st)" stroke-width="${f1(s.w)}" stroke-opacity="${f2(s.a)}" stroke-linecap="round"/>`;
+    function markup(type,o){
+      const g=shape(type,o),b=g.box,O=g.o,pad=clamp(Math.min(b.w,b.h)*.15,12,28);
+      const kind=KIND[type]==='heap'&&O.width<60?'small':KIND[type];
+      const body=g.puffs.map(puffSVG).join('')+g.streaks.map(streakSVG).join('');
+      return `<g class="ck-cloud" data-type="${type}" role="button" tabindex="0" aria-label="${esc(O.label||type)}">`+
+        `<rect class="ck-hit" x="${f1(b.x-pad)}" y="${f1(b.y-pad)}" width="${f1(b.w+2*pad)}" height="${f1(b.h+2*pad)}" rx="14"/>`+
+        `${O.lite?body:`<g filter="url(#ck-f-${kind})">${body}</g>`}</g>`;
+    }
+    // weather: each returns a <g class="ck-fx" aria-hidden="true"> string that never blocks clicks
+    const anim=(cls,dur,r)=>`class="${cls}" style="animation-duration:${f2(dur)}s;animation-delay:-${f2(r()*dur)}s"`;
+    function shaftSVG(kind,o){
+      const r=rng(hash(kind)^o.seed),I=clamp(o.intensity,0,1),snow=kind==='snow',bot=typeof o.bottom==='function'?o.bottom:()=>o.bottom;
+      const edge=[];for(let i=0;i<=8;i++){const x=o.x1+o.slant-(o.x1-o.x0)*i/8;edge.push(f1(x)+','+f1(bot(x)))}
+      let s=`<polygon points="${f1(o.x0)},${f1(o.top)} ${f1(o.x1)},${f1(o.top)} ${edge.join(' ')}" fill="url(#ck-rain)" fill-opacity="${f2(snow?.2+.3*I:.35+.55*I)}"/>`;
+      const n=Math.round((o.x1-o.x0)/(snow?6:7)*(.5+I));
+      for(let i=0;i<n;i++){
+        const x=o.x0+(o.x1-o.x0)*(i+r())/n,t=o.top+r()*12,xe=x+o.slant,ye=bot(xe);
+        s+=snow?`<path ${anim('ck-snowl',R(r,2.2,3.4),r)} d="M${f1(x)} ${f1(t)}Q${f1(x+R(r,-6,6))} ${f1((t+ye)/2)} ${f1(xe)} ${f1(ye)}" stroke-width="${f1(R(r,1.8,3))}"/>`
+          :`<line ${anim('ck-rainl',R(r,.45,.7),r)} x1="${f1(x)}" y1="${f1(t)}" x2="${f1(xe)}" y2="${f1(ye)}" stroke-width="${f1(1+1.4*I*r())}"/>`;
+      }
+      return `<g class="ck-fx" aria-hidden="true">${s}</g>`;
+    }
+    const W8={
+      // rain and snow shafts: a fading curtain under the cloud base plus falling streaks; bottom is a y or x -> ground y
+      rain(o){return shaftSVG('rain',Object.assign({x0:300,x1:380,top:200,bottom:330,intensity:.6,slant:-10,seed:1},o))},
+      snow(o){return shaftSVG('snow',Object.assign({x0:300,x1:380,top:200,bottom:330,intensity:.6,slant:-14,seed:1},o))},
+      // a forked bolt and a soft glow in the cloud, flashing twice every `every` seconds
+      lightning(o){
+        o=Object.assign({x:400,top:160,bottom:330,every:7,seed:1},o);
+        const r=rng(hash('bolt')^o.seed),seg=9,pts=[[o.x,o.top]];
+        for(let i=1;i<=seg;i++)pts.push([pts[i-1][0]+R(r,-9,9),o.top+(o.bottom-o.top)*i/seg]);
+        const k=3+Math.floor(r()*3),br=[pts[k]];
+        for(let i=1;i<=3;i++)br.push([br[i-1][0]+R(r,4,12),br[i-1][1]+R(r,8,16)]);
+        const d='M'+pts.map(p=>f1(p[0])+' '+f1(p[1])).join('L')+'M'+br.map(p=>f1(p[0])+' '+f1(p[1])).join('L');
+        const st=`style="animation-duration:${o.every}s;animation-delay:-${f2(r()*o.every)}s"`;
+        return `<g class="ck-fx" aria-hidden="true"><ellipse class="ck-flashsky" ${st} cx="${f1(o.x)}" cy="${f1(o.top)}" rx="70" ry="45" fill="url(#ck-flash)"/>`+
+          `<g class="ck-bolt" ${st}><path d="${d}" fill="none" stroke="#CFE0FF" stroke-opacity=".35" stroke-width="6" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/></g></g>`;
+      },
+      // fog banks along the ground or the water; they hold still, since moving them repaints a wide area every frame
+      // (12 fps against 51 at 4x CPU throttle, snow day, 10/20/2026)
+      fog(o){
+        o=Object.assign({x0:52,x1:300,y:330,thick:22,seed:1,n:0},o);
+        const r=rng(hash('fog')^o.seed),n=o.n||Math.max(3,Math.round((o.x1-o.x0)/45));
+        let s='';
+        for(let i=0;i<n;i++){
+          const x=o.x0+(o.x1-o.x0)*(i+R(r,.2,.8))/n,rx=(o.x1-o.x0)/n*R(r,.9,1.5);
+          s+=`<ellipse cx="${f1(x)}" cy="${f1(o.y+R(r,-.3,.3)*o.thick)}" rx="${f1(rx)}" ry="${f1(o.thick*R(r,.55,.9))}" fill="url(#ck-fog)"/>`;
+        }
+        return `<g class="ck-fx" aria-hidden="true">${s}</g>`;
+      },
+      // atmospheric river: a long moist plume flowing in off the Pacific and lifting at the coast
+      plume(o){
+        o=Object.assign({x0:0,y0:250,x1:420,y1:170,thick:40,seed:1},o);
+        const r=rng(hash('plume')^o.seed),dx=o.x1-o.x0,t0=o.thick/2,t1=o.thick*.32;
+        const c=(k,off)=>[o.x0+dx*k,o.y0+(o.y1-o.y0)*(k*k*(3-2*k))+off];
+        const top=[],bot=[];
+        for(let i=0;i<=12;i++){const k=i/12,t=t0+(t1-t0)*k;top.push(c(k,-t));bot.unshift(c(k,t))}
+        let s=`<path d="M${top.concat(bot).map(p=>f1(p[0])+' '+f1(p[1])).join('L')}Z" fill="url(#ck-plume)"/>`;
+        for(let j=0;j<4;j++){
+          const off=(j-1.5)/1.5*.6,line=[];
+          for(let i=0;i<=12;i++){const k=i/12;line.push(c(k,off*(t0+(t1-t0)*k)))}
+          s+=`<path ${anim('ck-flow',R(r,2.4,3.6),r)} d="M${line.map(p=>f1(p[0])+' '+f1(p[1])).join('L')}"/>`;
+        }
+        return `<g class="ck-fx" aria-hidden="true">${s}</g>`;
+      }
+    };
+    function setLight(svg,name){
+      const L=LIGHTS[name]||LIGHTS.day;
+      svg.querySelector('#ck-defs').innerHTML=defs(name);
+      svg.style.setProperty('--ck-rain',mixc(L.rain,'#FFFFFF',.25));
+      svg.style.setProperty('--ck-moist',mixc(L.moist,'#FFFFFF',.45));
+    }
+    return {LIGHTS,markup,setLight,fx:W8,rng,hash};
+  })();
+
   const es=T=>6.112*Math.exp(17.67*T/(T+243.5)), mix=(e,p)=>622*e/(p-e), pres=z=>1013.25*Math.exp(-z/8400);
   const dew=(T,RH)=>{const a=Math.log(RH/100)+17.67*T/(T+243.5);return 243.5*a/(17.67-a)};
   const gmL=(Tc,z)=>{const T=Tc+273.15,rs=mix(es(Tc),pres(z))/1000,L=2.5e6,Rd=287,cp=1004;return 9.8*(1+L*rs/(Rd*T))/(1+L*L*rs*.622/(cp*Rd*T*T))};
@@ -932,12 +1499,16 @@ const MAP=__MAP__;
   const TER=[[0,0],[95,0],[110,40],[150,450],[185,850],[205,880],[235,420],[262,90],[330,110],[380,520],[430,1250],[480,1850],[520,2250],[545,2650],[562,3400],[580,2600],[610,1900],[650,1150],[700,620],[750,380],[800,320]];
   const terr=x=>{for(let i=1;i<TER.length;i++){if(x<=TER[i][0]){const [x0,y0]=TER[i-1],[x1,y1]=TER[i],k=(x-x0)/(x1-x0);return y0+(y1-y0)*(.5-.5*Math.cos(Math.PI*k))}}return 320};
   const NS_=160, RIDGE=2700, CREST=562, LEE=580;
-  const SEASONS={winter:[7,88,'#0A1825','#1B2B3B'],spring:[12,75,'#0C1C2C','#22384C'],summer:[24,55,'#10233A','#2C4660'],fall:[13,82,'#0B1824','#20303E'],ar:[11,97,'#091420','#16222D']};
-  const cX=x=>52+x*.925, cY=z=>340-z/4000*305;
-  let warm=0, season='winter', playing=null;
-  function model(T0,RH){
-    const out=[];let T=T0,w=mix(es(T0)*RH/100,1013.25),cw=0,z=0;const w0=w;
-    for(let i=0;i<=NS_;i++){const x=i*800/NS_,e=terr(x),zn=Math.min(e,RIDGE),dz=zn-z;
+  const SEASONS={winter:[7,88],spring:[12,75],summer:[24,55],fall:[13,82],ar:[11,97]};
+  const cX=x=>52+x*.925, cY=z=>340-z/4000*305, gY=x=>cY(terr((x-52)/.925));
+  let warm=0, season='winter', playing=null, ex=null, cap='', lite=false, sel=null, shown='', last=null, exT=null;
+  const fxc={};
+  // lid (m, marine fog example only): above it the air is warmer and much drier than the ocean air trapped below (an inversion)
+  function model(T0,RH,lid){
+    const out=[];let T=T0,w=mix(es(T0)*RH/100,1013.25),cw=0,z=0,over=0;const w0=w;
+    for(let i=0;i<=NS_;i++){const x=i*800/NS_,e=terr(x),zn=Math.min(e,RIDGE);
+      if(lid&&!over&&zn>lid){over=1;z=lid;T=T0-6.5*lid/1000+8;w=mix(es(T)*.25,pres(lid));cw=0}
+      const dz=zn-z;
       let C=0;if(dz>0){const sat=w>=mix(es(T),pres(z))-1e-6;T-=(sat?gmL(T,z):9.8)*dz/1000;const ws=mix(es(T),pres(zn));if(w>ws){C=w-ws;cw+=C;w=ws}}
       else if(dz<0){if(cw>0){T+=gmL(T,zn)*(-dz)/1000;const ws=mix(es(T),pres(zn));if(w<ws){const ev=Math.min(cw,ws-w);w+=ev;cw-=ev}}else T+=9.8*(-dz)/1000}
       const P=Math.min(cw,C*.55+cw*.08);cw-=P;z=zn;
@@ -945,83 +1516,199 @@ const MAP=__MAP__;
       out.push({x,e,z,T,w,cw,P,snow:Ts<=.5});
     }
     const lcl=Math.max(0,125*(T0-dew(T0,RH)));
-    return {out,w0,lcl,snowLine:Math.max(0,(T0-.5)/6.5*1000),tot:out.reduce((a,o)=>a+o.P,0),snowShare:out.reduce((a,o)=>a+(o.snow?o.P:0),0)/Math.max(1e-6,out.reduce((a,o)=>a+o.P,0))};
+    return {out,w0,lcl,lid,snowLine:Math.max(0,(T0-.5)/6.5*1000),tot:out.reduce((a,o)=>a+o.P,0),snowShare:out.reduce((a,o)=>a+(o.snow?o.P:0),0)/Math.max(1e-6,out.reduce((a,o)=>a+o.P,0))};
   }
   const cls=P=>P<.012?0:P<.05?1:P<.12?2:3, CLS=['none','light','moderate','heavy'];
   const fF=c=>Math.round(c*9/5+32), num=n=>Math.round(n).toLocaleString();
-  (function(){let h='';for(let z=0;z<=4000;z+=1000){const y=cY(z);h+='<line x1="52" x2="792" y1="'+y+'" y2="'+y+'" stroke="rgba(232,236,240,.07)"/><text x="46" y="'+(y+4)+'" text-anchor="end" class="cmax">'+(z===0?'sea':num(z)+' m')+'</text>'}$('cmAxis').innerHTML=h;
+  (function(){let h='';for(let z=1000;z<=4000;z+=1000){const y=cY(z);h+='<line x1="52" x2="792" y1="'+y+'" y2="'+y+'" stroke="rgba(232,236,240,.12)"/><text x="56" y="'+(y+14)+'" class="cmax">'+num(z)+' m</text>'}$('cmAxis').innerHTML=h;
     let g='',pts=[];for(let i=0;i<=NS_;i++){const x=i*800/NS_;pts.push(cX(x).toFixed(1)+','+cY(terr(x)).toFixed(1))}
     const west=pts.filter((p,i)=>i*5<=LEE),east=pts.filter((p,i)=>i*5>=LEE);
-    g+='<rect x="52" y="'+cY(0)+'" width="'+(cX(97)-52)+'" height="8" fill="#1F4466"/>';
+    g+='<rect x="-800" y="'+cY(0)+'" width="'+(cX(97)+800)+'" height="8" fill="#1F4466"/>';
     g+='<polygon points="'+west.join(' ')+' '+west[west.length-1].split(',')[0]+',348 52,348" fill="url(#cmLand)"/>';
-    g+='<polygon points="'+east.join(' ')+' 792,348 '+east[0].split(',')[0]+',348" fill="url(#cmDry)"/>';
-    g+='<rect x="52" y="348" width="740" height="82" fill="rgba(1,11,19,.55)"/>';
+    g+='<polygon points="'+east.join(' ')+' 1600,'+cY(320).toFixed(1)+' 1600,348 '+east[0].split(',')[0]+',348" fill="url(#cmDry)"/>';
+    g+='<rect x="-800" y="348" width="2400" height="300" fill="#081420"/>';
     $('cmGround').innerHTML=g;
     const L=[[40,'Pacific Ocean',0,'start',50],[195,'Coast Range',880],[296,'Lowlands',110],[CREST,'Cascade crest',3400],[728,'Columbia Plateau',380]];
-    $('cmLabels').innerHTML=L.map(l=>'<text class="cmlab" x="'+(l[4]||cX(l[0]))+'" y="'+(cY(l[2])-12)+'" text-anchor="'+(l[3]||'middle')+'">'+l[1]+'</text>').join('')+'<text class="cmlab sm" x="58" y="364">Rain and snow reaching the ground</text>';
+    $('cmLabels').innerHTML=L.map(l=>'<text class="cmlab" x="'+(l[4]||cX(l[0]))+'" y="'+(cY(l[2])-12)+'" text-anchor="'+(l[3]||'middle')+'">'+l[1]+'</text>').join('')+'<text class="cmlab sm" x="58" y="364">Rain and snow reaching the ground</text><text x="46" y="'+(cY(0)+4)+'" text-anchor="end" class="cmax">sea</text>';
     $('cmWind').setAttribute('d','M'+Array.from({length:NS_+1},(_,i)=>{const x=i*800/NS_;return cX(x).toFixed(1)+' '+(cY(Math.min(terr(x),RIDGE))-26).toFixed(1)}).join(' L'));
   })();
-  function cm(){
-    const s=SEASONS[season], T0=+$('cmT').value+warm, RH=+$('cmH').value, pos=+$('cmZ').value;
-    $('cmSky0').setAttribute('stop-color',s[2]);$('cmSky1').setAttribute('stop-color',s[3]);
-    const M=model(T0,RH), O=M.out, o=O[pos];
+  // Cloud card: [name, family, description, look for, photo, alt, credit]. Text is DRAFT for the voice pass
+  // (planning/VOICE-PASS.md); facts in planning/VERIFY.md; photos in planning/MEDIA-CREDITS.md. A photo loads only when shown.
+  const CL={
+    cumulus:['Cumulus','Low cloud','Cumulus are puffy white clouds with flat gray bottoms, like cotton balls drifting across a blue sky. They sit low, below about 2,000 meters (6,500 feet). Sun warms the ground, warm air rises, and its water vapor turns into tiny droplets. Small cumulus mean fair weather. If they keep growing taller, showers may follow.','Flat gray bottoms, bright rounded tops, blue sky between.','img/clouds/cumulus.jpg','Small white puffy cumulus clouds scattered across a deep blue sky above a green lawn, a pond, and palm trees.','Photo: Ralph F. Kresge, NOAA (public domain)'],
+    congestus:['Cumulus congestus','Grows tall','Towering cumulus, called cumulus congestus, sprout upward like a head of cauliflower. The flat base stays low, under about 2,000 meters (6,500 feet), but the top can climb past 6,000 meters (20,000 feet). Strong rising air feeds them. They often bring rain or snow showers, and they can grow into thunderstorm clouds.','A cloud taller than it is wide, with a bulging top.','img/clouds/congestus.jpg','A tall white cumulus congestus cloud with a bulging, cauliflower-like top rising into a dark blue sky.','Photo: Ralph F. Kresge, NOAA (public domain)'],
+    cumulonimbus:['Cumulonimbus','Grows tall','Cumulonimbus is the thunderstorm cloud: a huge tower with a dark base, and a top that often spreads into a flat anvil. Its base sits low, under 2,000 meters (6,500 feet), while the top can reach about 13,000 meters (43,000 feet). A strong updraft builds it. Summer storms rise over the Columbia Basin, bringing heavy rain, lightning, and hail.','Dark base, towering sides, and a flat anvil on top.','img/clouds/cumulonimbus.jpg','A huge white cumulonimbus anvil cloud spreading flat across the top of a developing thunderstorm, above a line of trees.','Photo: NOAA National Severe Storms Laboratory (public domain)'],
+    stratus:['Stratus and fog','Low cloud','Stratus is a flat gray blanket of cloud with an even base, close to the ground, below about 2,000 meters (6,500 feet). Fog is stratus that touches the ground. Cool, moist air trapped under a warmer layer condenses into it. Along the Pacific Northwest coast, stratus and fog drift inland as far as the Cascade foothills.','Smooth gray sheet, low enough to touch the hills.','img/clouds/stratus.jpg','Valley fog and low cloud filling forested valleys in the Oregon Coast Range under a gray and white sky.','Photo: Devinmlea, CC BY-SA 4.0, cropped'],
+    stratocumulus:['Stratocumulus','Low cloud','Stratocumulus is a low sheet of gray and white clumps, with patches of blue sky showing through the gaps. It sits below about 2,000 meters (6,500 feet). Gentle rising and sinking in a cool layer of air shapes the clumps, like rolls in a quilt. It usually means a cloudy but dry day, with light drizzle at most.','Lumpy gray and white rolls with blue gaps between.','img/clouds/stratocumulus.jpg','A low sheet of lumpy gray and white stratocumulus clouds with blue sky showing through gaps and the sun glowing behind.','Photo: Simon A. Eugster, CC BY-SA 3.0, cropped'],
+    nimbostratus:['Nimbostratus','Middle cloud','Nimbostratus is a thick, dark gray blanket that hides the sun and brings steady rain or snow. It starts in the middle sky, about 2,000 to 7,000 meters (6,500 to 23,000 feet), then spreads wide and sinks lower as precipitation falls. In winter, Pacific storms can bring days of it to the Coast Range and Cascades.','Dark, even gray sky, no sun, steady rain or snow.','img/clouds/nimbostratus.jpg','A thick gray nimbostratus layer covering the whole sky, with darker ragged pieces hanging beneath it above distant rooftops.','Photo: GerritR, CC BY-SA 4.0, cropped'],
+    altostratus:['Altostratus','Middle cloud','Altostratus is a gray or bluish sheet that covers much of the sky at middle height, about 2,000 to 7,000 meters (6,500 to 23,000 feet). The sun shows through as a dim, watery disk, like a light behind frosted glass. Light rain or snow may fall from it, and it can thicken into nimbostratus.','Gray sheet; the sun looks like a dim, fuzzy disk.','img/clouds/altostratus.jpg','A smooth gray altostratus layer across the whole sky with the sun glowing dimly through it as a pale, fuzzy disk.','Photo: Famartin, CC BY-SA 4.0, cropped'],
+    altocumulus:['Altocumulus','Middle cloud','Altocumulus is a layer of white or gray puffs, rolls, and ripples in the middle sky, about 2,000 to 7,000 meters (6,500 to 23,000 feet). Each puff looks about as wide as a thumb held at arm’s length. Made of water droplets, it can paint a colored ring, a corona, around the sun or moon. It usually means fair weather.','Rows of small puffs or ripples, like fish scales.','img/clouds/altocumulus.jpg','Rows of small white altocumulus ripples spread across a blue-green sky above dark tree silhouettes.','Photo: Ralph F. Kresge, NOAA (public domain)'],
+    cirrus:['Cirrus','High cloud','Cirrus are thin, white, hair-like streaks high in the sky, about 5,000 to 13,000 meters (16,500 to 45,000 feet). They are made of ice crystals, which strong winds stretch into wisps and curls. Cirrus by themselves mean fair weather. If they thicken and spread, a storm system may be a day or so away.','Thin white wisps and streaks, often curled at the ends.','img/clouds/cirrus.jpg','Thin white feathery cirrus streaks fanning across a bright blue sky.','Photo: Ron Clausen, CC BY-SA 4.0, cropped'],
+    cirrostratus:['Cirrostratus','High cloud','Cirrostratus is a thin, see-through veil of ice crystals that can cover the whole sky, high up at about 5,000 to 13,000 meters (16,500 to 45,000 feet). The sun and moon still shine through, and light bending in the crystals often makes a ring, called a halo. A thickening veil can mean rain or snow is on the way.','Milky veil with a ring, or halo, around the sun.','img/clouds/cirrostratus.jpg','A bright sun surrounded by a faint circular halo in a thin, milky veil of cirrostratus cloud, with tree branches at the upper right.','Photo: Rollcloud, CC BY 3.0, cropped'],
+    lenticular:['Lenticular cloud','Mountain cloud','Lenticular clouds are smooth, lens-shaped clouds that seem to hover near mountains. Wind lifts moist air up and over a peak in waves. The cloud forms where air rises and fades where it sinks, so it stays put. A cap on Mount Rainier (4,392 meters, 14,410 feet) is a local sign that rain may arrive within about a day.','Smooth saucer or lens shapes that hover and do not drift.','img/clouds/lenticular.jpg','Two smooth, saucer-shaped lenticular clouds hovering in a blue sky above snowy Mount Rainier, with a cloud cap on the summit.','Photo: Ben Smith, USDA Forest Service (public domain)'],
+    clear:['Clear sky','No cloud','The air never cools enough to give up its water.','','','','']
+  };
+  // the clouds for one model state, back to front: [type, options] specs, plus weather behind (B) and in front of (F) them
+  function sky(M,T0,RH,mode){
+    const O=M.out,C=[],B=[],F=[],Z=v=>Math.round(v/4)*4;  // snap to 4 units so small slider moves reuse clouds
+    const add=(t,x,yb,yt,w,s)=>C.push([t,{x:Z(x),base:Z(yb),top:Z(yt),width:Z(w),seed:s,mode,label:CL[t][0]+', '+CL[t][1].split(' · ')[0].toLowerCase()}]);
+    // rain or snow shafts under a cloud base, only where the ground lies below it
+    const fall=(xa,xb,yb,s)=>{const rs=[];let r=null;
+      O.forEach(q=>{const x=cX(q.x),on=q.P>=.012&&x>=xa&&x<=xb&&gY(x)>yb+6;
+        if(on&&r&&r.sn===q.snow){r.x1=x;r.p=Math.max(r.p,q.P)}else{if(r)rs.push(r);r=on?{x0:x,x1:x,p:q.P,sn:q.snow}:null}});
+      if(r)rs.push(r);
+      rs.forEach((r,i)=>{if(r.x1-r.x0<8)return;const top=Z(yb-4);B.push([r.sn?'snow':'rain',{x0:Z(r.x0-3),x1:Z(r.x1+3),top,bottom:x=>Math.max(gY(x),top+2),intensity:Math.round(Math.min(1,r.p/.2)*10)/10,seed:s+i}])})};
+    const maxcw=Math.max(...O.map(q=>q.cw)),ic=O.findIndex(q=>q.cw===maxcw),tower=T0>=20&&RH>=65&&maxcw>=.3;
+    // high and middle clouds ahead of a front (it comes in from the ocean, so "ahead" is east); f is the front's stage
+    const st=ex&&ex.f!=null?ex.f:season==='ar'?4:season==='winter'?(RH>=85?3:RH>=75?2:RH>=65?1:0):season==='fall'?(RH>=85?3:RH>=72?2:RH>=62?1:0):season==='summer'&&!tower&&RH>=45?1:0;
+    if(st===1)add('cirrus',cX(625),46,10,330,21);
+    if(st===2){add('cirrostratus',cX(450),44,14,380,22);add('cirrus',cX(700),44,10,190,21)}
+    if(st===3){add('cirrostratus',cX(560),42,14,300,22);add('cirrus',cX(730),42,10,150,21);add('altostratus',cX(390),cY(3200),cY(3650),380,23);add('altocumulus',cX(665),cY(3350),cY(3750),120,24)}
+    if(st===4){add('cirrostratus',cX(560),40,12,460,22);add('altostratus',cX(400),cY(3250),cY(3750),760,23)}
+    if(season==='spring'&&RH>=65&&!(ex&&ex.f!=null)){add('altocumulus',cX(330),cY(3000),cY(3400),150,25);add('altocumulus',cX(705),cY(3300),cY(3700),130,26)}
+    if(ex&&ex.w){add('lenticular',cX(CREST)+6,cY(3750),cY(4150),100,31);if(ex.w>1){add('lenticular',cX(655),cY(3350),cY(3700),86,32);add('lenticular',cX(750),cY(3300),cY(3580),64,33)}}
+    // clouds the mountains make: each run of cloudy air along the slice (marine air under the lid is the fog, drawn below)
+    const runs=[];let r=null;
+    O.forEach((q,i)=>{if(q.cw>.03&&!(M.lid&&q.z<=M.lid)){if(!r)r={i0:i,i1:i,cw:0};r.i1=i;r.cw=Math.max(r.cw,q.cw)}else if(r){runs.push(r);r=null}});if(r)runs.push(r);
+    let main='',big=0;
+    runs.forEach((r,j)=>{const a=O[r.i0].x,b=Math.min(O[r.i1].x,CREST+10),xa=cX(a),xb=cX(b),k=Math.min(1,r.cw/.5),s=41+j*10,
+        t=tower&&ic>=r.i0&&ic<=r.i1?'cumulonimbus':r.cw<.08?(a<=CREST&&O[r.i1].x>=CREST?'lenticular':T0>=10?'cumulus':'stratocumulus'):T0>=18||(T0>=10&&RH<80)?(r.cw>=.42?'congestus':'cumulus'):RH>=80?'nimbostratus':'stratocumulus';
+      if(b-a>big){big=b-a;main=t}
+      // the thunderhead stands over the upper windward slope with its anvil blown downwind; the crest sits inside it
+      if(t==='cumulonimbus'){const tx=cX(O[ic].x)-40,W=280,yb=cY(2500);add(t,tx+W*.16,yb,8,W,s,0);fall(tx-46,tx+48,yb,s);F.push(['lightning',{x:Z(tx-14),top:Z(cY(3000)),bottom:Z(gY(tx-14)),every:6,seed:s}]);return}
+      if(t==='lenticular'){add(t,cX(CREST)+4,cY(3550),cY(3950),84,s,0);return}
+      if(t==='cumulus'||t==='congestus'){const n=Math.max(1,Math.round((b-a)/60)),sw=(xb-xa)/n;
+        for(let i=0;i<n;i++){const p=a+(b-a)*(i+.5)/n,x=xa+sw*(i+.5),yb=cY(Math.min(2900,terr(p)+300)),w=Math.max(50,Math.min(t==='cumulus'?110:120,sw*1.15)),h=w*(t==='cumulus'?.55+.35*k:1.2+.6*k);
+          add(t,x,yb,Math.max(6,yb-h),w,s+i,8);fall(x-w*.4,x+w*.4,yb,s+i)}
+        return}
+      // a layer over the windward slope and just past the top, wider than it is tall; the peak may poke into it
+      const x1=cX(Math.min(O[r.i1].x+20,CREST+20)),w=x1-xa+40,zb=Math.min(2900,terr(a+(b-a)*.55)+300),yb=cY(zb);
+      add(t,(xa+x1)/2,yb,Math.max(cY(4100),yb-Math.min(w*.5,(t==='nimbostratus'?900+900*k:350+250*k)*305/4000)),w,s,6);fall(xa-16,x1+16,yb,s)});
+    // low clouds in front: stratocumulus over the lowlands, fog or a stratus deck over the ocean
+    if(T0<18&&RH>=70&&RH<95&&!tower){const z=Math.max(M.lcl,900);add('stratocumulus',cX(296),cY(z),cY(z+420),96,5)}
+    if(M.lcl<160){const top=M.lid||380;add('stratus',cX(150),cY(0)+4,cY(top),cX(320)-cX(-20),3);F.push(['fog',{x0:20,x1:Z(cX(330)),y:Z(cY(top*.35)),thick:20,seed:7}])}
+    else if(M.lcl<600&&T0<20)add('stratus',cX(48),cY(M.lcl),cY(M.lcl+350),130,4);
+    if(season==='ar')B.unshift(['plume',{x0:-40,y0:Z(cY(1300)),x1:Z(cX(440)),y1:Z(cY(2700)),thick:64,seed:8}]);
+    main=(ex&&ex.main)||main||(M.lcl<160?'stratus':st>=3?'altostratus':st===2?'cirrostratus':st===1?'cirrus':'clear');
+    return {C,B,F,main,dim:C.some(c=>c[0]==='nimbostratus')?.3:st>=3?.16:0};
+  }
+  function drawScene(M,T0,RH,mode){
+    const O=M.out,sc=sky(M,T0,RH,mode);
     // snow cover on the land and the glacier on the volcano
     let sn='';const showSnow=season!=='summer'?Math.min(M.snowLine+(season==='spring'?250:0),4000):9e9;
-    for(let i=0;i<NS_;i++){const a=O[i],b=O[i+1];if(Math.min(a.e,b.e)>=Math.min(showSnow,2950))sn+='M'+cX(a.x)+' '+cY(a.e)+' L'+cX(b.x)+' '+cY(b.e)+' '}
+    for(let i=0;i<NS_;i++){const a=O[i],b=O[i+1];if(Math.min(a.e,b.e)>=Math.max(5,Math.min(showSnow,2950)))sn+='M'+cX(a.x)+' '+cY(a.e)+' L'+cX(b.x)+' '+cY(b.e)+' '}
     let sl='';if(M.snowLine<3400){const y=cY(M.snowLine);sl='<line x1="'+cX(330)+'" x2="'+cX(800)+'" y1="'+y+'" y2="'+y+'" stroke="#E8ECF0" stroke-width="1" stroke-dasharray="5 5" opacity=".55"/><text class="cmlab sm" x="'+cX(800)+'" y="'+(y-6)+'" text-anchor="end">snow line · '+num(M.snowLine)+' m</text>'}
     $('cmSnow').innerHTML='<path d="'+sn+'" stroke="#F4F7FA" stroke-width="5" stroke-linecap="round" fill="none"/>'+sl;
-    // clouds
-    let cl='';const maxcw=Math.max(...O.map(q=>q.cw)),ic=O.findIndex(q=>q.cw===maxcw);
-    if(M.lcl<160){const top=cY(M.lcl+260);cl+='<rect class="fog" x="52" y="'+top+'" width="'+(cX(300)-52)+'" height="'+(cY(0)-top)+'"/>'}
-    const tower=T0>=20&&RH>=65&&maxcw>=.3;
-    if(tower){const x=cX(O[ic].x)-8;for(let z=O[ic].z+600;z<=3750;z+=230){const k=(z-O[ic].z)/(3750-O[ic].z),r=24+k*10,y=cY(z);cl+='<circle cx="'+(x-r*.5)+'" cy="'+y+'" r="'+r+'" fill="#AEB7C1"/><circle cx="'+(x+r*.45)+'" cy="'+(y-6)+'" r="'+(r*.92)+'" fill="#E6EBEF"/>'}cl+='<path d="M'+(x-150)+' '+cY(3880)+' Q'+x+' '+cY(4080)+' '+(x+170)+' '+cY(3870)+' Q'+x+' '+cY(3800)+' '+(x-150)+' '+cY(3880)+' Z" fill="#E6EBEF"/>'}
-    O.forEach((q,i)=>{if(q.cw<.03||i%2)return;const cc=Math.min(q.cw*2.2,1.5),x=cX(q.x),r=8+cc*13,y=cY(q.z+700+cc*450);
-      cl+='<circle cx="'+x+'" cy="'+(y+r*.55)+'" r="'+(r*.9)+'" fill="'+(cc>1?'#7D8794':'#B9C1CA')+'" opacity=".9"/><circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+(cc>1?'#C9D0D7':'#EEF2F5')+'" opacity=".93"/>'});
-    $('cmClouds').innerHTML=cl;
-    // falling rain and snow, and the intensity strip
-    let fa='',bars='';
-    O.forEach((q,i)=>{const k=cls(q.P),x=cX(q.x);if(k){const top=cY(q.z+560+Math.min(q.cw*2.2,1.5)*350),bot=cY(q.e)-2;if(i%(4-k)===0){fa+=q.snow?'<line class="snowfall" x1="'+x+'" x2="'+(x-6)+'" y1="'+top+'" y2="'+bot+'"/>':'<line class="rainfall k'+k+'" x1="'+x+'" x2="'+(x-8)+'" y1="'+top+'" y2="'+bot+'"/>'}}
-      const h=Math.min(1,q.P/.25)*52;if(h>.5)bars+='<rect x="'+(x-2)+'" y="'+(426-h)+'" width="4.2" height="'+h+'" fill="'+(q.snow?'#F4F7FA':'#5E97C9')+'"/>'});
-    $('cmFall').innerHTML=fa;$('cmBars').innerHTML=bars;
-    // the parcel
-    const px=cX(o.x),py=cY(o.z)-26;$('cmDot').setAttribute('cx',px);$('cmDot').setAttribute('cy',py);
-    const st=$('cmStem');st.setAttribute('x1',px);st.setAttribute('x2',px);st.setAttribute('y1',py+9);st.setAttribute('y2',cY(o.e));
+    // clouds: keep the ones whose options did not change, fade in the new ones, fade out the rest
+    const g=$('cmClouds'),fade=!reduce&&mode==='full',want=[],old=new Map([...g.children].filter(n=>!n.classList.contains('ck-out')).map(n=>[n.dataset.k,n]));
+    sc.C.forEach(([t,o])=>{const k=t+CK.hash(JSON.stringify(o));let n=old.get(k);
+      if(n)old.delete(k);else{const tmp=document.createElementNS(NS,'svg');tmp.innerHTML=CK.markup(t,o);n=tmp.firstElementChild;n.dataset.k=k;if(fade)n.classList.add('ck-new')}
+      want.push(n)});
+    old.forEach(n=>{n.classList.remove('ck-on');if(fade){n.classList.add('ck-out');n.setAttribute('tabindex','-1');setTimeout(()=>n.remove(),950)}else n.remove()});
+    let ref=g.firstChild;want.forEach(n=>{while(ref&&ref.classList.contains('ck-out'))ref=ref.nextSibling;if(n===ref)ref=ref.nextSibling;else g.insertBefore(n,ref)});
+    if(sel&&!want.some(n=>n.classList.contains('ck-on'))){const n=want.find(n=>n.dataset.type===sel);if(n)n.classList.add('ck-on');else sel=null}
+    [['cmBack',sc.B],['cmFront',sc.F]].forEach(([id,a])=>{const h=a.map(([f,o])=>CK.fx[f](o)).join('');if(fxc[id]!==h){fxc[id]=h;$(id).innerHTML=h}});
+    $('cmGrey').setAttribute('opacity',sc.dim);
+    // the intensity strip
+    let bars='';O.forEach(q=>{const x=cX(q.x),h=Math.min(1,q.P/.25)*52;if(h>.5)bars+='<rect x="'+(x-2)+'" y="'+(426-h)+'" width="4.2" height="'+h+'" fill="'+(q.snow?'#F4F7FA':'#5E97C9')+'"/>'});
+    $('cmBars').innerHTML=bars;
+    if(warm){const B=model(T0-2,RH,M.lid);$('cmNote').innerHTML='<tspan x="400">With 2 °C of warming: snow line '+num(B.snowLine)+' → '+num(M.snowLine)+' m</tspan><tspan x="400" dy="17">water falling '+(M.tot>B.tot?'+':'')+Math.round((M.tot/B.tot-1)*100)+'% · falling as snow '+Math.round(B.snowShare*100)+'% → '+Math.round(M.snowShare*100)+'%</tspan>'}else $('cmNote').textContent='';
+    card(sel||sc.main);
+    return sc;
+  }
+  function card(t){if(t===shown)return;shown=t;const c=CL[t]||CL.clear;
+    $('cmName').textContent=c[0];$('cmFam').textContent=c[1];$('cmDesc').textContent=c[2];$('cmLook').textContent=c[3];$('cmLookP').hidden=!c[3];
+    $('cmPh').hidden=!c[4];if(c[4]){$('cmImg').src=c[4];$('cmImg').alt=c[5];$('cmCred').textContent=c[6]}}
+  // the parcel at a position along the slice (fractional while it travels)
+  function dot(p){const O=last.M.out,i=Math.min(NS_-1,Math.floor(p)),k=Math.min(1,p-i),a=O[i],b=O[i+1],x=cX(a.x+(b.x-a.x)*k),y=cY(a.z+(b.z-a.z)*k)-26;
+    $('cmDot').setAttribute('cx',x);$('cmDot').setAttribute('cy',y);const st=$('cmStem');st.setAttribute('x1',x);st.setAttribute('x2',x);st.setAttribute('y1',y+9);st.setAttribute('y2',cY(a.e+(b.e-a.e)*k))}
+  function cm(){
+    const T0=+$('cmT').value+warm, RH=+$('cmH').value, pos=+$('cmZ').value, mode=reduce||lite?'reduced':'full', key=[season,T0,RH,mode,ex?ex.k:''].join();
+    if(!last||last.key!==key){const M=model(T0,RH,ex&&ex.lid);last={key,M};drawScene(M,T0,RH,mode)}
+    const M=last.M, O=M.out, o=O[pos];
+    dot(pos);
     // readouts
     $('cmTv').textContent=T0+' °C · '+fF(T0)+' °F'+(warm?' (warmed)':'');$('cmHv').textContent=RH+'%';
     $('cmZv').textContent=o.x<97?'over the ocean':num(o.e)+' m up';
     const ws=mix(es(o.T),pres(o.z)),k=cls(o.P);
     $('cmPT').textContent=o.T.toFixed(1)+' °C';$('cmW').textContent=(o.w+o.cw).toFixed(1)+' g/kg';$('cmWs').textContent=ws.toFixed(1)+' g/kg';
     $('cmFallV').textContent=k?CLS[k]+' '+(o.snow?'snow':'rain'):'nothing';
-    // cloud type for the whole slice
-    const ty=tower?['Cumulonimbus','A thunderhead. Warm, wet air rises fast and tall; heavy rain, lightning, sometimes hail.']
-      :T0>=20&&maxcw>.03?['Cumulus','Heaped, fair-weather clouds building over the crest on a warm afternoon; showers if they grow.']
-      :M.tot>=2.5?['Nimbostratus','A thick gray layer over the mountains with steady rain or snow'+(M.lcl<160?', and fog low over the water.':'. The workhorse of a Northwest winter.')]
-      :M.lcl<160?['Fog and stratus','Air this wet is already saturated near the water. Gray layers sit low over the ocean and the lowlands.']
-      :maxcw>=.08?['Cumulus','Heaped clouds building where the land pushes the air up.']
-      :maxcw>.03?['Cap cloud','A small cloud that sits on the crest and melts away on the far side.']:['Clear','The air never cools enough to give up its water.'];
-    $('cmType').innerHTML='<b>'+ty[0]+'</b><span>'+ty[1]+'</span>';
-    // what is happening here
+    // what is happening here (a weather example shows its own caption instead)
     const up=pos<NS_&&O[pos+1].z>o.z, ocean=o.x<97, lee=o.x>=LEE;
     let msg=ocean?'Over the Pacific, the air picks up water: '+M.w0.toFixed(1)+' grams in every kilogram of air.'
       :lee&&o.cw<.03?'Rain shadow. Coming down the far side, the air warms and dries: '+o.T.toFixed(0)+' °C here against '+T0+' °C at the coast, with '+o.w.toFixed(1)+' of its '+M.w0.toFixed(1)+' grams left. This is why the plateau is dry.'
       :lee?'Over the crest the air sinks and warms, and the cloud begins to evaporate.'
+      :M.lid&&o.z>M.lid&&o.cw<.03?'Above the lid. This air is warmer and much drier than the foggy ocean air trapped below it, so it makes no cloud.'
       :o.cw<.03&&up?'The land pushes the air up. Rising air expands and cools, about 10 °C for every 1,000 m, but it can still hold its water.'
       :o.cw<.03?'The air rests in the lowlands before the next climb.'
       :k?'The air cooled past what it can hold. The extra water condenses into cloud, and '+CLS[k]+' '+(o.snow?'snow':'rain')+' falls here.'
       :'Cloud. The air cooled past what it can hold, so the extra water condensed onto dust and smoke.';
-    if(warm){const B=model(T0-2,RH);$('cmNote').textContent='With 2 °C of warming: snow line '+num(B.snowLine)+' → '+num(M.snowLine)+' m · water falling '+(M.tot>B.tot?'+':'')+Math.round((M.tot/B.tot-1)*100)+'% · falling as snow '+Math.round(B.snowShare*100)+'% → '+Math.round(M.snowShare*100)+'%'}else $('cmNote').textContent='';
-    $('cmMsg').textContent=msg;
+    $('cmMsg').textContent=cap||msg;
   }
-  function setSeason(s){season=s;const p=SEASONS[s];$('cmT').value=p[0];$('cmH').value=p[1];[...$('cmSeason').children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.s===s)));cm()}
+  // sun, moon and stars for each time of day (the slice runs west to east: dawn on the right, dusk over the ocean)
+  const SUN=(()=>{const r=CK.rng(9);let st='';for(let i=0;i<34;i++)st+='<circle cx="'+Math.round(r()*800)+'" cy="'+Math.round(4+r()*190)+'" r="'+(.6+r()*.9).toFixed(1)+'" fill="#E8ECF0" opacity="'+(.35+r()*.5).toFixed(2)+'"/>';
+    const b=(x,y,g,gr,c,rr)=>'<circle cx="'+x+'" cy="'+y+'" r="'+gr+'" fill="url(#'+g+')"/><circle cx="'+x+'" cy="'+y+'" r="'+rr+'" fill="'+c+'"/>';
+    return {dawn:b(778,255,'cmGlowW',95,'#FFF1D0',12),day:b(470,30,'cmGlowD',85,'#FFFDF5',13),dusk:b(98,300,'cmGlowW',95,'#FFE2B0',12),night:st+b(668,44,'cmGlowN',36,'#EEF2F6',8)}})();
+  function setLight(l){CK.setLight($('cmSvg'),l);$('cmSun').innerHTML=SUN[l];$('cmGrey').setAttribute('fill',CK.LIGHTS[l].ramp[1]);[...$('cmTod').children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)))}
+  // weather examples: [season, coast °C, humidity %, time of day, extras, caption, cloud to show]
+  // extras: f = stage of an arriving front (1 cirrus ... 4 nimbostratus), w = mountain wave, lid = top of the marine layer (m)
+  const EX={
+    fog:[['summer',12,97,'dawn',{lid:450,f:0},'Dawn on the coast. A lid of warmer air holds cool, wet ocean air near the water, and it fills with fog.','stratus'],
+      ['summer',14,93,'day',{lid:450,f:0},'The sun climbs. Above the lid, the air crossing the mountains is warm and dry, so the sky inland stays clear.','stratus'],
+      ['summer',17,84,'day',{lid:450,f:0},'By late morning the fog lifts into a low layer of stratus and starts to break up.','stratus']],
+    fair:[['summer',21,36,'day',{},'Late morning. The sun warms the ground, and the first small cumulus puff up over the mountains.','cumulus'],
+      ['summer',24,42,'day',{},'Afternoon. Warm air keeps rising and the cumulus grow; a shower may fall on the crest, while the lowlands and the plateau stay dry.','cumulus']],
+    storm:[['summer',24,60,'day',{},'A hot, humid afternoon. Cumulus build into towers over the Cascade crest.','congestus'],
+      ['summer',27,67,'day',{},'The tower keeps climbing until its top spreads out flat, like an anvil.','cumulonimbus'],
+      ['summer',29,72,'dusk',{},'A thunderstorm: heavy rain, lightning, and gusty wind over the mountains.','cumulonimbus']],
+    ar:[['ar',9,88,'day',{f:3},'A long, narrow river of wet air flows in from the warm Pacific. Sheets of altostratus spread out ahead of it.','altostratus'],
+      ['ar',11,95,'day',{},'It runs into the mountains. Heavy rain falls, and high up, rain falls on the snow.','nimbostratus'],
+      ['ar',13,98,'day',{},'Warmer air carries more water and lifts the snow line, so more of it falls as rain.','nimbostratus']],
+    front:[['winter',6,58,'day',{f:1},'A warm front is on its way. First come thin wisps of cirrus, very high up.','cirrus'],
+      ['winter',7,68,'day',{f:2},'The cirrus thicken into a thin, milky veil of cirrostratus. Look for a ring around the sun.','cirrostratus'],
+      ['winter',8,80,'day',{f:3},'Gray altostratus moves in lower, and the sun turns into a dim, watery disk.','altostratus'],
+      ['winter',8,92,'day',{f:4},'Nimbostratus arrives with steady rain on the Coast Range and snow in the Cascades.','nimbostratus']],
+    wave:[['fall',8,46,'day',{w:1},'Strong wind blows across the Cascades and bends into waves on the far side, like water flowing over a rock.','lenticular'],
+      ['fall',8,50,'day',{w:2},'Smooth lens clouds form where the air rises in each wave and fade where it sinks, so they stay in one place.','lenticular']],
+    snow:[['winter',5,88,'day',{},'A cold, wet storm: snow in the mountains, rain near the coast.','nimbostratus'],
+      ['winter',2,90,'day',{},'Colder air brings the snow line down the mountainsides.','nimbostratus'],
+      ['winter',0,92,'day',{},'A snow day. The snow line reaches the lowlands, and snow falls almost everywhere.','nimbostratus']]
+  };
+  const press=(id,attr,v)=>[...$(id).children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[attr]===v)));
+  function stopPlay(){if(playing){cancelAnimationFrame(playing);playing=null;$('cmPlay').textContent='Send the air inland'}}
+  function stopEx(){clearTimeout(exT);exT=null;ex=null;cap='';press('cmEx','x','')}
+  // each step sets the season, temperature, humidity and light, then holds; reduced motion shows the last step and the whole story
+  function playEx(k){
+    stopEx();stopPlay();lite=false;press('cmEx','x',k);
+    const L=EX[k];let j=reduce?L.length-1:0;
+    const step=()=>{const [s,T,H,l,x,c,m]=L[j];season=s;press('cmSeason','s',s);$('cmT').value=T;$('cmH').value=H;setLight(l);ex=Object.assign({k:k+j,main:m},x);cap=reduce?L.map(q=>q[5]).join(' '):c;cm();
+      exT=++j<L.length?setTimeout(step,2800):null};
+    step()}
+  function setSeason(s){stopEx();season=s;const p=SEASONS[s];$('cmT').value=p[0];$('cmH').value=p[1];press('cmSeason','s',s);cm()}
   [...$('cmSeason').children].forEach(b=>b.onclick=()=>setSeason(b.dataset.s));
-  ['cmT','cmH','cmZ'].forEach(id=>$(id).addEventListener('input',cm));
+  [...$('cmTod').children].forEach(b=>b.onclick=()=>setLight(b.dataset.l));
+  [...$('cmEx').children].forEach(b=>b.onclick=()=>playEx(b.dataset.x));
+  // dragging a slider draws the quick reduced clouds; letting go draws the full ones
+  ['cmT','cmH'].forEach(id=>{const s=$(id);s.addEventListener('pointerdown',()=>{lite=true});s.addEventListener('input',()=>{stopEx();cm()});['pointerup','pointercancel'].forEach(v=>s.addEventListener(v,()=>{lite=false;cm()}))});
+  $('cmZ').addEventListener('input',()=>{clearTimeout(exT);exT=null;cap='';cm()});
   $('cmWarm').onclick=function(){warm=warm?0:2;this.setAttribute('aria-pressed',String(!!warm));this.textContent=warm?'Back to today':'Warm the world 2 °C';cm()};
   $('cmPlay').onclick=function(){
-    if(playing){cancelAnimationFrame(playing);playing=null;this.textContent='Send the air inland';return}
-    const z=$('cmZ');if(+z.value>=NS_)z.value=0;const start=+z.value,t0=performance.now(),dur=(NS_-start)/NS_*9000;this.textContent='Pause';
-    const step=now=>{const k=Math.min(1,(now-t0)/dur);z.value=Math.round(start+(NS_-start)*k);cm();if(k<1&&!reduce)playing=requestAnimationFrame(step);else{playing=null;z.value=NS_;cm();$('cmPlay').textContent='Send the air inland'}};
+    if(playing){stopPlay();return}
+    clearTimeout(exT);exT=null;cap='';
+    const z=$('cmZ');if(+z.value>=NS_)z.value=0;const start=+z.value,t0=performance.now(),dur=(NS_-start)/NS_*9000;let tick=0;this.textContent='Pause';
+    // the dot moves every frame; the slider, readouts and message refresh four times a second (each refresh repaints the panel)
+    const step=now=>{const k=Math.min(1,(now-t0)/dur),p=start+(NS_-start)*k;if(now-tick>250){tick=now;z.value=Math.round(p);cm()}dot(p);
+      if(k<1&&!reduce)playing=requestAnimationFrame(step);else{playing=null;z.value=NS_;cm();$('cmPlay').textContent='Send the air inland'}};
     playing=requestAnimationFrame(step)};
-  setSeason('winter');
+  // clouds are buttons: click, tap, or Enter and Space name the cloud in the card
+  const pick=g=>{if(!g||g.classList.contains('ck-out'))return;$('cmClouds').querySelectorAll('.ck-on').forEach(n=>n.classList.remove('ck-on'));g.classList.add('ck-on');sel=g.dataset.type;card(sel)};
+  $('cmClouds').addEventListener('click',e=>pick(e.target.closest('.ck-cloud')));
+  $('cmClouds').addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;const g=e.target.closest('.ck-cloud');if(g){e.preventDefault();e.stopPropagation();pick(g)}});
+  // build on first view, so the clouds and the photo cost nothing until the slide is shown; stop timers when it is hidden
+  const cmSec=$('cmSvg').closest('.slide');let cmOn=false;
+  const cmVis=()=>{if(cmSec.hidden){clearTimeout(exT);exT=null;stopPlay();return}if(!cmOn){cmOn=true;setLight('day');setSeason('winter')}};
+  new MutationObserver(cmVis).observe(cmSec,{attributes:true,attributeFilter:['hidden']});
+  setTimeout(cmVis,0);
 
   /* ---------- instruments ---------- */
   const INST=[
@@ -1041,7 +1728,9 @@ const MAP=__MAP__;
   });
 
   /* ---------- source check ---------- */
-  document.querySelectorAll('.claim').forEach(c=>c.addEventListener('click',()=>{const open=c.getAttribute('aria-expanded')==='true';c.setAttribute('aria-expanded',String(!open));c.querySelector('.back').hidden=open;c.querySelector('.hint').textContent=open?'Select to check':'Select to close'}));
+  // the resting card shows its Notice line in the same place the reveal puts it, so opening only adds Ask or Check below
+  document.querySelectorAll('.claim').forEach(c=>{const bk=c.querySelector('.back .bk');c.querySelector('.hint').innerHTML='<span class="bk">'+bk.children[0].outerHTML+bk.children[1].outerHTML+'</span><span class="go">Select to check</span>';
+    c.addEventListener('click',()=>c.setAttribute('aria-expanded',String(c.getAttribute('aria-expanded')!=='true')))});
 
   /* ---------- three ways of seeing ---------- */
   const EYES=[
@@ -1060,7 +1749,29 @@ const MAP=__MAP__;
   const AUG={mouth:19.5,bonneville:21.3,thedalles:21.5,celilo:21.3,johnday:21.5,mcnary:21.0,confluence:20.3,iceharbor:21.4,lowermonumental:20.5,littlegoose:20.0,lowergranite:19.0,salmonmouth:19.5,redfish:14.0,priestrapids:19.3,wanapum:19.4,rockisland:18.9,rockyreach:18.9,wells:18.7,chiefjoseph:18.2,grandcoulee:18.0};
   // added warming of August river water: scaled from published river temperature studies to CMIP6 warming (working draft)
   const DT={now:{mid:0,late:0},s245:{mid:1.0,late:1.7},s370:{mid:1.1,late:2.7}};
-  const SC={now:'Today',s245:'SSP2-4.5',s370:'SSP3-7.0'}, PER={mid:'2040 to 2069',late:'2070 to 2099'};
+  const SC={now:'Today',s245:'Pollution levels off (SSP2-4.5)',s370:'Pollution keeps rising (SSP3-7.0)'}, PER={mid:'2040 to 2069',late:'2070 to 2099'};
+  // stop photos, loaded only when the stop is shown: [alt, credit]; files in img/dams/<key>.jpg (MEDIA-CREDITS). Wells has none.
+  const PH={
+    mouth:['Aerial view of Cape Disappointment and the north jetty at the mouth of the Columbia River, where the river meets the Pacific Ocean','U.S. Coast Guard, public domain, via Wikimedia Commons'],
+    bonneville:['Aerial view downstream over Bonneville Dam and the Columbia River Gorge','Bonneville Power Administration, public domain, via Wikimedia Commons'],
+    thedalles:['Aerial view of The Dalles Dam crossing the Columbia River between Oregon and Washington','U.S. Army Corps of Engineers, via USGS, public domain, via Wikimedia Commons'],
+    celilo:['Black and white photograph of Celilo Falls on the Columbia River, water dropping over a wide basalt ledge, ca. 1913','Albert Henry Barnes, ca. 1913, University of Washington Libraries, no known copyright restrictions, via Wikimedia Commons'],
+    johnday:['Aerial view of John Day Dam spilling water across the Columbia River','U.S. Army Corps of Engineers, public domain, via Wikimedia Commons'],
+    mcnary:['Water pouring through the open spillway gates of McNary Dam under dark clouds','National Weather Service, public domain, via Wikimedia Commons'],
+    confluence:['Astronaut photograph from the International Space Station of farmland and the Snake River joining the Columbia River in southeastern Washington','NASA Johnson Space Center / Mike Barratt, ISS Expedition 72, public domain, via Wikimedia Commons'],
+    iceharbor:['Aerial view of Ice Harbor Dam on the Snake River with water spilling through the gates','U.S. Army Corps of Engineers, public domain, via Wikimedia Commons'],
+    lowermonumental:['Aerial view upriver over Lower Monumental Dam and its reservoir on the Snake River','U.S. Army Corps of Engineers, 1995, public domain, via Wikimedia Commons'],
+    littlegoose:['Aerial view of Little Goose Lock and Dam on the Snake River','U.S. Army Corps of Engineers, public domain, via Wikimedia Commons'],
+    lowergranite:['Aerial view of Lower Granite Dam spilling water across the Snake River below steep canyon hills','U.S. Army Corps of Engineers, public domain, via Wikimedia Commons'],
+    salmonmouth:['The lower Salmon River canyon in Idaho, with dry golden hills reflected in calm water','Bureau of Land Management, Idaho, 2021, public domain, via Wikimedia Commons'],
+    redfish:['Redfish Lake in Idaho with a snow-dusted Sawtooth peak above the shoreline and pines','U.S. Forest Service, Intermountain Region, public domain, via Wikimedia Commons'],
+    priestrapids:['Close aerial view of the spillway gates and fish ladder at Priest Rapids Dam','David Falconer, U.S. EPA DOCUMERICA, 1973, U.S. National Archives, public domain, color adjusted, via Wikimedia Commons'],
+    wanapum:['Wanapum Dam seen downstream across the blue Columbia River under a partly cloudy sky','Williamborg, 2008, public domain, via Wikimedia Commons'],
+    rockisland:['Rock Island Dam stretching across the Columbia River with a highway along the bank','John and Karen Hollingsworth, U.S. Fish and Wildlife Service, public domain, via Wikimedia Commons'],
+    rockyreach:['Rocky Reach Dam spillway gates below dry hills near Wenatchee, Washington','SarekOfVulcan, CC BY-SA 3.0, via Wikimedia Commons'],
+    chiefjoseph:['Aerial view of Chief Joseph Dam on the Columbia River with water spilling below the gates','U.S. Army Corps of Engineers, public domain, via Wikimedia Commons'],
+    grandcoulee:['Aerial view of Grand Coulee Dam with water spilling down the face of the dam','U.S. Bureau of Reclamation, 1986, public domain, via Wikimedia Commons']
+  };
   let fut='now',per='mid';
   const LOW=[
     ['mouth','The Estuary','River mile 0','The journey begins and ends here. Young salmon feed and grow in the estuary before the ocean; after one to several years at sea, adults come home through this same door, following the smell of their home water.',null,'At sea and at the river mouth: marine heatwaves like the 2014 to 2016 &ldquo;Blob&rdquo; left less food in the ocean, and seals, sea lions, and birds wait where the river meets the sea.'],
@@ -1099,18 +1810,20 @@ const MAP=__MAP__;
     el('path',{d:MAP.land,fill:'#131A22',stroke:'#2A3542','stroke-width':'.9'},svg);
     el('path',{d:MAP.lakes,fill:'#0B2236'},svg);
     el('path',{d:MAP.states,fill:'none',stroke:'#3A4553','stroke-width':'1','stroke-dasharray':'4 4'},svg);
-    for(const k in MAP.labels){const p=MAP.labels[k];const t=el('text',{x:k==='PACIFIC'?12:p[0],y:p[1],class:'maplab','text-anchor':k==='PACIFIC'?'start':'middle'},svg);t.textContent=k==='PACIFIC'?'PACIFIC OCEAN':k}
+    // edge labels anchor to the edge, so the larger small-screen text stays inside the map
+    for(const k in MAP.labels){const p=MAP.labels[k],edge=p[0]>MAP.W*.9;const t=el('text',{x:k==='PACIFIC'?12:edge?MAP.W-8:p[0],y:p[1],class:'maplab','text-anchor':k==='PACIFIC'?'start':edge?'end':'middle'},svg);t.textContent=k==='PACIFIC'?'PACIFIC OCEAN':k}
     MAP.tribs.forEach(d=>el('path',{d:d,fill:'none',stroke:'#1F4466','stroke-width':'1'},svg));
     MAP.ctx.forEach(d=>el('path',{d:d,fill:'none',stroke:'#2F6A9C','stroke-width':'1.8'},svg));
     [MAP.mainstem,MAP.snake,MAP.salmon].forEach(d=>{el('path',{d:d,fill:'none',stroke:'#2F6A9C','stroke-width':'2.6','stroke-linejoin':'round'},svg);el('path',{d:d,fill:'none',stroke:'#9CC7F0','stroke-width':'1.4',class:'river-flow',opacity:'.55'},svg)});
     for(const k in MAP.rivers){const p=MAP.rivers[k];const t=el('text',{x:p[0],y:p[1],class:'rivlab'},svg);t.textContent=k.trim()}
-    const hc=MAP.pts.hellscanyon; drawX(svg,hc[0],hc[1]); lab(svg,hc[0]+9,hc[1]+4,'Hells Canyon dams · no passage');
+    const hc=MAP.pts.hellscanyon; drawX(svg,hc[0],hc[1]); lab(svg,hc[0]-9,hc[1]+4,'Hells Canyon dams · no passage').setAttribute('text-anchor','end');
     const kf=MAP.pts.kettle; el('circle',{cx:kf[0],cy:kf[1],r:5,fill:'none',stroke:'#D7A6E8','stroke-width':'2'},svg); lab(svg,kf[0]+9,kf[1]+4,'Kettle Falls · under Lake Roosevelt');
     routePath=el('path',{fill:'none',stroke:'none'},svg);
     heat=el('g',{},svg);
     travel=el('path',{fill:'none',stroke:'#FFFFFF','stroke-width':'2.2','stroke-linecap':'round','stroke-linejoin':'round',opacity:'.9'},svg);
     svg.appendChild(el('g',{id:'damLayer'}));
-    curLab=el('text',{class:'damlab',style:'font-size:18px'},svg);
+    curLab=el('text',{class:'damlab',style:'font-size:calc(18px*var(--u,1))'},svg);
+    new ResizeObserver(()=>{const s=Math.min(svg.clientWidth/MAP.W,svg.clientHeight/MAP.H);if(s>0)svg.style.setProperty('--u',Math.min(1.5,Math.max(1,12/(14*s))).toFixed(3))}).observe(svg);
     fish=el('g',{},svg);
     el('path',{d:'M-11 0 C-5 -6.5 6 -6.5 11 0 C6 6.5 -5 6.5 -11 0 Z',fill:'#F2A08E',stroke:'#fff','stroke-width':'1.2'},fish);
     el('path',{d:'M-11 0 L-18 -5.5 L-16.5 0 L-18 5.5 Z',fill:'#F2A08E',stroke:'#fff','stroke-width':'1.2'},fish);
@@ -1119,12 +1832,20 @@ const MAP=__MAP__;
   }
   function drawX(svg,x,y){el('path',{d:'M'+(x-5)+' '+(y-5)+' L'+(x+5)+' '+(y+5)+' M'+(x+5)+' '+(y-5)+' L'+(x-5)+' '+(y+5),stroke:'#E13D33','stroke-width':'2.6'},svg)}
   function lab(svg,x,y,t){const e=el('text',{x:x,y:y,class:'damlab'},svg);e.textContent=t;e.style.fill='#A9B3BF';return e}
+  // the band's pieces are built once per route (all path reads before any DOM write, so the style is not recalculated per piece);
+  // a future or period change only recolors them. Interleaved reads and writes cost about 0.7 s a click at 4x CPU throttling.
+  let hseg=[];
   function drawHeat(){
-    heat.innerHTML='';const R=ROUTES[route],L=routePath.getTotalLength(),dt=DT[fut][per];
-    const marks=R.stops.map(s=>[R.f[s[0]][0],AUG[s[0]]+dt]);
-    for(let i=0;i<marks.length-1;i++){const [f0,t0]=marks[i],[f1,t1]=marks[i+1],n=8;
-      for(let j=0;j<n;j++){const a=f0+(f1-f0)*j/n,b=f0+(f1-f0)*(j+1)/n,p=routePath.getPointAtLength(a*L),q=routePath.getPointAtLength(b*L);
-        el('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,stroke:tColor(t0+(t1-t0)*(j+.5)/n),'stroke-width':'7','stroke-linecap':'round'},heat)}}
+    const R=ROUTES[route],marks=R.stops.map(s=>[R.f[s[0]][0],AUG[s[0]]+DT[fut][per]]);
+    if(heat.dataset.r!==route){
+      const L=routePath.getTotalLength(),seg=[];
+      // one piece per ~4 map units, so the band follows the river's bends instead of cutting across them
+      for(let i=0;i<marks.length-1;i++){const f0=marks[i][0],f1=marks[i+1][0],n=Math.max(2,Math.ceil((f1-f0)*L/4));let p=routePath.getPointAtLength(f0*L);
+        for(let j=0;j<n;j++){const q=routePath.getPointAtLength((f0+(f1-f0)*(j+1)/n)*L);seg.push([i,(j+.5)/n,p,q]);p=q}}
+      heat.innerHTML='';heat.dataset.r=route;
+      hseg=seg.map(([i,w,p,q])=>[i,w,el('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,'stroke-width':'7','stroke-linecap':'round'},heat)]);
+    }
+    hseg.forEach(([i,w,l])=>l.setAttribute('stroke',tColor(marks[i][1]+(marks[i+1][1]-marks[i][1])*w)));
   }
   function setRoute(r){
     route=r; stopI=0; fpos=0; cancelAnimationFrame(anim);
@@ -1157,17 +1878,26 @@ const MAP=__MAP__;
   }
   function tempLine(key){
     const base=AUG[key],now=weeksAbove(base);
-    if(fut==='now')return '<span class="tline"><b style="color:'+tColor(base)+'">'+base.toFixed(1)+' °C · '+toF(base)+' °F</b> in August today'+(now?'<br>about <b>'+now+' weeks</b> a year above 68 °F':'')+'</span>';
+    if(fut==='now')return '<b style="color:'+tColor(base)+'">'+base.toFixed(1)+' °C · '+toF(base)+' °F</b> in August today'+(now?'<br>about <b>'+now+' weeks</b> a year above 68 °F':'');
     const t=base+DT[fut][per],w=weeksAbove(t);
-    return '<span class="tline"><b>'+base.toFixed(1)+' → <span style="color:'+tColor(t)+'">'+t.toFixed(1)+' °C</span></b> in August ('+toF(base)+' → '+toF(t)+' °F)<br>weeks above 68 °F: <b>'+now+' → '+w+'</b></span>';
+    return SC[fut]+', '+PER[per]+':<br><b>'+base.toFixed(1)+' → <span style="color:'+tColor(t)+'">'+t.toFixed(1)+' °C</span></b> in August ('+toF(base)+' → '+toF(t)+' °F)<br>weeks above 68 °F: <b>'+now+' → '+w+'</b>';
+  }
+  // only the temperature line changes with the future, so a screen reader hears just that line
+  function drawTemp(){const f=$('fRead');if(f)f.innerHTML=tempLine(ROUTES[route].stops[stopI][0])}
+  const sImg=$('stopImg'), sFig=$('stopFig');
+  sImg.onload=()=>sImg.classList.add('in'); sImg.onerror=()=>{sFig.hidden=true;sImg.dataset.k=''};  // cleared so a redraw of the same stop retries instead of showing a broken image
+  function showPhoto(k){
+    const p=PH[k]; sFig.hidden=false; sFig.classList.toggle('ph',!p);  // a stop without a free photo yet shows a marked placeholder (Wells)
+    if(!p){sImg.removeAttribute('src');sImg.dataset.k='';sImg.alt='';$('stopCap').textContent='Photo to come';return}
+    if(sImg.dataset.k===k)return;
+    sImg.dataset.k=k; sImg.classList.remove('in'); sImg.alt=p[0]; $('stopCap').textContent='Photo: '+p[1]; sImg.src='img/dams/'+k+'.jpg';
   }
   function drawStop(){
     const R=ROUTES[route], s=R.stops[stopI];
-    const card=$('stopCard'); card.className='stop'+(s[4]==='block'?' block':s[4]==='place'?' place':'');
+    $('stopCard').className='stop'+(s[4]==='block'?' block':s[4]==='place'?' place':'');
     const passed=R.stops.slice(1,stopI+1).filter(x=>x[4]==='dam').length;
-    card.innerHTML='<span class="rm">'+s[2]+' · dams crossed: '+passed+'</span><h3>'+s[1]+'</h3><p>'+s[3]+'</p><p class="chal"><b>On the journey</b>'+s[5]+'</p>';
-    $('fRead').innerHTML='<b>'+s[1]+'</b> '+tempLine(s[0]);
-    $('stopN').textContent=(stopI+1)+' / '+R.stops.length;
+    $('stopTxt').innerHTML='<span class="rm">Stop '+(stopI+1)+' of '+R.stops.length+' · '+s[2]+' · dams crossed: '+passed+'</span><h3>'+s[1]+'</h3><p class="tline" id="fRead"></p><p>'+s[3]+'</p><p class="chal"><b>On the journey</b>'+s[5]+'</p>';
+    $('stopTxt').scrollTop=0; drawTemp(); showPhoto(s[0]);
     $('back').disabled=stopI===0; $('next').disabled=stopI===R.stops.length-1;
     document.querySelectorAll('#damLayer g').forEach(g=>g.classList.toggle('pulse',+g.dataset.i===stopI));
     const pp=MAP.pts[s[0]]; if(pp&&stopI>0){const left=pp[0]>MAP.W*0.62; curLab.setAttribute('x',left?pp[0]-12:pp[0]+12); curLab.setAttribute('y',pp[1]-12); curLab.setAttribute('text-anchor',left?'end':'start'); curLab.textContent=s[1]} else curLab.textContent='';
@@ -1178,7 +1908,7 @@ const MAP=__MAP__;
   $('juv').onclick=()=>{
     const R=ROUTES[route]; if(stopI===0){go2(R.stops.length>6?6:1);return}
     const dams=R.stops.slice(1,stopI+1).filter(x=>x[4]==='dam').length, home=fpos;
-    const card=$('stopCard'); card.className='stop'; card.innerHTML='<span class="rm">The young ones</span><h3>Going to Sea</h3><p>Young salmon born here ride the current down past the same '+dams+' dam'+(dams===1?'':'s')+': through turbines, over spillways, through bypass systems, or carried in barges. Slow, warm reservoirs make the trip longer, and every extra day is another day among predators.</p>';
+    $('stopCard').className='stop'; sFig.hidden=true; $('stopTxt').innerHTML='<span class="rm">The young ones</span><h3>Going to Sea</h3><p>Young salmon born here ride the current down past the same '+dams+' dam'+(dams===1?'':'s')+': through turbines, over spillways, through bypass systems, or carried in barges. Slow, warm reservoirs make the trip longer, and every extra day is another day among predators.</p>';
     moveTo(0,Math.min(3200,900+home*4200),()=>setTimeout(()=>moveTo(home,900,drawStop),900));
   };
   // flow through the year: illustrative shape of change (RMJOC-II 2018; NCA5 2023), not a forecast
@@ -1192,9 +1922,9 @@ const MAP=__MAP__;
     h+='<path d="'+line(FLOW)+' L'+x1+' '+y0+' L'+x0+' '+y0+' Z" fill="rgba(94,151,201,.22)"/><path d="'+line(FLOW)+'" fill="none" stroke="#9CC7F0" stroke-width="2"/>';
     if(amp)h+='<path d="'+line(fut2)+'" fill="none" stroke="#F26B5E" stroke-width="2.2" stroke-dasharray="5 3"/>';
     $('hySvg').innerHTML=h;
-    $('hyKey').innerHTML=amp?'<i class="k1"></i>today <i class="k2"></i>'+SC[fut]+' · a shape, not a forecast':'<i class="k1"></i>today';
+    $('hyKey').innerHTML=amp?'<i class="k1"></i>today <i class="k2"></i>'+SC[fut]:'<i class="k1"></i>today';  // "teaching model" caveat sits in the futures header
   }
-  function setFut(){[...$('fScen').children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.k===fut)));[...$('fPer').children].forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.k===per));b.disabled=fut==='now'});if(built){drawHeat();drawStop()}hydro()}
+  function setFut(){[...$('fScen').children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.k===fut)));[...$('fPer').children].forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.k===per));b.disabled=fut==='now'});if(built){drawHeat();drawTemp()}hydro()}
   [...$('fScen').children].forEach(b=>b.onclick=()=>{fut=b.dataset.k;setFut()});
   [...$('fPer').children].forEach(b=>b.onclick=()=>{per=b.dataset.k;setFut()});
   setFut();
@@ -1220,9 +1950,60 @@ const MAP=__MAP__;
     {k:'sucker',n:'Suckers',s:'Overlooked relatives',j:'Bottom feeders found across the basin: largescale, bridgelip, and mountain suckers, gleaning the river bottom.',c:'Like other native fish, they face warm water, low flows, and fish brought in from elsewhere. Little is known, because few have looked.',p:'A traditional food for many families; Tribal fisheries leaders name suckers alongside salmon, lamprey, and sturgeon in restoration.'},
     {k:'mussel',n:'Freshwater Mussels',s:'Western pearlshell and others',j:'They can live more than 60 years, filtering the water. Their young ride on the gills of salmon and trout to travel upstream.',c:'When the fish disappear, mussels cannot raise a next generation; warm water, sediment, and drying streams can wipe out whole beds.',p:'A traditional food. The Confederated Tribes of the Umatilla Indian Reservation run a freshwater mussel project to study and restore them.'}
   ];
+  const PIC={
+   "salmon": {
+    "src": "img/fish/salmon.jpg",
+    "alt": "A male sockeye salmon in spawning color, bright red body and green head with a hooked jaw, swimming over river stones.",
+    "sp": "Sockeye salmon (Oncorhynchus nerka)",
+    "cr": "Photo: Milton Love, UC Santa Barbara, via USGS. Public domain."
+   },
+   "steelhead": {
+    "src": "img/fish/steelhead.jpg",
+    "alt": "A steelhead with a pink stripe along its silver, black-spotted side, swimming just above a gravel river bed.",
+    "sp": "Steelhead (Oncorhynchus mykiss)",
+    "cr": "Photo: Ryan Hagerty, USFWS. Public domain."
+   },
+   "lamprey": {
+    "src": "img/fish/lamprey.jpg",
+    "alt": "A Pacific lamprey in a clear tube, its round sucker mouth ringed with small teeth pressed to the wall, and a row of gill openings along its dark side.",
+    "sp": "Pacific lamprey (Entosphenus tridentatus)",
+    "cr": "Photo: John Heil, USFWS. Public domain."
+   },
+   "sturgeon": {
+    "src": "img/fish/sturgeon.jpg",
+    "alt": "An old pencil-style drawing of a white sturgeon from the side, showing the rows of bony plates, the long snout, and the barbels under it.",
+    "sp": "White sturgeon (Acipenser transmontanus)",
+    "cr": "Illustration: Josephe Huet, 1868, Nouvelles Archives du Muséum d'histoire naturelle. Public domain."
+   },
+   "eulachon": {
+    "src": "img/fish/eulachon.jpg",
+    "alt": "Two slender, silvery eulachon lying side by side, one facing left and one facing right.",
+    "sp": "Eulachon (Thaleichthys pacificus)",
+    "cr": "Photo: James Crippen. Public domain."
+   },
+   "bulltrout": {
+    "src": "img/fish/bulltrout.jpg",
+    "alt": "A bull trout, olive-brown with pale spots and orange fins, swimming in clear water among red spawning kokanee.",
+    "sp": "Bull trout (Salvelinus confluentus)",
+    "cr": "Photo: Roger Tabor, USFWS. Public domain."
+   },
+   "sucker": {
+    "src": "img/fish/sucker.jpg",
+    "alt": "Two largescale suckers resting on a stony river bottom, mottled brown to blend with the cobbles.",
+    "sp": "Largescale sucker (Catostomus macrocheilus)",
+    "cr": "Photo: Glacier National Park, National Park Service. Public domain."
+   },
+   "mussel": {
+    "src": "img/fish/mussel.jpg",
+    "alt": "A dark, smooth western pearlshell mussel held in a hand, with a small numbered tag glued to its shell.",
+    "sp": "Western pearlshell mussel (Margaritifera falcata)",
+    "cr": "Photo: Akimi King, USFWS. Public domain."
+   }
+  };
   KIN.forEach((d,i)=>{const b=document.createElement('button');b.setAttribute('aria-expanded',String(i===0));b.innerHTML='<svg viewBox="0 0 120 48" aria-hidden="true">'+ICON[d.k]+'</svg><span class="nm">'+d.n+'</span><span class="sb">'+d.s+'</span>';b.onclick=()=>kin(i);$('kin').appendChild(b)});
-  function kin(i){const d=KIN[i];[...$('kin').children].forEach((b,k)=>b.setAttribute('aria-expanded',String(k===i)));
-    $('kinMore').innerHTML='<div class="card"><h3>Their Journey</h3><p>'+d.j+'</p></div><div class="card"><h3>What Is Changing</h3><p>'+d.c+'</p></div><div class="card"><h3>With the People</h3><p>'+d.p+'</p></div>'}
+  function kin(i){const d=KIN[i],q=PIC[d.k];[...$('kin').children].forEach((b,k)=>b.setAttribute('aria-expanded',String(k===i)));
+    /* the photo is built on selection; lazy so a hidden slide fetches nothing */
+    $('kinMore').innerHTML='<figure class="kfig'+(d.k==='sturgeon'?' wide':'')+'"><img src="'+q.src+'" alt="'+q.alt+'" loading="lazy" decoding="async"><figcaption><b>'+q.sp.replace(/\((.+)\)/,'(<i>$1</i>)')+'</b><span>'+q.cr+'</span></figcaption></figure><div class="card"><h3>Their Journey</h3><p>'+d.j+'</p></div><div class="card"><h3>What Is Changing</h3><p>'+d.c+'</p></div><div class="card"><h3>With the People</h3><p>'+d.p+'</p></div>'}
   kin(0);
 
   /* ---------- A / M / R sort ---------- */
