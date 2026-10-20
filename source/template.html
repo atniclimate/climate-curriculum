@@ -176,38 +176,72 @@ body.hl [data-slide-id="s01-title"] .byline::before{background:var(--drop)}
 @media (max-width:860px){[data-slide-id="s06-part-one-carry"] .credit{position:static}}  /* in flow (inside .inner) so scrolled cards never run under it */
 
 /* cloud machine */
-.cm{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);grid-template-rows:minmax(0,1fr);gap:clamp(12px,1.6vw,24px);align-items:stretch}
+[data-slide-id="s04-cloud-tool"]{--pgut:clamp(10px,1.3vw,24px)}
+[data-slide-id="s04-cloud-tool"] .inner{gap:clamp(8px,1.1vh,16px);padding-block:clamp(8px,1vh,20px)}
+[data-slide-id="s04-cloud-tool"] input[type=range]{margin:-8px 0}
+[data-slide-id="s04-cloud-tool"] .ask{max-width:56ch}
+.cm{display:grid;grid-template-columns:minmax(0,1fr) clamp(330px,40vw,580px);grid-template-rows:minmax(0,1fr);gap:clamp(10px,1.2vw,20px);align-items:stretch}
 @media (max-width:980px){.cm{grid-template-rows:auto}}
 @media (max-width:980px){.cm{grid-template-columns:1fr}}
 .cmview{display:flex;flex-direction:column;gap:6px;min-height:0;min-width:0;overflow:hidden}
-.cmview svg{width:100%;flex:1;min-height:0;display:block;background:#0B1A2A}
-@media (max-width:980px){.cmview svg{flex:none;height:auto}}
-.cmax{font-family:var(--f-data);font-size:12px;fill:#8A94A6}
-.cmlab{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.06em;fill:#C5CDD6;paint-order:stroke;stroke:#0B1A2A;stroke-width:3px}
-.cmlab.sm{font-family:var(--f-body);font-weight:400;font-size:12.5px;letter-spacing:0;fill:#A9B3BF}
-.fog{fill:#C9D0D7;opacity:.3}
-.cmnote{font-family:var(--f-data);font-size:14px;fill:#F26B5E;paint-order:stroke;stroke:#0B1A2A;stroke-width:3px}
-.cb{fill:#DDE3E8;stroke:#9AA3AE;stroke-width:1.5}
+.cmsky{position:relative;flex:1;min-height:0;display:flex;background:#0B1A2A}
+.cmview svg{width:100%;flex:1;min-height:0;display:block}
+@media (max-width:980px){.cmsky{flex:none}.cmview svg{flex:none;height:auto}}
+.cmtag{position:absolute;left:5px;top:5px;padding:3px 8px;background:rgba(1,11,19,.7);color:var(--text);pointer-events:none}
+.cmtag.r8{left:auto;right:5px}
+/* the parcel rides in its own small overlay: moving it inside the cloud SVG repaints every cloud each frame (14 fps against 60 at 4x CPU throttle) */
+.cmtop{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;will-change:transform}
+@media (max-width:980px){.cmtop{top:auto;height:auto;aspect-ratio:800/430}}
+@media (max-width:560px){.cmsky{flex-wrap:wrap;gap:4px;background:none}.cmtag{position:static;order:-1}}
+.cmax{font-family:var(--f-data);font-size:13px;fill:#DDE3E8;paint-order:stroke;stroke:#0B1A2A;stroke-width:3px}
+.cmlab{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.06em;fill:#E8ECF0;paint-order:stroke;stroke:#0B1A2A;stroke-width:3px}
+.cmlab.sm{font-family:var(--f-body);font-weight:400;font-size:13.5px;letter-spacing:0;fill:#DDE3E8}
+.cmnote{font-family:var(--f-data);font-size:13.5px;fill:#F26B5E;paint-order:stroke;stroke:#0B1A2A;stroke-width:3.5px}
 .wind{animation:flow 2.4s linear infinite}
-.rainfall{stroke:#7FB3E3;stroke-width:1.4;stroke-dasharray:6 7;animation:fall .5s linear infinite}
-.rainfall.k2{stroke-width:1.8}.rainfall.k3{stroke-width:2.4;stroke-dasharray:9 5}
-.snowfall{stroke:#F4F7FA;stroke-width:2.6;stroke-linecap:round;stroke-dasharray:.1 11;animation:fall 1.8s linear infinite}
-@keyframes fall{to{stroke-dashoffset:-26}}
-@media (prefers-reduced-motion:reduce){.wind,.rainfall,.snowfall{animation:none}}
-.ctl{display:grid;gap:7px;align-content:start;min-height:0;overflow:auto}
+@media (prefers-reduced-motion:reduce){.wind{animation:none}}
+.cmrow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 8px;align-items:center}
+.cmrow>.label{max-width:6.6em;line-height:1.25}
+.cmrow .seg button{padding:6px 5px;font-size:13px}
+[data-slide-id="s04-cloud-tool"] .btn.sec[aria-pressed="true"]:hover{background:#C5CDD6}
+.ctl{display:grid;gap:6px;align-content:start;min-height:0;overflow:auto}
 .ctl label{display:grid;grid-template-columns:1fr auto;gap:0 10px;align-items:baseline;font-size:calc(var(--b)*.8);color:var(--muted)}
 .ctl label input{grid-column:1/-1}
 .ctl label b{font-family:var(--f-data);font-weight:500;color:var(--white);font-size:calc(var(--b)*.82)}
 input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
-.readouts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
-.readouts>div{background:var(--plate);padding:6px 10px}
-.readouts .v{font-family:var(--f-data);font-size:calc(var(--b)*.95);color:var(--white)}
-.readouts .l{font-size:13px;color:var(--muted)}
+.readouts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+@media (max-width:560px){.readouts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.readouts>div{background:var(--plate);padding:6px 9px}
+.readouts .v{font-family:var(--f-data);font-size:calc(var(--b)*.8);color:var(--white)}
+.readouts .l{font-size:12px;line-height:1.3;color:var(--muted)}
 .readouts .hot .v{color:var(--water-hi)}
-.ctype{display:grid;grid-template-columns:auto 1fr;gap:0 10px;align-items:baseline;padding:6px 12px;background:var(--plate);border-left:3px solid var(--text)}
-.ctype b{font-family:var(--f-display);font-size:calc(var(--b)*1.05);color:var(--white)}
-.ctype span:last-child{font-size:max(12px,calc(var(--b)*.76));line-height:1.4;color:var(--text)}
-.status{font-size:calc(var(--b)*.8);line-height:1.45;padding:8px 12px;background:var(--plate-hi);border-left:3px solid var(--water-hi);min-height:3em}
+.status{font-size:max(12.5px,calc(var(--b)*.78));line-height:1.45;padding:7px 12px;background:var(--plate-hi);border-left:3px solid var(--water-hi);min-height:3em}
+.cmcard{background:var(--plate);border-left:3px solid var(--text);padding:8px 12px 10px;display:flow-root}
+.cmcard>.label{display:block;margin-bottom:5px}
+.cmph{float:left;width:clamp(150px,37%,380px);margin:2px 12px 2px 0}
+.cmph img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:var(--overlay)}
+.cmph span{display:block;font-size:12px;line-height:1.3;color:var(--muted);margin-top:3px}
+.cmhd{margin-bottom:3px}
+.cmhd b{font-family:var(--f-display);font-size:calc(var(--b)*1.05);line-height:1.15;color:var(--white);margin-right:8px}
+.cmhd span{font-family:var(--f-display);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cmcard p{font-size:max(12.5px,calc(var(--b)*.74));line-height:1.42;max-width:none}
+.cmlook{margin-top:4px;clear:both}
+.cmlook b{color:var(--white);font-weight:600}
+@media (min-height:900px) and (min-width:1400px){.cmph{width:48%}}
+@media (max-width:560px){.cmph{float:none;width:100%;margin:0 0 8px}}
+/* CloudKit clouds: each cloud on its own compositor layer, so its filter rasters once, not on every frame the wind line repaints */
+.ck-cloud{will-change:transform;cursor:pointer;outline:none;transition:opacity .9s}
+.ck-cloud *,.ck-fx,.ck-fx *{pointer-events:none}
+.ck-cloud .ck-hit{pointer-events:all;fill:none;stroke:none}
+.ck-cloud.ck-on .ck-hit{stroke:#E8ECF0;stroke-width:1.5;stroke-dasharray:5 4;stroke-opacity:.85}
+.ck-cloud:focus-visible .ck-hit{stroke:#F26B5E;stroke-width:2.5;stroke-dasharray:none;stroke-opacity:1}
+.ck-new{animation:ck-in 1.1s ease-out both}@keyframes ck-in{from{opacity:0}}
+.ck-cloud.ck-out{opacity:0}.ck-cloud.ck-out .ck-hit{pointer-events:none}
+.ck-rainl{stroke:var(--ck-rain,#9FB4C8);stroke-dasharray:5 10;animation:ck-fall .55s linear infinite}@keyframes ck-fall{to{stroke-dashoffset:-15}}
+.ck-snowl{fill:none;stroke:#F4F7FA;stroke-linecap:round;stroke-dasharray:.1 11.9;animation:ck-fall12 2.6s linear infinite}@keyframes ck-fall12{to{stroke-dashoffset:-12}}
+.ck-flow{fill:none;stroke:var(--ck-moist,#BFE6FA);stroke-opacity:.55;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:14 22;animation:ck-flow 3s linear infinite}@keyframes ck-flow{to{stroke-dashoffset:-36}}
+/* lightning: two quick pulses every few seconds, under the three-flashes-per-second limit (WCAG 2.3.1) */
+.ck-bolt,.ck-flashsky{opacity:0;animation:ck-flash 7s linear infinite}@keyframes ck-flash{0%,90%,100%{opacity:0}90.6%{opacity:1}91.4%{opacity:.1}92.2%{opacity:.95}94%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.ck-rainl,.ck-snowl,.ck-flow,.ck-new{animation:none}.ck-cloud{transition:none}.ck-bolt{animation:none;opacity:.85}.ck-flashsky{animation:none}}
 /* segmented controls: selected is always a light fill */
 .seg{display:flex;flex-wrap:wrap;gap:4px}
 .seg button{all:unset;box-sizing:border-box;min-height:44px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:8px 14px;background:var(--plate);font-size:14px;font-weight:600;color:var(--text);text-align:center;flex:1 1 auto}
@@ -645,7 +679,7 @@ blockquote{margin:0}
 
 <!-- S4 CLOUD MACHINE (Plate) -->
 <section class="slide plate" data-slide-id="s04-cloud-tool" data-bg="hood" data-part="1" data-min="3" data-title="Lift the air"
- data-notes="<span class='must'>Must land:</span> air pushed up a mountain cools; cool air holds less water; the extra water becomes cloud, then rain or snow, mostly on the side facing the ocean. Coming down the far side, the air warms and dries; that is the rain shadow the Columbia Plateau lives in. Start on Winter and press 'Send the air inland.' Point to the snow line on the Cascades. Switch to Atmospheric River: warm, wet air, heavy rain, and rain falling on snow. Then press 'Warm the world 2 °C' and read the comparison line: the snow line climbs about 300 m and the same storm carries more water. Warmer air can hold about 7 percent more water vapor for each degree Celsius. Summer with high humidity builds a thunderhead over the crest. This is a teaching model (standard lapse rates and the Magnus approximation, with the air steered over the ridge line), not a forecast.">
+ data-notes="<span class='must'>Must land:</span> air pushed up a mountain cools; cool air holds less water; the extra water becomes cloud, then rain or snow, mostly on the side facing the ocean. Coming down the far side, the air warms and dries; that is the rain shadow the Columbia Plateau lives in. Start on Winter and press 'Send the air inland.' Point to the snow line on the Cascades. Switch to Atmospheric River: warm, wet air, heavy rain, and rain falling on snow. Then press 'Warm the world 2 °C' and read the comparison line: the snow line climbs about 300 m and the same storm carries more water. Warmer air can hold about 7 percent more water vapor for each degree Celsius. Summer with high humidity builds a thunderhead over the crest. Select any cloud (click, tap, or Tab to it and press Enter) to show its name, a photo, and what it tells you; the card starts on the main cloud in the picture. Play the weather runs a short example: each one sets the season, temperature, and humidity, steps through what changes, and stops when you touch a season or a slider. Warm front is the one to slow down on: cirrus, then a milky veil, then altostratus, then nimbostratus with steady rain. Time of day relights the sky and clouds; it does not change the model. This is a teaching model (standard lapse rates and the Magnus approximation, with the air steered over the ridge line; the marine fog example adds a lid of warm, dry air over the ocean layer), not a forecast. Hand twin: Cloud in a Bottle (Grades 6 to 12, Lesson 1.1). Squeeze and release a bottle with a little warm water and smoke, and a cloud appears as the air expands and cools. To practice names, hold up printed cloud photos and sort them from low to high.">
   <div class="inner fit">
     <div class="headrow"><div class="head"><span class="label red">Part One · Try It</span><h2>Follow the Air from the Ocean over the Mountains</h2></div><p class="ask"><span class="label">Ask the room</span>Which side of the mountains do you live on, and what does that mean for your rain and snow?</p></div>
     <div class="cm stretch">
@@ -653,25 +687,38 @@ blockquote{margin:0}
         <div class="seg seasons" id="cmSeason" role="group" aria-label="Choose a season">
           <button data-s="winter" aria-pressed="true">Winter</button><button data-s="spring" aria-pressed="false">Spring</button><button data-s="summer" aria-pressed="false">Summer</button><button data-s="fall" aria-pressed="false">Fall</button><button data-s="ar" aria-pressed="false">Atmospheric River</button>
         </div>
-        <svg id="cmSvg" viewBox="0 0 800 430" preserveAspectRatio="xMidYMax meet" role="img" aria-labelledby="cmTitle">
-          <title id="cmTitle">A slice of the land from the Pacific Ocean over the Coast Range and the Cascades to the Columbia Plateau, showing air rising over the mountains, the clouds that form, and where rain and snow fall</title>
+        <div class="cmsky">
+        <svg id="cmSvg" viewBox="0 0 800 430" preserveAspectRatio="xMidYMax meet" role="group" aria-labelledby="cmTitle">
+          <title id="cmTitle">A slice of the land from the Pacific Ocean over the Coast Range and the Cascades to the Columbia Plateau, showing air rising over the mountains, the clouds that form, and where rain and snow fall. Each cloud is a button that names it.</title>
+          <defs id="ck-defs"></defs>
           <defs>
-            <linearGradient id="cmSky" x1="0" y1="0" x2="0" y2="1"><stop id="cmSky0" offset="0" stop-color="#0B1A2A"/><stop id="cmSky1" offset="1" stop-color="#14283C"/></linearGradient>
             <linearGradient id="cmLand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C3B2E"/><stop offset="1" stop-color="#18211A"/></linearGradient>
             <linearGradient id="cmDry" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A4232"/><stop offset="1" stop-color="#2A261E"/></linearGradient>
+            <radialGradient id="cmGlowW"><stop offset="0" stop-color="#FFE7B8" stop-opacity=".95"/><stop offset=".18" stop-color="#FFC98A" stop-opacity=".55"/><stop offset="1" stop-color="#FF9F5A" stop-opacity="0"/></radialGradient>
+            <radialGradient id="cmGlowD"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"/><stop offset=".2" stop-color="#FFF8DC" stop-opacity=".4"/><stop offset="1" stop-color="#FFF8DC" stop-opacity="0"/></radialGradient>
+            <radialGradient id="cmGlowN"><stop offset="0" stop-color="#F4F7FA" stop-opacity=".8"/><stop offset=".25" stop-color="#C9D6E6" stop-opacity=".22"/><stop offset="1" stop-color="#C9D6E6" stop-opacity="0"/></radialGradient>
           </defs>
-          <rect x="0" y="0" width="800" height="430" fill="url(#cmSky)"/>
+          <rect x="-800" y="-430" width="2400" height="860" fill="url(#ck-sky)"/>
+          <g id="cmSun"></g>
+          <rect id="cmGrey" x="-800" y="-430" width="2400" height="860" opacity="0"/>
           <g id="cmAxis"></g>
           <g id="cmGround"></g>
           <g id="cmSnow"></g>
+          <g id="cmBack"></g>
           <path id="cmWind" class="wind" fill="none" stroke="rgba(232,236,240,.35)" stroke-width="1.6" stroke-dasharray="2 10"/>
           <g id="cmClouds"></g>
-          <g id="cmFall"></g>
+          <g id="cmFront"></g>
           <g id="cmLabels"></g>
           <g id="cmBars"></g>
           <text id="cmNote" class="cmnote" x="400" y="20" text-anchor="middle"></text>
-          <g id="cmParcel"><line id="cmStem" stroke="rgba(232,236,240,.5)" stroke-dasharray="3 3"/><circle id="cmDot" r="9" fill="rgba(156,199,240,.3)" stroke="#E8ECF0" stroke-width="2"/></g>
         </svg>
+        <svg class="cmtop" viewBox="0 0 800 430" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><g id="cmParcel"><line id="cmStem" stroke="rgba(232,236,240,.5)" stroke-dasharray="3 3"/><circle id="cmDot" r="9" fill="rgba(156,199,240,.3)" stroke="#E8ECF0" stroke-width="2"/></g></svg>
+        <span class="label cmtag" aria-hidden="true">Select any cloud</span><span class="label cmtag r8">Teaching model</span>
+        </div>
+        <div class="cmrow">
+          <span class="label" id="cmTodL">Time of day</span><div class="seg" id="cmTod" role="group" aria-labelledby="cmTodL"><button data-l="dawn" aria-pressed="false">Dawn</button><button data-l="day" aria-pressed="true">Day</button><button data-l="dusk" aria-pressed="false">Dusk</button><button data-l="night" aria-pressed="false">Night</button></div>
+          <span class="label" id="cmExL">Play the weather</span><div class="seg" id="cmEx" role="group" aria-labelledby="cmExL"><button data-x="fog" aria-pressed="false">Marine fog</button><button data-x="fair" aria-pressed="false">Fair day</button><button data-x="storm" aria-pressed="false">Thunderstorm</button><button data-x="ar" aria-pressed="false">Atmospheric river</button><button data-x="front" aria-pressed="false">Warm front</button><button data-x="wave" aria-pressed="false">Mountain wave</button><button data-x="snow" aria-pressed="false">Snow day</button></div>
+        </div>
       </div>
       <div class="ctl">
         <label for="cmT">Air temperature at the coast <b id="cmTv"></b><input id="cmT" type="range" min="-2" max="32" step="1" value="7"></label>
@@ -684,8 +731,11 @@ blockquote{margin:0}
           <div><div class="v" id="cmWs"></div><div class="l">Water it can hold here</div></div>
           <div class="hot"><div class="v" id="cmFallV"></div><div class="l">Reaching the ground</div></div>
         </div>
-        <div class="ctype" id="cmType"></div>
         <div class="status" id="cmMsg"></div>
+        <div class="cmcard">
+          <div class="cmph" id="cmPh" hidden><img id="cmImg" alt="" width="960" height="600" decoding="async"><span id="cmCred"></span></div>
+          <div aria-live="polite"><p class="cmhd"><b id="cmName"></b><span id="cmFam"></span></p><p id="cmDesc"></p><p class="cmlook" id="cmLookP"><b>Look for:</b> <span id="cmLook"></span></p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1176,6 +1226,272 @@ const MAP=__MAP__;
   const NS='http://www.w3.org/2000/svg';
 
   /* ---------- cloud machine: ocean to mountain to plateau ---------- */
+  // CloudKit: lit SVG clouds and light weather, built and benchmarked for this slide on 10/20/2026
+  // (private/craft/slides/clouds/cloudkit/README.md). Full mode: soft radial-gradient puffs roughened by one
+  // feTurbulence + feDisplacementMap filter per cloud. Reduced mode (reduced motion, slider drags): fewer puffs, no filter.
+  // The same options and seed always give the same markup, so redraws never jitter. Clouds hold still: animating a group
+  // that holds a filter re-rasters it every frame (16 fps against 60 at 4x CPU throttle, software raster, 10/20/2026).
+  const CK=(function(){
+    const f1=n=>Math.round(n*10)/10, f2=n=>Math.round(n*100)/100, clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+    // mulberry32: tiny seeded PRNG
+    const rng=seed=>{let a=seed>>>0;return()=>{a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}};
+    const hash=s=>{let h=2166136261;for(let i=0;i<s.length;i++)h=Math.imul(h^s.charCodeAt(i),16777619);return h>>>0};
+    const R=(r,a,b)=>a+(b-a)*r();
+    const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+    // four times of day. ramp[0] = deepest shade ... ramp[5] = sunlit top; under = cloud base
+    const LIGHTS={
+      dawn:{sun:[1,-.3],ramp:['#4E4B66','#6E6585','#9A7F97','#CF9E9F','#F2C3AC','#FFE3C8'],under:'#E7907E',sky:['#1C2A52','#6F6290','#EDA27E'],rain:'#8E93AE',fog:'#D7C2C4',moist:'#86B9DA',bolt:'#FFFFFF'},
+      day:{sun:[.2,-1],ramp:['#76828F','#97A2AE','#B7C0CA','#D5DBE2','#EDF0F3','#FFFFFF'],under:'#8E99A6',sky:['#2C5A8C','#5F90C0','#A9C9E3'],rain:'#56687C',fog:'#DCE2E8',moist:'#7FC0E6',bolt:'#FFFFFF'},
+      dusk:{sun:[-1,-.25],ramp:['#3E3754','#5E4A6C','#8E5E75','#C9786B','#EE9B66','#FFC384'],under:'#F08A5D',sky:['#141A3C','#653C68','#E06A46'],rain:'#7F7A98',fog:'#C9A9AE',moist:'#7FA9D6',bolt:'#FFF4E0'},
+      night:{sun:[.35,-1],ramp:['#222834','#2E3644','#3C4657','#4F5A6D','#667286','#8390A6'],under:'#2A313E',sky:['#03070F','#08121F','#112034'],rain:'#4F6075',fog:'#5E6878',moist:'#4F7FA6',bolt:'#E8F0FF'}
+    };
+    const hex=c=>[1,3,5].map(i=>parseInt(c.slice(i,i+2),16));
+    const mixc=(a,b,k)=>'#'+hex(a).map((v,i)=>Math.round(v+(hex(b)[i]-v)*k).toString(16).padStart(2,'0')).join('');
+    // <defs> for one light: a radial gradient per tone (focal point pushed toward the sun), a base tone, the streak, rain,
+    // fog and plume gradients, and the sky. Swapping these is the whole time-of-day change; no cloud is rebuilt.
+    function defs(name){
+      const L=LIGHTS[name]||LIGHTS.day,[sx,sy]=L.sun,m=Math.hypot(sx,sy),fx=f2(.5+.2*sx/m),fy=f2(.5+.2*sy/m);
+      const rad=(id,hi,mid,rim)=>`<radialGradient id="${id}" fx="${fx}" fy="${fy}"><stop offset="0" stop-color="${hi}"/><stop offset=".5" stop-color="${mid}" stop-opacity=".96"/><stop offset=".8" stop-color="${rim}" stop-opacity=".55"/><stop offset="1" stop-color="${rim}" stop-opacity="0"/></radialGradient>`;
+      let s=L.ramp.map((c,i)=>rad('ck-b'+i,mixc(c,L.ramp[Math.min(i+1,5)],.55),c,mixc(c,L.ramp[Math.max(i-1,0)],.6))).join('');
+      s+=rad('ck-bu',mixc(L.under,L.ramp[2],.3),mixc(L.under,L.ramp[1],.45),L.ramp[0]);
+      s+=`<linearGradient id="ck-st"><stop offset="0" stop-color="${L.ramp[5]}" stop-opacity="0"/><stop offset=".45" stop-color="${L.ramp[5]}" stop-opacity=".55"/><stop offset=".85" stop-color="${L.ramp[5]}" stop-opacity=".95"/><stop offset="1" stop-color="${L.ramp[5]}" stop-opacity=".15"/></linearGradient>`;
+      s+=`<linearGradient id="ck-rain" x2="0" y2="1"><stop offset="0" stop-color="${L.rain}" stop-opacity=".55"/><stop offset=".7" stop-color="${L.rain}" stop-opacity=".28"/><stop offset="1" stop-color="${L.rain}" stop-opacity="0"/></linearGradient>`;
+      s+=`<radialGradient id="ck-fog"><stop offset="0" stop-color="${L.fog}" stop-opacity=".62"/><stop offset=".6" stop-color="${L.fog}" stop-opacity=".34"/><stop offset="1" stop-color="${L.fog}" stop-opacity="0"/></radialGradient>`;
+      s+=`<linearGradient id="ck-plume"><stop offset="0" stop-color="${L.moist}" stop-opacity="0"/><stop offset=".18" stop-color="${L.moist}" stop-opacity=".42"/><stop offset=".8" stop-color="${L.moist}" stop-opacity=".34"/><stop offset="1" stop-color="${L.moist}" stop-opacity=".05"/></linearGradient>`;
+      s+=`<radialGradient id="ck-flash"><stop offset="0" stop-color="${L.bolt}" stop-opacity=".55"/><stop offset="1" stop-color="${L.bolt}" stop-opacity="0"/></radialGradient>`;
+      s+=`<linearGradient id="ck-sky" x2="0" y2="1"><stop offset="0" stop-color="${L.sky[0]}"/><stop offset=".62" stop-color="${L.sky[1]}"/><stop offset="1" stop-color="${L.sky[2]}"/></linearGradient>`;
+      return s+FILTERS;
+    }
+    // full mode only: fractal noise pushes each puff edge around, which turns soft balls into billows and fibers.
+    // [baseFrequency, octaves, displacement in slide units, blur]; noise is in user space.
+    const FX={heap:['.045',3,11,.5],small:['.09',2,5,.3],layer:['.02 .07',3,9,0],veil:['.008 .05',2,7,.6],streak:['.01 .14',2,7,.4],lens:['.03 .1',2,2.5,.3]};
+    const FILTERS=Object.keys(FX).map((k,i)=>{const [f,n,sc,bl]=FX[k];
+      return `<filter id="ck-f-${k}" x="-15%" y="-25%" width="130%" height="150%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="${f}" numOctaves="${n}" seed="${3+i*7}"/><feDisplacementMap in="SourceGraphic" scale="${sc}" xChannelSelector="R" yChannelSelector="G"/>${bl?`<feGaussianBlur stdDeviation="${bl}"/>`:''}</filter>`}).join('');
+    const KIND={cumulus:'heap',congestus:'heap',cumulonimbus:'heap',stratocumulus:'small',altocumulus:'small',stratus:'layer',nimbostratus:'layer',altostratus:'layer',cirrostratus:'veil',cirrus:'streak',lenticular:'lens'};
+    // geometry: every cloud is soft lit ellipses ("puffs") and, for ice clouds, streaks.
+    // heap: the cumulus family. towers = [{u: center in -1..1, w: half-width, h: height share}] shape the outline.
+    function heap(o,r,towers,k){
+      k=k||{};
+      const H=o.base-o.top,W=o.width,P=[],q=o.lite?1.7:1,dark=k.dark||0;
+      const prof=u=>towers.reduce((h,t)=>{const v=(u-t.u)/t.w;return v>-1&&v<1?Math.max(h,t.h*Math.pow(1-v*v,k.round||.62)):h},0);
+      const tone=t=>clamp(Math.round(t*(1-dark)*5+R(r,-.4,.4)),0,5);
+      const cell=Math.max(4,Math.min(W*.14,H*.2))*q*(k.cell||1);
+      // body: a jittered lattice that fills the outline solidly (no gaps between puffs)
+      for(let y=o.base-cell*.55;y>o.top+cell*.3;y-=cell*.7){
+        for(let x=o.x-W/2+cell*.3;x<o.x+W/2;x+=cell*.75){
+          const h=prof((x-o.x)/(W/2))*H;if(h<o.base-y+cell*.35)continue;
+          const rad=cell*R(r,.72,1.05),yy=Math.min(y+R(r,-.2,.2)*cell,o.base-rad*.75);
+          P.push({x:x+R(r,-.25,.25)*cell,y:yy,rx:rad,ry:rad*.9,b:tone((o.base-yy)/H*.8+.05),a:.97,z:1});
+        }
+      }
+      // crown: cauliflower bumps walked along the outline by arc length, set in along the normal
+      const pts=[];for(let i=0;i<=120;i++){const u=-1+i/60;pts.push([o.x+u*W/2,o.base-prof(u)*H])}
+      let acc=0,next=0;
+      for(let i=1;i<pts.length;i++){
+        const [x0,y0]=pts[i-1],[x1,y1]=pts[i],seg=Math.hypot(x1-x0,y1-y0);acc+=seg;
+        if(acc<next||o.base-y1<cell*.5)continue;
+        const rb=cell*R(r,.55,.95)*(k.bump||1),nx=(y1-y0)/(seg||1),ny=-(x1-x0)/(seg||1);
+        P.push({x:x1-nx*rb*.55,y:Math.min(y1-ny*rb*.55,o.base-rb*.7),rx:rb,ry:rb*.92,b:tone((o.base-y1)/H+.25),a:.97,z:2});
+        next=acc+rb*R(r,.7,1.05)/(k.crown||1);
+      }
+      // base: flattened shaded puffs that make the flat bottom
+      for(let x=o.x-W/2;x<=o.x+W/2;x+=cell*1.1){
+        const h=prof((x-o.x)/(W/2))*H;if(h<cell)continue;
+        const rx=cell*R(r,1,1.5),ry=Math.min(rx*.34,h*.3);
+        P.push({x:x+R(r,-.2,.2)*cell,y:o.base-ry*.9,rx,ry,b:'u',a:.9,z:1.5});
+      }
+      return P;
+    }
+    // layer: sheets (stratus, nimbostratus, altostratus, cirrostratus). Thins toward both ends.
+    function layer(o,r,s){
+      const W=o.width,T=o.base-o.top,P=[],rows=s.rows,ch=T/rows,q=o.lite?1.6:1;
+      for(let j=0;j<rows;j++){
+        const lift=rows>1?(rows-1-j)/(rows-1)*(s.lift||0):0;
+        for(let x=o.x-W/2+ch*.5;x<=o.x+W/2-ch*.5;){
+          const u=(x-o.x)/(W/2),e=1-.75*Math.pow(Math.abs(u),3);
+          const rx=Math.min(W*.3,ch*s.aspect*R(r,.75,1.25))*q*(.6+.4*e),ry=ch*R(r,s.ry[0],s.ry[1])*(.5+.5*e);
+          P.push({x,y:o.top+ch*(j+.5)+R(r,-.15,.15)*ch,rx,ry,b:clamp(Math.round(R(r,s.b[0],s.b[1])+lift),0,5),a:R(r,s.a[0],s.a[1])*(.55+.45*e),z:rows-j});
+          x+=rx*R(r,.5,.75);
+        }
+      }
+      return P;
+    }
+    // streak: a fibrous ice trail. Head (dense end) downwind on the right, tail falling and trailing left.
+    function streaks(o,r,n,k){
+      const W=o.width,T=o.base-o.top,S=[];
+      for(let i=0;i<n;i++){
+        const L=W*R(r,k.len[0],k.len[1]),x0=o.x-W/2+r()*Math.max(1,W-L),y0=o.top+T*R(r,.1,.6),drop=T*R(r,k.drop[0],k.drop[1]),hook=L*R(r,.03,.09);
+        const fibers=o.lite?1:2+Math.floor(r()*3);
+        for(let j=0;j<fibers;j++){
+          const dy=(j-fibers/2)*R(r,.8,2.2),dx=R(r,-L*.06,L*.06),x=x0+dx,y=y0+dy;
+          S.push({d:`M${f1(x)} ${f1(y+drop)}C${f1(x+L*.28)} ${f1(y+drop*.25)} ${f1(x+L*.62)} ${f1(y-hook)} ${f1(x+L)} ${f1(y-hook*.3)}`,w:R(r,k.w[0],k.w[1]),a:R(r,k.a[0],k.a[1])});
+        }
+      }
+      return S;
+    }
+    const byDepth=P=>P.sort((p,q)=>p.z-q.z||(q.y+q.ry)-(p.y+p.ry));
+    const SHAPES={
+      cumulus(o,r){
+        return {puffs:byDepth(heap(o,r,[{u:R(r,-.12,.12),w:R(r,.55,.7),h:1},{u:R(r,-.6,-.4),w:R(r,.38,.5),h:R(r,.5,.72)},
+          {u:R(r,.35,.55),w:R(r,.38,.5),h:R(r,.55,.8)},{u:R(r,-.25,.25),w:.95,h:R(r,.3,.42)}]))};
+      },
+      congestus(o,r){
+        return {puffs:byDepth(heap(o,r,[{u:R(r,-.08,.08),w:.42,h:1},{u:R(r,-.38,-.25),w:.36,h:R(r,.68,.82)},{u:R(r,.25,.38),w:.34,h:R(r,.74,.9)},{u:-.66,w:.32,h:R(r,.3,.45)},{u:.66,w:.3,h:R(r,.35,.5)}],{crown:1.45,bump:.9,round:.45}))};
+      },
+      cumulonimbus(o,r){
+        const H=o.base-o.top,W=o.width,aT=H*.2,tw=W*.46,tx=o.x-W*.16,q1=o.lite?.5:1;
+        const P=heap({x:tx,base:o.base,top:o.top+aT*.7,width:tw,density:o.density,lite:o.lite},r,
+          [{u:0,w:.6,h:1},{u:-.34,w:.5,h:.8},{u:.36,w:.5,h:.86},{u:-.72,w:.3,h:.42},{u:.72,w:.28,h:.5}],{dark:.34,crown:1.3,round:.4});
+        const ya=o.top+aT*.55,x0=o.x-W*.44,x1=o.x+W*.5;
+        for(let j=0;j<5;j++){  // flare: the tower widens as it hits the stable layer
+          const k=j/4,y=ya+aT*(.2+1.1*k),hw=tw*(.62-.3*k),m=Math.round((4+4*(1-k))*q1);
+          for(let i=0;i<m;i++)P.push({x:tx+hw*((i+R(r,.2,.8))/m*2-1),y:y+R(r,-.1,.1)*aT,rx:tw*R(r,.1,.15),ry:aT*R(r,.28,.4),b:clamp(Math.round(3.2-k*2+R(r,-.5,.5)),0,5),a:.96,z:2.5});
+        }
+        const n=Math.round(W/7*q1);
+        for(let j=0;j<3;j++)for(let i=0;i<n;i++){  // anvil: flat top, sagging dark underside, spreads downwind
+          const x=x0+(x1-x0)*(i+r())/n,q=Math.min(1,Math.abs(x-tx)/(x>tx?x1-tx:tx-x0)),th=aT*(1-.6*q);
+          const y=j===2?ya-th*.32:j===1?ya:ya+th*.3;
+          P.push({x,y,rx:W*R(r,.05,.085)*(1-.3*q),ry:th*R(r,.26,.38),b:clamp(Math.round([1.4,3,4.6][j]+R(r,-.6,.6)),0,5),a:.96-q*.3,z:3+j});
+        }
+        P.push({x:tx,y:ya-aT*.45,rx:tw*.22,ry:aT*.42,b:5,a:.95,z:6});  // overshooting top
+        return {puffs:byDepth(P)};
+      },
+      stratus(o,r){return {puffs:byDepth(layer(o,r,{rows:2,aspect:3,ry:[.75,1],b:[1.4,2.6],lift:.8,a:[.55,.7]}))}},
+      stratocumulus(o,r){
+        const W=o.width,T=o.base-o.top,n=Math.max(3,Math.round(W/(T*1.3))),P=[];
+        for(let i=0;i<n;i++){  // flat-topped rolls of uneven height that merge into a lumpy layer
+          const cw=W/n*R(r,1.3,1.6),cx=o.x-W/2+(i+.5)*W/n+R(r,-.12,.12)*W/n;
+          P.push(...heap({x:cx,base:o.base-R(r,0,T*.06),top:o.top+R(r,0,T*.4),width:cw,density:o.density,lite:o.lite},r,
+            [{u:R(r,-.15,.15),w:.95,h:1},{u:R(r,-.5,.5),w:.45,h:R(r,1,1.12)}],{dark:.3,crown:.9,bump:.8,round:.35}));
+        }
+        return {puffs:byDepth(P)};
+      },
+      nimbostratus(o,r){
+        const P=layer(o,r,{rows:3,aspect:2,ry:[.75,1],b:[0,1.4],lift:1.8,a:[.9,.98]});
+        const W=o.width,T=o.base-o.top,n=Math.round(W/26*(o.lite?.5:1));
+        for(let i=0;i<n;i++){  // scud: dark ragged bits under the base
+          const rx=W*R(r,.025,.06);
+          P.push({x:o.x+R(r,-.46,.46)*W,y:o.base+R(r,-.02,.14)*T,rx,ry:rx*R(r,.3,.5),b:0,a:R(r,.5,.8),z:9});
+        }
+        return {puffs:byDepth(P)};
+      },
+      altostratus(o,r){
+        return {puffs:byDepth(layer(o,r,{rows:2,aspect:4,ry:[.7,.95],b:[2.2,3.4],lift:.8,a:[.32,.46]})),
+          streaks:streaks(o,r,Math.round(2+2*o.density),{len:[.35,.7],drop:[0,.25],w:[4,9],a:[.08,.16]})};
+      },
+      altocumulus(o,r){
+        const W=o.width,T=o.base-o.top,rows=clamp(Math.round(T/12),1,3),cs=Math.min(T/rows*1.6,W/4),cols=Math.max(2,Math.round(W/cs*1.15)),P=[];
+        for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
+          if(r()<.1+.3*(1-o.density))continue;  // gaps between the cloudlets
+          const cx=o.x-W/2+(i+.5)*W/cols+R(r,-.15,.15)*cs,cy=o.top+(j+.5)*T/rows+R(r,-.12,.12)*cs,m=o.lite?2:4+Math.floor(r()*3);
+          P.push({x:cx,y:cy+cs*.12,rx:cs*.55,ry:cs*.22,b:'u',a:.85,z:0});
+          for(let q=0;q<m;q++){const rad=cs*R(r,.2,.34),dy=R(r,-.2,.08)*cs;P.push({x:cx+R(r,-.38,.38)*cs,y:cy+dy,rx:rad*1.2,ry:rad*.8,b:clamp(Math.round(3.4-dy/cs*6+R(r,-.5,.5)),2,5),a:.92,z:1})}
+        }
+        return {puffs:byDepth(P)};
+      },
+      cirrus(o,r){return {streaks:streaks(o,r,Math.round((3+5*o.density)*(o.lite?.6:1)),{len:[.22,.5],drop:[.25,.65],w:[.8,3.2],a:[.3,.75]})}},
+      cirrostratus(o,r){
+        return {puffs:byDepth(layer(o,r,{rows:1,aspect:5,ry:[.6,.9],b:[4.6,5],a:[.09,.15]})),
+          streaks:streaks(o,r,Math.round(3+3*o.density),{len:[.4,.75],drop:[0,.3],w:[3,7],a:[.08,.15]})};
+      },
+      lenticular(o,r){
+        const W=o.width,T=o.base-o.top,P=[],k=o.lite?2:3;
+        for(let j=0;j<k;j++){  // stacked smooth lenses, a "pile of plates"
+          const rx=W/2*(1-.2*j)*R(r,.94,1),ry=T*(.24-.03*j),y=o.base-T*.26-j*T*.25,x=o.x+R(r,-.04,.04)*W;
+          P.push({x,y:y+ry*.25,rx:rx*1.02,ry:ry*.7,b:'u',a:.7,z:j*2});
+          P.push({x,y,rx,ry,b:clamp(2+j,0,5),a:.95,z:j*2+1});
+          if(!o.lite)P.push({x:x+rx*.1,y:y-ry*.35,rx:rx*.72,ry:ry*.38,b:5,a:.6,z:j*2+1});
+        }
+        return {puffs:byDepth(P)};
+      }
+    };
+    // render: {x, base, top, width, density, seed, mode, label} -> one <g role="button"> with a padded hit area
+    function shape(type,o){
+      o=Object.assign({x:400,base:260,top:180,width:120,density:.7,seed:1,mode:'full'},o);
+      if(o.base<o.top){const t=o.base;o.base=o.top;o.top=t}
+      o.lite=o.mode==='reduced';o.density=clamp(o.density,0,1);
+      const g=SHAPES[type](o,rng(hash(type)^(o.seed*2654435761))),puffs=g.puffs||[],st=g.streaks||[];
+      let x0=o.x-o.width/2,x1=o.x+o.width/2,y0=o.top,y1=o.base;
+      puffs.forEach(p=>{x0=Math.min(x0,p.x-p.rx);x1=Math.max(x1,p.x+p.rx);y0=Math.min(y0,p.y-p.ry);y1=Math.max(y1,p.y+p.ry)});
+      return {puffs,streaks:st,box:{x:x0,y:y0,w:x1-x0,h:y1-y0},o};
+    }
+    const puffSVG=p=>`<ellipse cx="${f1(p.x)}" cy="${f1(p.y)}" rx="${f1(p.rx)}" ry="${f1(p.ry)}" fill="url(#ck-b${p.b})"${p.a<.99?` fill-opacity="${f2(p.a)}"`:''}/>`;
+    const streakSVG=s=>`<path d="${s.d}" fill="none" stroke="url(#ck-st)" stroke-width="${f1(s.w)}" stroke-opacity="${f2(s.a)}" stroke-linecap="round"/>`;
+    function markup(type,o){
+      const g=shape(type,o),b=g.box,O=g.o,pad=clamp(Math.min(b.w,b.h)*.15,12,28);
+      const kind=KIND[type]==='heap'&&O.width<60?'small':KIND[type];
+      const body=g.puffs.map(puffSVG).join('')+g.streaks.map(streakSVG).join('');
+      return `<g class="ck-cloud" data-type="${type}" role="button" tabindex="0" aria-label="${esc(O.label||type)}">`+
+        `<rect class="ck-hit" x="${f1(b.x-pad)}" y="${f1(b.y-pad)}" width="${f1(b.w+2*pad)}" height="${f1(b.h+2*pad)}" rx="14"/>`+
+        `${O.lite?body:`<g filter="url(#ck-f-${kind})">${body}</g>`}</g>`;
+    }
+    // weather: each returns a <g class="ck-fx" aria-hidden="true"> string that never blocks clicks
+    const anim=(cls,dur,r)=>`class="${cls}" style="animation-duration:${f2(dur)}s;animation-delay:-${f2(r()*dur)}s"`;
+    function shaftSVG(kind,o){
+      const r=rng(hash(kind)^o.seed),I=clamp(o.intensity,0,1),snow=kind==='snow',bot=typeof o.bottom==='function'?o.bottom:()=>o.bottom;
+      const edge=[];for(let i=0;i<=8;i++){const x=o.x1+o.slant-(o.x1-o.x0)*i/8;edge.push(f1(x)+','+f1(bot(x)))}
+      let s=`<polygon points="${f1(o.x0)},${f1(o.top)} ${f1(o.x1)},${f1(o.top)} ${edge.join(' ')}" fill="url(#ck-rain)" fill-opacity="${f2(snow?.2+.3*I:.35+.55*I)}"/>`;
+      const n=Math.round((o.x1-o.x0)/(snow?6:7)*(.5+I));
+      for(let i=0;i<n;i++){
+        const x=o.x0+(o.x1-o.x0)*(i+r())/n,t=o.top+r()*12,xe=x+o.slant,ye=bot(xe);
+        s+=snow?`<path ${anim('ck-snowl',R(r,2.2,3.4),r)} d="M${f1(x)} ${f1(t)}Q${f1(x+R(r,-6,6))} ${f1((t+ye)/2)} ${f1(xe)} ${f1(ye)}" stroke-width="${f1(R(r,1.8,3))}"/>`
+          :`<line ${anim('ck-rainl',R(r,.45,.7),r)} x1="${f1(x)}" y1="${f1(t)}" x2="${f1(xe)}" y2="${f1(ye)}" stroke-width="${f1(1+1.4*I*r())}"/>`;
+      }
+      return `<g class="ck-fx" aria-hidden="true">${s}</g>`;
+    }
+    const W8={
+      // rain and snow shafts: a fading curtain under the cloud base plus falling streaks; bottom is a y or x -> ground y
+      rain(o){return shaftSVG('rain',Object.assign({x0:300,x1:380,top:200,bottom:330,intensity:.6,slant:-10,seed:1},o))},
+      snow(o){return shaftSVG('snow',Object.assign({x0:300,x1:380,top:200,bottom:330,intensity:.6,slant:-14,seed:1},o))},
+      // a forked bolt and a soft glow in the cloud, flashing twice every `every` seconds
+      lightning(o){
+        o=Object.assign({x:400,top:160,bottom:330,every:7,seed:1},o);
+        const r=rng(hash('bolt')^o.seed),seg=9,pts=[[o.x,o.top]];
+        for(let i=1;i<=seg;i++)pts.push([pts[i-1][0]+R(r,-9,9),o.top+(o.bottom-o.top)*i/seg]);
+        const k=3+Math.floor(r()*3),br=[pts[k]];
+        for(let i=1;i<=3;i++)br.push([br[i-1][0]+R(r,4,12),br[i-1][1]+R(r,8,16)]);
+        const d='M'+pts.map(p=>f1(p[0])+' '+f1(p[1])).join('L')+'M'+br.map(p=>f1(p[0])+' '+f1(p[1])).join('L');
+        const st=`style="animation-duration:${o.every}s;animation-delay:-${f2(r()*o.every)}s"`;
+        return `<g class="ck-fx" aria-hidden="true"><ellipse class="ck-flashsky" ${st} cx="${f1(o.x)}" cy="${f1(o.top)}" rx="70" ry="45" fill="url(#ck-flash)"/>`+
+          `<g class="ck-bolt" ${st}><path d="${d}" fill="none" stroke="#CFE0FF" stroke-opacity=".35" stroke-width="6" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/></g></g>`;
+      },
+      // fog banks along the ground or the water; they hold still, since moving them repaints a wide area every frame
+      // (12 fps against 51 at 4x CPU throttle, snow day, 10/20/2026)
+      fog(o){
+        o=Object.assign({x0:52,x1:300,y:330,thick:22,seed:1,n:0},o);
+        const r=rng(hash('fog')^o.seed),n=o.n||Math.max(3,Math.round((o.x1-o.x0)/45));
+        let s='';
+        for(let i=0;i<n;i++){
+          const x=o.x0+(o.x1-o.x0)*(i+R(r,.2,.8))/n,rx=(o.x1-o.x0)/n*R(r,.9,1.5);
+          s+=`<ellipse cx="${f1(x)}" cy="${f1(o.y+R(r,-.3,.3)*o.thick)}" rx="${f1(rx)}" ry="${f1(o.thick*R(r,.55,.9))}" fill="url(#ck-fog)"/>`;
+        }
+        return `<g class="ck-fx" aria-hidden="true">${s}</g>`;
+      },
+      // atmospheric river: a long moist plume flowing in off the Pacific and lifting at the coast
+      plume(o){
+        o=Object.assign({x0:0,y0:250,x1:420,y1:170,thick:40,seed:1},o);
+        const r=rng(hash('plume')^o.seed),dx=o.x1-o.x0,t0=o.thick/2,t1=o.thick*.32;
+        const c=(k,off)=>[o.x0+dx*k,o.y0+(o.y1-o.y0)*(k*k*(3-2*k))+off];
+        const top=[],bot=[];
+        for(let i=0;i<=12;i++){const k=i/12,t=t0+(t1-t0)*k;top.push(c(k,-t));bot.unshift(c(k,t))}
+        let s=`<path d="M${top.concat(bot).map(p=>f1(p[0])+' '+f1(p[1])).join('L')}Z" fill="url(#ck-plume)"/>`;
+        for(let j=0;j<4;j++){
+          const off=(j-1.5)/1.5*.6,line=[];
+          for(let i=0;i<=12;i++){const k=i/12;line.push(c(k,off*(t0+(t1-t0)*k)))}
+          s+=`<path ${anim('ck-flow',R(r,2.4,3.6),r)} d="M${line.map(p=>f1(p[0])+' '+f1(p[1])).join('L')}"/>`;
+        }
+        return `<g class="ck-fx" aria-hidden="true">${s}</g>`;
+      }
+    };
+    function setLight(svg,name){
+      const L=LIGHTS[name]||LIGHTS.day;
+      svg.querySelector('#ck-defs').innerHTML=defs(name);
+      svg.style.setProperty('--ck-rain',mixc(L.rain,'#FFFFFF',.25));
+      svg.style.setProperty('--ck-moist',mixc(L.moist,'#FFFFFF',.45));
+    }
+    return {LIGHTS,markup,setLight,fx:W8,rng,hash};
+  })();
+
   const es=T=>6.112*Math.exp(17.67*T/(T+243.5)), mix=(e,p)=>622*e/(p-e), pres=z=>1013.25*Math.exp(-z/8400);
   const dew=(T,RH)=>{const a=Math.log(RH/100)+17.67*T/(T+243.5);return 243.5*a/(17.67-a)};
   const gmL=(Tc,z)=>{const T=Tc+273.15,rs=mix(es(Tc),pres(z))/1000,L=2.5e6,Rd=287,cp=1004;return 9.8*(1+L*rs/(Rd*T))/(1+L*L*rs*.622/(cp*Rd*T*T))};
@@ -1183,12 +1499,16 @@ const MAP=__MAP__;
   const TER=[[0,0],[95,0],[110,40],[150,450],[185,850],[205,880],[235,420],[262,90],[330,110],[380,520],[430,1250],[480,1850],[520,2250],[545,2650],[562,3400],[580,2600],[610,1900],[650,1150],[700,620],[750,380],[800,320]];
   const terr=x=>{for(let i=1;i<TER.length;i++){if(x<=TER[i][0]){const [x0,y0]=TER[i-1],[x1,y1]=TER[i],k=(x-x0)/(x1-x0);return y0+(y1-y0)*(.5-.5*Math.cos(Math.PI*k))}}return 320};
   const NS_=160, RIDGE=2700, CREST=562, LEE=580;
-  const SEASONS={winter:[7,88,'#0A1825','#1B2B3B'],spring:[12,75,'#0C1C2C','#22384C'],summer:[24,55,'#10233A','#2C4660'],fall:[13,82,'#0B1824','#20303E'],ar:[11,97,'#091420','#16222D']};
-  const cX=x=>52+x*.925, cY=z=>340-z/4000*305;
-  let warm=0, season='winter', playing=null;
-  function model(T0,RH){
-    const out=[];let T=T0,w=mix(es(T0)*RH/100,1013.25),cw=0,z=0;const w0=w;
-    for(let i=0;i<=NS_;i++){const x=i*800/NS_,e=terr(x),zn=Math.min(e,RIDGE),dz=zn-z;
+  const SEASONS={winter:[7,88],spring:[12,75],summer:[24,55],fall:[13,82],ar:[11,97]};
+  const cX=x=>52+x*.925, cY=z=>340-z/4000*305, gY=x=>cY(terr((x-52)/.925));
+  let warm=0, season='winter', playing=null, ex=null, cap='', lite=false, sel=null, shown='', last=null, exT=null;
+  const fxc={};
+  // lid (m, marine fog example only): above it the air is warmer and much drier than the ocean air trapped below (an inversion)
+  function model(T0,RH,lid){
+    const out=[];let T=T0,w=mix(es(T0)*RH/100,1013.25),cw=0,z=0,over=0;const w0=w;
+    for(let i=0;i<=NS_;i++){const x=i*800/NS_,e=terr(x),zn=Math.min(e,RIDGE);
+      if(lid&&!over&&zn>lid){over=1;z=lid;T=T0-6.5*lid/1000+8;w=mix(es(T)*.25,pres(lid));cw=0}
+      const dz=zn-z;
       let C=0;if(dz>0){const sat=w>=mix(es(T),pres(z))-1e-6;T-=(sat?gmL(T,z):9.8)*dz/1000;const ws=mix(es(T),pres(zn));if(w>ws){C=w-ws;cw+=C;w=ws}}
       else if(dz<0){if(cw>0){T+=gmL(T,zn)*(-dz)/1000;const ws=mix(es(T),pres(zn));if(w<ws){const ev=Math.min(cw,ws-w);w+=ev;cw-=ev}}else T+=9.8*(-dz)/1000}
       const P=Math.min(cw,C*.55+cw*.08);cw-=P;z=zn;
@@ -1196,83 +1516,199 @@ const MAP=__MAP__;
       out.push({x,e,z,T,w,cw,P,snow:Ts<=.5});
     }
     const lcl=Math.max(0,125*(T0-dew(T0,RH)));
-    return {out,w0,lcl,snowLine:Math.max(0,(T0-.5)/6.5*1000),tot:out.reduce((a,o)=>a+o.P,0),snowShare:out.reduce((a,o)=>a+(o.snow?o.P:0),0)/Math.max(1e-6,out.reduce((a,o)=>a+o.P,0))};
+    return {out,w0,lcl,lid,snowLine:Math.max(0,(T0-.5)/6.5*1000),tot:out.reduce((a,o)=>a+o.P,0),snowShare:out.reduce((a,o)=>a+(o.snow?o.P:0),0)/Math.max(1e-6,out.reduce((a,o)=>a+o.P,0))};
   }
   const cls=P=>P<.012?0:P<.05?1:P<.12?2:3, CLS=['none','light','moderate','heavy'];
   const fF=c=>Math.round(c*9/5+32), num=n=>Math.round(n).toLocaleString();
-  (function(){let h='';for(let z=0;z<=4000;z+=1000){const y=cY(z);h+='<line x1="52" x2="792" y1="'+y+'" y2="'+y+'" stroke="rgba(232,236,240,.07)"/><text x="46" y="'+(y+4)+'" text-anchor="end" class="cmax">'+(z===0?'sea':num(z)+' m')+'</text>'}$('cmAxis').innerHTML=h;
+  (function(){let h='';for(let z=1000;z<=4000;z+=1000){const y=cY(z);h+='<line x1="52" x2="792" y1="'+y+'" y2="'+y+'" stroke="rgba(232,236,240,.12)"/><text x="56" y="'+(y+14)+'" class="cmax">'+num(z)+' m</text>'}$('cmAxis').innerHTML=h;
     let g='',pts=[];for(let i=0;i<=NS_;i++){const x=i*800/NS_;pts.push(cX(x).toFixed(1)+','+cY(terr(x)).toFixed(1))}
     const west=pts.filter((p,i)=>i*5<=LEE),east=pts.filter((p,i)=>i*5>=LEE);
-    g+='<rect x="52" y="'+cY(0)+'" width="'+(cX(97)-52)+'" height="8" fill="#1F4466"/>';
+    g+='<rect x="-800" y="'+cY(0)+'" width="'+(cX(97)+800)+'" height="8" fill="#1F4466"/>';
     g+='<polygon points="'+west.join(' ')+' '+west[west.length-1].split(',')[0]+',348 52,348" fill="url(#cmLand)"/>';
-    g+='<polygon points="'+east.join(' ')+' 792,348 '+east[0].split(',')[0]+',348" fill="url(#cmDry)"/>';
-    g+='<rect x="52" y="348" width="740" height="82" fill="rgba(1,11,19,.55)"/>';
+    g+='<polygon points="'+east.join(' ')+' 1600,'+cY(320).toFixed(1)+' 1600,348 '+east[0].split(',')[0]+',348" fill="url(#cmDry)"/>';
+    g+='<rect x="-800" y="348" width="2400" height="300" fill="#081420"/>';
     $('cmGround').innerHTML=g;
     const L=[[40,'Pacific Ocean',0,'start',50],[195,'Coast Range',880],[296,'Lowlands',110],[CREST,'Cascade crest',3400],[728,'Columbia Plateau',380]];
-    $('cmLabels').innerHTML=L.map(l=>'<text class="cmlab" x="'+(l[4]||cX(l[0]))+'" y="'+(cY(l[2])-12)+'" text-anchor="'+(l[3]||'middle')+'">'+l[1]+'</text>').join('')+'<text class="cmlab sm" x="58" y="364">Rain and snow reaching the ground</text>';
+    $('cmLabels').innerHTML=L.map(l=>'<text class="cmlab" x="'+(l[4]||cX(l[0]))+'" y="'+(cY(l[2])-12)+'" text-anchor="'+(l[3]||'middle')+'">'+l[1]+'</text>').join('')+'<text class="cmlab sm" x="58" y="364">Rain and snow reaching the ground</text><text x="46" y="'+(cY(0)+4)+'" text-anchor="end" class="cmax">sea</text>';
     $('cmWind').setAttribute('d','M'+Array.from({length:NS_+1},(_,i)=>{const x=i*800/NS_;return cX(x).toFixed(1)+' '+(cY(Math.min(terr(x),RIDGE))-26).toFixed(1)}).join(' L'));
   })();
-  function cm(){
-    const s=SEASONS[season], T0=+$('cmT').value+warm, RH=+$('cmH').value, pos=+$('cmZ').value;
-    $('cmSky0').setAttribute('stop-color',s[2]);$('cmSky1').setAttribute('stop-color',s[3]);
-    const M=model(T0,RH), O=M.out, o=O[pos];
+  // Cloud card: [name, family, description, look for, photo, alt, credit]. Text is DRAFT for the voice pass
+  // (planning/VOICE-PASS.md); facts in planning/VERIFY.md; photos in planning/MEDIA-CREDITS.md. A photo loads only when shown.
+  const CL={
+    cumulus:['Cumulus','Low cloud','Cumulus are puffy white clouds with flat gray bottoms, like cotton balls drifting across a blue sky. They sit low, below about 2,000 meters (6,500 feet). Sun warms the ground, warm air rises, and its water vapor turns into tiny droplets. Small cumulus mean fair weather. If they keep growing taller, showers may follow.','Flat gray bottoms, bright rounded tops, blue sky between.','img/clouds/cumulus.jpg','Small white puffy cumulus clouds scattered across a deep blue sky above a green lawn, a pond, and palm trees.','Photo: Ralph F. Kresge, NOAA (public domain)'],
+    congestus:['Cumulus congestus','Grows tall','Towering cumulus, called cumulus congestus, sprout upward like a head of cauliflower. The flat base stays low, under about 2,000 meters (6,500 feet), but the top can climb past 6,000 meters (20,000 feet). Strong rising air feeds them. They often bring rain or snow showers, and they can grow into thunderstorm clouds.','A cloud taller than it is wide, with a bulging top.','img/clouds/congestus.jpg','A tall white cumulus congestus cloud with a bulging, cauliflower-like top rising into a dark blue sky.','Photo: Ralph F. Kresge, NOAA (public domain)'],
+    cumulonimbus:['Cumulonimbus','Grows tall','Cumulonimbus is the thunderstorm cloud: a huge tower with a dark base, and a top that often spreads into a flat anvil. Its base sits low, under 2,000 meters (6,500 feet), while the top can reach about 13,000 meters (43,000 feet). A strong updraft builds it. Summer storms rise over the Columbia Basin, bringing heavy rain, lightning, and hail.','Dark base, towering sides, and a flat anvil on top.','img/clouds/cumulonimbus.jpg','A huge white cumulonimbus anvil cloud spreading flat across the top of a developing thunderstorm, above a line of trees.','Photo: NOAA National Severe Storms Laboratory (public domain)'],
+    stratus:['Stratus and fog','Low cloud','Stratus is a flat gray blanket of cloud with an even base, close to the ground, below about 2,000 meters (6,500 feet). Fog is stratus that touches the ground. Cool, moist air trapped under a warmer layer condenses into it. Along the Pacific Northwest coast, stratus and fog drift inland as far as the Cascade foothills.','Smooth gray sheet, low enough to touch the hills.','img/clouds/stratus.jpg','Valley fog and low cloud filling forested valleys in the Oregon Coast Range under a gray and white sky.','Photo: Devinmlea, CC BY-SA 4.0, cropped'],
+    stratocumulus:['Stratocumulus','Low cloud','Stratocumulus is a low sheet of gray and white clumps, with patches of blue sky showing through the gaps. It sits below about 2,000 meters (6,500 feet). Gentle rising and sinking in a cool layer of air shapes the clumps, like rolls in a quilt. It usually means a cloudy but dry day, with light drizzle at most.','Lumpy gray and white rolls with blue gaps between.','img/clouds/stratocumulus.jpg','A low sheet of lumpy gray and white stratocumulus clouds with blue sky showing through gaps and the sun glowing behind.','Photo: Simon A. Eugster, CC BY-SA 3.0, cropped'],
+    nimbostratus:['Nimbostratus','Middle cloud','Nimbostratus is a thick, dark gray blanket that hides the sun and brings steady rain or snow. It starts in the middle sky, about 2,000 to 7,000 meters (6,500 to 23,000 feet), then spreads wide and sinks lower as precipitation falls. In winter, Pacific storms can bring days of it to the Coast Range and Cascades.','Dark, even gray sky, no sun, steady rain or snow.','img/clouds/nimbostratus.jpg','A thick gray nimbostratus layer covering the whole sky, with darker ragged pieces hanging beneath it above distant rooftops.','Photo: GerritR, CC BY-SA 4.0, cropped'],
+    altostratus:['Altostratus','Middle cloud','Altostratus is a gray or bluish sheet that covers much of the sky at middle height, about 2,000 to 7,000 meters (6,500 to 23,000 feet). The sun shows through as a dim, watery disk, like a light behind frosted glass. Light rain or snow may fall from it, and it can thicken into nimbostratus.','Gray sheet; the sun looks like a dim, fuzzy disk.','img/clouds/altostratus.jpg','A smooth gray altostratus layer across the whole sky with the sun glowing dimly through it as a pale, fuzzy disk.','Photo: Famartin, CC BY-SA 4.0, cropped'],
+    altocumulus:['Altocumulus','Middle cloud','Altocumulus is a layer of white or gray puffs, rolls, and ripples in the middle sky, about 2,000 to 7,000 meters (6,500 to 23,000 feet). Each puff looks about as wide as a thumb held at arm’s length. Made of water droplets, it can paint a colored ring, a corona, around the sun or moon. It usually means fair weather.','Rows of small puffs or ripples, like fish scales.','img/clouds/altocumulus.jpg','Rows of small white altocumulus ripples spread across a blue-green sky above dark tree silhouettes.','Photo: Ralph F. Kresge, NOAA (public domain)'],
+    cirrus:['Cirrus','High cloud','Cirrus are thin, white, hair-like streaks high in the sky, about 5,000 to 13,000 meters (16,500 to 45,000 feet). They are made of ice crystals, which strong winds stretch into wisps and curls. Cirrus by themselves mean fair weather. If they thicken and spread, a storm system may be a day or so away.','Thin white wisps and streaks, often curled at the ends.','img/clouds/cirrus.jpg','Thin white feathery cirrus streaks fanning across a bright blue sky.','Photo: Ron Clausen, CC BY-SA 4.0, cropped'],
+    cirrostratus:['Cirrostratus','High cloud','Cirrostratus is a thin, see-through veil of ice crystals that can cover the whole sky, high up at about 5,000 to 13,000 meters (16,500 to 45,000 feet). The sun and moon still shine through, and light bending in the crystals often makes a ring, called a halo. A thickening veil can mean rain or snow is on the way.','Milky veil with a ring, or halo, around the sun.','img/clouds/cirrostratus.jpg','A bright sun surrounded by a faint circular halo in a thin, milky veil of cirrostratus cloud, with tree branches at the upper right.','Photo: Rollcloud, CC BY 3.0, cropped'],
+    lenticular:['Lenticular cloud','Mountain cloud','Lenticular clouds are smooth, lens-shaped clouds that seem to hover near mountains. Wind lifts moist air up and over a peak in waves. The cloud forms where air rises and fades where it sinks, so it stays put. A cap on Mount Rainier (4,392 meters, 14,410 feet) is a local sign that rain may arrive within about a day.','Smooth saucer or lens shapes that hover and do not drift.','img/clouds/lenticular.jpg','Two smooth, saucer-shaped lenticular clouds hovering in a blue sky above snowy Mount Rainier, with a cloud cap on the summit.','Photo: Ben Smith, USDA Forest Service (public domain)'],
+    clear:['Clear sky','No cloud','The air never cools enough to give up its water.','','','','']
+  };
+  // the clouds for one model state, back to front: [type, options] specs, plus weather behind (B) and in front of (F) them
+  function sky(M,T0,RH,mode){
+    const O=M.out,C=[],B=[],F=[],Z=v=>Math.round(v/4)*4;  // snap to 4 units so small slider moves reuse clouds
+    const add=(t,x,yb,yt,w,s)=>C.push([t,{x:Z(x),base:Z(yb),top:Z(yt),width:Z(w),seed:s,mode,label:CL[t][0]+', '+CL[t][1].split(' · ')[0].toLowerCase()}]);
+    // rain or snow shafts under a cloud base, only where the ground lies below it
+    const fall=(xa,xb,yb,s)=>{const rs=[];let r=null;
+      O.forEach(q=>{const x=cX(q.x),on=q.P>=.012&&x>=xa&&x<=xb&&gY(x)>yb+6;
+        if(on&&r&&r.sn===q.snow){r.x1=x;r.p=Math.max(r.p,q.P)}else{if(r)rs.push(r);r=on?{x0:x,x1:x,p:q.P,sn:q.snow}:null}});
+      if(r)rs.push(r);
+      rs.forEach((r,i)=>{if(r.x1-r.x0<8)return;const top=Z(yb-4);B.push([r.sn?'snow':'rain',{x0:Z(r.x0-3),x1:Z(r.x1+3),top,bottom:x=>Math.max(gY(x),top+2),intensity:Math.round(Math.min(1,r.p/.2)*10)/10,seed:s+i}])})};
+    const maxcw=Math.max(...O.map(q=>q.cw)),ic=O.findIndex(q=>q.cw===maxcw),tower=T0>=20&&RH>=65&&maxcw>=.3;
+    // high and middle clouds ahead of a front (it comes in from the ocean, so "ahead" is east); f is the front's stage
+    const st=ex&&ex.f!=null?ex.f:season==='ar'?4:season==='winter'?(RH>=85?3:RH>=75?2:RH>=65?1:0):season==='fall'?(RH>=85?3:RH>=72?2:RH>=62?1:0):season==='summer'&&!tower&&RH>=45?1:0;
+    if(st===1)add('cirrus',cX(625),46,10,330,21);
+    if(st===2){add('cirrostratus',cX(450),44,14,380,22);add('cirrus',cX(700),44,10,190,21)}
+    if(st===3){add('cirrostratus',cX(560),42,14,300,22);add('cirrus',cX(730),42,10,150,21);add('altostratus',cX(390),cY(3200),cY(3650),380,23);add('altocumulus',cX(665),cY(3350),cY(3750),120,24)}
+    if(st===4){add('cirrostratus',cX(560),40,12,460,22);add('altostratus',cX(400),cY(3250),cY(3750),760,23)}
+    if(season==='spring'&&RH>=65&&!(ex&&ex.f!=null)){add('altocumulus',cX(330),cY(3000),cY(3400),150,25);add('altocumulus',cX(705),cY(3300),cY(3700),130,26)}
+    if(ex&&ex.w){add('lenticular',cX(CREST)+6,cY(3750),cY(4150),100,31);if(ex.w>1){add('lenticular',cX(655),cY(3350),cY(3700),86,32);add('lenticular',cX(750),cY(3300),cY(3580),64,33)}}
+    // clouds the mountains make: each run of cloudy air along the slice (marine air under the lid is the fog, drawn below)
+    const runs=[];let r=null;
+    O.forEach((q,i)=>{if(q.cw>.03&&!(M.lid&&q.z<=M.lid)){if(!r)r={i0:i,i1:i,cw:0};r.i1=i;r.cw=Math.max(r.cw,q.cw)}else if(r){runs.push(r);r=null}});if(r)runs.push(r);
+    let main='',big=0;
+    runs.forEach((r,j)=>{const a=O[r.i0].x,b=Math.min(O[r.i1].x,CREST+10),xa=cX(a),xb=cX(b),k=Math.min(1,r.cw/.5),s=41+j*10,
+        t=tower&&ic>=r.i0&&ic<=r.i1?'cumulonimbus':r.cw<.08?(a<=CREST&&O[r.i1].x>=CREST?'lenticular':T0>=10?'cumulus':'stratocumulus'):T0>=18||(T0>=10&&RH<80)?(r.cw>=.42?'congestus':'cumulus'):RH>=80?'nimbostratus':'stratocumulus';
+      if(b-a>big){big=b-a;main=t}
+      // the thunderhead stands over the upper windward slope with its anvil blown downwind; the crest sits inside it
+      if(t==='cumulonimbus'){const tx=cX(O[ic].x)-40,W=280,yb=cY(2500);add(t,tx+W*.16,yb,8,W,s,0);fall(tx-46,tx+48,yb,s);F.push(['lightning',{x:Z(tx-14),top:Z(cY(3000)),bottom:Z(gY(tx-14)),every:6,seed:s}]);return}
+      if(t==='lenticular'){add(t,cX(CREST)+4,cY(3550),cY(3950),84,s,0);return}
+      if(t==='cumulus'||t==='congestus'){const n=Math.max(1,Math.round((b-a)/60)),sw=(xb-xa)/n;
+        for(let i=0;i<n;i++){const p=a+(b-a)*(i+.5)/n,x=xa+sw*(i+.5),yb=cY(Math.min(2900,terr(p)+300)),w=Math.max(50,Math.min(t==='cumulus'?110:120,sw*1.15)),h=w*(t==='cumulus'?.55+.35*k:1.2+.6*k);
+          add(t,x,yb,Math.max(6,yb-h),w,s+i,8);fall(x-w*.4,x+w*.4,yb,s+i)}
+        return}
+      // a layer over the windward slope and just past the top, wider than it is tall; the peak may poke into it
+      const x1=cX(Math.min(O[r.i1].x+20,CREST+20)),w=x1-xa+40,zb=Math.min(2900,terr(a+(b-a)*.55)+300),yb=cY(zb);
+      add(t,(xa+x1)/2,yb,Math.max(cY(4100),yb-Math.min(w*.5,(t==='nimbostratus'?900+900*k:350+250*k)*305/4000)),w,s,6);fall(xa-16,x1+16,yb,s)});
+    // low clouds in front: stratocumulus over the lowlands, fog or a stratus deck over the ocean
+    if(T0<18&&RH>=70&&RH<95&&!tower){const z=Math.max(M.lcl,900);add('stratocumulus',cX(296),cY(z),cY(z+420),96,5)}
+    if(M.lcl<160){const top=M.lid||380;add('stratus',cX(150),cY(0)+4,cY(top),cX(320)-cX(-20),3);F.push(['fog',{x0:20,x1:Z(cX(330)),y:Z(cY(top*.35)),thick:20,seed:7}])}
+    else if(M.lcl<600&&T0<20)add('stratus',cX(48),cY(M.lcl),cY(M.lcl+350),130,4);
+    if(season==='ar')B.unshift(['plume',{x0:-40,y0:Z(cY(1300)),x1:Z(cX(440)),y1:Z(cY(2700)),thick:64,seed:8}]);
+    main=(ex&&ex.main)||main||(M.lcl<160?'stratus':st>=3?'altostratus':st===2?'cirrostratus':st===1?'cirrus':'clear');
+    return {C,B,F,main,dim:C.some(c=>c[0]==='nimbostratus')?.3:st>=3?.16:0};
+  }
+  function drawScene(M,T0,RH,mode){
+    const O=M.out,sc=sky(M,T0,RH,mode);
     // snow cover on the land and the glacier on the volcano
     let sn='';const showSnow=season!=='summer'?Math.min(M.snowLine+(season==='spring'?250:0),4000):9e9;
-    for(let i=0;i<NS_;i++){const a=O[i],b=O[i+1];if(Math.min(a.e,b.e)>=Math.min(showSnow,2950))sn+='M'+cX(a.x)+' '+cY(a.e)+' L'+cX(b.x)+' '+cY(b.e)+' '}
+    for(let i=0;i<NS_;i++){const a=O[i],b=O[i+1];if(Math.min(a.e,b.e)>=Math.max(5,Math.min(showSnow,2950)))sn+='M'+cX(a.x)+' '+cY(a.e)+' L'+cX(b.x)+' '+cY(b.e)+' '}
     let sl='';if(M.snowLine<3400){const y=cY(M.snowLine);sl='<line x1="'+cX(330)+'" x2="'+cX(800)+'" y1="'+y+'" y2="'+y+'" stroke="#E8ECF0" stroke-width="1" stroke-dasharray="5 5" opacity=".55"/><text class="cmlab sm" x="'+cX(800)+'" y="'+(y-6)+'" text-anchor="end">snow line · '+num(M.snowLine)+' m</text>'}
     $('cmSnow').innerHTML='<path d="'+sn+'" stroke="#F4F7FA" stroke-width="5" stroke-linecap="round" fill="none"/>'+sl;
-    // clouds
-    let cl='';const maxcw=Math.max(...O.map(q=>q.cw)),ic=O.findIndex(q=>q.cw===maxcw);
-    if(M.lcl<160){const top=cY(M.lcl+260);cl+='<rect class="fog" x="52" y="'+top+'" width="'+(cX(300)-52)+'" height="'+(cY(0)-top)+'"/>'}
-    const tower=T0>=20&&RH>=65&&maxcw>=.3;
-    if(tower){const x=cX(O[ic].x)-8;for(let z=O[ic].z+600;z<=3750;z+=230){const k=(z-O[ic].z)/(3750-O[ic].z),r=24+k*10,y=cY(z);cl+='<circle cx="'+(x-r*.5)+'" cy="'+y+'" r="'+r+'" fill="#AEB7C1"/><circle cx="'+(x+r*.45)+'" cy="'+(y-6)+'" r="'+(r*.92)+'" fill="#E6EBEF"/>'}cl+='<path d="M'+(x-150)+' '+cY(3880)+' Q'+x+' '+cY(4080)+' '+(x+170)+' '+cY(3870)+' Q'+x+' '+cY(3800)+' '+(x-150)+' '+cY(3880)+' Z" fill="#E6EBEF"/>'}
-    O.forEach((q,i)=>{if(q.cw<.03||i%2)return;const cc=Math.min(q.cw*2.2,1.5),x=cX(q.x),r=8+cc*13,y=cY(q.z+700+cc*450);
-      cl+='<circle cx="'+x+'" cy="'+(y+r*.55)+'" r="'+(r*.9)+'" fill="'+(cc>1?'#7D8794':'#B9C1CA')+'" opacity=".9"/><circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="'+(cc>1?'#C9D0D7':'#EEF2F5')+'" opacity=".93"/>'});
-    $('cmClouds').innerHTML=cl;
-    // falling rain and snow, and the intensity strip
-    let fa='',bars='';
-    O.forEach((q,i)=>{const k=cls(q.P),x=cX(q.x);if(k){const top=cY(q.z+560+Math.min(q.cw*2.2,1.5)*350),bot=cY(q.e)-2;if(i%(4-k)===0){fa+=q.snow?'<line class="snowfall" x1="'+x+'" x2="'+(x-6)+'" y1="'+top+'" y2="'+bot+'"/>':'<line class="rainfall k'+k+'" x1="'+x+'" x2="'+(x-8)+'" y1="'+top+'" y2="'+bot+'"/>'}}
-      const h=Math.min(1,q.P/.25)*52;if(h>.5)bars+='<rect x="'+(x-2)+'" y="'+(426-h)+'" width="4.2" height="'+h+'" fill="'+(q.snow?'#F4F7FA':'#5E97C9')+'"/>'});
-    $('cmFall').innerHTML=fa;$('cmBars').innerHTML=bars;
-    // the parcel
-    const px=cX(o.x),py=cY(o.z)-26;$('cmDot').setAttribute('cx',px);$('cmDot').setAttribute('cy',py);
-    const st=$('cmStem');st.setAttribute('x1',px);st.setAttribute('x2',px);st.setAttribute('y1',py+9);st.setAttribute('y2',cY(o.e));
+    // clouds: keep the ones whose options did not change, fade in the new ones, fade out the rest
+    const g=$('cmClouds'),fade=!reduce&&mode==='full',want=[],old=new Map([...g.children].filter(n=>!n.classList.contains('ck-out')).map(n=>[n.dataset.k,n]));
+    sc.C.forEach(([t,o])=>{const k=t+CK.hash(JSON.stringify(o));let n=old.get(k);
+      if(n)old.delete(k);else{const tmp=document.createElementNS(NS,'svg');tmp.innerHTML=CK.markup(t,o);n=tmp.firstElementChild;n.dataset.k=k;if(fade)n.classList.add('ck-new')}
+      want.push(n)});
+    old.forEach(n=>{n.classList.remove('ck-on');if(fade){n.classList.add('ck-out');n.setAttribute('tabindex','-1');setTimeout(()=>n.remove(),950)}else n.remove()});
+    let ref=g.firstChild;want.forEach(n=>{while(ref&&ref.classList.contains('ck-out'))ref=ref.nextSibling;if(n===ref)ref=ref.nextSibling;else g.insertBefore(n,ref)});
+    if(sel&&!want.some(n=>n.classList.contains('ck-on'))){const n=want.find(n=>n.dataset.type===sel);if(n)n.classList.add('ck-on');else sel=null}
+    [['cmBack',sc.B],['cmFront',sc.F]].forEach(([id,a])=>{const h=a.map(([f,o])=>CK.fx[f](o)).join('');if(fxc[id]!==h){fxc[id]=h;$(id).innerHTML=h}});
+    $('cmGrey').setAttribute('opacity',sc.dim);
+    // the intensity strip
+    let bars='';O.forEach(q=>{const x=cX(q.x),h=Math.min(1,q.P/.25)*52;if(h>.5)bars+='<rect x="'+(x-2)+'" y="'+(426-h)+'" width="4.2" height="'+h+'" fill="'+(q.snow?'#F4F7FA':'#5E97C9')+'"/>'});
+    $('cmBars').innerHTML=bars;
+    if(warm){const B=model(T0-2,RH,M.lid);$('cmNote').innerHTML='<tspan x="400">With 2 °C of warming: snow line '+num(B.snowLine)+' → '+num(M.snowLine)+' m</tspan><tspan x="400" dy="17">water falling '+(M.tot>B.tot?'+':'')+Math.round((M.tot/B.tot-1)*100)+'% · falling as snow '+Math.round(B.snowShare*100)+'% → '+Math.round(M.snowShare*100)+'%</tspan>'}else $('cmNote').textContent='';
+    card(sel||sc.main);
+    return sc;
+  }
+  function card(t){if(t===shown)return;shown=t;const c=CL[t]||CL.clear;
+    $('cmName').textContent=c[0];$('cmFam').textContent=c[1];$('cmDesc').textContent=c[2];$('cmLook').textContent=c[3];$('cmLookP').hidden=!c[3];
+    $('cmPh').hidden=!c[4];if(c[4]){$('cmImg').src=c[4];$('cmImg').alt=c[5];$('cmCred').textContent=c[6]}}
+  // the parcel at a position along the slice (fractional while it travels)
+  function dot(p){const O=last.M.out,i=Math.min(NS_-1,Math.floor(p)),k=Math.min(1,p-i),a=O[i],b=O[i+1],x=cX(a.x+(b.x-a.x)*k),y=cY(a.z+(b.z-a.z)*k)-26;
+    $('cmDot').setAttribute('cx',x);$('cmDot').setAttribute('cy',y);const st=$('cmStem');st.setAttribute('x1',x);st.setAttribute('x2',x);st.setAttribute('y1',y+9);st.setAttribute('y2',cY(a.e+(b.e-a.e)*k))}
+  function cm(){
+    const T0=+$('cmT').value+warm, RH=+$('cmH').value, pos=+$('cmZ').value, mode=reduce||lite?'reduced':'full', key=[season,T0,RH,mode,ex?ex.k:''].join();
+    if(!last||last.key!==key){const M=model(T0,RH,ex&&ex.lid);last={key,M};drawScene(M,T0,RH,mode)}
+    const M=last.M, O=M.out, o=O[pos];
+    dot(pos);
     // readouts
     $('cmTv').textContent=T0+' °C · '+fF(T0)+' °F'+(warm?' (warmed)':'');$('cmHv').textContent=RH+'%';
     $('cmZv').textContent=o.x<97?'over the ocean':num(o.e)+' m up';
     const ws=mix(es(o.T),pres(o.z)),k=cls(o.P);
     $('cmPT').textContent=o.T.toFixed(1)+' °C';$('cmW').textContent=(o.w+o.cw).toFixed(1)+' g/kg';$('cmWs').textContent=ws.toFixed(1)+' g/kg';
     $('cmFallV').textContent=k?CLS[k]+' '+(o.snow?'snow':'rain'):'nothing';
-    // cloud type for the whole slice
-    const ty=tower?['Cumulonimbus','A thunderhead. Warm, wet air rises fast and tall; heavy rain, lightning, sometimes hail.']
-      :T0>=20&&maxcw>.03?['Cumulus','Heaped, fair-weather clouds building over the crest on a warm afternoon; showers if they grow.']
-      :M.tot>=2.5?['Nimbostratus','A thick gray layer over the mountains with steady rain or snow'+(M.lcl<160?', and fog low over the water.':'. The workhorse of a Northwest winter.')]
-      :M.lcl<160?['Fog and stratus','Air this wet is already saturated near the water. Gray layers sit low over the ocean and the lowlands.']
-      :maxcw>=.08?['Cumulus','Heaped clouds building where the land pushes the air up.']
-      :maxcw>.03?['Cap cloud','A small cloud that sits on the crest and melts away on the far side.']:['Clear','The air never cools enough to give up its water.'];
-    $('cmType').innerHTML='<b>'+ty[0]+'</b><span>'+ty[1]+'</span>';
-    // what is happening here
+    // what is happening here (a weather example shows its own caption instead)
     const up=pos<NS_&&O[pos+1].z>o.z, ocean=o.x<97, lee=o.x>=LEE;
     let msg=ocean?'Over the Pacific, the air picks up water: '+M.w0.toFixed(1)+' grams in every kilogram of air.'
       :lee&&o.cw<.03?'Rain shadow. Coming down the far side, the air warms and dries: '+o.T.toFixed(0)+' °C here against '+T0+' °C at the coast, with '+o.w.toFixed(1)+' of its '+M.w0.toFixed(1)+' grams left. This is why the plateau is dry.'
       :lee?'Over the crest the air sinks and warms, and the cloud begins to evaporate.'
+      :M.lid&&o.z>M.lid&&o.cw<.03?'Above the lid. This air is warmer and much drier than the foggy ocean air trapped below it, so it makes no cloud.'
       :o.cw<.03&&up?'The land pushes the air up. Rising air expands and cools, about 10 °C for every 1,000 m, but it can still hold its water.'
       :o.cw<.03?'The air rests in the lowlands before the next climb.'
       :k?'The air cooled past what it can hold. The extra water condenses into cloud, and '+CLS[k]+' '+(o.snow?'snow':'rain')+' falls here.'
       :'Cloud. The air cooled past what it can hold, so the extra water condensed onto dust and smoke.';
-    if(warm){const B=model(T0-2,RH);$('cmNote').textContent='With 2 °C of warming: snow line '+num(B.snowLine)+' → '+num(M.snowLine)+' m · water falling '+(M.tot>B.tot?'+':'')+Math.round((M.tot/B.tot-1)*100)+'% · falling as snow '+Math.round(B.snowShare*100)+'% → '+Math.round(M.snowShare*100)+'%'}else $('cmNote').textContent='';
-    $('cmMsg').textContent=msg;
+    $('cmMsg').textContent=cap||msg;
   }
-  function setSeason(s){season=s;const p=SEASONS[s];$('cmT').value=p[0];$('cmH').value=p[1];[...$('cmSeason').children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.s===s)));cm()}
+  // sun, moon and stars for each time of day (the slice runs west to east: dawn on the right, dusk over the ocean)
+  const SUN=(()=>{const r=CK.rng(9);let st='';for(let i=0;i<34;i++)st+='<circle cx="'+Math.round(r()*800)+'" cy="'+Math.round(4+r()*190)+'" r="'+(.6+r()*.9).toFixed(1)+'" fill="#E8ECF0" opacity="'+(.35+r()*.5).toFixed(2)+'"/>';
+    const b=(x,y,g,gr,c,rr)=>'<circle cx="'+x+'" cy="'+y+'" r="'+gr+'" fill="url(#'+g+')"/><circle cx="'+x+'" cy="'+y+'" r="'+rr+'" fill="'+c+'"/>';
+    return {dawn:b(778,255,'cmGlowW',95,'#FFF1D0',12),day:b(470,30,'cmGlowD',85,'#FFFDF5',13),dusk:b(98,300,'cmGlowW',95,'#FFE2B0',12),night:st+b(668,44,'cmGlowN',36,'#EEF2F6',8)}})();
+  function setLight(l){CK.setLight($('cmSvg'),l);$('cmSun').innerHTML=SUN[l];$('cmGrey').setAttribute('fill',CK.LIGHTS[l].ramp[1]);[...$('cmTod').children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)))}
+  // weather examples: [season, coast °C, humidity %, time of day, extras, caption, cloud to show]
+  // extras: f = stage of an arriving front (1 cirrus ... 4 nimbostratus), w = mountain wave, lid = top of the marine layer (m)
+  const EX={
+    fog:[['summer',12,97,'dawn',{lid:450,f:0},'Dawn on the coast. A lid of warmer air holds cool, wet ocean air near the water, and it fills with fog.','stratus'],
+      ['summer',14,93,'day',{lid:450,f:0},'The sun climbs. Above the lid, the air crossing the mountains is warm and dry, so the sky inland stays clear.','stratus'],
+      ['summer',17,84,'day',{lid:450,f:0},'By late morning the fog lifts into a low layer of stratus and starts to break up.','stratus']],
+    fair:[['summer',21,36,'day',{},'Late morning. The sun warms the ground, and the first small cumulus puff up over the mountains.','cumulus'],
+      ['summer',24,42,'day',{},'Afternoon. Warm air keeps rising and the cumulus grow; a shower may fall on the crest, while the lowlands and the plateau stay dry.','cumulus']],
+    storm:[['summer',24,60,'day',{},'A hot, humid afternoon. Cumulus build into towers over the Cascade crest.','congestus'],
+      ['summer',27,67,'day',{},'The tower keeps climbing until its top spreads out flat, like an anvil.','cumulonimbus'],
+      ['summer',29,72,'dusk',{},'A thunderstorm: heavy rain, lightning, and gusty wind over the mountains.','cumulonimbus']],
+    ar:[['ar',9,88,'day',{f:3},'A long, narrow river of wet air flows in from the warm Pacific. Sheets of altostratus spread out ahead of it.','altostratus'],
+      ['ar',11,95,'day',{},'It runs into the mountains. Heavy rain falls, and high up, rain falls on the snow.','nimbostratus'],
+      ['ar',13,98,'day',{},'Warmer air carries more water and lifts the snow line, so more of it falls as rain.','nimbostratus']],
+    front:[['winter',6,58,'day',{f:1},'A warm front is on its way. First come thin wisps of cirrus, very high up.','cirrus'],
+      ['winter',7,68,'day',{f:2},'The cirrus thicken into a thin, milky veil of cirrostratus. Look for a ring around the sun.','cirrostratus'],
+      ['winter',8,80,'day',{f:3},'Gray altostratus moves in lower, and the sun turns into a dim, watery disk.','altostratus'],
+      ['winter',8,92,'day',{f:4},'Nimbostratus arrives with steady rain on the Coast Range and snow in the Cascades.','nimbostratus']],
+    wave:[['fall',8,46,'day',{w:1},'Strong wind blows across the Cascades and bends into waves on the far side, like water flowing over a rock.','lenticular'],
+      ['fall',8,50,'day',{w:2},'Smooth lens clouds form where the air rises in each wave and fade where it sinks, so they stay in one place.','lenticular']],
+    snow:[['winter',5,88,'day',{},'A cold, wet storm: snow in the mountains, rain near the coast.','nimbostratus'],
+      ['winter',2,90,'day',{},'Colder air brings the snow line down the mountainsides.','nimbostratus'],
+      ['winter',0,92,'day',{},'A snow day. The snow line reaches the lowlands, and snow falls almost everywhere.','nimbostratus']]
+  };
+  const press=(id,attr,v)=>[...$(id).children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[attr]===v)));
+  function stopPlay(){if(playing){cancelAnimationFrame(playing);playing=null;$('cmPlay').textContent='Send the air inland'}}
+  function stopEx(){clearTimeout(exT);exT=null;ex=null;cap='';press('cmEx','x','')}
+  // each step sets the season, temperature, humidity and light, then holds; reduced motion shows the last step and the whole story
+  function playEx(k){
+    stopEx();stopPlay();lite=false;press('cmEx','x',k);
+    const L=EX[k];let j=reduce?L.length-1:0;
+    const step=()=>{const [s,T,H,l,x,c,m]=L[j];season=s;press('cmSeason','s',s);$('cmT').value=T;$('cmH').value=H;setLight(l);ex=Object.assign({k:k+j,main:m},x);cap=reduce?L.map(q=>q[5]).join(' '):c;cm();
+      exT=++j<L.length?setTimeout(step,2800):null};
+    step()}
+  function setSeason(s){stopEx();season=s;const p=SEASONS[s];$('cmT').value=p[0];$('cmH').value=p[1];press('cmSeason','s',s);cm()}
   [...$('cmSeason').children].forEach(b=>b.onclick=()=>setSeason(b.dataset.s));
-  ['cmT','cmH','cmZ'].forEach(id=>$(id).addEventListener('input',cm));
+  [...$('cmTod').children].forEach(b=>b.onclick=()=>setLight(b.dataset.l));
+  [...$('cmEx').children].forEach(b=>b.onclick=()=>playEx(b.dataset.x));
+  // dragging a slider draws the quick reduced clouds; letting go draws the full ones
+  ['cmT','cmH'].forEach(id=>{const s=$(id);s.addEventListener('pointerdown',()=>{lite=true});s.addEventListener('input',()=>{stopEx();cm()});['pointerup','pointercancel'].forEach(v=>s.addEventListener(v,()=>{lite=false;cm()}))});
+  $('cmZ').addEventListener('input',()=>{clearTimeout(exT);exT=null;cap='';cm()});
   $('cmWarm').onclick=function(){warm=warm?0:2;this.setAttribute('aria-pressed',String(!!warm));this.textContent=warm?'Back to today':'Warm the world 2 °C';cm()};
   $('cmPlay').onclick=function(){
-    if(playing){cancelAnimationFrame(playing);playing=null;this.textContent='Send the air inland';return}
-    const z=$('cmZ');if(+z.value>=NS_)z.value=0;const start=+z.value,t0=performance.now(),dur=(NS_-start)/NS_*9000;this.textContent='Pause';
-    const step=now=>{const k=Math.min(1,(now-t0)/dur);z.value=Math.round(start+(NS_-start)*k);cm();if(k<1&&!reduce)playing=requestAnimationFrame(step);else{playing=null;z.value=NS_;cm();$('cmPlay').textContent='Send the air inland'}};
+    if(playing){stopPlay();return}
+    clearTimeout(exT);exT=null;cap='';
+    const z=$('cmZ');if(+z.value>=NS_)z.value=0;const start=+z.value,t0=performance.now(),dur=(NS_-start)/NS_*9000;let tick=0;this.textContent='Pause';
+    // the dot moves every frame; the slider, readouts and message refresh four times a second (each refresh repaints the panel)
+    const step=now=>{const k=Math.min(1,(now-t0)/dur),p=start+(NS_-start)*k;if(now-tick>250){tick=now;z.value=Math.round(p);cm()}dot(p);
+      if(k<1&&!reduce)playing=requestAnimationFrame(step);else{playing=null;z.value=NS_;cm();$('cmPlay').textContent='Send the air inland'}};
     playing=requestAnimationFrame(step)};
-  setSeason('winter');
+  // clouds are buttons: click, tap, or Enter and Space name the cloud in the card
+  const pick=g=>{if(!g||g.classList.contains('ck-out'))return;$('cmClouds').querySelectorAll('.ck-on').forEach(n=>n.classList.remove('ck-on'));g.classList.add('ck-on');sel=g.dataset.type;card(sel)};
+  $('cmClouds').addEventListener('click',e=>pick(e.target.closest('.ck-cloud')));
+  $('cmClouds').addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;const g=e.target.closest('.ck-cloud');if(g){e.preventDefault();e.stopPropagation();pick(g)}});
+  // build on first view, so the clouds and the photo cost nothing until the slide is shown; stop timers when it is hidden
+  const cmSec=$('cmSvg').closest('.slide');let cmOn=false;
+  const cmVis=()=>{if(cmSec.hidden){clearTimeout(exT);exT=null;stopPlay();return}if(!cmOn){cmOn=true;setLight('day');setSeason('winter')}};
+  new MutationObserver(cmVis).observe(cmSec,{attributes:true,attributeFilter:['hidden']});
+  setTimeout(cmVis,0);
 
   /* ---------- instruments ---------- */
   const INST=[
