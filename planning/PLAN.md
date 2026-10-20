@@ -33,10 +33,14 @@ the curriculum-specialist agent (user level).
 - [hold] Decision walkthrough: deferred by Patrick to the next session; suggested order in DECISIONS.md (D21 first)
 - [x] Environment review team, source library, references, two Codex reviews (10/14/2026; see HANDOFF)
 
-## Workshop readiness track [hold until D21]
-Only if Patrick confirms ATNI shows anything at the 10/23-24/2026 Yakama Tribal
-Teachers Workshop. Otherwise skip to Phase 1 after the event. No structural
-work and no new features before 10/24; no merge to main 10/21 to 10/24.
+## Workshop readiness track (D21 ruled 10/20/2026: 30-minute ATNI slot; page and DDM walkthrough, Q&A; resources downloadable)
+Branch dev/workshop-polish-2026-10. Done 10/20/2026:
+- [x] Interface polish (Phase 1g subset): 44px tap targets, 12px text floor, equal .carry cards, S1 h1, reduced motion for .pulse and .story, credit contrast, faster slide fade, next-photo preload, larger S20 hit areas
+- [x] D25 factual corrections on the slides and in both curriculum documents; VERIFY rows V4, V16, V17, V24, V29, V30, V53, V55, V58, V60 to V64; VOICE-PASS VP1 to VP8
+- [x] Copy-edit of the Grades 6-12 lessons and the guiding document
+- [x] Print-ready PDFs in docs/downloads/ (tools/print_pdf.py); Lesson 4.3 printed marked DRAFT per D22 note
+- [ ] Patrick: merge decision (the live site shows main; the polish is not live until merged)
+- [ ] Patrick: link the PDFs from S22 (notes placeholder asks where teachers download files)
 - [ ] Route identity: which slides and handouts, how many minutes, what equipment (D21, D24)
 - [ ] Safety and integrity on that route: known corrections (D25), Goldendale role play out of anything distributed (D22), S23 session-only reflections (D23), uncredited photos replaced or hidden
 - [ ] Teacher outcomes (three, observable) and a handoff card; one hand twin
