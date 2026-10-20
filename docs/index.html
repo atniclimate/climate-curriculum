@@ -76,11 +76,10 @@ h3{font-size:calc(var(--b)*1.17);font-weight:700;letter-spacing:-.01em;line-heig
 .hallcopy *{transition:color .6s ease}
 body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
 .hallcopy .ln{display:block}  /* one span per intended line; wraps on phones instead of breaking */
-/* S1 title: tracked kicker over a large title, byline on a red rule, three-line stanza; lockup as the signature */
+/* S1 title: two balanced lines of equal weight, byline on a red rule, three-line stanza; lockup as the signature */
 [data-slide-id="s01-title"] .hallcopy{max-width:none;gap:0;justify-items:start}
 [data-slide-id="s01-title"] h1{display:flex;flex-direction:column;margin:clamp(12px,2vh,22px) 0 clamp(16px,2.6vh,30px)}
-[data-slide-id="s01-title"] h1 .kick{font-size:min(calc(var(--b)*1.45),calc((100vw - 2*var(--gutter))/12.2));font-weight:600;letter-spacing:.22em;line-height:1.1;color:var(--text)}
-[data-slide-id="s01-title"] h1 .main{font-size:min(calc(var(--b)*4.4),calc((100vw - 2*var(--gutter) - 96px)/10.4));font-weight:800;letter-spacing:.02em;line-height:.98;margin-top:.06em}
+[data-slide-id="s01-title"] h1 .kick,[data-slide-id="s01-title"] h1 .main{font-size:min(calc(var(--b)*4),calc((100vw - 2*var(--gutter) - 96px)/10.4));font-weight:800;letter-spacing:.02em;line-height:1}
 [data-slide-id="s01-title"] .byline{display:inline-flex;align-items:center;gap:14px;text-wrap:balance}
 [data-slide-id="s01-title"] .byline::before{content:"";flex:none;width:clamp(32px,3.4vw,64px);height:3px;background:var(--red);transition:background .6s ease}
 body.hl [data-slide-id="s01-title"] .byline::before{background:var(--drop)}
@@ -88,7 +87,7 @@ body.hl [data-slide-id="s01-title"] .byline::before{background:var(--drop)}
 .sig{position:absolute;right:var(--gutter);bottom:clamp(16px,3.4vh,40px);z-index:2;width:clamp(140px,11vw,220px);height:auto}
 @media (max-width:980px){[data-slide-id="s01-title"] .hallcopy{bottom:118px}}  /* stanza runs full width here; clear the lockup */
 @media (max-width:640px){
-  [data-slide-id="s01-title"] h1 .main{font-size:calc((100vw - 2*var(--gutter))/10.4)}
+  [data-slide-id="s01-title"] h1 .kick,[data-slide-id="s01-title"] h1 .main{font-size:calc((100vw - 2*var(--gutter))/10.4)}
   [data-slide-id="s01-title"] .hallcopy{bottom:96px}
   .sig{width:132px;bottom:22px}
 }
@@ -135,7 +134,7 @@ body.hl [data-slide-id="s01-title"] .byline::before{background:var(--drop)}
 [data-slide-id="s02-four-questions"] .inner{max-width:none;padding-inline:clamp(12px,1.3vw,26px);gap:clamp(12px,2.4vh,40px)}
 [data-slide-id="s02-four-questions"] .agenda{gap:clamp(8px,.8vw,14px)}
 [data-slide-id="s02-four-questions"] .agenda button{padding:clamp(14px,min(1.8vw,2.8vh),34px);gap:clamp(10px,1.6vh,20px)}
-[data-slide-id="s02-four-questions"] .agenda .n{font-size:min(calc(var(--b)*3.6),7.4vh);color:var(--red-dk)}
+[data-slide-id="s02-four-questions"] .agenda .n{font-size:min(calc(var(--b)*3.6),7.4vh)}
 [data-slide-id="s02-four-questions"] .agenda .tx{display:grid;gap:clamp(8px,1.2vh,14px);align-content:start}
 [data-slide-id="s02-four-questions"] .agenda h3{font-size:calc(var(--b)*1.5)}
 [data-slide-id="s02-four-questions"] .agenda p{font-size:calc(var(--b)*1.08);max-width:none}
@@ -283,13 +282,17 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .claim .cico{width:68px;height:68px;color:var(--red-dk);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .claim .said{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*1.3);line-height:1.22;color:var(--white)}
 .claim .hint,.claim .back{grid-area:3/1;align-self:start}
-.claim .hint{font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-top:8px;border-top:1px solid var(--hair)}
+.claim .hint{display:grid;gap:12px;align-content:start;font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-top:8px;border-top:1px solid var(--hair)}
+.claim .hint,.claim .back{align-self:stretch;grid-template-rows:auto 1fr}
+.claim .hint .go,.claim .back .close{align-self:end}  /* the prompt sits at the foot of the card, so the open space reads as the card's own */
+.claim .hint .bk{display:grid;gap:6px;font:400 calc(var(--b)*.92)/1.6 var(--f-body);letter-spacing:0;text-transform:none;color:var(--text)}
+.claim .hint b{font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-dk)}
 .claim .back{display:grid;gap:6px;font-size:calc(var(--b)*.92);visibility:hidden;padding-top:8px;border-top:1px solid var(--hair)}
 .claim .bk{display:grid;gap:6px}
 .claim .back b{font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-dk)}
 .claim .close{font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 /* four across: text scales to the height the cards get (notes pane open or not), so the reserved reveal fits */
-@media (min-width:1101px){.claims{container-type:size}.claim{gap:min(12px,1.8cqh);padding:min(18px,2.8cqh)}.claim .cico{width:min(68px,10cqh);height:min(68px,10cqh)}.claim .said{font-size:max(15px,min(calc(var(--b)*1.3),3.8cqh))}.claim .back{font-size:max(12.5px,min(calc(var(--b)*.92),2.9cqh))}}
+@media (min-width:1101px){.claims{container-type:size}.claim{gap:min(12px,1.8cqh);padding:min(18px,2.8cqh)}.claim .cico{width:min(68px,10cqh);height:min(68px,10cqh)}.claim .said{font-size:max(15px,min(calc(var(--b)*1.3),3.8cqh))}.claim .back,.claim .hint .bk{font-size:max(12.5px,min(calc(var(--b)*.92),2.9cqh))}}
 .claim[aria-expanded="true"]{background:var(--plate-hi);box-shadow:inset 0 3px 0 var(--red-dk)}
 .claim[aria-expanded="true"] .back{visibility:visible}
 .claim[aria-expanded="true"] .hint{visibility:hidden}
@@ -317,6 +320,11 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .seg.fopt button{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:2px;padding:6px 11px;text-align:left;font-weight:400;line-height:1.35}
 .fopt b{font-family:var(--f-display);font-weight:700;font-size:max(14px,calc(var(--b)*.84));line-height:1.2}
 .fopt b span{font-family:var(--f-data);font-weight:500;font-size:max(12.5px,calc(var(--b)*.7));margin-left:5px}
+/* each future keeps one color from the map's temperature scale and a plain symbol: a drop, a line that levels off, a line that climbs */
+#fScen button{border-left:4px solid var(--c)}
+#fScen [data-k="now"]{--c:#9CC7F0;--cd:#2F6A9C} #fScen [data-k="s245"]{--c:#F2A65A;--cd:#A85A10} #fScen [data-k="s370"]{--c:#E8603C;--cd:#B5172E}
+.fopt b svg{width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:6px;fill:none;stroke:var(--c);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fopt button[aria-pressed="true"] b svg{stroke:var(--cd)}
 .fopt .fd{font-size:max(12px,calc(var(--b)*.68))}
 .fopt .fw{font-size:max(12px,calc(var(--b)*.68));font-weight:600;color:var(--water-hi)}
 .fopt button[aria-pressed="true"] .fw{color:#1D4F7A}
@@ -356,6 +364,8 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .sph{flex:0 0 44%;align-self:flex-start;margin:0;display:grid;gap:4px}
 .sph img{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;background:#0B1A2A;opacity:0;transition:opacity .3s}
 .sph img.in{opacity:1}
+.sph.ph img{display:none}
+.sph.ph::before{content:"";display:block;aspect-ratio:8/5;border:1px dashed rgba(232,236,240,.32);background:rgba(1,11,19,.35)}
 .sph figcaption{font-size:12px;line-height:1.35;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.sph img{transition:none}}
 @media (max-width:980px){.stop{flex-direction:column-reverse;overflow:visible}.sph{flex:none;align-self:stretch}.stxt{flex:none;overflow:visible}}
@@ -476,8 +486,8 @@ blockquote{margin:0}
 @media (max-width:1180px){.themes ul{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:640px){.themes ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .themes li{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--plate);font-size:max(13.5px,calc(var(--b)*.74));line-height:1.3;color:var(--text)}
-.themes svg{flex:none;width:clamp(24px,1.8vw,32px);height:auto;fill:none;stroke:var(--red-dk);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.themes svg .f{fill:var(--red-dk);stroke:none}
+.themes svg{flex:none;width:clamp(24px,1.8vw,32px);height:auto;fill:none;stroke:var(--white);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.themes svg .f{fill:var(--white);stroke:none}
 .themes + .cap{font-size:calc(var(--b)*1.05);color:var(--text);max-width:none}
 .themes + .cap .ln{display:block}
 /* three ways of seeing */
@@ -604,9 +614,8 @@ blockquote{margin:0}
  data-notes="Read the opening line, then walk the four cards; each is a door to come back through. Name the themes once: cycles, relationships, local observation, critical thinking, intergenerational knowledge, change (felt as well as measured), and scale, from the frog's eye to the moon's eye. Say it plainly: there is no test here, only reflections and questions that lead to more questions. Cards are clickable.">
   <div class="inner">
     <h2 class="lead">Four Questions to think about&hellip;</h2>
-    <div class="head"><span class="label red">Four Questions, One River</span></div>
     <div class="agenda">
-      <button data-jump="1"><span class="n">1</span><span class="tx"><h3>How Does a Cloud Work?</h3><p>Have you ever looked up and thought about how water moves into the sky and comes down as rain and snow?</p></span></button>
+      <button data-jump="1"><span class="n">1</span><span class="tx"><h3>How Does a Cloud Work?</h3><p>Have you ever looked up at the sky and thought: how does a cloud form and become rain and snow?</p></span></button>
       <button data-jump="2"><span class="n">2</span><span class="tx"><h3>How Do You Know What You Know?</h3><p>Connect what you can see in your own backyard with the graphs, maps, and numbers that help us understand our changing world.</p></span></button>
       <button data-jump="3"><span class="n">3</span><span class="tx"><h3>What Can We Do?</h3><p>Break down big words like mitigation, adaptation, and resilience into real-world steps you, your family, and your community can take.</p></span></button>
       <button data-jump="4"><span class="n">4</span><span class="tx"><h3>How Do We Work Together?</h3><p>Relationships matter. No single person, scientific report, or action plan has all the answers.</p></span></button>
@@ -844,7 +853,7 @@ blockquote{margin:0}
       <button aria-expanded="false" data-e="2"><span class="pic globe"><svg viewBox="0 0 200 120" aria-hidden="true"><defs><radialGradient id="gl" cx="38%" cy="35%" r="70%"><stop offset="0" stop-color="#2D5B86"/><stop offset=".7" stop-color="#0E2740"/><stop offset="1" stop-color="#06121E"/></radialGradient></defs><circle cx="100" cy="60" r="50" fill="url(#gl)"/><g fill="none" stroke="rgba(156,199,240,.35)" stroke-width=".8"><ellipse cx="100" cy="60" rx="50" ry="16"/><ellipse cx="100" cy="60" rx="50" ry="34"/><ellipse cx="100" cy="60" rx="18" ry="50"/><ellipse cx="100" cy="60" rx="36" ry="50"/><line x1="50" y1="60" x2="150" y2="60"/></g><path d="M70 38 C78 30 92 28 98 34 C104 40 96 48 88 50 C80 54 72 50 70 44 Z" fill="#2E4A33" opacity=".9"/><circle cx="80" cy="40" r="3" fill="#F26B5E"/><circle cx="150" cy="22" r="7" fill="#E8ECF0" opacity=".85"/></svg></span><span class="label red">Moon&rsquo;s Eye</span><h3>The Whole Planet</h3><p>The atmosphere moving as one system, oceans warming, snow and ice measured from space.</p></button>
     </div>
     <div id="eyeMore" class="eyemore" aria-live="polite"><p class="cap">Select a way of seeing.</p></div>
-    <p class="cap eyecredit">Background: Yakima River Canyon, Michael Campbell, BLM (public domain)</p>
+    <p class="cap eyecredit">Background: the Yakima River Canyon, in Yakama Homelands. Photo: Michael Campbell, BLM (public domain)</p>
   </div>
 </section>
 
@@ -865,7 +874,7 @@ blockquote{margin:0}
 
 <!-- S10 SALMON JOURNEY (Plate) -->
 <section class="slide plate deep" data-slide-id="s10-salmon-journey" data-bg="bonneville" data-part="2" data-min="3.5" data-title="The journey home"
- data-notes="<span class='must'>Must land:</span> the salmon are a way of knowing; they carry the river's condition in their bodies. Choose a route, then continue the journey stop by stop. Pause at Celilo and let it be quiet. Then switch the river futures to the middle path (SSP2-4.5) and the high path (SSP3-7.0), mid-century and late century: the river colors by August water temperature, and the stop card shows how many weeks the water runs above 68 °F. Point out that the two futures barely differ by mid-century and pull apart by late century; the choices made now decide which one we get. The world warming on each future button is the IPCC best estimate compared with 1850 to 1900 (AR6 WGI SPM, A.1.2 and Table SPM.1). Each stop card shows a photo of the place with its credit; Wells has none. The flow chart shows the shape of change: more water in winter, an earlier and smaller spring peak, longer low flows in late summer. Sources: lower Columbia August temperatures from EPA (2021); warming steps scaled from published river temperature studies (EPA 2021 synthesis; Isaak and others) to CMIP6 SSP2-4.5 and SSP3-7.0 warming (IPCC AR6); flow shape from RMJOC-II (2018) and NCA5 (2023). Working draft: replace with CMIP6 river temperature and flow runs when available [verify]. River shapes are Natural Earth 1:10m data; dam positions are approximate.">
+ data-notes="<span class='must'>Must land:</span> the salmon are a way of knowing; they carry the river's condition in their bodies. Choose a route, then continue the journey stop by stop. Pause at Celilo and let it be quiet. Then switch the river futures to &quot;Pollution levels off&quot; (SSP2-4.5) and &quot;Pollution keeps rising&quot; (SSP3-7.0), mid-century and late century: the river colors by August water temperature, and the stop card shows how many weeks the water runs above 68 °F. Point out that the two futures barely differ by mid-century and pull apart by late century; the choices made now decide which one we get. The world warming on each future button is the IPCC best estimate compared with 1850 to 1900 (AR6 WGI SPM, A.1.2 and Table SPM.1). Each stop card shows a photo of the place with its credit; Wells has none. The flow chart shows the shape of change: more water in winter, an earlier and smaller spring peak, longer low flows in late summer. Sources: lower Columbia August temperatures from EPA (2021); warming steps scaled from published river temperature studies (EPA 2021 synthesis; Isaak and others) to CMIP6 SSP2-4.5 and SSP3-7.0 warming (IPCC AR6); flow shape from RMJOC-II (2018) and NCA5 (2023). Working draft: replace with CMIP6 river temperature and flow runs when available [verify]. River shapes are Natural Earth 1:10m data; dam positions are approximate.">
   <div class="inner fit">
     <div class="headrow"><div class="head"><span class="label red">Part Two · The River as Teacher · Bird&rsquo;s Eye</span><h2>The Journey Home</h2></div><p class="ask"><span class="label">Ask the room</span>What would you need to make this journey, and what would make it harder?</p></div>
     <div class="mapwrap stretch">
@@ -886,11 +895,11 @@ blockquote{margin:0}
       </div>
       <div class="futures">
         <div class="fopts">
-          <div class="fhead"><span class="label">River futures · August water</span><span class="cap">World warming since the late 1800s (IPCC 2021). River numbers and flow: a teaching model.</span></div>
+          <div class="fhead"><span class="label">How warm could the river get for salmon in August?</span><span class="cap">World warming since the late 1800s (IPCC 2021). River numbers and flow: a teaching model.</span></div>
           <div class="seg fopt" id="fScen" role="group" aria-label="Choose a future">
-            <button data-k="now" aria-pressed="true"><b>Today</b><span class="fd">The river in recent summers, as measured.</span><span class="fw">World, 2011 to 2020: +1.1 °C (+2 °F)</span></button>
-            <button data-k="s245" aria-pressed="false"><b>Middle path <span>SSP2-4.5</span></b><span class="fd">Heat-trapping pollution holds near today&rsquo;s level to 2050, then slowly falls.</span><span class="fw">World, 2081 to 2100: +2.7 °C (+4.9 °F)</span></button>
-            <button data-k="s370" aria-pressed="false"><b>High path <span>SSP3-7.0</span></b><span class="fd">Heat-trapping pollution keeps rising, to about double today&rsquo;s by 2100.</span><span class="fw">World, 2081 to 2100: +3.6 °C (+6.5 °F)</span></button>
+            <button data-k="now" aria-pressed="true"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 0 1-12 0c0-3.2 2.5-6.5 6-11z"/></svg>Today</b><span class="fd">The river in recent summers, as measured.</span><span class="fw">World, 2011 to 2020: +1.1 °C (+2 °F)</span></button>
+            <button data-k="s245" aria-pressed="false"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19c5 0 5-8 10-8h8"/><path d="M18 8l3 3-3 3"/></svg>Pollution levels off <span>SSP2-4.5</span></b><span class="fd">Heat-trapping pollution holds near today&rsquo;s level to 2050, then slowly falls.</span><span class="fw">World, 2081 to 2100: +2.7 °C (+4.9 °F)</span></button>
+            <button data-k="s370" aria-pressed="false"><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21L20 4"/><path d="M11 4h9v9"/></svg>Pollution keeps rising <span>SSP3-7.0</span></b><span class="fd">Heat-trapping pollution keeps rising, to about double today&rsquo;s by 2100.</span><span class="fw">World, 2081 to 2100: +3.6 °C (+6.5 °F)</span></button>
           </div>
         </div>
         <div class="fper"><span class="label">When</span><div class="seg" id="fPer" role="group" aria-label="Choose a period"><button data-k="mid" aria-pressed="true">Mid-century<small>2040 to 2069</small></button><button data-k="late" aria-pressed="false">Late century<small>2070 to 2099</small></button></div></div>
@@ -1283,7 +1292,9 @@ const MAP={"W":1000.0,"H":730.2,"land":"M65.4,363.9 L64.8,359.6 L62.9,357.8 L64.
   });
 
   /* ---------- source check ---------- */
-  document.querySelectorAll('.claim').forEach(c=>c.addEventListener('click',()=>c.setAttribute('aria-expanded',String(c.getAttribute('aria-expanded')!=='true'))));
+  // the resting card shows its Notice line in the same place the reveal puts it, so opening only adds Ask or Check below
+  document.querySelectorAll('.claim').forEach(c=>{const bk=c.querySelector('.back .bk');c.querySelector('.hint').innerHTML='<span class="bk">'+bk.children[0].outerHTML+bk.children[1].outerHTML+'</span><span class="go">Select to check</span>';
+    c.addEventListener('click',()=>c.setAttribute('aria-expanded',String(c.getAttribute('aria-expanded')!=='true')))});
 
   /* ---------- three ways of seeing ---------- */
   const EYES=[
@@ -1302,7 +1313,7 @@ const MAP={"W":1000.0,"H":730.2,"land":"M65.4,363.9 L64.8,359.6 L62.9,357.8 L64.
   const AUG={mouth:19.5,bonneville:21.3,thedalles:21.5,celilo:21.3,johnday:21.5,mcnary:21.0,confluence:20.3,iceharbor:21.4,lowermonumental:20.5,littlegoose:20.0,lowergranite:19.0,salmonmouth:19.5,redfish:14.0,priestrapids:19.3,wanapum:19.4,rockisland:18.9,rockyreach:18.9,wells:18.7,chiefjoseph:18.2,grandcoulee:18.0};
   // added warming of August river water: scaled from published river temperature studies to CMIP6 warming (working draft)
   const DT={now:{mid:0,late:0},s245:{mid:1.0,late:1.7},s370:{mid:1.1,late:2.7}};
-  const SC={now:'Today',s245:'Middle path (SSP2-4.5)',s370:'High path (SSP3-7.0)'}, PER={mid:'2040 to 2069',late:'2070 to 2099'};
+  const SC={now:'Today',s245:'Pollution levels off (SSP2-4.5)',s370:'Pollution keeps rising (SSP3-7.0)'}, PER={mid:'2040 to 2069',late:'2070 to 2099'};
   // stop photos, loaded only when the stop is shown: [alt, credit]; files in img/dams/<key>.jpg (MEDIA-CREDITS). Wells has none.
   const PH={
     mouth:['Aerial view of Cape Disappointment and the north jetty at the mouth of the Columbia River, where the river meets the Pacific Ocean','U.S. Coast Guard, public domain, via Wikimedia Commons'],
@@ -1440,8 +1451,8 @@ const MAP={"W":1000.0,"H":730.2,"land":"M65.4,363.9 L64.8,359.6 L62.9,357.8 L64.
   const sImg=$('stopImg'), sFig=$('stopFig');
   sImg.onload=()=>sImg.classList.add('in'); sImg.onerror=()=>{sFig.hidden=true;sImg.dataset.k=''};  // cleared so a redraw of the same stop retries instead of showing a broken image
   function showPhoto(k){
-    const p=PH[k]; sFig.hidden=!p;
-    if(!p){sImg.removeAttribute('src');sImg.dataset.k='';return}
+    const p=PH[k]; sFig.hidden=false; sFig.classList.toggle('ph',!p);  // a stop without a free photo yet shows a marked placeholder (Wells)
+    if(!p){sImg.removeAttribute('src');sImg.dataset.k='';sImg.alt='';$('stopCap').textContent='Photo to come';return}
     if(sImg.dataset.k===k)return;
     sImg.dataset.k=k; sImg.classList.remove('in'); sImg.alt=p[0]; $('stopCap').textContent='Photo: '+p[1]; sImg.src='img/dams/'+k+'.jpg';
   }
