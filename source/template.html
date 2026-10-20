@@ -208,34 +208,62 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .steps3 b{display:block;font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-dk)}
 
 /* salmon map */
-.mapwrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(320px,1fr);gap:10px;align-items:stretch}
-@media (max-width:980px){.mapwrap{grid-template-columns:1fr}}
+[data-slide-id="s10-salmon-journey"] .inner{max-width:none;padding:clamp(8px,1.3vh,16px) clamp(8px,.9vw,18px);gap:clamp(6px,1vh,12px)}
+[data-slide-id="s10-salmon-journey"] .ask{max-width:none}
+/* map column width follows the map's shape (1000 x 730): 1.37 x the row height, which measures about 0.83vh - 213px at 768 to 1080 tall */
+.mapwrap{display:grid;grid-template-columns:minmax(0,min(64%,calc(114vh - 292px))) minmax(360px,1fr);grid-template-rows:minmax(0,1fr) auto;gap:8px;align-items:stretch}
+@media (max-width:980px){.mapwrap{grid-template-columns:minmax(0,1fr);grid-template-rows:auto}}
 .map{background:#07192A;position:relative;overflow:hidden;min-height:0}
 .map svg{display:block;width:100%;height:100%}
 @media (max-width:980px){.map svg{height:auto}}
-.futures{position:absolute;left:10px;top:10px;display:grid;gap:4px;background:rgba(1,11,19,.82);padding:8px 10px;max-width:calc(100% - 20px)}
-.futures .seg button{padding:5px 10px;font-size:13px}
-.fread{font-size:13.5px;line-height:1.45;color:var(--text);max-width:300px;padding-top:2px}
-.fread>b{display:block;font-family:var(--f-display);color:var(--white)}
-.fread .tline{font-size:13.5px}
+.futures{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(240px,.42fr);gap:6px 14px;align-items:start;background:var(--plate);padding:7px 10px}
+@media (max-width:980px){.futures{grid-template-columns:minmax(0,1fr)}}
+.fopts,.fper{display:grid;gap:5px;align-content:start;min-width:0}
+.fhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:2px 14px}
+.fhead .cap{font-size:12px}
+.seg.fopt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:700px){.seg.fopt{grid-template-columns:minmax(0,1fr)}}
+.seg.fopt button{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:2px;padding:6px 11px;text-align:left;font-weight:400;line-height:1.35}
+.fopt b{font-family:var(--f-display);font-weight:700;font-size:max(14px,calc(var(--b)*.84));line-height:1.2}
+.fopt b span{font-family:var(--f-data);font-weight:500;font-size:max(12.5px,calc(var(--b)*.7));margin-left:5px}
+.fopt .fd{font-size:max(12px,calc(var(--b)*.68))}
+.fopt .fw{font-size:max(12px,calc(var(--b)*.68));font-weight:600;color:var(--water-hi)}
+.fopt button[aria-pressed="true"] .fw{color:#1D4F7A}
+.fper .seg button{flex-direction:column;gap:0;padding:4px 14px;line-height:1.25}
+.fper small{font-family:var(--f-data);font-size:12px;font-weight:400}
 .seg button:disabled{opacity:.35;cursor:default}
 .tscale{position:absolute;left:10px;bottom:10px;display:flex;align-items:center;gap:8px;font-family:var(--f-data);font-size:12px;color:var(--text);background:rgba(1,11,19,.82);padding:5px 9px}
 .tscale i{display:block;width:120px;height:8px;background:linear-gradient(90deg,#4F8FD6 0%,#7FC3C9 30%,#E8D27A 50%,#F2A65A 60%,#E8603C 75%,#B5172E 100%)}
-.hydro{background:var(--plate);padding:8px 12px 4px}
+.hydro{min-width:0;display:grid;gap:2px}
 .hyhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 10px;align-items:baseline}
 .hyhead .cap{font-size:12.5px}
 .hyhead i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin:0 5px 0 4px}
 .hyhead i.k1{background:#9CC7F0}.hyhead i.k2{background:#F26B5E}
 .hydro svg{width:100%;height:auto;display:block;max-height:84px}
-.juv{position:absolute;right:10px;bottom:10px;padding:8px 14px;font-size:13.5px;background:rgba(30,36,44,.92)}
-@media (max-width:980px){.futures,.tscale,.juv{position:static;margin:8px}.map{display:flex;flex-direction:column}.futures{max-width:none}}
-.hyl{font-family:var(--f-data);font-size:12px;fill:#8A94A6}
+@media (max-height:900px) and (min-width:981px){.hydro svg{max-height:62px}}
+@media (max-width:980px){.tscale{position:static;margin:8px}.map{display:flex;flex-direction:column}}
+.hyl{font-family:var(--f-data);font-size:18px;fill:#A9B3BF}
 .chal{border-top:1px solid var(--hair);padding-top:6px}
 .chal b{display:block;font-family:var(--f-display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-dk)}
 .tline{font-size:max(12px,calc(var(--b)*.74));color:var(--text);font-family:var(--f-body)}
 .tline b{font-family:var(--f-data);font-weight:500}
-.mpanel{display:flex;flex-direction:column;gap:8px;min-height:0}
-.stop{background:var(--plate-hi);padding:12px 16px;display:grid;gap:6px;align-content:start;border-left:3px solid var(--water-hi);flex:1;min-height:0;overflow:auto}
+.mpanel{display:flex;flex-direction:column;gap:8px;min-height:0;min-width:0}
+.routes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+@media (max-width:520px){.routes{grid-template-columns:minmax(0,1fr)}}
+.routes button{all:unset;box-sizing:border-box;cursor:pointer;min-height:44px;display:grid;gap:3px;align-content:start;padding:8px 14px;background:var(--plate);color:var(--text)}
+.routes button:hover{background:var(--plate-hi)}
+.routes button[aria-pressed="true"]{background:var(--text);color:var(--base)}
+.routes button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
+.routes b{font-family:var(--f-display);font-weight:700;font-size:calc(var(--b)*.92);line-height:1.2}
+.routes span{font-size:max(12px,calc(var(--b)*.72));line-height:1.4}
+.stop{background:var(--plate-hi);padding:12px 16px;display:flex;gap:14px;align-items:stretch;border-left:3px solid var(--water-hi);flex:1;min-height:0;overflow:hidden}
+.stxt{flex:1 1 0;min-width:0;min-height:0;overflow:auto;display:grid;gap:6px;align-content:start}
+.sph{flex:0 0 44%;align-self:flex-start;margin:0;display:grid;gap:4px}
+.sph img{display:block;width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;background:#0B1A2A;opacity:0;transition:opacity .3s}
+.sph img.in{opacity:1}
+.sph figcaption{font-size:12px;line-height:1.35;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.sph img{transition:none}}
+@media (max-width:980px){.stop{flex-direction:column-reverse;overflow:visible}.sph{flex:none;align-self:stretch}.stxt{flex:none;overflow:visible}}
 .stop.block{border-left-color:var(--red)}
 .stop.place{border-left-color:var(--magenta)}
 .stop .rm{font-family:var(--f-data);font-size:12px;color:var(--water-hi)}
@@ -247,9 +275,10 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .river-flow{stroke-dasharray:3 13;animation:rflow 3s linear infinite}
 @keyframes rflow{to{stroke-dashoffset:-32}}
 @media (prefers-reduced-motion:reduce){.river-flow{animation:none}}
-.damlab{font-family:var(--f-display);font-weight:600;font-size:14px;fill:var(--text);paint-order:stroke;stroke:#06101A;stroke-width:3px}
-.maplab{font-family:var(--f-display);font-weight:600;letter-spacing:.2em;fill:#7C8796;font-size:15px}
-.rivlab{font-family:var(--f-body);font-style:italic;fill:var(--water);font-size:14px;paint-order:stroke;stroke:#07192A;stroke-width:3px}
+/* --u (set from the map's drawn scale) grows SVG labels back toward 12 screen px on smaller screens */
+.damlab{font-family:var(--f-display);font-weight:600;font-size:calc(14px*var(--u,1));fill:var(--text);paint-order:stroke;stroke:#06101A;stroke-width:3px}
+.maplab{font-family:var(--f-display);font-weight:600;letter-spacing:.2em;fill:#7C8796;font-size:calc(15px*var(--u,1))}
+.rivlab{font-family:var(--f-body);font-style:italic;fill:var(--water);font-size:calc(14px*var(--u,1));paint-order:stroke;stroke:#07192A;stroke-width:3px}
 .pulse{animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.35}}
 @media (prefers-reduced-motion:reduce){.pulse{animation:none}.story li{animation:none;opacity:1}}
@@ -635,25 +664,35 @@ blockquote{margin:0}
 
 <!-- S10 SALMON JOURNEY (Plate) -->
 <section class="slide plate deep" data-slide-id="s10-salmon-journey" data-bg="bonneville" data-part="2" data-min="3.5" data-title="The journey home"
- data-notes="<span class='must'>Must land:</span> the salmon are a way of knowing; they carry the river's condition in their bodies. Choose a route, then continue the journey stop by stop. Pause at Celilo and let it be quiet. Then switch the river futures to SSP2-4.5 and SSP3-7.0, mid-century and late century: the river colors by August water temperature, and the stop card shows how many weeks the water runs above 68 °F. Point out that the two futures barely differ by mid-century and pull apart by late century; the choices made now decide which one we get. The flow chart shows the shape of change: more water in winter, an earlier and smaller spring peak, longer low flows in late summer. Sources: lower Columbia August temperatures from EPA (2021); warming steps scaled from published river temperature studies (EPA 2021 synthesis; Isaak and others) to CMIP6 SSP2-4.5 and SSP3-7.0 warming (IPCC AR6); flow shape from RMJOC-II (2018) and NCA5 (2023). Working draft: replace with CMIP6 river temperature and flow runs when available [verify]. River shapes are Natural Earth 1:10m data; dam positions are approximate.">
+ data-notes="<span class='must'>Must land:</span> the salmon are a way of knowing; they carry the river's condition in their bodies. Choose a route, then continue the journey stop by stop. Pause at Celilo and let it be quiet. Then switch the river futures to the middle path (SSP2-4.5) and the high path (SSP3-7.0), mid-century and late century: the river colors by August water temperature, and the stop card shows how many weeks the water runs above 68 °F. Point out that the two futures barely differ by mid-century and pull apart by late century; the choices made now decide which one we get. The world warming on each future button is the IPCC best estimate compared with 1850 to 1900 (AR6 WGI SPM, A.1.2 and Table SPM.1). Each stop card shows a photo of the place with its credit; Wells has none. The flow chart shows the shape of change: more water in winter, an earlier and smaller spring peak, longer low flows in late summer. Sources: lower Columbia August temperatures from EPA (2021); warming steps scaled from published river temperature studies (EPA 2021 synthesis; Isaak and others) to CMIP6 SSP2-4.5 and SSP3-7.0 warming (IPCC AR6); flow shape from RMJOC-II (2018) and NCA5 (2023). Working draft: replace with CMIP6 river temperature and flow runs when available [verify]. River shapes are Natural Earth 1:10m data; dam positions are approximate.">
   <div class="inner fit">
     <div class="headrow"><div class="head"><span class="label red">Part Two · The River as Teacher · Bird&rsquo;s Eye</span><h2>The Journey Home</h2></div><p class="ask"><span class="label">Ask the room</span>What would you need to make this journey, and what would make it harder?</p></div>
     <div class="mapwrap stretch">
       <div class="map">
         <svg id="mapSvg" role="img" aria-labelledby="mapTitle"><title id="mapTitle">Map of the Columbia River Basin from the Pacific to Idaho and the upper Columbia, with dams, Celilo Falls, the salmon's journey, and the river colored by August water temperature</title></svg>
-        <div class="futures">
-          <span class="label">River futures · August water</span>
-          <div class="seg" id="fScen" role="group" aria-label="Choose a future"><button data-k="now" aria-pressed="true">Today</button><button data-k="s245" aria-pressed="false">SSP2-4.5</button><button data-k="s370" aria-pressed="false">SSP3-7.0</button></div>
-          <div class="seg" id="fPer" role="group" aria-label="Choose a period"><button data-k="mid" aria-pressed="true">2040 to 2069</button><button data-k="late" aria-pressed="false">2070 to 2099</button></div>
-          <div class="fread" id="fRead" aria-live="polite"></div>
-        </div>
-        <button class="btn sec juv" id="juv">Follow the young ones to the ocean</button>
         <div class="tscale" aria-hidden="true"><span>14 °C · 57 °F</span><i></i><span>24 °C · 75 °F</span></div>
       </div>
       <div class="mpanel">
-        <div class="seg" role="group" aria-label="Choose a route"><button id="rA" aria-pressed="true">Snake and Salmon Rivers</button><button id="rB" aria-pressed="false">Upper Columbia</button></div>
-        <div class="stop" id="stopCard" aria-live="polite"></div>
-        <div class="row"><button class="btn sec" id="back">Back a step</button><button class="btn" id="next">Continue the journey</button><span class="cap data" id="stopN"></span></div>
+        <div class="routes" role="group" aria-label="Choose a route">
+          <button id="rA" aria-pressed="true"><b>Snake and Salmon Rivers</b><span>Sockeye, Chinook, and steelhead bound for Idaho and northeast Oregon. The journey ends at Redfish Lake, about 900 miles from the ocean.</span></button>
+          <button id="rB" aria-pressed="false"><b>Upper Columbia</b><span>Chinook, sockeye, and steelhead bound for north-central Washington and Canada. The journey ends at Chief Joseph Dam, which has no fish ladder.</span></button>
+        </div>
+        <div class="stop" id="stopCard">
+          <div class="stxt" id="stopTxt" aria-live="polite"></div>
+          <figure class="sph" id="stopFig" hidden><img id="stopImg" alt="" width="960" height="600" decoding="async"><figcaption id="stopCap"></figcaption></figure>
+        </div>
+        <div class="row"><button class="btn sec" id="back">Back a step</button><button class="btn" id="next">Continue the journey</button><button class="btn sec" id="juv">Follow the young ones to the ocean</button></div>
+      </div>
+      <div class="futures">
+        <div class="fopts">
+          <div class="fhead"><span class="label">River futures · August water</span><span class="cap">World warming since the late 1800s (IPCC 2021). River numbers and flow: a teaching model.</span></div>
+          <div class="seg fopt" id="fScen" role="group" aria-label="Choose a future">
+            <button data-k="now" aria-pressed="true"><b>Today</b><span class="fd">The river in recent summers, as measured.</span><span class="fw">World, 2011 to 2020: +1.1 °C (+2 °F)</span></button>
+            <button data-k="s245" aria-pressed="false"><b>Middle path <span>SSP2-4.5</span></b><span class="fd">Heat-trapping pollution holds near today&rsquo;s level to 2050, then slowly falls.</span><span class="fw">World, 2081 to 2100: +2.7 °C (+4.9 °F)</span></button>
+            <button data-k="s370" aria-pressed="false"><b>High path <span>SSP3-7.0</span></b><span class="fd">Heat-trapping pollution keeps rising, to about double today&rsquo;s by 2100.</span><span class="fw">World, 2081 to 2100: +3.6 °C (+6.5 °F)</span></button>
+          </div>
+        </div>
+        <div class="fper"><span class="label">When</span><div class="seg" id="fPer" role="group" aria-label="Choose a period"><button data-k="mid" aria-pressed="true">Mid-century<small>2040 to 2069</small></button><button data-k="late" aria-pressed="false">Late century<small>2070 to 2099</small></button></div></div>
         <div class="hydro"><div class="hyhead"><span class="label">Flow through the year · Columbia at The Dalles</span><span class="cap" id="hyKey"></span></div><svg id="hySvg" viewBox="0 0 320 96" aria-label="Shape of the river's flow through the year, today and in the selected future"></svg></div>
       </div>
     </div>
@@ -1060,7 +1099,29 @@ const MAP=__MAP__;
   const AUG={mouth:19.5,bonneville:21.3,thedalles:21.5,celilo:21.3,johnday:21.5,mcnary:21.0,confluence:20.3,iceharbor:21.4,lowermonumental:20.5,littlegoose:20.0,lowergranite:19.0,salmonmouth:19.5,redfish:14.0,priestrapids:19.3,wanapum:19.4,rockisland:18.9,rockyreach:18.9,wells:18.7,chiefjoseph:18.2,grandcoulee:18.0};
   // added warming of August river water: scaled from published river temperature studies to CMIP6 warming (working draft)
   const DT={now:{mid:0,late:0},s245:{mid:1.0,late:1.7},s370:{mid:1.1,late:2.7}};
-  const SC={now:'Today',s245:'SSP2-4.5',s370:'SSP3-7.0'}, PER={mid:'2040 to 2069',late:'2070 to 2099'};
+  const SC={now:'Today',s245:'Middle path (SSP2-4.5)',s370:'High path (SSP3-7.0)'}, PER={mid:'2040 to 2069',late:'2070 to 2099'};
+  // stop photos, loaded only when the stop is shown: [alt, credit]; files in img/dams/<key>.jpg (MEDIA-CREDITS). Wells has none.
+  const PH={
+    mouth:['Aerial view of Cape Disappointment and the north jetty at the mouth of the Columbia River, where the river meets the Pacific Ocean','U.S. Coast Guard, public domain, via Wikimedia Commons'],
+    bonneville:['Aerial view downstream over Bonneville Dam and the Columbia River Gorge','Bonneville Power Administration, public domain, via Wikimedia Commons'],
+    thedalles:['Aerial view of The Dalles Dam crossing the Columbia River between Oregon and Washington','U.S. Army Corps of Engineers, via USGS, public domain, via Wikimedia Commons'],
+    celilo:['Black and white photograph of Celilo Falls on the Columbia River, water dropping over a wide basalt ledge, ca. 1913','Albert Henry Barnes, ca. 1913, University of Washington Libraries, no known copyright restrictions, via Wikimedia Commons'],
+    johnday:['Aerial view of John Day Dam spilling water across the Columbia River','U.S. Army Corps of Engineers, public domain, via Wikimedia Commons'],
+    mcnary:['Water pouring through the open spillway gates of McNary Dam under dark clouds','National Weather Service, public domain, via Wikimedia Commons'],
+    confluence:['Astronaut photograph from the International Space Station of farmland and the Snake River joining the Columbia River in southeastern Washington','NASA Johnson Space Center / Mike Barratt, ISS Expedition 72, public domain, via Wikimedia Commons'],
+    iceharbor:['Aerial view of Ice Harbor Dam on the Snake River with water spilling through the gates','U.S. Army Corps of Engineers, public domain, via Wikimedia Commons'],
+    lowermonumental:['Aerial view upriver over Lower Monumental Dam and its reservoir on the Snake River','U.S. Army Corps of Engineers, 1995, public domain, via Wikimedia Commons'],
+    littlegoose:['Aerial view of Little Goose Lock and Dam on the Snake River','U.S. Army Corps of Engineers, public domain, via Wikimedia Commons'],
+    lowergranite:['Aerial view of Lower Granite Dam spilling water across the Snake River below steep canyon hills','U.S. Army Corps of Engineers, public domain, via Wikimedia Commons'],
+    salmonmouth:['The lower Salmon River canyon in Idaho, with dry golden hills reflected in calm water','Bureau of Land Management, Idaho, 2021, public domain, via Wikimedia Commons'],
+    redfish:['Redfish Lake in Idaho with a snow-dusted Sawtooth peak above the shoreline and pines','U.S. Forest Service, Intermountain Region, public domain, via Wikimedia Commons'],
+    priestrapids:['Close aerial view of the spillway gates and fish ladder at Priest Rapids Dam','David Falconer, U.S. EPA DOCUMERICA, 1973, U.S. National Archives, public domain, color adjusted, via Wikimedia Commons'],
+    wanapum:['Wanapum Dam seen downstream across the blue Columbia River under a partly cloudy sky','Williamborg, 2008, public domain, via Wikimedia Commons'],
+    rockisland:['Rock Island Dam stretching across the Columbia River with a highway along the bank','John and Karen Hollingsworth, U.S. Fish and Wildlife Service, public domain, via Wikimedia Commons'],
+    rockyreach:['Rocky Reach Dam spillway gates below dry hills near Wenatchee, Washington','SarekOfVulcan, CC BY-SA 3.0, via Wikimedia Commons'],
+    chiefjoseph:['Aerial view of Chief Joseph Dam on the Columbia River with water spilling below the gates','U.S. Army Corps of Engineers, public domain, via Wikimedia Commons'],
+    grandcoulee:['Aerial view of Grand Coulee Dam with water spilling down the face of the dam','U.S. Bureau of Reclamation, 1986, public domain, via Wikimedia Commons']
+  };
   let fut='now',per='mid';
   const LOW=[
     ['mouth','The Estuary','River mile 0','The journey begins and ends here. Young salmon feed and grow in the estuary before the ocean; after one to several years at sea, adults come home through this same door, following the smell of their home water.',null,'At sea and at the river mouth: marine heatwaves like the 2014 to 2016 &ldquo;Blob&rdquo; left less food in the ocean, and seals, sea lions, and birds wait where the river meets the sea.'],
@@ -1099,18 +1160,20 @@ const MAP=__MAP__;
     el('path',{d:MAP.land,fill:'#131A22',stroke:'#2A3542','stroke-width':'.9'},svg);
     el('path',{d:MAP.lakes,fill:'#0B2236'},svg);
     el('path',{d:MAP.states,fill:'none',stroke:'#3A4553','stroke-width':'1','stroke-dasharray':'4 4'},svg);
-    for(const k in MAP.labels){const p=MAP.labels[k];const t=el('text',{x:k==='PACIFIC'?12:p[0],y:p[1],class:'maplab','text-anchor':k==='PACIFIC'?'start':'middle'},svg);t.textContent=k==='PACIFIC'?'PACIFIC OCEAN':k}
+    // edge labels anchor to the edge, so the larger small-screen text stays inside the map
+    for(const k in MAP.labels){const p=MAP.labels[k],edge=p[0]>MAP.W*.9;const t=el('text',{x:k==='PACIFIC'?12:edge?MAP.W-8:p[0],y:p[1],class:'maplab','text-anchor':k==='PACIFIC'?'start':edge?'end':'middle'},svg);t.textContent=k==='PACIFIC'?'PACIFIC OCEAN':k}
     MAP.tribs.forEach(d=>el('path',{d:d,fill:'none',stroke:'#1F4466','stroke-width':'1'},svg));
     MAP.ctx.forEach(d=>el('path',{d:d,fill:'none',stroke:'#2F6A9C','stroke-width':'1.8'},svg));
     [MAP.mainstem,MAP.snake,MAP.salmon].forEach(d=>{el('path',{d:d,fill:'none',stroke:'#2F6A9C','stroke-width':'2.6','stroke-linejoin':'round'},svg);el('path',{d:d,fill:'none',stroke:'#9CC7F0','stroke-width':'1.4',class:'river-flow',opacity:'.55'},svg)});
     for(const k in MAP.rivers){const p=MAP.rivers[k];const t=el('text',{x:p[0],y:p[1],class:'rivlab'},svg);t.textContent=k.trim()}
-    const hc=MAP.pts.hellscanyon; drawX(svg,hc[0],hc[1]); lab(svg,hc[0]+9,hc[1]+4,'Hells Canyon dams · no passage');
+    const hc=MAP.pts.hellscanyon; drawX(svg,hc[0],hc[1]); lab(svg,hc[0]-9,hc[1]+4,'Hells Canyon dams · no passage').setAttribute('text-anchor','end');
     const kf=MAP.pts.kettle; el('circle',{cx:kf[0],cy:kf[1],r:5,fill:'none',stroke:'#D7A6E8','stroke-width':'2'},svg); lab(svg,kf[0]+9,kf[1]+4,'Kettle Falls · under Lake Roosevelt');
     routePath=el('path',{fill:'none',stroke:'none'},svg);
     heat=el('g',{},svg);
     travel=el('path',{fill:'none',stroke:'#FFFFFF','stroke-width':'2.2','stroke-linecap':'round','stroke-linejoin':'round',opacity:'.9'},svg);
     svg.appendChild(el('g',{id:'damLayer'}));
-    curLab=el('text',{class:'damlab',style:'font-size:18px'},svg);
+    curLab=el('text',{class:'damlab',style:'font-size:calc(18px*var(--u,1))'},svg);
+    new ResizeObserver(()=>{const s=Math.min(svg.clientWidth/MAP.W,svg.clientHeight/MAP.H);if(s>0)svg.style.setProperty('--u',Math.min(1.5,Math.max(1,12/(14*s))).toFixed(3))}).observe(svg);
     fish=el('g',{},svg);
     el('path',{d:'M-11 0 C-5 -6.5 6 -6.5 11 0 C6 6.5 -5 6.5 -11 0 Z',fill:'#F2A08E',stroke:'#fff','stroke-width':'1.2'},fish);
     el('path',{d:'M-11 0 L-18 -5.5 L-16.5 0 L-18 5.5 Z',fill:'#F2A08E',stroke:'#fff','stroke-width':'1.2'},fish);
@@ -1122,7 +1185,8 @@ const MAP=__MAP__;
   function drawHeat(){
     heat.innerHTML='';const R=ROUTES[route],L=routePath.getTotalLength(),dt=DT[fut][per];
     const marks=R.stops.map(s=>[R.f[s[0]][0],AUG[s[0]]+dt]);
-    for(let i=0;i<marks.length-1;i++){const [f0,t0]=marks[i],[f1,t1]=marks[i+1],n=8;
+    // one piece per ~4 map units, so the band follows the river's bends instead of cutting across them
+    for(let i=0;i<marks.length-1;i++){const [f0,t0]=marks[i],[f1,t1]=marks[i+1],n=Math.max(2,Math.ceil((f1-f0)*L/4));
       for(let j=0;j<n;j++){const a=f0+(f1-f0)*j/n,b=f0+(f1-f0)*(j+1)/n,p=routePath.getPointAtLength(a*L),q=routePath.getPointAtLength(b*L);
         el('line',{x1:p.x,y1:p.y,x2:q.x,y2:q.y,stroke:tColor(t0+(t1-t0)*(j+.5)/n),'stroke-width':'7','stroke-linecap':'round'},heat)}}
   }
@@ -1157,17 +1221,26 @@ const MAP=__MAP__;
   }
   function tempLine(key){
     const base=AUG[key],now=weeksAbove(base);
-    if(fut==='now')return '<span class="tline"><b style="color:'+tColor(base)+'">'+base.toFixed(1)+' °C · '+toF(base)+' °F</b> in August today'+(now?'<br>about <b>'+now+' weeks</b> a year above 68 °F':'')+'</span>';
+    if(fut==='now')return '<b style="color:'+tColor(base)+'">'+base.toFixed(1)+' °C · '+toF(base)+' °F</b> in August today'+(now?'<br>about <b>'+now+' weeks</b> a year above 68 °F':'');
     const t=base+DT[fut][per],w=weeksAbove(t);
-    return '<span class="tline"><b>'+base.toFixed(1)+' → <span style="color:'+tColor(t)+'">'+t.toFixed(1)+' °C</span></b> in August ('+toF(base)+' → '+toF(t)+' °F)<br>weeks above 68 °F: <b>'+now+' → '+w+'</b></span>';
+    return SC[fut]+', '+PER[per]+':<br><b>'+base.toFixed(1)+' → <span style="color:'+tColor(t)+'">'+t.toFixed(1)+' °C</span></b> in August ('+toF(base)+' → '+toF(t)+' °F)<br>weeks above 68 °F: <b>'+now+' → '+w+'</b>';
+  }
+  // only the temperature line changes with the future, so a screen reader hears just that line
+  function drawTemp(){const f=$('fRead');if(f)f.innerHTML=tempLine(ROUTES[route].stops[stopI][0])}
+  const sImg=$('stopImg'), sFig=$('stopFig');
+  sImg.onload=()=>sImg.classList.add('in'); sImg.onerror=()=>{sFig.hidden=true};
+  function showPhoto(k){
+    const p=PH[k]; sFig.hidden=!p;
+    if(!p){sImg.removeAttribute('src');sImg.dataset.k='';return}
+    if(sImg.dataset.k===k)return;
+    sImg.dataset.k=k; sImg.classList.remove('in'); sImg.alt=p[0]; $('stopCap').textContent='Photo: '+p[1]; sImg.src='img/dams/'+k+'.jpg';
   }
   function drawStop(){
     const R=ROUTES[route], s=R.stops[stopI];
-    const card=$('stopCard'); card.className='stop'+(s[4]==='block'?' block':s[4]==='place'?' place':'');
+    $('stopCard').className='stop'+(s[4]==='block'?' block':s[4]==='place'?' place':'');
     const passed=R.stops.slice(1,stopI+1).filter(x=>x[4]==='dam').length;
-    card.innerHTML='<span class="rm">'+s[2]+' · dams crossed: '+passed+'</span><h3>'+s[1]+'</h3><p>'+s[3]+'</p><p class="chal"><b>On the journey</b>'+s[5]+'</p>';
-    $('fRead').innerHTML='<b>'+s[1]+'</b> '+tempLine(s[0]);
-    $('stopN').textContent=(stopI+1)+' / '+R.stops.length;
+    $('stopTxt').innerHTML='<span class="rm">Stop '+(stopI+1)+' of '+R.stops.length+' · '+s[2]+' · dams crossed: '+passed+'</span><h3>'+s[1]+'</h3><p class="tline" id="fRead"></p><p>'+s[3]+'</p><p class="chal"><b>On the journey</b>'+s[5]+'</p>';
+    $('stopTxt').scrollTop=0; drawTemp(); showPhoto(s[0]);
     $('back').disabled=stopI===0; $('next').disabled=stopI===R.stops.length-1;
     document.querySelectorAll('#damLayer g').forEach(g=>g.classList.toggle('pulse',+g.dataset.i===stopI));
     const pp=MAP.pts[s[0]]; if(pp&&stopI>0){const left=pp[0]>MAP.W*0.62; curLab.setAttribute('x',left?pp[0]-12:pp[0]+12); curLab.setAttribute('y',pp[1]-12); curLab.setAttribute('text-anchor',left?'end':'start'); curLab.textContent=s[1]} else curLab.textContent='';
@@ -1178,7 +1251,7 @@ const MAP=__MAP__;
   $('juv').onclick=()=>{
     const R=ROUTES[route]; if(stopI===0){go2(R.stops.length>6?6:1);return}
     const dams=R.stops.slice(1,stopI+1).filter(x=>x[4]==='dam').length, home=fpos;
-    const card=$('stopCard'); card.className='stop'; card.innerHTML='<span class="rm">The young ones</span><h3>Going to Sea</h3><p>Young salmon born here ride the current down past the same '+dams+' dam'+(dams===1?'':'s')+': through turbines, over spillways, through bypass systems, or carried in barges. Slow, warm reservoirs make the trip longer, and every extra day is another day among predators.</p>';
+    $('stopCard').className='stop'; sFig.hidden=true; $('stopTxt').innerHTML='<span class="rm">The young ones</span><h3>Going to Sea</h3><p>Young salmon born here ride the current down past the same '+dams+' dam'+(dams===1?'':'s')+': through turbines, over spillways, through bypass systems, or carried in barges. Slow, warm reservoirs make the trip longer, and every extra day is another day among predators.</p>';
     moveTo(0,Math.min(3200,900+home*4200),()=>setTimeout(()=>moveTo(home,900,drawStop),900));
   };
   // flow through the year: illustrative shape of change (RMJOC-II 2018; NCA5 2023), not a forecast
@@ -1192,9 +1265,9 @@ const MAP=__MAP__;
     h+='<path d="'+line(FLOW)+' L'+x1+' '+y0+' L'+x0+' '+y0+' Z" fill="rgba(94,151,201,.22)"/><path d="'+line(FLOW)+'" fill="none" stroke="#9CC7F0" stroke-width="2"/>';
     if(amp)h+='<path d="'+line(fut2)+'" fill="none" stroke="#F26B5E" stroke-width="2.2" stroke-dasharray="5 3"/>';
     $('hySvg').innerHTML=h;
-    $('hyKey').innerHTML=amp?'<i class="k1"></i>today <i class="k2"></i>'+SC[fut]+' · a shape, not a forecast':'<i class="k1"></i>today';
+    $('hyKey').innerHTML=amp?'<i class="k1"></i>today <i class="k2"></i>'+SC[fut]:'<i class="k1"></i>today';  // "teaching model" caveat sits in the futures header
   }
-  function setFut(){[...$('fScen').children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.k===fut)));[...$('fPer').children].forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.k===per));b.disabled=fut==='now'});if(built){drawHeat();drawStop()}hydro()}
+  function setFut(){[...$('fScen').children].forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.k===fut)));[...$('fPer').children].forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.k===per));b.disabled=fut==='now'});if(built){drawHeat();drawTemp()}hydro()}
   [...$('fScen').children].forEach(b=>b.onclick=()=>{fut=b.dataset.k;setFut()});
   [...$('fPer').children].forEach(b=>b.onclick=()=>{per=b.dataset.k;setFut()});
   setFut();
