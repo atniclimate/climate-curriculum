@@ -159,6 +159,20 @@ body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
 .carry .key{grid-template-columns:1fr}
 @media (max-width:860px){.carry{grid-template-columns:1fr}}
 .inq li::before{counter-increment:q;content:"(" counter(q) ")";position:absolute;left:18px;top:12px;font-family:var(--f-display);font-weight:700;color:var(--red-dk)}
+/* S6: light sky plate, a real title, larger text that fills the page */
+[data-slide-id="s06-part-one-carry"]{background:#E9EEF4}  /* light ground under the photo when a phone scrolls past it */
+[data-slide-id="s06-part-one-carry"] .inner{max-width:none;padding-inline:clamp(12px,2vw,40px);gap:clamp(16px,3vh,36px)}
+[data-slide-id="s06-part-one-carry"] h2{font-size:calc(var(--b)*2.9);line-height:1.05}
+[data-slide-id="s06-part-one-carry"] .carry{gap:clamp(10px,1vw,16px)}
+[data-slide-id="s06-part-one-carry"] .key{gap:clamp(10px,1vw,16px)}
+[data-slide-id="s06-part-one-carry"] .key .card{padding:clamp(18px,2vw,34px) clamp(18px,2.2vw,38px);gap:.7em}
+[data-slide-id="s06-part-one-carry"] .key .card p{font-size:calc(var(--b)*1.28);line-height:1.5;max-width:none}
+[data-slide-id="s06-part-one-carry"] .key .label{font-size:max(12px,calc(var(--b)*.75));color:var(--red-dk)}
+[data-slide-id="s06-part-one-carry"] .inq{gap:clamp(10px,1vw,16px)}
+[data-slide-id="s06-part-one-carry"] .inq li{display:flex;align-items:center;font-size:calc(var(--b)*1.28);line-height:1.4;padding:clamp(16px,2vw,30px) clamp(18px,2vw,34px) clamp(16px,2vw,30px) calc(var(--b)*3.4)}
+[data-slide-id="s06-part-one-carry"] .inq li::before{left:clamp(16px,1.4vw,28px);top:50%;transform:translateY(-50%)}
+[data-slide-id="s06-part-one-carry"] .credit{left:clamp(12px,2vw,40px);color:var(--muted);text-shadow:none}
+@media (max-width:860px){[data-slide-id="s06-part-one-carry"] .credit{position:relative;display:block;left:auto;bottom:auto;padding:0 12px 10px}}  /* in flow when the slide scrolls */
 
 /* cloud machine */
 .cm{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);grid-template-rows:minmax(0,1fr);gap:clamp(12px,1.6vw,24px);align-items:stretch}
@@ -631,10 +645,10 @@ blockquote{margin:0}
 </section>
 
 <!-- S6 PART ONE KEY (Plate) -->
-<section class="slide plate deep" data-slide-id="s06-part-one-carry" data-bg="cloudfront" data-part="1" data-min="0.5" data-title="Part One inquiry"
+<section class="slide plate light" data-slide-id="s06-part-one-carry" data-bg="skylight" data-part="1" data-min="0.5" data-title="Part One inquiry"
  data-notes="Read the takeaway, then leave the three questions up for a breath. Invite one written answer; no share-out needed for time.">
   <div class="inner">
-    <div class="head"><span class="label red">Part One · Carry Forward</span></div>
+    <div class="head"><h2>Part One: Reflection</h2></div>
     <div class="carry"><div class="key">
       <div class="card"><span class="label">Key Lesson</span><p>Weather is based on fundamental physics, here and throughout the universe. Pressure and water are always moving, never fixed or stuck at one height.</p></div>
       <div class="card"><span class="label">Key Takeaway</span><p>The same physics, gauges, and data points that predict tomorrow's weather also show patterns and change over many years. With enough data, we look ahead on momentum, not speculation.</p></div>
@@ -644,6 +658,7 @@ blockquote{margin:0}
       <li>What is one question about the weather you want to find the answer to?</li>
     </ol></div>
   </div>
+  <span class="credit">Photo: Patrick A. Freeland</span>
 </section>
 
 <!-- S7 PART TWO (Hall) -->
@@ -914,6 +929,7 @@ const IMAGES={
   hood:{src:'img/mt-hood-summer.jpg',pos:'center 40%',credit:'',alt:'A Cascade volcano in late summer, with forest below and a little snow left near the top'},
   falls:{src:'img/falls-spring.jpg',pos:'center 55%',credit:'',alt:'A waterfall in spring runoff, with mist rising from the pool below'},
   cloudfront:{src:'img/clouds-mountain-front.jpg',pos:'center 35%',credit:'',alt:'Long streaming clouds over a forested mountain front'},
+  skylight:{src:'img/sky-clouds-light.jpg',pos:'center 50%',credit:'Patrick A. Freeland',alt:'Blue sky with broken white clouds, bright with sunlight'},
   aurora:{src:'img/aurora.jpg',pos:'center 45%',credit:'',alt:'Northern lights in green and magenta over a dark ridge and water'},
   bonneville:{src:'img/bonneville-spillway.jpg',pos:'center 50%',credit:'',alt:'Water pouring through the spillway of a large dam under storm clouds'},
   sockeye:{src:'img/sockeye-underwater.jpg',pos:'center 45%',credit:'',alt:'Red sockeye salmon swimming over stream gravel'},
