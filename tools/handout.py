@@ -42,18 +42,17 @@ def project(lon, lat):
 
 # ---------- Content (Patrick's rulings of 10/20/2026) ----------
 
-CONFIRM = '<span class="cf">[confirm author line]</span>'
 ROOT_URL = "atniclimate.github.io/climate-curriculum/"
 QUESTIONS = ["How does a cloud work?", "How do you know what you know?",
              "What can we do?", "How do we work together?"]
 PAPERS = [  # (citation, path or URL line, annotation)
     (f'Freeland, P. A. (2026). <i>Understanding a climate of change</i> [Interactive workshop]. '
-     f'ATNI Climate, Affiliated Tribes of Northwest Indians. {CONFIRM}', "", ""),
+     f'ATNI Climate, Affiliated Tribes of Northwest Indians.', "", ""),
     (f'Freeland, P. A., &amp; Jones, C. (2026). <i>Understanding a climate of change: Guiding document and '
-     f'language revision</i> (Workshop printing, 10/20/2026; draft for review). ATNI Climate. {CONFIRM}',
+     f'language revision</i> (Workshop printing, 10/20/2026; draft for review). ATNI Climate.',
      "downloads/Understanding-a-Climate-of-Change-Guiding-Document.pdf", ""),
     (f'Freeland, P. A. (2026). <i>Understanding a climate of change: Grades 6 to 12 hands-on lessons</i> '
-     f'(Workshop printing, 10/20/2026; draft for review). ATNI Climate. {CONFIRM}',
+     f'(Workshop printing, 10/20/2026; draft for review). ATNI Climate.',
      "downloads/Grades-6-12-Hands-On-Lessons.pdf", ""),
     ('ATNI Climate. (2026). <i>Dynamic Drought Module</i> [Interactive map].',
      "https://atniclimate.github.io/dynamic-drought-module/", "Shown in the same slot; a separate site."),
@@ -216,7 +215,7 @@ kbd{{display:inline-block;min-width:13pt;height:13pt;padding:0 2.5pt;border:.8pt
 /* the footer starts .2 in up inside the band, where the scrim is already half to fully near-black */
 .foot{{position:absolute;left:var(--e);right:var(--e);top:{BAND_TOP + BAND_H - .2:.2f}in;bottom:var(--e);color:#fff;z-index:1;
   background:linear-gradient(180deg,transparent .2in,var(--base) .2in);
-  padding:0 calc(.5in - var(--e)) calc(.39in - var(--e));display:grid;grid-template-columns:2.25in 1fr;column-gap:.3in;
+  padding:0 calc(.5in - var(--e)) calc(.32in - var(--e));display:grid;grid-template-columns:2.25in 1fr;column-gap:.3in;
   grid-template-rows:auto 1fr}}
 .foot h2{{font:600 var(--s)/1 "League Spartan";letter-spacing:.16em;text-transform:uppercase;color:var(--sky);margin-bottom:.06in}}
 .foot li{{font:500 var(--s)/1.36 "Lexend Deca"}}
@@ -224,7 +223,7 @@ kbd{{display:inline-block;min-width:13pt;height:13pt;padding:0 2.5pt;border:.8pt
 .foot .team ul{{columns:2;column-gap:.16in}}
 .foot .team li{{break-inside:avoid}}
 .foot .team b{{font-weight:600}}
-.foot .meta{{grid-column:1/-1;align-self:end;margin-top:.05in;font:500 var(--s)/1.3 "Lexend Deca";color:#C9D2DC}}
+.foot .meta{{grid-column:1/-1;align-self:end;margin-top:.04in;padding-right:1.1in;font:500 var(--s)/1.3 "Lexend Deca";color:#C9D2DC}}  /* clear the logo */
 .foot .logo{{position:absolute;right:calc(.5in - var(--e));bottom:calc(.39in - var(--e));width:.9in;height:auto;display:block}}
 </style></head>
 <body><div class="sheet">
@@ -238,7 +237,7 @@ kbd{{display:inline-block;min-width:13pt;height:13pt;padding:0 2.5pt;border:.8pt
 <section class="head">
   <div>
     <h1><span>Understanding</span><span>a Climate</span><span class="r">of Change</span></h1>
-    <p class="by"><b>Patrick A. Freeland</b> (module author), with ATNI Climate</p>
+    <p class="by"><b>Patrick A. Freeland</b> · ATNI Climate</p>
   </div>
   <div class="qr">
     <div class="tile">{qr_svg()}</div>
@@ -288,7 +287,7 @@ kbd{{display:inline-block;min-width:13pt;height:13pt;padding:0 2.5pt;border:.8pt
 <footer class="foot">
   <div><h2>Organizations</h2><ul>{orgs}</ul></div>
   <div class="team"><h2>Planning team</h2><ul>{team}</ul></div>
-  <p class="meta">Photo: Patrick A. Freeland · Draft for review, printed {PRINTED}</p>
+  <p class="meta">Suggested citation: Freeland, P. A. (2026). <i>Understanding a climate of change</i> [Event handout].<br>ATNI Climate. {ROOT_URL} · Photo: Patrick A. Freeland · Draft for review, printed {PRINTED}</p>
   <img class="logo" src="{b64(ROOT / 'docs/img/atni-climate-lockup-on-dark.png', 'image/png')}" alt="ATNI Climate">
 </footer>
 
