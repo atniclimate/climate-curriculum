@@ -125,6 +125,26 @@ body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
 .agenda h3{font-size:calc(var(--b)*1.05)}
 .agenda p{font-size:calc(var(--b)*.86);color:var(--text)}
 .agenda .mins{font-family:var(--f-data);font-size:12px;color:var(--muted)}
+/* S2: narrow gutters, larger cards that fill the page; question titles share one baseline row */
+[data-slide-id="s02-four-questions"] .inner{max-width:none;padding-inline:clamp(12px,1.3vw,26px);gap:clamp(12px,2.4vh,40px)}
+[data-slide-id="s02-four-questions"] .agenda{gap:clamp(8px,.8vw,14px)}
+[data-slide-id="s02-four-questions"] .agenda button{padding:clamp(14px,min(1.8vw,2.8vh),34px);gap:clamp(10px,1.6vh,20px)}
+[data-slide-id="s02-four-questions"] .agenda .n{font-size:min(calc(var(--b)*3.6),7.4vh);color:var(--red-dk)}
+[data-slide-id="s02-four-questions"] .agenda .tx{display:grid;gap:clamp(8px,1.2vh,14px);align-content:start}
+[data-slide-id="s02-four-questions"] .agenda h3{font-size:calc(var(--b)*1.5)}
+[data-slide-id="s02-four-questions"] .agenda p{font-size:calc(var(--b)*1.08);max-width:none}
+@media (min-width:1181px){[data-slide-id="s02-four-questions"] .agenda h3{min-height:2.4em}}
+[data-slide-id="s02-four-questions"]{container-type:size}  /* lets the cards shrink when the notes pane shortens the stage */
+@container (max-height:600px) and (min-width:981px){
+  [data-slide-id="s02-four-questions"] .inner{gap:10px;padding-block:10px}
+  [data-slide-id="s02-four-questions"] .agenda button{padding:14px 18px;gap:6px}
+  [data-slide-id="s02-four-questions"] .agenda .n{font-size:calc(var(--b)*2)}
+  [data-slide-id="s02-four-questions"] .agenda h3{font-size:calc(var(--b)*1.15)}
+  [data-slide-id="s02-four-questions"] .agenda p{font-size:calc(var(--b)*.9)}
+  [data-slide-id="s02-four-questions"] .lead{font-size:calc(var(--b)*1.6)}
+  [data-slide-id="s02-four-questions"] .themes li{padding:6px 10px}
+  [data-slide-id="s02-four-questions"] .themes + .cap{font-size:calc(var(--b)*.9)}
+}
 
 /* key + inquiry */
 .key{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:8px}
@@ -361,10 +381,16 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .ask .label{display:block;color:var(--red-dk);margin-bottom:2px}
 .sub{font-size:calc(var(--b)*.95);max-width:80ch}
 blockquote{margin:0}
-.lead{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*1.5);line-height:1.2;color:var(--white);max-width:34ch;text-wrap:balance}
-.themes{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.themes span:not(.label){font-size:13.5px;padding:4px 10px;background:var(--overlay);color:var(--text)}
-.themes .label{margin-right:6px}
+.lead{font-family:var(--f-display);font-weight:700;font-size:calc(var(--b)*2.3);line-height:1.1;letter-spacing:-.02em;color:var(--white);max-width:none;text-wrap:balance}
+.themes{display:grid;gap:8px}
+.themes ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+@media (max-width:1180px){.themes ul{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:640px){.themes ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.themes li{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--plate);font-size:max(13.5px,calc(var(--b)*.74));line-height:1.3;color:var(--text)}
+.themes svg{flex:none;width:clamp(24px,1.8vw,32px);height:auto;fill:none;stroke:var(--red-dk);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.themes svg .f{fill:var(--red-dk);stroke:none}
+.themes + .cap{font-size:calc(var(--b)*1.05);color:var(--text);max-width:none}
+.themes + .cap .ln{display:block}
 /* three ways of seeing */
 .eyes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 @media (max-width:860px){.eyes{grid-template-columns:1fr}}
@@ -457,18 +483,26 @@ blockquote{margin:0}
 
 <!-- S2 FOUR QUESTIONS (Plate) -->
 <section class="slide plate" data-slide-id="s02-four-questions" data-bg="sound" data-part="0" data-min="1" data-title="Four questions"
- data-notes="Read the quote slowly, then walk the four cards; each is a door to come back through. Name the themes once: cycles, relationships, local observation, critical thinking, intergenerational knowledge, change (felt as well as measured), and scale, from the frog's eye to the moon's eye. Say it plainly: there is no test here, only reflections and questions that lead to more questions. Cards are clickable.">
+ data-notes="Read the opening line, then walk the four cards; each is a door to come back through. Name the themes once: cycles, relationships, local observation, critical thinking, intergenerational knowledge, change (felt as well as measured), and scale, from the frog's eye to the moon's eye. Say it plainly: there is no test here, only reflections and questions that lead to more questions. Cards are clickable.">
   <div class="inner">
-    <blockquote class="lead">&ldquo;Think&hellip; when both an Elder and a Child can understand, then this is where learning happens.&rdquo;</blockquote>
+    <h2 class="lead">Four Questions to think about&hellip;</h2>
     <div class="head"><span class="label red">Four Questions, One River</span></div>
     <div class="agenda">
-      <button data-jump="1"><span class="n">1</span><h3>How Does a Cloud Work?</h3><p>Have you ever looked up and thought about how water moves into the sky and comes down as rain and snow?</p></button>
-      <button data-jump="2"><span class="n">2</span><h3>How Do You Know What You Know?</h3><p>Connect what you can see in your own backyard with the graphs, maps, and numbers that help us understand our changing world.</p></button>
-      <button data-jump="3"><span class="n">3</span><h3>What Can We Do?</h3><p>Break down big words like mitigation, adaptation, and resilience into real-world steps you, your family, and your community can take.</p></button>
-      <button data-jump="4"><span class="n">4</span><h3>How Do We Work Together?</h3><p>Relationships matter. No single person, scientific report, or action plan has all the answers.</p></button>
+      <button data-jump="1"><span class="n">1</span><span class="tx"><h3>How Does a Cloud Work?</h3><p>Have you ever looked up and thought about how water moves into the sky and comes down as rain and snow?</p></span></button>
+      <button data-jump="2"><span class="n">2</span><span class="tx"><h3>How Do You Know What You Know?</h3><p>Connect what you can see in your own backyard with the graphs, maps, and numbers that help us understand our changing world.</p></span></button>
+      <button data-jump="3"><span class="n">3</span><span class="tx"><h3>What Can We Do?</h3><p>Break down big words like mitigation, adaptation, and resilience into real-world steps you, your family, and your community can take.</p></span></button>
+      <button data-jump="4"><span class="n">4</span><span class="tx"><h3>How Do We Work Together?</h3><p>Relationships matter. No single person, scientific report, or action plan has all the answers.</p></span></button>
     </div>
-    <div class="themes"><span class="label">Themes</span><span>Cycles</span><span>Relationships</span><span>Local observation</span><span>Critical thinking</span><span>Intergenerational knowledge</span><span>Change, felt as well as measured</span><span>Scale: frog&rsquo;s eye, bird&rsquo;s eye, moon&rsquo;s eye</span></div>
-    <p class="cap">There is no test here, only reflections and encouraging inquiry; education is not a race, and questions leading to questions let each of us choose what to carry forward.</p>
+    <div class="themes"><span class="label">Themes</span><ul>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M18.2 2.6v3.9h-3.9"/></svg>Cycles</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></svg>Relationships</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Local observation</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M9.2 9.4a2.9 2.9 0 1 1 4.2 2.6c-.9.5-1.4 1.1-1.4 2.2"/><circle class="f" cx="12" cy="17.3" r="1"/></svg>Critical thinking</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="5.5" r="2.6"/><path d="M3.5 21v-6a4.5 4.5 0 0 1 9 0v6"/><circle cx="17.5" cy="10.5" r="2"/><path d="M14.5 21v-3.5a3 3 0 0 1 6 0V21"/></svg>Intergenerational knowledge</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14.2V4.5a2 2 0 0 1 4 0v9.7a4 4 0 1 1-4 0z"/><path d="M12 9v7"/><path d="M17 6h3M17 9.5h2"/></svg>Change, felt as well as measured</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="9.5"/></svg>Scale: frog&rsquo;s eye, bird&rsquo;s eye, moon&rsquo;s eye</li>
+    </ul></div>
+    <p class="cap"><span class="ln">No tests or memorizing facts, only exploration and reflection.</span> <span class="ln"><span class="r">Education is not a race.</span> It is a journey of experiences.</span></p>
   </div>
 </section>
 
