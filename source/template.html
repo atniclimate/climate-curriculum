@@ -81,10 +81,12 @@ body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
 [data-slide-id="s01-title"] h1{display:flex;flex-direction:column;margin:clamp(12px,2vh,22px) 0 clamp(16px,2.6vh,30px)}
 [data-slide-id="s01-title"] h1 .kick{font-size:min(calc(var(--b)*1.45),calc((100vw - 2*var(--gutter))/12.2));font-weight:600;letter-spacing:.22em;line-height:1.1;color:var(--text)}
 [data-slide-id="s01-title"] h1 .main{font-size:min(calc(var(--b)*4.4),calc((100vw - 2*var(--gutter) - 96px)/10.4));font-weight:800;letter-spacing:.02em;line-height:.98;margin-top:.06em}
-[data-slide-id="s01-title"] .byline{display:inline-flex;align-items:center;gap:14px}
-[data-slide-id="s01-title"] .byline::before{content:"";width:clamp(32px,3.4vw,64px);height:3px;background:var(--red)}
+[data-slide-id="s01-title"] .byline{display:inline-flex;align-items:center;gap:14px;text-wrap:balance}
+[data-slide-id="s01-title"] .byline::before{content:"";flex:none;width:clamp(32px,3.4vw,64px);height:3px;background:var(--red);transition:background .6s ease}
+body.hl [data-slide-id="s01-title"] .byline::before{background:var(--drop)}
 [data-slide-id="s01-title"] .stanza{margin-top:clamp(14px,2.4vh,28px);max-width:none;font-size:calc(var(--b)*1.2);line-height:1.5}
 .sig{position:absolute;right:var(--gutter);bottom:clamp(16px,3.4vh,40px);z-index:2;width:clamp(140px,11vw,220px);height:auto}
+@media (max-width:980px){[data-slide-id="s01-title"] .hallcopy{bottom:118px}}  /* stanza runs full width here; clear the lockup */
 @media (max-width:640px){
   [data-slide-id="s01-title"] h1 .main{font-size:calc((100vw - 2*var(--gutter))/10.4)}
   [data-slide-id="s01-title"] .hallcopy{bottom:96px}
