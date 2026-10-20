@@ -364,6 +364,15 @@ blockquote{margin:0}
 .eyes .pic svg{width:100%;height:100%;display:block}
 .eyes p{font-size:calc(var(--b)*.86)}
 .eyemore{min-height:3em}
+/* S8 on a light riverbank ground: tighter frame, pictures shrink once a card is open so the three reveal cards fit */
+[data-slide-id="s08-three-eyes"] .inner{gap:clamp(10px,1.6vh,20px);padding-block:clamp(10px,2vh,26px)}
+[data-slide-id="s08-three-eyes"] .eyes .pic{height:clamp(90px,calc(45vh - 150px),340px);transition:height .35s ease}
+[data-slide-id="s08-three-eyes"] .eyes.focused .pic{height:clamp(56px,calc(36vh - 170px),230px)}
+@media (max-width:860px){[data-slide-id="s08-three-eyes"] .eyes .pic,[data-slide-id="s08-three-eyes"] .eyes.focused .pic{height:clamp(80px,16vh,140px)}}
+[data-slide-id="s08-three-eyes"] .eyecredit{font-size:12px;margin-top:-4px}
+[data-slide-id="s08-three-eyes"] .shade{background:rgba(244,247,250,.7)}
+[data-slide-id="s08-three-eyes"] .eyes.focused button[aria-expanded="false"]{opacity:.6}
+@media (prefers-reduced-motion:reduce){[data-slide-id="s08-three-eyes"] .eyes .pic{transition:none}}
 /* relatives of the river */
 .kin{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px}
 @media (max-width:1100px){.kin{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -604,7 +613,7 @@ blockquote{margin:0}
 </section>
 
 <!-- S8 SCALE (Plate) -->
-<section class="slide plate" data-slide-id="s08-three-eyes" data-bg="mist" data-part="2" data-min="2" data-title="Three ways of seeing"
+<section class="slide plate light" data-slide-id="s08-three-eyes" data-bg="riparian" data-part="2" data-min="2" data-title="Three ways of seeing"
  data-notes="<span class='must'>Must land:</span> our senses are where knowing starts, and data lets us see at scales no one person can. Walk frog's eye, bird's eye, moon's eye in that order, from the water at your feet to the whole planet. Each card opens with a question for the room. The next two slides live at the bird's eye: the salmon's journey across the whole basin.">
   <div class="inner">
     <div class="headrow"><div class="head"><span class="label red">Part Two · Scale</span><h2>Frog&rsquo;s Eye, Bird&rsquo;s Eye, Moon&rsquo;s Eye</h2></div><p class="ask"><span class="label">Ask the room</span>What can only be seen up close, and what can only be seen from far away?</p></div>
@@ -615,6 +624,7 @@ blockquote{margin:0}
       <button aria-expanded="false" data-e="2"><span class="pic globe"><svg viewBox="0 0 200 120" aria-hidden="true"><defs><radialGradient id="gl" cx="38%" cy="35%" r="70%"><stop offset="0" stop-color="#2D5B86"/><stop offset=".7" stop-color="#0E2740"/><stop offset="1" stop-color="#06121E"/></radialGradient></defs><circle cx="100" cy="60" r="50" fill="url(#gl)"/><g fill="none" stroke="rgba(156,199,240,.35)" stroke-width=".8"><ellipse cx="100" cy="60" rx="50" ry="16"/><ellipse cx="100" cy="60" rx="50" ry="34"/><ellipse cx="100" cy="60" rx="18" ry="50"/><ellipse cx="100" cy="60" rx="36" ry="50"/><line x1="50" y1="60" x2="150" y2="60"/></g><path d="M70 38 C78 30 92 28 98 34 C104 40 96 48 88 50 C80 54 72 50 70 44 Z" fill="#2E4A33" opacity=".9"/><circle cx="80" cy="40" r="3" fill="#F26B5E"/><circle cx="150" cy="22" r="7" fill="#E8ECF0" opacity=".85"/></svg></span><span class="label red">Moon&rsquo;s Eye</span><h3>The Whole Planet</h3><p>The atmosphere moving as one system, oceans warming, snow and ice measured from space.</p></button>
     </div>
     <div id="eyeMore" class="eyemore" aria-live="polite"><p class="cap">Select a way of seeing.</p></div>
+    <p class="cap eyecredit">Background: Yakima River Canyon, Michael Campbell, BLM (public domain)</p>
   </div>
 </section>
 
@@ -857,6 +867,7 @@ const IMAGES={
   sound:{src:'img/sound-sunset.jpg',pos:'center 62%',credit:'',alt:'Sunset over inland waters and forested hills, seen from the air'},
   clouds:{src:'img/clouds-light.jpg',pos:'center 30%',credit:'',alt:'Late light breaking through towering clouds'},
   mist:{src:'img/mountain-mist.jpg',pos:'center 40%',credit:'',alt:'A dark mountain behind drifting cloud'},
+  riparian:{src:'img/yakima-river-canyon.jpg',pos:'center 60%',credit:'Michael Campbell, BLM (public domain)',alt:'The Yakima River between willow-lined banks and a dry basalt hill under a blue sky'},
   forest:{src:'img/forest-fog.jpg',pos:'center 45%',credit:'',alt:'Conifer forest in fog'},
   hood:{src:'img/mt-hood-summer.jpg',pos:'center 40%',credit:'',alt:'A Cascade volcano in late summer, with forest below and a little snow left near the top'},
   falls:{src:'img/falls-spring.jpg',pos:'center 55%',credit:'',alt:'A waterfall in spring runoff, with mist rising from the pool below'},
