@@ -40,10 +40,13 @@ Branch dev/workshop-polish-2026-10. Done 10/20/2026:
 - [x] Copy-edit of the Grades 6-12 lessons and the guiding document
 - [x] Print-ready PDFs in docs/downloads/ (tools/print_pdf.py); Lesson 4.3 printed marked DRAFT per D22 note
 - [x] Merged to main by Patrick (0d037c3); Pages built 10/20/2026
-- [ ] One-page full-color event handout: abstract, cited papers, QR code, acknowledgements (Yakama Nation first); brief in private/handout/BRIEF.md (local); Patrick approves names and copy by 10/21
-- [ ] Photographic covers and openers for both PDFs (stripped copies in private/print-assets/; MEDIA-CREDITS rows when published)
+- [x] Patrick's eight BRIEF questions answered 10/20/2026 (office printer plus DesignCraft bleed file, DesignCraft QR, known names, "Photo: Patrick A. Freeland", no syllabi yet, merge allowed, simple byline plus suggested citation, placeholder event name)
+- [x] Event handout as one sheet front and back (tools/handout.py); HTML working draft live in docs/downloads/; review page with saved notes (claude.ai artifact)
+- [ ] Handout: Patrick's notes from the review page, then the print PDF in docs/downloads/ and a printed proof scanned by two phones
+- [x] HTML working drafts of the lessons and the guiding document beside the PDFs (print_pdf.py writes both)
+- [x] Slide revisions S1 to S11 per Patrick's 10/20/2026 notes (gutters, S4 cloud machine, S5 instruments, light S6 and S8, S9 cards, S10 photos and futures, S11 pictures); published 2cb373a
+- [ ] Photographic covers and openers for both PDFs: Patrick picks A, B, C, or the hybrid (renders in private/craft/directions/covers/)
 - [ ] S22: link the PDFs and the handout (notes placeholder asks where teachers download files); live only after a merge to main
-- [ ] Patrick: the eight questions in BRIEF.md section 2 (printer and copies, QR route, names, credit line, syllabi, merge window, author line, event name); DesignCraft 0.10.0 upgrade optional
 - [ ] Route identity: which slides and handouts, how many minutes, what equipment (D21, D24)
 - [ ] Safety and integrity on that route: known corrections (D25), Goldendale role play out of anything distributed (D22), S23 session-only reflections (D23), uncredited photos replaced or hidden
 - [ ] Teacher outcomes (three, observable) and a handoff card; one hand twin

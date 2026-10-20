@@ -14,6 +14,14 @@ top. Keep each entry short.
 
 ---
 
+### 10/20/2026 (evening), branch: dev/print-design-2026-10; published to main 2cb373a
+- Next action: read Patrick's notes on the handout review page (claude.ai artifact Uyt9UTJ4CCfDqNS6MW8rn5, "review" collection, ArtifactData list) and apply them; then his cover pick (A, B, C, or hybrid A covers + B white openers; renders in private/craft/directions/covers/) and S22 links.
+- Done and live (Pages built 2cb373a, page and new images 200): deck-wide plate gutters and a light plate variant (dbbd908); S1 to S11 per Patrick's notes, built in parallel worktrees by workflow wf_d1a25991-ac5 and merged without conflicts; his follow-up answers (51a79e4): balanced S1 title, S2 label dropped and white symbols, S9 Notice at rest, S10 futures "Today / Pollution levels off / Pollution keeps rising" with symbols, "How warm could the river get for salmon in August?", Wells "Photo to come", S8 caption "in Yakama Homelands" (not ceded). HTML working drafts of the lessons, guiding document, and two-sided handout in docs/downloads/.
+- Ledgers: MEDIA-CREDITS rows for 41 new photos (Celilo approved by Patrick); VERIFY V82 to V110; VOICE-PASS VP15 to VP51 (DRAFT); sources log planning/research/2026-10-20-slide-sources.md for a closing references list.
+- Checks (fresh, 10/20 evening): build --check, tools/check.py 0 errors, full probe: no horizontal scroll; S4 55 fps under the probe (was 15). Open, presenter view only (notes open at 1366): S4 cirrus and stratocumulus hit areas about 24 px, S8 and S11 scroll slightly, S10 stop card scrolls by design. Not run: offline folder test, real Chromebook.
+- Open for Patrick: S4 day-sky brightness and cloud drift (builder questions), S11 sturgeon plate kept by my call, Steve Robinson's original stays local (library/_inbox/robinson/), handout print PDF waits on his review.
+- Watch out: workflow worktrees start at main, not the feature branch (memory workflow-worktree-base). Pillow is only in the user site-packages, so python -I scripts cannot import it.
+
 ### 10/20/2026 (afternoon), branch: dev/print-design-2026-10 (from main 0d037c3)
 - Next action: start the print-design session with the paste block in
   planning/LAUNCH-PROMPT.md, "Next session: print design and the event
