@@ -274,15 +274,25 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 @media (prefers-reduced-motion:reduce){#inst *{animation-play-state:paused!important}}
 
 /* source check */
-.claims{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:8px}
-.claim{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--plate);min-height:200px}
+.claims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;flex:1;min-height:0}
+@media (max-width:1100px){.claims{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.claims{grid-template-columns:1fr}}
+.claim{all:unset;cursor:pointer;display:grid;grid-template-rows:auto auto 1fr;align-content:start;gap:12px;padding:18px;background:var(--plate)}
 .claim:hover{background:var(--plate-hi)}
 .claim:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
-.claim .said{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*.95);line-height:1.22;color:var(--white)}
-.claim .hint{margin-top:auto;font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.claim .back{display:grid;gap:6px;font-size:calc(var(--b)*.84)}
+.claim .cico{width:68px;height:68px;color:var(--red-dk);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.claim .said{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*1.3);line-height:1.22;color:var(--white)}
+.claim .hint,.claim .back{grid-area:3/1;align-self:start}
+.claim .hint{font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding-top:8px;border-top:1px solid var(--hair)}
+.claim .back{display:grid;gap:6px;font-size:calc(var(--b)*.92);visibility:hidden;padding-top:8px;border-top:1px solid var(--hair)}
+.claim .bk{display:grid;gap:6px}
 .claim .back b{font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red-dk)}
-.claim[aria-expanded="true"]{background:var(--plate-hi)}
+.claim .close{font-family:var(--f-display);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+/* four across: text scales to the height the cards get (notes pane open or not), so the reserved reveal fits */
+@media (min-width:1101px){.claims{container-type:size}.claim{gap:min(12px,1.8cqh);padding:min(18px,2.8cqh)}.claim .cico{width:min(68px,10cqh);height:min(68px,10cqh)}.claim .said{font-size:max(15px,min(calc(var(--b)*1.3),3.8cqh))}.claim .back{font-size:max(12.5px,min(calc(var(--b)*.92),2.9cqh))}}
+.claim[aria-expanded="true"]{background:var(--plate-hi);box-shadow:inset 0 3px 0 var(--red-dk)}
+.claim[aria-expanded="true"] .back{visibility:visible}
+.claim[aria-expanded="true"] .hint{visibility:hidden}
 .steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 @media (max-width:700px){.steps3{grid-template-columns:1fr}}
 .steps3 div{background:var(--plate);padding:10px 14px;font-size:max(12px,calc(var(--b)*.78))}
@@ -792,14 +802,14 @@ blockquote{margin:0}
 <!-- S9 SOURCE CHECK (Plate) -->
 <section class="slide plate" data-slide-id="s09-listening" data-bg="mist" data-part="2" data-min="2" data-title="Source check"
  data-notes="<span class='must'>Must land:</span> narrative and emotion move us whether we notice or not. Think about thinking. Open two cards, not four, unless the room is fast. The point is the habit: notice the feeling, ask who benefits, then check. This is Lesson 2.1 in the Grades 6 to 12 set.">
-  <div class="inner">
+  <div class="inner fit">
     <div class="headrow"><div class="head"><span class="label red">Part Two · Try It</span><h2>Four Things You Might Hear</h2></div><p class="ask"><span class="label">Ask the room</span>Which one did you feel before you thought about it?</p></div>
     <div class="steps3"><div><b>Notice</b>What feeling does it give you?</div><div><b>Ask</b>Who is saying it, and what do they want?</div><div><b>Check</b>Where would you go to see for yourself?</div></div>
     <div class="claims">
-      <button class="claim" aria-expanded="false"><span class="said">"The salmon are coming back, so the river is fine now."</span><span class="hint">Select to check</span><span class="back" hidden><b>Notice</b><span>Relief. It lets everyone stop worrying.</span><b>Check</b><span>Compare recent dam counts (Fish Passage Center, CRITFC) with historic returns estimated at 10 to 16 million fish a year. Ask how many are hatchery fish, and which runs are still listed.</span></span></button>
-      <button class="claim" aria-expanded="false"><span class="said">"They can't predict next week's weather. How can they predict 2050?"</span><span class="hint">Select to check</span><span class="back" hidden><b>Notice</b><span>Doubt that sounds like common sense.</span><b>Check</b><span>Weather asks what happens on one day. Climate asks what the pattern does. One roll of loaded dice is hard to call; which way they are loaded is not. Same physics as Part One.</span></span></button>
-      <button class="claim" aria-expanded="false"><span class="said">"Any clean energy project is good for the climate, so it's good for everyone."</span><span class="hint">Select to check</span><span class="back" hidden><b>Notice</b><span>It sounds like the obvious right answer.</span><b>Ask</b><span>Good for whom, decided by whom? The Goldendale pumped storage project, licensed in 2026 and challenged in court, sits on Pushpum, where Yakama people gather foods and medicines. Clean energy can still be the wrong place, done without consent.</span></span></button>
-      <button class="claim" aria-expanded="false"><span class="said">"It's already too late. Nothing we do matters."</span><span class="hint">Select to check</span><span class="back" hidden><b>Notice</b><span>Fear and exhaustion. The black mirror of the feed.</span><b>Check</b><span>Every fraction of a degree avoided means less harm, and Tribes across this basin are already acting: restoring rivers, building solar with storage, planting trees, planning. Too late is a story, not a measurement.</span></span></button>
+      <button class="claim" aria-expanded="false"><svg class="cico" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M19 28q4.5 4 9 0M36 28q4.5 4 9 0"/><path d="M23 40q9 7 18 0"/></svg><span class="said">"The salmon are coming back, so the river is fine now."</span><span class="hint">Select to check</span><span class="back"><span class="bk"><b>Notice</b><span>Relief. It lets everyone stop worrying.</span><b>Check</b><span>Compare recent dam counts (Fish Passage Center, CRITFC) with historic returns estimated at 10 to 16 million fish a year. Ask how many are hatchery fish, and which runs are still listed.</span></span><span class="close">Select to close</span></span></button>
+      <button class="claim" aria-expanded="false"><svg class="cico" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12h44a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H30l-10 10V42h-10a2 2 0 0 1-2-2V14a2 2 0 0 1 2-2z"/><path d="M26 23c0-4 3-6 6-6s6 2 6 5c0 4-6 4-6 9"/><circle cx="32" cy="35" r=".8"/></svg><span class="said">"They can't predict next week's weather. How can they predict 2050?"</span><span class="hint">Select to check</span><span class="back"><span class="bk"><b>Notice</b><span>Doubt that sounds like common sense.</span><b>Check</b><span>Weather asks what happens on one day. Climate asks what the pattern does. One roll of loaded dice is hard to call; which way they are loaded is not. Same physics as Part One.</span></span><span class="close">Select to close</span></span></button>
+      <button class="claim" aria-expanded="false"><svg class="cico" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M19 33l9 9 17-20"/></svg><span class="said">"Any clean energy project is good for the climate, so it's good for everyone."</span><span class="hint">Select to check</span><span class="back"><span class="bk"><b>Notice</b><span>It sounds like the obvious right answer.</span><b>Ask</b><span>Good for whom, decided by whom? The Goldendale pumped storage project, licensed in 2026 and challenged in court, sits on Pushpum, where Yakama people gather foods and medicines. Clean energy can still be the wrong place, done without consent.</span></span><span class="close">Select to close</span></span></button>
+      <button class="claim" aria-expanded="false"><svg class="cico" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M19 25l8-3M45 25l-8-3"/><path d="M21 32h6M37 32h6"/><path d="M23 46q9-8 18 0"/></svg><span class="said">"It's already too late. Nothing we do matters."</span><span class="hint">Select to check</span><span class="back"><span class="bk"><b>Notice</b><span>Fear and exhaustion. The black mirror of the feed.</span><b>Check</b><span>Every fraction of a degree avoided means less harm, and Tribes across this basin are already acting: restoring rivers, building solar with storage, planting trees, planning. Too late is a story, not a measurement.</span></span><span class="close">Select to close</span></span></button>
     </div>
   </div>
 </section>
@@ -1214,7 +1224,7 @@ const MAP=__MAP__;
   });
 
   /* ---------- source check ---------- */
-  document.querySelectorAll('.claim').forEach(c=>c.addEventListener('click',()=>{const open=c.getAttribute('aria-expanded')==='true';c.setAttribute('aria-expanded',String(!open));c.querySelector('.back').hidden=open;c.querySelector('.hint').textContent=open?'Select to check':'Select to close'}));
+  document.querySelectorAll('.claim').forEach(c=>c.addEventListener('click',()=>c.setAttribute('aria-expanded',String(c.getAttribute('aria-expanded')!=='true'))));
 
   /* ---------- three ways of seeing ---------- */
   const EYES=[
