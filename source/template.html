@@ -75,6 +75,21 @@ h3{font-size:calc(var(--b)*1.17);font-weight:700;letter-spacing:-.01em;line-heig
 .hallcopy .quote{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*2.1);line-height:1.12;letter-spacing:-.015em;color:var(--white);max-width:22ch;text-wrap:balance}
 .hallcopy *{transition:color .6s ease}
 body.hl .hallcopy *:not(.r):not(.r *){color:var(--drop)}
+.hallcopy .ln{display:block}  /* one span per intended line; wraps on phones instead of breaking */
+/* S1 title: tracked kicker over a large title, byline on a red rule, three-line stanza; lockup as the signature */
+[data-slide-id="s01-title"] .hallcopy{max-width:none;gap:0;justify-items:start}
+[data-slide-id="s01-title"] h1{display:flex;flex-direction:column;margin:clamp(12px,2vh,22px) 0 clamp(16px,2.6vh,30px)}
+[data-slide-id="s01-title"] h1 .kick{font-size:min(calc(var(--b)*1.45),calc((100vw - 2*var(--gutter))/12.2));font-weight:600;letter-spacing:.22em;line-height:1.1;color:var(--text)}
+[data-slide-id="s01-title"] h1 .main{font-size:min(calc(var(--b)*4.4),calc((100vw - 2*var(--gutter) - 96px)/10.4));font-weight:800;letter-spacing:.02em;line-height:.98;margin-top:.06em}
+[data-slide-id="s01-title"] .byline{display:inline-flex;align-items:center;gap:14px}
+[data-slide-id="s01-title"] .byline::before{content:"";width:clamp(32px,3.4vw,64px);height:3px;background:var(--red)}
+[data-slide-id="s01-title"] .stanza{margin-top:clamp(14px,2.4vh,28px);max-width:none;font-size:calc(var(--b)*1.2);line-height:1.5}
+.sig{position:absolute;right:var(--gutter);bottom:clamp(16px,3.4vh,40px);z-index:2;width:clamp(140px,11vw,220px);height:auto}
+@media (max-width:640px){
+  [data-slide-id="s01-title"] h1 .main{font-size:calc((100vw - 2*var(--gutter))/10.4)}
+  [data-slide-id="s01-title"] .hallcopy{bottom:96px}
+  .sig{width:132px;bottom:22px}
+}
 
 /* Plate mode: working slides over a darkened image */
 .inner{position:relative;z-index:1;max-width:1840px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.2vh,26px);padding-block:clamp(14px,2.6vh,34px);padding-inline:var(--pgut)}
@@ -433,11 +448,11 @@ blockquote{margin:0}
  data-notes="<span class='must'>Must land:</span> why we are here, in one breath. [PLACEHOLDER: PF opening, greeting, and land and water acknowledgment in his voice; name the Nations whose homelands host this session.] Then: four questions, one river, and no test.">
   <div class="hallcopy">
     <span class="label red">Columbia River Climate Change Teachers Program</span>
-    <h1 class="display">Understanding a<br>Climate of Change</h1>
+    <h1 class="display"><span class="kick">Understanding a</span> <span class="main">Climate of Change</span></h1>
     <span class="byline">Patrick Freeland and Cayla Jones · ATNI Climate</span>
-    <p>Four questions, one river. Shared with respectful communication so that <span class="r">both an Elder and a child</span> can understand; the surest sign you understand something is being able to pass it on.</p>
+    <p class="stanza"><span class="ln">Four questions, one river. Shared with respectful communication</span> <span class="ln">so that <span class="r">both an Elder and a child</span> can understand;</span> <span class="ln">the surest sign you understand something is being able to pass it on.</span></p>
   </div>
-  <img class="seal" src="img/atni-seal.png" alt="Affiliated Tribes of Northwest Indians seal">
+  <img class="sig" src="img/atni-climate-lockup-on-dark.png" alt="ATNI Climate">
 </section>
 
 <!-- S2 FOUR QUESTIONS (Plate) -->
