@@ -521,8 +521,24 @@ blockquote{margin:0}
 .kin svg .f,.kin svg .f *{fill:currentColor;stroke:none}
 .kin .nm{font-family:var(--f-display);font-weight:700;font-size:calc(var(--b)*.95);color:var(--white);line-height:1.15}
 .kin .sb{font-size:12.5px;color:var(--muted);line-height:1.3}
-.kinmore{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-content:start}
+.kinmore{display:grid;grid-template-columns:minmax(0,1.1fr) repeat(3,minmax(0,1fr));gap:8px;grid-template-rows:minmax(0,1fr)}
+@media (max-width:1100px){.kinmore{grid-template-columns:repeat(3,minmax(0,1fr))}.kinmore .kfig{grid-column:1/-1}}
 @media (max-width:860px){.kinmore{grid-template-columns:1fr}}
+/* gutters: the content fills the page; the photo sits beside the three cards */
+[data-slide-id="s11-relatives"]{--pgut:clamp(8px,1vw,18px)}
+[data-slide-id="s11-relatives"] .inner{max-width:none;gap:clamp(8px,1.4vh,16px);padding-block:clamp(8px,1.6vh,18px)}
+[data-slide-id="s11-relatives"] .kinmore .card{padding:clamp(10px,1.4vh,20px) clamp(12px,1.2vw,20px)}
+[data-slide-id="s11-relatives"] .kinmore .card p{font-size:calc(var(--b)*1.08);line-height:1.45}
+/* the row never shrinks below the card text: with notes open the slide scrolls instead of the text running over the quote */
+[data-slide-id="s11-relatives"] .kinmore{min-height:auto}
+@media (min-width:1101px){.kfig:not(.wide) img{contain:size}}  /* the photo fills the row the text sets; it never makes the row taller */
+.kfig{margin:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:6px;background:var(--plate);padding:8px 8px 10px;min-height:0}
+.kfig img{display:block;width:100%;height:100%;min-height:0;object-fit:cover;background:#06121E}
+.kfig.wide{align-self:start;grid-template-rows:auto auto}
+.kfig.wide img{height:auto}
+.kfig figcaption{display:grid;gap:3px;align-content:start;font-size:13px;line-height:1.4;color:var(--muted)}
+.kfig figcaption b{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*.92);color:var(--white)}
+@media (max-width:1100px){.kfig img{height:auto;max-height:240px}}
 .kinmore .card h3{font-size:calc(var(--b)*.8);font-family:var(--f-display);text-transform:uppercase;letter-spacing:.12em;color:var(--red-dk)}
 .voice{font-family:var(--f-display);font-weight:600;font-size:calc(var(--b)*1.02);line-height:1.35;color:var(--white);border-left:3px solid var(--magenta);padding:6px 0 6px 14px;max-width:90ch}
 .voice cite{display:block;font-family:var(--f-body);font-style:normal;font-weight:400;font-size:13px;color:var(--muted);margin-top:4px}
@@ -1487,9 +1503,60 @@ const MAP=__MAP__;
     {k:'sucker',n:'Suckers',s:'Overlooked relatives',j:'Bottom feeders found across the basin: largescale, bridgelip, and mountain suckers, gleaning the river bottom.',c:'Like other native fish, they face warm water, low flows, and fish brought in from elsewhere. Little is known, because few have looked.',p:'A traditional food for many families; Tribal fisheries leaders name suckers alongside salmon, lamprey, and sturgeon in restoration.'},
     {k:'mussel',n:'Freshwater Mussels',s:'Western pearlshell and others',j:'They can live more than 60 years, filtering the water. Their young ride on the gills of salmon and trout to travel upstream.',c:'When the fish disappear, mussels cannot raise a next generation; warm water, sediment, and drying streams can wipe out whole beds.',p:'A traditional food. The Confederated Tribes of the Umatilla Indian Reservation run a freshwater mussel project to study and restore them.'}
   ];
+  const PIC={
+   "salmon": {
+    "src": "img/fish/salmon.jpg",
+    "alt": "A male sockeye salmon in spawning color, bright red body and green head with a hooked jaw, swimming over river stones.",
+    "sp": "Sockeye salmon (Oncorhynchus nerka)",
+    "cr": "Photo: Milton Love, UC Santa Barbara, via USGS. Public domain."
+   },
+   "steelhead": {
+    "src": "img/fish/steelhead.jpg",
+    "alt": "A steelhead with a pink stripe along its silver, black-spotted side, swimming just above a gravel river bed.",
+    "sp": "Steelhead (Oncorhynchus mykiss)",
+    "cr": "Photo: Ryan Hagerty, USFWS. Public domain."
+   },
+   "lamprey": {
+    "src": "img/fish/lamprey.jpg",
+    "alt": "A Pacific lamprey in a clear tube, its round sucker mouth ringed with small teeth pressed to the wall, and a row of gill openings along its dark side.",
+    "sp": "Pacific lamprey (Entosphenus tridentatus)",
+    "cr": "Photo: John Heil, USFWS. Public domain."
+   },
+   "sturgeon": {
+    "src": "img/fish/sturgeon.jpg",
+    "alt": "An old pencil-style drawing of a white sturgeon from the side, showing the rows of bony plates, the long snout, and the barbels under it.",
+    "sp": "White sturgeon (Acipenser transmontanus)",
+    "cr": "Illustration: Josephe Huet, 1868, Nouvelles Archives du Muséum d'histoire naturelle. Public domain."
+   },
+   "eulachon": {
+    "src": "img/fish/eulachon.jpg",
+    "alt": "Two slender, silvery eulachon lying side by side, one facing left and one facing right.",
+    "sp": "Eulachon (Thaleichthys pacificus)",
+    "cr": "Photo: James Crippen. Public domain."
+   },
+   "bulltrout": {
+    "src": "img/fish/bulltrout.jpg",
+    "alt": "A bull trout, olive-brown with pale spots and orange fins, swimming in clear water among red spawning kokanee.",
+    "sp": "Bull trout (Salvelinus confluentus)",
+    "cr": "Photo: Roger Tabor, USFWS. Public domain."
+   },
+   "sucker": {
+    "src": "img/fish/sucker.jpg",
+    "alt": "Two largescale suckers resting on a stony river bottom, mottled brown to blend with the cobbles.",
+    "sp": "Largescale sucker (Catostomus macrocheilus)",
+    "cr": "Photo: Glacier National Park, National Park Service. Public domain."
+   },
+   "mussel": {
+    "src": "img/fish/mussel.jpg",
+    "alt": "A dark, smooth western pearlshell mussel held in a hand, with a small numbered tag glued to its shell.",
+    "sp": "Western pearlshell mussel (Margaritifera falcata)",
+    "cr": "Photo: Akimi King, USFWS. Public domain."
+   }
+  };
   KIN.forEach((d,i)=>{const b=document.createElement('button');b.setAttribute('aria-expanded',String(i===0));b.innerHTML='<svg viewBox="0 0 120 48" aria-hidden="true">'+ICON[d.k]+'</svg><span class="nm">'+d.n+'</span><span class="sb">'+d.s+'</span>';b.onclick=()=>kin(i);$('kin').appendChild(b)});
-  function kin(i){const d=KIN[i];[...$('kin').children].forEach((b,k)=>b.setAttribute('aria-expanded',String(k===i)));
-    $('kinMore').innerHTML='<div class="card"><h3>Their Journey</h3><p>'+d.j+'</p></div><div class="card"><h3>What Is Changing</h3><p>'+d.c+'</p></div><div class="card"><h3>With the People</h3><p>'+d.p+'</p></div>'}
+  function kin(i){const d=KIN[i],q=PIC[d.k];[...$('kin').children].forEach((b,k)=>b.setAttribute('aria-expanded',String(k===i)));
+    /* the photo is built on selection; lazy so a hidden slide fetches nothing */
+    $('kinMore').innerHTML='<figure class="kfig'+(d.k==='sturgeon'?' wide':'')+'"><img src="'+q.src+'" alt="'+q.alt+'" loading="lazy" decoding="async"><figcaption><b>'+q.sp.replace(/\((.+)\)/,'(<i>$1</i>)')+'</b><span>'+q.cr+'</span></figcaption></figure><div class="card"><h3>Their Journey</h3><p>'+d.j+'</p></div><div class="card"><h3>What Is Changing</h3><p>'+d.c+'</p></div><div class="card"><h3>With the People</h3><p>'+d.p+'</p></div>'}
   kin(0);
 
   /* ---------- A / M / R sort ---------- */
