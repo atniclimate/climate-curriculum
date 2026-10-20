@@ -14,6 +14,36 @@ top. Keep each entry short.
 
 ---
 
+### 10/20/2026 (afternoon), branch: dev/print-design-2026-10 (from main 0d037c3)
+- Next action: start the print-design session with the paste block in
+  planning/LAUNCH-PROMPT.md, "Next session: print design and the event
+  handout" (Opus 5.5, high). Outcomes: one-page full-color event handout;
+  photographic covers and openers for both PDFs; S22 download links.
+  Patrick's approval is needed by the evening of 10/21 to leave print time.
+- Released: Patrick merged dev/workshop-polish-2026-10 into main (0d037c3);
+  GitHub Pages built it at 17:36 UTC 10/20/2026 (success); the live page and
+  both PDFs answered 200. dev/workshop-polish-2026-10 pushed (4ab5e83);
+  dev/revisions-2026-10 fast-forwarded on origin to 66dbaa1.
+- Prepared for next session (this branch): .claude/agents/ (print-designer,
+  vector-artist, visual-critic, print-preflight, copy-steward,
+  slide-engineer); .claude/workflows/ (design-directions, print-visual-qa,
+  both parse-checked, not yet run); tools/contact_sheet.py (both modes
+  smoke-tested); LAUNCH-PROMPT.md next-session section and a relaxed Resume
+  block (STOP means a decision only Patrick can make; push or merge only on
+  his word in the session).
+- Local only (git-ignored private/): private/handout/BRIEF.md (handout
+  content, draft copy, citations, acknowledgement candidates from the
+  workshop planning calls, image notes, five questions for Patrick);
+  private/print-assets/ (six photos with EXIF and GPS removed, made by
+  prep_images.py; the OneDrive originals carry GPS and must never be
+  published); private/craft/ (VectorCraft write root).
+- Environment: VectorCraft MCP registered at local scope, confined, handshake
+  verified (32 tools); DesignCraft deliberately not registered until the
+  0.10.0 MSI adds confinement (command in LAUNCH-PROMPT.md). No QR library is
+  installed (segno recommended, waits for Patrick).
+- Checks: no page or PDF source changed after the merge; build and PDF
+  evidence from the morning entry still holds.
+
 ### 10/20/2026, branch: dev/workshop-polish-2026-10 (from dev/revisions-2026-10; no TCU commits)
 - Done: D21, D22 printing note, D25 rulings recorded (e4f178d). Page polish
   (21dc2e0): probe now clean apart from by-design .sort/.webwrap columns, S4
