@@ -162,7 +162,7 @@ body.hl [data-slide-id="s01-title"] .byline::before{background:var(--drop)}
 @media (max-width:860px){.carry{grid-template-columns:1fr}}
 .inq li::before{counter-increment:q;content:"(" counter(q) ")";position:absolute;left:18px;top:12px;font-family:var(--f-display);font-weight:700;color:var(--red-dk)}
 /* S6: light sky plate, a real title, larger text that fills the page */
-[data-slide-id="s06-part-one-carry"]{background:#E9EEF4}  /* light ground under the photo when a phone scrolls past it */
+[data-slide-id="s06-part-one-carry"]{background:var(--overlay)}  /* light ground under the photo when a phone scrolls past it */
 [data-slide-id="s06-part-one-carry"] .inner{max-width:none;padding-inline:clamp(12px,2vw,40px);gap:clamp(16px,3vh,36px)}
 [data-slide-id="s06-part-one-carry"] h2{font-size:calc(var(--b)*2.9);line-height:1.05}
 [data-slide-id="s06-part-one-carry"] .carry{gap:clamp(10px,1vw,16px)}
@@ -174,7 +174,7 @@ body.hl [data-slide-id="s01-title"] .byline::before{background:var(--drop)}
 [data-slide-id="s06-part-one-carry"] .inq li{display:flex;align-items:center;font-size:calc(var(--b)*1.28);line-height:1.4;padding:clamp(16px,2vw,30px) clamp(18px,2vw,34px) clamp(16px,2vw,30px) calc(var(--b)*3.4)}
 [data-slide-id="s06-part-one-carry"] .inq li::before{left:clamp(16px,1.4vw,28px);top:50%;transform:translateY(-50%)}
 [data-slide-id="s06-part-one-carry"] .credit{left:clamp(12px,2vw,40px);color:var(--muted);text-shadow:none}
-@media (max-width:860px){[data-slide-id="s06-part-one-carry"] .credit{position:relative;display:block;left:auto;bottom:auto;padding:0 12px 10px}}  /* in flow when the slide scrolls */
+@media (max-width:860px){[data-slide-id="s06-part-one-carry"] .credit{position:static}}  /* in flow (inside .inner) so scrolled cards never run under it */
 
 /* cloud machine */
 .cm{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);grid-template-rows:minmax(0,1fr);gap:clamp(12px,1.6vw,24px);align-items:stretch}
@@ -659,8 +659,8 @@ blockquote{margin:0}
       <li>What changed about how you think about clouds, the atmosphere, or the water cycle?</li>
       <li>What is one question about the weather you want to find the answer to?</li>
     </ol></div>
+    <span class="credit">Photo: Patrick A. Freeland</span>
   </div>
-  <span class="credit">Photo: Patrick A. Freeland</span>
 </section>
 
 <!-- S7 PART TWO (Hall) -->
