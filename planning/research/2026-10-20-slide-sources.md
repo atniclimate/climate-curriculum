@@ -6,7 +6,7 @@ Image licenses live in planning/MEDIA-CREDITS.md; this file logs the pages behin
 Entries are grouped by slide or topic and deduplicated by URL. Entries marked "seen in a search result only" or "seen only in a search summary" were not opened in full; reopen them before citing.
 Working notes for the photo research stay local and git-ignored (private/craft/slides/clouds, dams, and fish); unused alternates are named there, not here.
 
-## S4 clouds (ledger rows pending: VERIFY, VOICE-PASS, and MEDIA-CREDITS rows are added after the S4 build lands)
+## S4 clouds
 
 Heights are the WMO temperate-region levels: low is surface to 2 km, middle is 2 to 7 km, high is 5 to 13 km. Related claims are V1 and V2 in planning/VERIFY.md.
 
@@ -26,10 +26,12 @@ Heights are the WMO temperate-region levels: low is surface to 2 km, middle is 2
 | Atmospheric river, Pacific Northwest (11/10/2021) | Oregon Public Broadcasting | https://opb.org/article/2021/11/10/atmospheric-river-pacific-northwest | NWS expected 6 to 12 inches of rain over the south Washington Cascades, north Oregon Cascades, north Coast Range, and Willapa Hills. Supports the winter nimbostratus example. |
 | Template:PD-USGov-NOAA | Wikimedia Commons | https://commons.wikimedia.org/wiki/Template:PD-USGov-NOAA | License wording for federal public-domain NOAA photos. NOAA's own copyright pages returned HTTP 405 to automated fetches, so NOAA status rests on the Commons file pages. |
 | Template:PD-USGov-USDA | Wikimedia Commons | https://commons.wikimedia.org/wiki/Template:PD-USGov-USDA | License wording for federal public-domain USDA Forest Service photos. |
+| State High Points: Mount Rainier (NPS) | National Park Service | https://www.nps.gov/articles/000/state-high-points.htm | Mount Rainier summit 14,410 ft (4,392 m) on the S4 lenticular card. |
+| Mount Rainier National Park | National Park Service | https://www.nps.gov/mora | Mount Rainier summit 14,410 ft (4,392 m). |
 
 ### S4 cloud photographs (Commons file pages)
 
-Licenses were read on each file page; the rows move to MEDIA-CREDITS.md when the S4 build lands.
+Licenses were read on each file page; the rows are in MEDIA-CREDITS.md.
 
 | Title | Publisher | URL | Supports |
 |-------|-----------|-----|----------|
