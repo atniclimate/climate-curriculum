@@ -10,18 +10,22 @@ export const meta = {
   ],
 }
 
-// args: { pdf: 'docs/downloads/<file>.pdf', pages?: '1-8,26', group?: 6, outDir?: 'private/craft/qa' }
+// args: { pdf: 'docs/downloads/<file>.pdf', pages?: '1-8,26', group?: 6, outDir?: 'private/craft/qa/<pdf stem>' }
+// Cost: 3 Opus critics per group of pages, plus render, preflight, and synthesis. A full 33-page pass is about 21 agents;
+// pass `pages` for the pages that changed.
 const pdf = args && args.pdf
 if (!pdf) throw new Error('pass args.pdf')
-const group = (args && args.group) || 6
-const outDir = (args && args.outDir) || 'private/craft/qa'
+const group = args.group || 6
+const stem = pdf.split(/[\\/]/).pop().replace(/\.pdf$/i, '')
+const outDir = args.outDir || `private/craft/qa/${stem}`  // one folder per PDF so two runs never overwrite each other's p01.png
 
 phase('Render')
 const rendered = await agent(
   `Run: python tools/contact_sheet.py ${pdf} ${outDir} --each --dpi 110` + (args.pages ? ` --pages ${args.pages}` : '') +
-  `. Return the list of PNG paths it printed, in page order.`,
-  { label: 'render', phase: 'Render', effort: 'low', schema: { type: 'object', properties: { pngs: { type: 'array', items: { type: 'string' } } }, required: ['pngs'] } })
+  `. Return the list of PNG paths it printed, in page order. If it fails, return an empty list.`,
+  { label: 'render', phase: 'Render', effort: 'low', model: 'sonnet', schema: { type: 'object', properties: { pngs: { type: 'array', items: { type: 'string' } } }, required: ['pngs'] } })
 const pngs = (rendered && rendered.pngs) || []
+if (!pngs.length) throw new Error(`no pages rendered from ${pdf}`)
 const groups = []
 for (let i = 0; i < pngs.length; i += group) groups.push(pngs.slice(i, i + group))
 log(`${pngs.length} pages in ${groups.length} groups`)
@@ -36,7 +40,7 @@ const FINDINGS = {
 
 const [critiques, preflight] = await Promise.all([
   pipeline(groups, g => parallel(['type', 'image', 'content'].map(lens => () =>
-    agent(`Critique these rendered pages of ${pdf} through the ${lens} lens: ${g.join(', ')}`,
+    agent(`Open each of these rendered pages of ${pdf} with the Read tool and critique them through the ${lens} lens: ${g.join(', ')}`,
       { label: `${lens}:${g[0].split(/[\\/]/).pop()}`, phase: 'Critique', agentType: 'visual-critic', schema: FINDINGS })))),
   agent(`Preflight ${pdf}.`, { label: 'preflight', phase: 'Preflight', agentType: 'print-preflight' }),
 ])

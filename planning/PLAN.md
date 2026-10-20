@@ -42,8 +42,8 @@ Branch dev/workshop-polish-2026-10. Done 10/20/2026:
 - [x] Merged to main by Patrick (0d037c3); Pages built 10/20/2026
 - [ ] One-page full-color event handout: abstract, cited papers, QR code, acknowledgements (Yakama Nation first); brief in private/handout/BRIEF.md (local); Patrick approves names and copy by 10/21
 - [ ] Photographic covers and openers for both PDFs (stripped copies in private/print-assets/; MEDIA-CREDITS rows when published)
-- [ ] S22: link the PDFs and the handout (notes placeholder asks where teachers download files)
-- [ ] Patrick: printer (office or print shop with bleed), QR library (segno), credit lines, DesignCraft 0.10.0 upgrade
+- [ ] S22: link the PDFs and the handout (notes placeholder asks where teachers download files); live only after a merge to main
+- [ ] Patrick: the eight questions in BRIEF.md section 2 (printer and copies, QR route, names, credit line, syllabi, merge window, author line, event name); DesignCraft 0.10.0 upgrade optional
 - [ ] Route identity: which slides and handouts, how many minutes, what equipment (D21, D24)
 - [ ] Safety and integrity on that route: known corrections (D25), Goldendale role play out of anything distributed (D22), S23 session-only reflections (D23), uncredited photos replaced or hidden
 - [ ] Teacher outcomes (three, observable) and a handoff card; one hand twin

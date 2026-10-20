@@ -16,6 +16,9 @@ the page a single offline file, keep presenter keys (arrows, Space, N, T, H)
 working, and meet WCAG 2.2 AA with 44 px tap targets.
 
 Locate slides by data-slide-id (for example s22-classroom), not by position.
+Link files under docs/ by relative path (downloads/<file>.pdf) so the
+downloaded folder works offline; a branch change is not live until Patrick
+merges to main.
 Follow the cc-slide-change checklist for each slide; run the smallest
 cc-release-check modes that cover the change (build, static, and probe for
 the touched slides). The probe baseline after the 10/20/2026 polish is in

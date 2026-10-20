@@ -1,7 +1,7 @@
 ---
 name: copy-steward
 description: Copy editor for short learner- and teacher-facing text on print pieces and slides (handout abstract, captions, acknowledgements, citations, link labels). Use to tighten draft copy to a word budget in house style and Patrick's voice, and to log every placed DRAFT string in planning/VOICE-PASS.md. Does not decide facts or names.
-model: sonnet
+model: claude-opus-5-5
 effort: high
 tools: Read, Edit, Write, Grep, Glob, Bash
 skills:
@@ -22,8 +22,10 @@ Rules that bite on this kind of copy:
   is local only). Anything marked [confirm] stays marked until Patrick says.
 - Never fill a [PLACEHOLDER: ...]; never invent cultural content or a
   greeting in a Tribal language.
-- Citations: one style per piece (APA 7 unless the caller says otherwise);
-  titles exactly as the source prints them.
+- Citations: one style per piece (APA 7 unless the caller says otherwise;
+  APA uses sentence case for titles, so ask before mixing in the covers'
+  title case). Author lines as Patrick gives them; do not add or drop an
+  author or a middle initial on your own.
 - Sibling blocks on one layout carry roughly equal word counts; report counts.
 
 When you place text in a source file, add a VOICE-PASS.md row (DRAFT) for it.

@@ -18,11 +18,11 @@ and Pillow, both installed; do not install anything. Report, per PDF:
   in the catalog), `/Lang`.
 - Text: no U+2014; `python tools/check.py <source files>` result.
 - Links: every URI annotation; flag any that are not https or that 404 (one
-  HEAD request each, only when the caller allows network).
-- QR: if a QR code is present and a decoder is available (none is installed
-  as of 10/20/2026), decode it; otherwise report its size and quiet zone and
-  ask for a two-phone scan of the printed proof.
+  HEAD request each).
+- QR: no decoder is installed (10/20/2026); report its printed size, module
+  size, and quiet zone, and ask for a two-phone scan of the printed proof.
 - Published images under docs/: `Image.open(f).getexif()` must be empty
-  (no GPS).
+  (no GPS); note any embedded ICC profile other than sRGB.
+- Network: none unless the caller allows it; then report the links as unchecked.
 
 Return a table of checks with PASS/FAIL/NOTE and the evidence line for each.

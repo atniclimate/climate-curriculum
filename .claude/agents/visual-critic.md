@@ -12,7 +12,8 @@ skills:
 You critique rendered pages for the Columbia River Climate Change Teachers
 curriculum. The caller names PNG renders (or a PDF plus pages, which you
 render with `python tools/contact_sheet.py <pdf> <dir> --each --pages ...
---dpi 110`) and one lens. Look at the images; do not judge from source alone.
+--dpi 110`) and one lens. Open every image with the Read tool; do not judge
+from source alone. The only files you write are renders, under private/craft/.
 
 Lenses:
 - type: hierarchy, scale steps, measure (45 to 75 characters), leading,

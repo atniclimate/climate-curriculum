@@ -5,7 +5,7 @@ export const meta = {
   phases: [
     { title: 'Draft', detail: 'one print-designer per direction, each in its own folder' },
     { title: 'Critique', detail: 'two visual-critic lenses per direction' },
-    { title: 'Recommend', detail: 'compare all directions; pick and graft' },
+    { title: 'Recommend', detail: 'pick and graft; compare.png side by side for Patrick' },
   ],
 }
 
@@ -46,17 +46,22 @@ const CRIT = {
   required: ['score', 'strengths', 'fixes'],
 }
 
+// The angles are starting points, not rules: the designer may push its direction wherever it gets stronger.
 const results = await pipeline(
   DIRECTIONS,
   d => agent(
-    `Design the ${piece} for the Columbia River Climate Change Teachers curriculum in this direction: ${d.angle}\n` +
-    `Read ${brief} for content, constraints, and images, and the "Next session" section of planning/LAUNCH-PROMPT.md for the code map. ` +
-    `Work only inside ${outDir}/${d.slug}/ (create it): a self-contained source there, rendered to PDF with Chrome headless as tools/print_pdf.py does (own --user-data-dir), ` +
-    `then a PNG via python tools/contact_sheet.py. Do not edit tracked repo files. Use placeholder text exactly as the brief marks it; do not invent names or facts. ` +
+    `Design the ${piece} for the Columbia River Climate Change Teachers curriculum. Your direction: ${d.angle}\n` +
+    `Read ${brief} for content, images, and print specs, and the "Next session" section of planning/LAUNCH-PROMPT.md for the code map. ` +
+    `Other designers are working in parallel, so work only inside ${outDir}/${d.slug}/ (create it) and touch no tracked file: ` +
+    `for the handout, a self-contained HTML source there; for PDF covers or openers, copy tools/print_pdf.py into your folder and point ROOT at the repo and OUT at your folder ` +
+    `(the original writes the published docs/downloads PDFs). Render with Chrome headless using a --user-data-dir inside your folder, ` +
+    `then python tools/contact_sheet.py <pdf> <png> (add --dpi 110 for a one-page piece). ` +
+    `QR: use private/craft/qr/qr.svg if it exists, else a light tile at final size marked QR. ` +
+    `Names and wording from the brief may appear in your private draft; keep every [confirm] and DRAFT mark visible; invent no names, facts, or cultural content. ` +
     `Make it good enough that Patrick could choose it as is.`,
     { label: `draft:${d.slug}`, phase: 'Draft', agentType: 'print-designer', schema: DESIGN }),
   (draft, d) => draft && parallel(['type', 'image'].map(lens => () =>
-    agent(`Critique ${draft.png} (source ${draft.source || draft.pdf}) through the ${lens} lens for the ${piece}. Direction intent: ${d.angle}`,
+    agent(`Open ${draft.png} with the Read tool and critique it through the ${lens} lens for the ${piece} (source ${draft.source || draft.pdf}). Direction intent: ${d.angle}`,
       { label: `critique:${d.slug}:${lens}`, phase: 'Critique', agentType: 'visual-critic', schema: CRIT })))
     .then(cs => ({ draft, critiques: cs.filter(Boolean) })),
 )
@@ -67,11 +72,20 @@ const summary = done.map(r => ({
   slug: r.draft.slug, png: r.draft.png, pdf: r.draft.pdf, rationale: r.draft.rationale,
   scores: r.critiques.map(c => c.score), fixes: r.critiques.flatMap(c => c.fixes),
 }))
+if (!done.length) throw new Error('no direction rendered; read the Draft agents\' output')
 phase('Recommend')
-const rec = await agent(
-  `You are choosing between rendered design directions for the ${piece}. Look at each PNG yourself before deciding. ` +
-  `Data: ${JSON.stringify(summary)}\n` +
-  `Return: the recommended direction and why in three sentences; the best idea to graft from each other direction; ` +
-  `the ranked fix list for the winner (merge duplicates); and the questions only Patrick can answer.`,
-  { label: 'recommend', phase: 'Recommend', agentType: 'visual-critic' })
-return { directions: summary, recommendation: rec }
+const letters = done.map((r, i) => `${String.fromCharCode(65 + i)} = ${r.draft.slug}`).join(', ')
+const [rec, compare] = await parallel([
+  () => agent(
+    `You are choosing between rendered design directions for the ${piece}. Open each PNG with the Read tool before deciding. ` +
+    `Data: ${JSON.stringify(summary)}\n` +
+    `Return: the recommended direction and why in three sentences; the best idea to graft from each other direction; ` +
+    `the ranked fix list for the winner (merge duplicates); a content check of the winner (house style, Yakama Nation first in the acknowledgements, ` +
+    `[confirm] and DRAFT marks still visible, no invented names); and the questions only Patrick can answer.`,
+    { label: 'recommend', phase: 'Recommend', agentType: 'visual-critic' }),
+  () => agent(
+    `With Pillow, place these PNGs side by side at equal height on a white canvas, each labeled with its letter and slug in large type above it ` +
+    `(${letters}): ${done.map(r => r.draft.png).join(', ')}. Save ${outDir}/compare.png and return only its path.`,
+    { label: 'compare sheet', phase: 'Recommend', effort: 'low', model: 'sonnet' }),
+])
+return { directions: summary, compare, recommendation: rec }

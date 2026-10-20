@@ -112,176 +112,177 @@ or merge only when I ask in the session. End by updating PLAN.md and
 HANDOFF.md.
 ```
 
-## Next session: print design and the event handout (prepared 10/20/2026)
+## Next session: print design and the event handout (prepared 10/20/2026, reviewed the same day)
 
-Model: Opus 5.5 at high effort (the main loop does the design thinking;
-workers are pre-assigned below). Paste:
+Model: Opus 5.5 at high effort. The main loop is the art director; workers
+are pre-assigned below. Paste:
 
 ```
 /pickup continue. Branch dev/print-design-2026-10. This session is graphic
-design and page layout, with a little frontend: read the top HANDOFF.md entry
-and the "Next session" section of planning/LAUNCH-PROMPT.md, then
-private/handout/BRIEF.md (local only). Ask me the brief's section 2 questions
-in one message with your defaults, then start designing while I answer.
+design and page layout, with a little frontend: read the "Next session"
+section of planning/LAUNCH-PROMPT.md, then private/handout/BRIEF.md (local
+only). Ask me the brief's section 2 questions in one message with your
+defaults, then start designing while I answer.
 ```
 
-### Where things stand
+### The job
 
-- Live: main at 0d037c3 serves the polished workshop page and two print PDFs
-  (docs/downloads/). The event is Friday 10/23/2026 and Saturday 10/24 in
-  Toppenish; ATNI's 30-minute slot shows the page and the Dynamic Drought
-  Module (D21). Anything that must be printed needs Patrick's approval by
-  the evening of 10/21 to leave print time.
-- The interior design of the PDFs works (33 and 14 pages, tagged, bookmarked,
-  no spill pages). What they lack is imagery and a stronger visual voice;
-  that, and a one-page handout, are this session's work.
+The event is Friday 10/23 and Saturday 10/24/2026 in Toppenish; ATNI's
+30-minute slot shows the live page and the Dynamic Drought Module (D21).
+The two PDFs in docs/downloads/ (33 and 14 pages, tagged, bookmarked) are
+sound inside but have no photography and a quiet visual voice. Make, in
+this order:
 
-### Outcomes (you choose the path)
+1. A one-page, full-color event handout (content, print specs, images, and
+   open questions: private/handout/BRIEF.md).
+2. Photographic covers and openers for both PDFs (photos and per-photo
+   notes: BRIEF.md section 5).
+3. S22 (s22-classroom): link the PDFs, and the handout once approved; its
+   notes still carry the download placeholder. Use cc-slide-change.
 
-1. A one-page, full-color event handout: abstract of the online page, cited
-   papers, QR code to the live page, acknowledgements with the Yakama Nation
-   first. Content, draft copy, names to confirm, image notes, and the open
-   questions are in private/handout/BRIEF.md. The background is IMG_4251
-   (Columbia Gorge at dusk), already stripped of GPS EXIF in
-   private/print-assets/gorge-dusk-4251.jpg.
-2. Photographic covers and openers for both print guides, using the prepared
-   images in private/print-assets/ (suggested pairings in BRIEF.md section 5).
-   A photo goes public only as a stripped copy, with a MEDIA-CREDITS row and
-   Patrick's confirmed credit line.
-3. Small frontend: link the two PDFs (and the handout once approved) from S22
-   (s22-classroom), whose notes still carry the download placeholder; any
-   further interface polish the design pass suggests. Use cc-slide-change
-   for slide edits.
-4. DesignCraft and VectorCraft available to the session if they can be
-   (see "Tools" below); they are for element revisions (SVG map, marks,
-   icons, layout checks), not a requirement for shipping.
+You are the designer. Work inside the ATNI Climate system (League Spartan,
+Lexend Deca, Cascadia Code; ATNI Red #E13D33 on near-black #010B13; water
+blues #5E97C9 and #9CC7F0) and make strong choices: scale, crop, duotone or
+gradient-mapped photos, scrims, rhythm, the basin map as a recurring mark.
+Anything outside the system (a gold sampled from the gorge photo, say) goes
+to Patrick as a rendered option beside a version without it.
 
-Design latitude: you are the designer. Work inside the ATNI Climate system
-(League Spartan, Lexend Deca, Cascadia Code; ATNI Red #E13D33 on near-black
-#010B13; water blues #5E97C9 and #9CC7F0) and make strong choices within it:
-scale, crop, duotone or gradient-mapped photos, scrims, rhythm, the basin map
-as a recurring mark. CLAUDE.md asks before new fonts or palettes, so present
-anything beyond the system (for example a gold sampled from IMG_4251) as
-rendered side-by-side options, not as an abstract question. Prefer showing
-Patrick two or three rendered directions over describing one.
+### Timing, choosing, done
+
+- Patrick chooses from pictures: send `compare.png` from the
+  design-directions workflow (directions labeled A, B, C) with your pick
+  and grafts; he answers with a letter and notes. Aim to show handout
+  directions within the first two hours.
+- Patrick approves names, wording, and the final proof by the evening of
+  10/21; printing is 10/22.
+- Handout done: source tracked in the repo with only approved names; a
+  printer's file in the form his BRIEF answer asks for; the PDF in
+  docs/downloads/ (after approval); a printed proof scanned by two phones
+  at arm's length; MEDIA-CREDITS rows for every published photo; VOICE-PASS
+  rows for DRAFT strings; VERIFY rows for claims in the abstract;
+  tools/check.py clean on new prose.
+- Covers done: `python tools/print_pdf.py` passes its asserts with no new
+  sparse pages; print-visual-qa shows no blockers on the changed pages.
+- S22 done: build --check or build plus diff, static mode, probe for s22.
+  Branch work goes live only when Patrick merges to main (question 6 in
+  the brief).
 
 ### Code map (tools/print_pdf.py, 401 lines)
 
 - `DOCS` (line 23): one entry per printed document (`kind`, `out`, `short`,
-  `cover_title`). A handout can be a third `kind`, or its own small source.
-- `blocks()` (62) and `inline()` (38): the Markdown subset these documents use
-  (headings, pipe tables, flat lists, blockquotes, code-span placeholders).
+  `cover_title`). `OUT` (line 18) is fixed to docs/downloads/, which is the
+  published copy: drafts render from a copy with OUT under private/craft/,
+  or add an `--out` flag first (small, worth it before parallel cover work).
+- `blocks()` (62) and `inline()` (38): the Markdown subset these documents use.
 - `assemble()` (128): cover, contents, openers (`.opener`, units and parts),
   lesson sections (`section.lsn`, `.draft` for Lesson 4.3, `.tight` refit),
-  the Editor's Note exclusion, and contents markers (`.mk`, `@@Tnn@@`).
-- `basin_svg()` (108) draws source/columbia_svg.json (keys W, H, land, lakes,
-  tribs, mainstem, snake, salmon, pts, labels): the cover map and any mark.
-- `css()` (227): the whole print design. `@page` margin boxes carry the
-  footer and page number (Chrome 155 supports them); `@page :first` is the
-  full-bleed cover.
-- `build()` (348): pass 1 finds heading pages, refits lessons that spill
-  (adds `.tight`), pass 2 fills contents numbers, then PyMuPDF writes
-  bookmarks and metadata. Asserts: every heading found, no em dash, page
-  count stable between passes. Prints "sparse pages" when a page holds
-  little text and is not an opener.
-- Render: Chrome headless with its own `--user-data-dir` (without it Chrome
-  attaches to Patrick's open browser and prints nothing).
-- Review: `python tools/contact_sheet.py <pdf> <out.png> --pages 1-8` or
-  `--each --pages 3,26 --dpi 110` for single pages to read closely.
-- Known limits: Chrome prints RGB only (no CMYK or PDF/X); content in a page
-  margin is clipped (the Lesson 4.3 rule had to move inside the box);
-  text extraction maps the footer middle dot to U+FFFD (it renders fine);
-  one glyph on the lessons page 34 falls back to Segoe UI.
+  the Editor's Note exclusion, contents markers (`.mk`, `@@Tnn@@`).
+- `basin_svg()` (108) draws source/columbia_svg.json (W, H, land, lakes,
+  tribs, mainstem, snake, salmon; the file also holds states, ctx, routeA,
+  routeB, pts, labels, rivers, fa, fb).
+- `css()` (227): the whole print design. `@page` margin boxes carry footer
+  and page number (Chrome 155); `@page :first` is the full-bleed cover.
+- `build()` (348): pass 1 finds heading pages and refits spilling lessons,
+  pass 2 fills contents numbers, then PyMuPDF writes bookmarks and metadata.
+  Asserts: every heading found, no em dash, stable page count. Prints
+  "sparse pages" for thin non-opener pages.
+- Render: Chrome headless with a temporary `--user-data-dir` (without one,
+  Chrome attaches to Patrick's open browser and prints nothing).
+- Review: `python tools/contact_sheet.py <pdf> <out.png> --pages 1-8`, or
+  `<pdf> <dir> --each --pages 3,26 --dpi 110` for single pages.
+- Limits: Chrome prints RGB only (no CMYK or PDF/X); content in a page
+  margin is clipped; text extraction shows the footer middle dot as U+FFFD
+  (it renders fine); one glyph on lessons page 34 falls back to Segoe UI.
 
-### Page code map (source/template.html; build with python source/build.py)
+Page (source/template.html; `python source/build.py`): `IMAGES` registry
+line 852 (15 photos, every `credit:''`); `go()` line 889; S22 `.links`
+line 815. Probe baseline for 10/20/2026 is in the HANDOFF.md entry of that
+date.
 
-- `IMAGES` registry (line 852): every photo the page uses; all `credit:''`.
-- `go()` (889): slide navigation; preloads the next slide's photo.
-- S22 `.links` (line 815): where download links would go.
-- Gates: `python source/build.py --check`, `python tools/check.py`, the probe
-  (cc-release-check probe mode; baseline 10/20/2026 is in HANDOFF.md).
+### QR code (no new package)
 
-### Known checks for this work
+DesignCraft's CLI makes a vector QR now (tested 10/20/2026: 33 x 33
+modules, one vector path). In the Bash tool:
 
-- Print: `python tools/print_pdf.py` (and its asserts), contact sheets read
-  by eye or by the print-visual-qa workflow, house style via tools/check.py
-  on any new prose, a printed proof with two phones scanning the QR code from
-  arm's length.
-- Page: build --check or build plus diff, probe for touched slides only.
+```
+mkdir -p private/craft/qr
+"C:/Program Files/DesignCraft/designcraft-cli.exe" run --cmd 'file.new={}' --cmd 'object.qrCode={"content":"https://atniclimate.github.io/climate-curriculum/","rect":[0,0,144,144]}' --export private/craft/qr/qr-page.pdf
+"C:/Program Files/VectorCraft/vectorcraft-cli.exe" convert private/craft/qr/qr-page.pdf private/craft/qr/qr-page.svg
+```
 
-### Tools: VectorCraft and DesignCraft (researched 10/20/2026)
+The SVG is a full Letter page with the code in the top-left 144 pt; set its
+width, height, and viewBox to 144 (`0 0 144 144`) and save as private/craft/qr/qr.svg (the
+design-directions workflow looks there). It carries a 2-module margin, so
+place it on a light tile that brings the quiet zone to 4 modules. No
+decoder is installed: scan the screen render with a phone before the
+printed proof. segno stays the fallback if Patrick prefers it (needs his
+yes and a checking-cves pass).
 
-Both are native Windows apps from github.com/storytold (Rust, MIT or
-Apache-2.0, pre-1.0, releases every few days), installed by MSI on 10/17/2026
-under C:\Program Files\. Each CLI carries its own stdio MCP server
-(`<tool>-cli.exe mcp`); no network, no keys.
+### VectorCraft and DesignCraft
 
-- VectorCraft 0.12.0 (latest 0.13.1): registered 10/20/2026 at local scope
-  (not in the repo): `vectorcraft-cli.exe mcp --automation-read-root
-  I:\climate-curriculum --automation-write-root
-  I:\climate-curriculum\private\craft`. Handshake verified (32 tools:
-  draw_path, draw_shape, add_text, set_paint, pathfinder, transform,
-  command_run, command_batch, open_file, export, render_preview, ...). The
-  tools appear as `mcp__vectorcraft__*` in a new session. Confined: it reads
-  the repo and writes only to private/craft (git-ignored; the folder must
-  exist). Exports SVG and PDF, including PDF/X-1a, X-3, X-4, CMYK, spot
-  colors, bleed and marks, so it can produce a print-shop file that Chrome
-  cannot. `render_preview` returns a PNG of the artboard.
-  CLI without MCP: `"C:\Program Files\VectorCraft\vectorcraft-cli.exe"
-  convert in.svg out.pdf`, `info FILE`, `commands`.
-- DesignCraft 0.8.0 (latest 0.10.0): NOT registered on purpose. 0.8.0 has no
-  folder-confinement flags, so its MCP server could read and write anything
-  the account can. Patrick: install the 0.10.0 MSI from
-  https://github.com/storytold/designcraft/releases (check SHA256SUMS.txt),
-  then in PowerShell 7:
+Native Windows apps (github.com/storytold; Rust; MIT or Apache-2.0; pre-1.0,
+fast releases), installed 10/17/2026 under C:\Program Files\.
+
+- VectorCraft 0.12.0: MCP registered at local scope, confirmed Connected on
+  10/20/2026 (`claude mcp get vectorcraft` in PowerShell 7). Reads the repo,
+  writes only to private/craft/. Tools appear as `mcp__vectorcraft__*`
+  (draw_path, draw_shape, add_text, pathfinder, command_run, export,
+  render_preview, ...). Exports SVG and PDF including PDF/X-1a, X-3, X-4,
+  CMYK, spot colors, bleed and marks: the route to a print-shop file that
+  Chrome cannot make. CLI: `vectorcraft-cli.exe convert IN OUT`, `info`,
+  `commands`.
+- DesignCraft 0.8.0: CLI usable for one-shot jobs (`run`, `script`,
+  `describe COMMAND`); MCP deliberately not registered, because 0.8.0 has
+  no folder confinement. To enable it, Patrick installs the 0.10.0 MSI
+  (check SHA256SUMS.txt), then in PowerShell 7:
   `claude mcp add -s local designcraft -- "C:\Program Files\DesignCraft\designcraft-cli.exe" mcp --automation-read-root "I:\climate-curriculum" --automation-write-root "I:\climate-curriculum\private\craft"`
-  and restart Claude Code. Tools: new_document (presets, margins, bleed),
-  place_image, set_story_text, render_page, export_png, execute
-  (file.exportPdf with PDF/X-4 and PDF/A-2b, IDML, EPUB). No SVG export
-  (use VectorCraft). Its PDF/X-4 is self-validated, not certified.
-- Use them where they beat hand-written SVG/CSS: the basin mark as a clean
-  vector, a print-shop PDF/X version of the handout with bleed, CMYK
-  conversion. The Chrome pipeline stays the source of record unless a
-  rendered comparison says otherwise.
+  and restarts Claude Code. Its PDF/X-4 is self-validated, not certified;
+  no SVG export.
+- The Chrome pipeline stays the source of record unless a rendered
+  comparison says otherwise.
 
-### Subagent roster (definitions in .claude/agents/, committed)
+### Subagent roster (.claude/agents/, committed)
 
-| Work | Agent | Model, effort | Skills, MCP |
+| Work | Agent | Model, effort | Skills, tools |
 |---|---|---|---|
-| Design direction, decisions with Patrick, integration | main session | Opus 5.5, high | frontend-design, design-critique as needed |
-| Layout of the handout, covers, openers | print-designer | claude-opus-5-5, high | frontend-design, design-critique; inherits mcp__vectorcraft__* (and designcraft once registered) |
-| Vector elements (basin mark, QR tile, rules, icons) | vector-artist | claude-opus-5-5, high | canvas-design; VectorCraft MCP |
-| Critique of renders (type, image, content lenses) | visual-critic | claude-opus-5-5, high; read-only | design-critique, accessibility-review |
+| Direction, decisions with Patrick, integration | main session | Opus 5.5, high | frontend-design, design-critique as needed |
+| Layout, covers, openers, photo treatment | print-designer | claude-opus-5-5, high | frontend-design, design-critique; all tools incl. VectorCraft MCP |
+| Vector elements, basin mark, QR tile | vector-artist | claude-opus-5-5, high | canvas-design; VectorCraft MCP |
+| Critique of renders (type, image, content lenses) | visual-critic | claude-opus-5-5, high; writes renders only | design-critique, accessibility-review |
 | Mechanical preflight (fonts, ppi, EXIF, links) | print-preflight | sonnet, medium; read-only | PyMuPDF, Pillow |
-| Copy, citations, acknowledgements wording | copy-steward | sonnet, high | pf-voice, ux-copy |
-| S22 download links, page polish, gates | slide-engineer | sonnet, high | cc-slide-change, cc-release-check, playwright-cli |
+| Copy, citations, acknowledgement wording | copy-steward | claude-opus-5-5, high | pf-voice, ux-copy |
+| S22 links, page polish, gates | slide-engineer | sonnet, high | cc-slide-change, cc-release-check, playwright-cli |
 | Citation and claim proof | claim-verifier (user level) | sonnet | read-only |
-| Pedagogy or cultural framing questions | curriculum-specialist (user level) | inherits | curriculum-design-check |
-| QR library check before install | security-vulnerability-checker (user level) | inherits | checking-cves |
-| Push, merge, Pages check (only when asked) | gh-specialist (user level) | inherits | gh-align |
+| Pedagogy or cultural framing | curriculum-specialist (user level) | inherits | curriculum-design-check |
+| Package check, only if one is installed | security-vulnerability-checker (user level) | opus | checking-cves |
+| Push, merge, Pages check, only when asked | gh-specialist (user level) | inherits | gh-align |
 
-### Saved workflows (.claude/workflows/)
+Plugin skills named in `skills:` (for example design:design-critique) are
+not documented to preload; agents can still call them with the Skill tool.
 
-- `design-directions`: args `{piece, brief, outDir, directions?}`. Three
-  print-designers draft photo-forward, typographic, and map-mark directions
-  in parallel in private/craft/directions/, two visual-critics score each,
-  and a final pass recommends one with grafts. About 10 agents. Use it at
-  the start of the handout and again for the cover and opener system.
+### Saved workflows (.claude/workflows/; parse-checked, not yet run)
+
+- `design-directions`: args `{piece, brief, outDir, directions?}`. One
+  print-designer per direction (default photo-forward, typographic,
+  map-mark; pass your own angles) drafts in its own folder under outDir,
+  two visual-critics score each, then a recommendation with grafts and a
+  content check, plus `compare.png` for Patrick. About 11 agents. Make the
+  QR first so drafts use the real tile.
 - `print-visual-qa`: args `{pdf, pages?, group?, outDir?}`. Renders pages,
-  runs type, image, and content critics per group of six pages plus a
-  preflight, and returns one ranked fix list. About 3 agents per six pages
-  plus 3. Use it before showing Patrick a PDF and before printing.
+  runs type, image, and content critics per six pages plus a preflight, and
+  returns one ranked fix list. A full 33-page pass is about 21 agents; pass
+  `pages` for what changed.
 - Workers write only under private/craft/ (git-ignored); the main session
   moves approved work into tracked files.
 
-### Authority for the session
+### Authority
 
-- Commit on dev/print-design-2026-10 as the work lands. Push the branch or
-  merge to main only when Patrick asks in the session (main publishes the
-  live site through GitHub Pages).
+- Commit on dev/print-design-2026-10 as work lands. Push or merge to main
+  only when Patrick asks in the session (main is the live site).
 - Names, affiliations, credit lines, and acknowledgement wording come from
-  Patrick; BRIEF.md drafts are not approval. No brief content goes into a
-  tracked file until he approves it.
-- Photos go public only as the stripped copies, with MEDIA-CREDITS rows.
-- Installing segno (or any package) waits for Patrick's yes; the brief has
-  the recommendation.
+  Patrick; BRIEF.md drafts are not approval. Nothing from the brief enters
+  a tracked file until he approves it.
+- Photos go public only as the stripped copies in private/print-assets/,
+  with MEDIA-CREDITS rows and Patrick's credit line.
+- No invented cultural content: no Tribal-language greeting, no named
+  departments or places for a Nation unless Patrick supplies them.

@@ -6,6 +6,7 @@
 Used by people and by the print-visual-qa workflow (.claude/workflows/).
 """
 import argparse
+import sys
 from pathlib import Path
 
 import fitz  # PyMuPDF
@@ -17,7 +18,12 @@ def pages(spec, count):
     out = []
     for part in spec.split(","):
         a, _, b = part.partition("-")
-        out += range(int(a) - 1, min(count, int(b or a)))
+        lo, hi = int(a), int(b or a)
+        if not 1 <= lo <= hi:  # "0" would wrap to the last page; "5-3" would select nothing
+            sys.exit(f"bad page range {part!r}")
+        out += range(lo - 1, min(count, hi))
+    if not out:
+        sys.exit(f"no pages in {spec!r}; the PDF has {count}")
     return out
 
 
