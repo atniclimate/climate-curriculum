@@ -1,6 +1,7 @@
 """Print-ready PDFs of the curriculum documents (Letter, ATNI Climate type and color).
 
 Run:  python tools/print_pdf.py          (writes docs/downloads/*.pdf)
+      python tools/print_pdf.py lessons --out private/craft/x   (a draft elsewhere)
 Needs Google Chrome (headless print) and PyMuPDF (page numbers, bookmarks).
 The Markdown files in curriculum/ stay the source; the PDFs are build output.
 """
@@ -396,6 +397,10 @@ def build(doc):
 
 if __name__ == "__main__":
     want = sys.argv[1:]
+    if "--out" in want:  # drafts render elsewhere so docs/downloads stays the published copy
+        i = want.index("--out")
+        OUT = Path(want[i + 1]).resolve()
+        del want[i:i + 2]
     for doc in DOCS:
         if not want or doc["kind"] in want:
             build(doc)
