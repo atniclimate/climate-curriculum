@@ -12,7 +12,8 @@ the license line on a USFWS media item), not assumed from the site.
 
 | File or URL | Slide | Creator / photographer | License | Where license was confirmed | Permission notes |
 |-------------|-------|------------------------|---------|-----------------------------|------------------|
-| | | | | | |
+| source/handout/gorge-band.jpg (Columbia Gorge at dusk; used in tools/handout.py) | Handout | Patrick A. Freeland | Patrick's own photo, used with his permission | Patrick, owner of the photo | Cropped and contrast-adjusted from a copy with EXIF and GPS removed; never publish the original. Credit line: "Photo: Patrick A. Freeland" |
+| Handout QR code (encodes https://atniclimate.github.io/climate-curriculum/) | Handout | Generated with DesignCraft 0.8.0 | No third-party content; generated graphic | Not applicable | Re-test with two phones on the printed proof |
 
 ## Data
 

@@ -14,6 +14,33 @@ top. Keep each entry short.
 
 ---
 
+### 10/20/2026 (afternoon), branch: dev/print-design-2026-10 (from main 0d037c3)
+- Next action: start the print-design session with the paste block in
+  planning/LAUNCH-PROMPT.md, "Next session: print design and the event
+  handout" (Opus 5.5, high). That section holds the job, deadline,
+  definition of done, code map, QR route, roster, and workflows.
+- Released: Patrick merged dev/workshop-polish-2026-10 into main (0d037c3);
+  GitHub Pages built it at 17:36 UTC 10/20/2026 (success); the live page and
+  both PDFs answered 200. dev/workshop-polish-2026-10 pushed (4ab5e83);
+  dev/revisions-2026-10 fast-forwarded on origin to 66dbaa1.
+- Prepared (commit 0956718, then a same-day review pass, uncommitted at
+  review time): six agents in .claude/agents/, two workflows in
+  .claude/workflows/ (parse-checked, not yet run), tools/contact_sheet.py
+  (page ranges now validated), the LAUNCH-PROMPT next-session section, and
+  a relaxed Resume block. The review fixed parallel designers overwriting
+  the published PDFs, a CLAUDE.md section the vector agent cited that does
+  not exist, and a QR plan that waited on a package install (DesignCraft's
+  CLI makes the code; tested).
+- Local only (git-ignored private/): handout/BRIEF.md (content, draft copy,
+  citations, acknowledgement candidates, image notes, eight questions);
+  print-assets/ (six photos, EXIF and GPS removed by prep_images.py; the
+  OneDrive originals carry GPS and are never published); craft/ (worker and
+  VectorCraft write root).
+- Checks: no page or PDF source changed after the merge; build and PDF
+  evidence from the morning entry still holds.
+- Fixed at close: prep_images.py now converts the iPhone photos' Display P3
+  profiles to sRGB (re-run; copies verified EXIF-free).
+
 ### 10/20/2026, branch: dev/workshop-polish-2026-10 (from dev/revisions-2026-10; no TCU commits)
 - Done: D21, D22 printing note, D25 rulings recorded (e4f178d). Page polish
   (21dc2e0): probe now clean apart from by-design .sort/.webwrap columns, S4

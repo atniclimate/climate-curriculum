@@ -1,6 +1,7 @@
 """Print-ready PDFs of the curriculum documents (Letter, ATNI Climate type and color).
 
 Run:  python tools/print_pdf.py          (writes docs/downloads/*.pdf)
+      python tools/print_pdf.py lessons --out private/craft/x   (a draft elsewhere)
 Needs Google Chrome (headless print) and PyMuPDF (page numbers, bookmarks).
 The Markdown files in curriculum/ stay the source; the PDFs are build output.
 """
@@ -392,10 +393,19 @@ def build(doc):
             OUT.mkdir(parents=True, exist_ok=True)
             d.save(OUT / doc["out"], garbage=3, deflate=True)
             print(f"{doc['out']}: {d.page_count} pages, {len(toc)} contents entries")
+        # the same page as a web draft beside the PDF: assets relative to docs/downloads, a sheet on screen
+        web = page.replace((ROOT / "docs").as_uri(), "..").replace(
+            "</style>", "@media screen{html{background:#D9DEE3}body{box-sizing:border-box;width:8.5in;max-width:100%;margin:24px auto;"
+            "padding:.6in .75in;background:#fff;box-shadow:0 2px 14px rgba(0,0,0,.25)}.cover{margin:-.6in -.75in .6in}}</style>", 1)
+        (OUT / doc["out"]).with_suffix(".html").write_text(web, encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":
     want = sys.argv[1:]
+    if "--out" in want:  # drafts render elsewhere so docs/downloads stays the published copy
+        i = want.index("--out")
+        OUT = Path(want[i + 1]).resolve()
+        del want[i:i + 2]
     for doc in DOCS:
         if not want or doc["kind"] in want:
             build(doc)
