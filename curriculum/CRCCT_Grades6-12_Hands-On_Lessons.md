@@ -16,7 +16,7 @@ Built on *Understanding a Climate of Change: Understanding an Ever Changing Clim
 
 These lessons are for teachers who have completed the 30-minute workshop built on the four parts of *Understanding a Climate of Change*: (1) How does a cloud work? (2) How do you know what you know? (3) What can we do? Adaptation, Mitigation, Resilience; and (4) How do we work together? Relationships Matter. The four units follow the same parts, so you can walk from the workshop into your classroom with one structure. An opening and a closing lesson hold them together, the way a circle holds a conversation.
 
-This set carries forward the Grades 6 to 12 tier of the Climate Change Education Pathway (the Changing Currents Classroom Edition). It keeps what worked at the 2025 Changing Currents Tribal Youth Water Summit (sketchbooks, the Elwha story, the Elder-and-child pitch, the career gallery, the closing circle) and replaces the field trip with a virtual field study and classroom models. Everything is set on the Columbia River, with the Elwha as a comparison story of restoration.
+This set carries forward the Grades 6 to 12 tier of the Climate Change Education Pathway (the Changing Currents Classroom Edition). It keeps what worked at the 2025 Changing Currents Tribal Youth Water Summit (sketchbooks, the Elwha story, the Elder-and-child pitch, the career gallery, and the closing circle) and replaces the field trip with a virtual field study and classroom models. Everything is set on the Columbia River, with the Elwha as a comparison story of restoration.
 
 - **Shared spine:** Begin with experience, not abstraction; honor plural ways of knowing; use the Elder-and-child test; treat data literacy as sovereignty; move from learning to leading; relationships matter.
 - **Sequence and time:** 14 lessons, most one period of 45 to 55 minutes; three are two-period (17 periods total). Short path: Opening, 1.1, 2.1, 3.1 Part A, 3.2, 4.1, Closing.
@@ -79,7 +79,7 @@ Read this before you teach.
 - **Water:** Warm tap water only. Keep trays away from electronics; mop spills at once.
 - **Games:** Clear space for the relay; walk in tight rooms; watch for yarn at ankle height.
 - **Outdoors:** Check the Air Quality Index (AQI) at AirNow.gov during fire season and alerts at weather.gov. Bring water and shade.
-- **Rivers:** No student enters a river without trained staff and a site plan. Cold water shock is a risk even in summer.
+- **Rivers:** No student enters a river without trained staff and a site plan. Cold-water shock is a risk even in summer.
 - **Tribal lands:** Visiting Tribal lands, fishing sites, or cultural sites requires the Tribe's permission.
 - **Media:** Follow school media-release policy. Record interviews only with the speaker's clear permission.
 - **Emotional safety:** Give a heads-up before heavy content, offer a pass, and know your counselor's schedule.
@@ -125,7 +125,7 @@ Read this before you teach.
 
 **Key lesson (from the workshop):** Weather is based on fundamental physics, here and throughout the universe. Pressure and water are always moving, never fixed or stuck at one height.
 
-**Key takeaway (from the workshop):** The same physics, and the same gauges and data points that predict tomorrow's weather, also show us patterns and change over many years. With enough data we can look ahead of what may come, not on speculation but momentum.
+**Key takeaway (from the workshop):** The same physics, and the same gauges and data points that predict tomorrow's weather, also show us patterns and change over many years. With enough data, we look ahead on momentum, not speculation.
 
 ### Lesson 1.1: Cloud in a Bottle and the Dripping Air Conditioner
 
@@ -237,7 +237,7 @@ Read this before you teach.
 
 ## Unit 2: How Do You Know What You Know?
 
-**Key lesson (from the workshop):** Climate is social as much as it is scientific; society moves action much more than the science. How we come to know things, and who we trust, shapes what we believe.
+**Key lesson (from the workshop):** Climate is social as much as it is scientific; society moves action much more than the science does. How we come to know things, and who we trust, shapes what we believe.
 
 **Key takeaway (from the workshop):** Narrative and emotion move us whether we notice it or not, so we learn to read both our sources and ourselves. Think about thinking.
 
@@ -266,14 +266,14 @@ Read this before you teach.
 |---|---|---|---|
 | 1 | "Earth's average temperature has risen by as much as 33.8 °F since the Industrial Revolution." | A well-meaning classroom handout | Honest but wrong: 1 °C converted as a thermometer reading. The recent decade is about 1.1 to 1.3 °C (2.0 to 2.4 °F) above the 1850 to 1900 average. |
 | 2 | "2024 was about 1.55 °C above the pre-industrial average." | World Meteorological Organization (WMO) | Checks out for that one year. One year is not the long-term average. |
-| 3 | "The truth is that extinction of salmon populations is happening now." | Shannon Wheeler, Nez Perce Tribe, in a Columbia River Inter-Tribal Fish Commission (CRITFC) statement, June 2025 | Strong emotion and strong evidence together. What data would you look for? |
+| 3 | "The truth is that extinction of salmon populations is happening now." | Shannon Wheeler, Chairman, Nez Perce Tribe, statement of 06/12/2025 (compiled by the Columbia River Inter-Tribal Fish Commission, CRITFC) | Strong emotion and strong evidence together. What data would you look for? |
 | 4 | "It's too late. Nothing we do matters now." | A viral post | Not supported: every fraction of a degree avoided lowers risk. Who benefits when people give up? |
 | 5 | "The climate has always changed, so humans can't be causing it now." | A comment at a public meeting | Does not follow. The Intergovernmental Panel on Climate Change (IPCC) finds human influence on current warming unequivocal. |
-| 6 | "Hydropower is clean, so the dams have no downside." | An energy ad (written for this lesson) | Incomplete. Low-carbon power, and dams block and warm rivers and flooded Celilo Falls. |
+| 6 | "Hydropower is clean, so the dams have no downside." | An energy ad (written for this lesson) | Incomplete. Low-carbon power, but dams block and warm rivers and flooded Celilo Falls. |
 | 7 | "Salmon need water below 60 degrees to survive." | A classroom poster | Oversimplified. Stress rises as water warms; adult migration is impaired above roughly 20 to 21 °C (68 to 70 °F). |
 | 8 | "In summer 2015, roughly 250,000 adult sockeye died in warm water in the Columbia Basin." | Fisheries agencies and CRITFC | Checks out. Find the original source. |
 | 9 | "Our new natural gas plant is part of the clean energy future." | A press release (written for this lesson) | Agenda. Less carbon than coal, still emissions and methane leaks. Clean compared with what? |
-| 10 | "The Earth has passed from a warming phase into an era of global boiling." | United Nations Secretary-General António Guterres, July 2023 | Rhetoric: real direction, not literal. Does it move you to act or to shut down? |
+| 10 | "The era of global warming has ended; the era of global boiling has arrived." | United Nations Secretary-General António Guterres, press conference, 07/27/2023 | Rhetoric: real direction, not literal. Does it move you to act or to shut down? |
 | 11 | "My grandmother says the berries ripen earlier than when she was young." | A student's family (written for this lesson) | Lifetime observation. It fits no column neatly; let students argue how to honor it. |
 | 12 | "Tribes have contributed little to climate change but feel the impacts first." | The *Climate Change and the Tribes* draft (Robinson); Fifth National Climate Assessment, Chapter 16 | Impacts are well documented. What data would measure contribution? |
 
@@ -282,7 +282,7 @@ Read this before you teach.
 **Differentiation:**
 
 - **Grades 6 to 8:** Cards 1 to 8, three columns (drop "Need more information").
-- **Grades 9 to 12:** All twelve. Practice lateral reading: look up who the source is before judging the claim. Rewrite Card 1 or 7 as one accurate sentence an Elder and a child would both understand.
+- **Grades 9 to 12:** All 12. Practice lateral reading: look up who the source is before judging the claim. Rewrite Card 1 or 7 as one accurate sentence an Elder and a child would both understand.
 
 **Formative check:** Read a new claim aloud; each student writes a one-line Source Check (who, how they know, what they want, how to check).
 
@@ -303,8 +303,8 @@ Read this before you teach.
 1. **Circle question (0 to 8 min):** Who taught you something about weather, water, or the land that was not in a book?
 2. **Why permission matters (8 to 15 min):** Some knowledge is meant to be shared widely; some belongs to a family or community. The person you interview decides. Show a Local Contexts TK Label as an example.
 3. **Build questions (15 to 25 min):** Choose five to seven from the protocol; write one original.
-4. **Practice in pairs (25 to 40 min):** Partners answer as themselves. Practice the consent script, a follow-up ("Can you tell me more?"), and the thank you. Switch.
-5. **Plan (40 to 46 min):** Who, when, and how you will give back (a copy, a sketch, a thank you note).
+4. **Practice in pairs (25 to 40 min):** Partners answer as themselves. Practice the consent script, a follow-up ("Can you tell me more?"), and the thank-you. Switch.
+5. **Plan (40 to 46 min):** Who, when, and how you will give back (a copy, a sketch, a thank-you note).
 6. **Reflection (46 to 50 min)**
 
 **Student handout: Interview Protocol**
@@ -346,7 +346,7 @@ Read this before you teach.
 **Procedure:**
 
 1. **Model (0 to 5 min):** Deliver your pitch; ask what students noticed.
-2. **Framework (5 to 12 min):** Public narrative (Story of Self, Us, and Now, from organizer and scholar Marshall Ganz). Self: a moment that shows why you care. Us: what we share. Now: what needs to happen, and one ask. Add one accurate fact from Units 1 or 2.
+2. **Framework (5 to 12 min):** Public narrative (Story of Self, Us, and Now, from organizer and scholar Marshall Ganz). Self: a moment that shows why you care. Us: what we share. Now: what needs to happen, and one ask. Add one accurate fact from Unit 1 or 2.
 3. **Draft (12 to 25 min):** Write the pitch on an index card; sketch one image that holds it.
 4. **Triads (25 to 40 min):** A speaker, an "Elder listener" (listening as if an Elder you respect were in the room: is it respectful, patient, honest?), and a "child listener" (raising a hand at any unclear word). These are listening roles, not characters. Rotate twice.
 5. **Share (40 to 47 min):** Volunteers deliver to the class.
@@ -384,7 +384,7 @@ Read this before you teach.
 
 - **Grade band and time:** Both; two periods of 50 minutes
 - **Key lesson:** Salmon depend on cold, clean, connected water. Warm water holds less oxygen, and dams, predators, harvest, and hatcheries all shape who comes home.
-- **Key takeaway:** In the words of the late Billy Frank Jr., quoted in the *Climate Change and the Tribes* draft (Robinson), "salmon are the measuring stick of our own health." Every choice along the river changes the odds.
+- **Key takeaway:** In the words of the late Billy Frank Jr., salmon "serve as a measuring stick of our present and future physical and spiritual health" (*Being Frank*, Northwest Indian Fisheries Commission, 03/07/2006). Every choice along the river changes the odds.
 
 #### Part A: Cold Water Holds More Life
 
@@ -413,7 +413,7 @@ Saturation is the most oxygen the water can hold. Real rivers often hold less wh
 
 **Materials:** Eight stations (a chair and station card each); a die per station; salmon cards; two bins labeled "Came Home" and "Fed the People"; chart paper.
 
-**Teacher prep:** Print station cards. Make salmon cards, half "wild" and half "hatchery," half "Snake River" (farther upstream, more dams) and half "mid-Columbia." Tell students the dice odds are invented; real survival data are at the Fish Passage Center (fpc.org) and CRITFC.
+**Teacher prep:** Print station cards. Make salmon cards, half "wild" and half "hatchery," half "Snake River" (farther upstream, more dams) and half "mid-Columbia." Tell students the dice odds are invented; real survival data is at the Fish Passage Center (fpc.org) and CRITFC.
 
 **Procedure:**
 
@@ -476,15 +476,15 @@ Tribal examples come from the *Climate Change and the Tribes* draft (Robinson); 
 | 1 | The Yakama Nation moves "problem beavers" from farms and towns to streams, where their dams slow and store water. | Adaptation, Resilience |
 | 2 | Yakama Nation riverscaping returns logs to the Yakima River so streams reconnect to floodplains and form pools for young salmon. | Adaptation, Resilience |
 | 3 | The Nez Perce Tribe installs solar with batteries so power stays on in emergencies. | Mitigation, Resilience |
-| 4 | The Nez Perce Tribe plants about 380,000 trees on 2,137 acres to store carbon and shade streams. | Mitigation, Adaptation |
-| 5 | The Nez Perce Tribe installs 72 electric vehicle chargers and electrifies its fleet. | Mitigation |
-| 6 | The Nez Perce Tribe weatherizes homes and adds efficient cooling for people without air conditioning. | Mitigation, Adaptation, Resilience |
+| 4 | The Nez Perce Tribe plans to plant nearly 380,000 trees on 2,137 acres (EPA Climate Pollution Reduction Grant, 2024) to store carbon and shade streams. | Mitigation, Adaptation |
+| 5 | The Nez Perce Tribe plans to install 72 electric vehicle chargers and move its fleet to electric vehicles. | Mitigation |
+| 6 | The Nez Perce Tribe plans efficiency upgrades, weatherizing, and heat pumps for three Tribal buildings. | Mitigation, Adaptation |
 | 7 | Nez Perce fisheries work to end creek diversions and keep water cooler. | Adaptation |
-| 8 | The Confederated Tribes of the Umatilla Indian Reservation (CTUIR) adds solar and batteries at its Tutuilla food sovereignty center, keeping freezers running for food distribution. | Mitigation, Resilience |
+| 8 | The Confederated Tribes of the Umatilla Indian Reservation (CTUIR) adds a 200-panel solar array at its Tutuilla Food Sovereignty Center, cutting the cost of running its freezers. | Mitigation |
 | 9 | CTUIR publishes a Climate Adaptation Plan organized around First Foods. | Resilience, Adaptation |
 | 10 | The Confederated Tribes of the Warm Springs Reservation of Oregon and Portland General Electric upgrade a transmission line, with a U.S. Department of Energy grant, to connect reservation renewables. | Mitigation |
 | 11 | Two Elwha River dams are removed (2011 to 2014) after decades of work led by the Lower Elwha Klallam Tribe. | Adaptation, Resilience |
-| 12 | The Nez Perce Tribe and others call for removing the four lower Snake River dams; others oppose over hydropower, barging, and irrigation. | Adaptation, Resilience; how to replace the power cleanly |
+| 12 | The Nez Perce Tribe and others call for removing the four lower Snake River dams; others oppose it over hydropower, barging, and irrigation. | Adaptation, Resilience; how to replace the power cleanly |
 | 13 | A school builds a rain garden for storm runoff. | Adaptation |
 | 14 | A city opens cooling centers in a heat wave. | Adaptation (emergency) |
 | 15 | Old wood stoves are replaced with cleaner stoves certified by the U.S. Environmental Protection Agency (EPA). | Adaptation; debate mitigation |
@@ -552,7 +552,7 @@ Tribal examples come from the *Climate Change and the Tribes* draft (Robinson); 
 - **Grades 6 to 8:** Stations 1 to 3 with a teacher-chosen gauge and site; framing worksheet as a class.
 - **Grades 9 to 12:** All six stations, plus a 150-word data brief for a Tribal natural resources department or school board citing the shared link.
 
-**Teacher note:** Data change daily. The DDM is not an alert system; use weather.gov for warnings.
+**Teacher note:** Data changes daily. The DDM is not an alert system; use weather.gov for warnings.
 
 **Formative check:** A framing worksheet that ties at least one data point to one action.
 
@@ -564,7 +564,7 @@ Tribal examples come from the *Climate Change and the Tribes* draft (Robinson); 
 
 **Key lesson (from the workshop):** It's going to take all of us. We can do more together than any of us can alone, and that includes our relationship with our non-human relatives.
 
-**Key takeaway (from the workshop):** We are not apart from nature, we are a part of nature. Go outside, pay attention, be a good relative, be a good ancestor. Our world is changing rapidly, but we have all that we need, and we are sovereign, and we decide what matters. We are not born into this world, we are born out of it.
+**Key takeaway (from the workshop):** We are not apart from nature; we are a part of nature. Go outside, pay attention, be a good relative, be a good ancestor. Our world is changing rapidly, but we have all that we need, and we are sovereign, and we decide what matters. We are not born into this world; we are born out of it.
 
 ### Lesson 4.1: Who Is Connected to Whom?
 
@@ -605,7 +605,7 @@ Tribal examples come from the *Climate Change and the Tribes* draft (Robinson); 
 - **Key lesson:** On the Elwha, the Lower Elwha Klallam Tribe led a decades-long push that ended in the largest dam removal in U.S. history at the time. The Columbia is far larger and more complex, and its choices differ.
 - **Key takeaway:** Change that once seemed impossible happened. Stories of repair are evidence too.
 
-**Materials:** PBS *Nature*, "The Beautiful Undammed" (*Wild Hope*): https://www.pbs.org/wnet/nature/the-beautiful-undammed-wild-hope/29052/ ; the Washington Sea Grant self-guided Elwha River restoration tour: https://wsg.washington.edu/self-guided-field-trip-elwha-river-restoration-tour/ ; projector; sketchbooks; comparison chart.
+**Materials:** PBS *Nature*, "The Beautiful Undammed" (*Wild Hope*): https://www.pbs.org/wnet/nature/the-beautiful-undammed-wild-hope/29052/ ; National Park Service, Elwha River Restoration: https://www.nps.gov/olym/learn/nature/elwha-ecosystem-restoration.htm ; projector; sketchbooks; comparison chart.
 
 **Teacher prep:** Preview the film and check its running time; plan up to 25 minutes or select segments. Pick two tour stops. Fact box: Elwha Dam was completed in 1913 and Glines Canyon Dam in 1927; Congress passed the Elwha River Ecosystem and Fisheries Restoration Act in 1992; both dams came out from 2011 to 2014. For Lower Elwha Klallam history, use the Tribe's own published materials.
 
@@ -646,7 +646,7 @@ Tribal examples come from the *Climate Change and the Tribes* draft (Robinson); 
 - **Key lesson:** Clean energy is needed, and Treaty rights and sacred places are real. How a decision is made, and who is at the table from the start, matters as much as what gets built.
 - **Key takeaway:** Good process is climate action too. A Tribal leader quoted in the *Climate Change and the Tribes* draft (Robinson) said the Tribes are tired of being left out of dinner only to be invited to dessert.
 
-**This is a live issue.** The proposed Goldendale pumped storage project is real and ongoing. Licensing, permits, and any litigation may have changed; verify status before teaching. The draft's account of a January 2026 Federal Energy Regulatory Commission (FERC) proceeding, including quotations, must be verified before classroom use.
+**This is a live issue.** The Goldendale pumped storage project is real and ongoing. The Federal Energy Regulatory Commission (FERC) issued a 40-year license on 01/22/2026; rehearing was denied in 03/2026; the Yakama Nation and Columbia Riverkeeper petitioned the Ninth Circuit. On 09/21/2026 the Washington Court of Appeals sent part of the state water quality certification back to the Department of Ecology to add leak monitoring. Verify status before teaching, and check any quotation from the FERC proceeding against the FERC order or a Yakama Nation statement.
 
 **Be open about sources.** These lessons come from ATNI Climate, and the draft reports that ATNI and the National Congress of American Indians (NCAI) passed resolutions opposing the destruction of Pushpum. Tell students plainly; naming it is part of Source Check.
 
@@ -768,7 +768,7 @@ Tribal examples come from the *Climate Change and the Tribes* draft (Robinson); 
 
 **Differentiation:**
 
-- **Grades 6 to 8:** Home and school scale commitments, chosen from a menu.
+- **Grades 6 to 8:** Home- and school-scale commitments, chosen from a menu.
 - **Grades 9 to 12:** Add one civic action (public comment, a letter to a council, a watershed group or Tribal youth council) and one skill to build; option to present the plan, as at the Youth Summit.
 
 **Formative check:** A completed commitment card and a finished circle.
@@ -789,13 +789,13 @@ The Columbia rises at Columbia Lake in British Columbia and runs about 1,240 mil
 
 Many Peoples have lived with the Columbia and its tributaries since time immemorial. These lessons focus on the four Treaty Tribes of the Columbia River Inter-Tribal Fish Commission (CRITFC): the Confederated Tribes of the Umatilla Indian Reservation (CTUIR), the Confederated Tribes of the Warm Springs Reservation of Oregon, the Confederated Tribes and Bands of the Yakama Nation, and the Nez Perce Tribe. Many other Nations hold deep relationships with the basin, among them the Confederated Tribes of the Colville Reservation, the Spokane Tribe, the Coeur d'Alene Tribe, the Kalispel Tribe, the Kootenai Tribe of Idaho, the Confederated Salish and Kootenai Tribes, the Shoshone-Bannock Tribes, the Cowlitz Indian Tribe, the Chinook Indian Nation, and First Nations in Canada including the Syilx Okanagan, Ktunaxa, and Secwepemc. Learn whose homelands include your school.
 
-In 1855 the United States negotiated treaties with the Yakama; the Nez Perce; the Walla Walla, Cayuse, and Umatilla; and, in the Treaty with the Tribes of Middle Oregon, the Tribes now of Warm Springs. The Tribes ceded millions of acres and reserved (kept) rights, including the right of taking fish at all usual and accustomed places and rights to hunt and gather. In *United States v. Winans* (1905), the U.S. Supreme Court called the Treaty "not a grant of rights to the Indians, but a grant of right from them, a reservation of those not granted." This is the reserved-rights doctrine.
+In 1855 the United States negotiated Treaties with the Yakama; the Nez Perce; the Walla Walla, Cayuse, and Umatilla; and, in the Treaty with the Tribes of Middle Oregon, the Tribes now of Warm Springs. The Tribes ceded millions of acres and reserved (kept) rights, including the right of taking fish at all usual and accustomed places and rights to hunt and gather. In *United States v. Winans* (1905), the U.S. Supreme Court called the Treaty "not a grant of rights to the Indians, but a grant of right from them, a reservation of those not granted." This is the reserved-rights doctrine.
 
-Federal courts have repeatedly upheld these rights. In *United States v. Oregon*, Judge Robert Belloni ruled in 1969 that the Tribes are entitled to a fair and equitable share of the fish; the case continues through court-supervised management agreements among the Tribes, states, and federal government. In *United States v. Washington* (1974), Judge George Boldt held that Treaty Tribes are entitled to up to 50 percent of the harvestable fish. The four Treaty Tribes formed CRITFC in 1977. Tribes are co-managers of these fisheries.
+Federal courts have repeatedly upheld these rights. In *United States v. Oregon*, Judge Robert Belloni ruled in 1969 that the four Columbia River Treaty Tribes have a right to a fair share of the fish runs, and in 1974 he applied the Boldt 50/50 principle to define that share; the case continues through court-supervised management agreements among the Tribes, states, and federal government. In *United States v. Washington* (1974), Judge George Boldt held that Treaty Tribes are entitled to up to 50 percent of the harvestable fish. The four Treaty Tribes formed CRITFC in 1977. Tribes are co-managers of these fisheries.
 
 ### Salmon and a Changed River
 
-An estimated 10 to 16 million salmon and steelhead once returned to the Columbia each year. Canneries opened in 1866 and drove heavy overfishing. In the twentieth century the Columbia became one of the most heavily dammed river systems in the world: 14 dams on the main stem (11 in the U.S., 3 in Canada), four on the lower Snake (Ice Harbor, Lower Monumental, Little Goose, and Lower Granite), and hundreds across the basin. Grand Coulee (completed 1942) and Chief Joseph dams have no fish passage and cut salmon off from the upper Columbia; Grand Coulee's reservoir flooded the great fishery at Kettle Falls. Upper Columbia Tribes and First Nations are leading work to return salmon above these dams (verify status). The Hells Canyon dams block the upper Snake. On March 10, 1957, The Dalles Dam flooded Celilo Falls, a fishing and trading place used for thousands of years.
+An estimated 10 to 16 million salmon and steelhead once returned to the Columbia each year. Canneries opened in 1866 and drove heavy overfishing. In the twentieth century the Columbia became one of the most heavily dammed river systems in the world: 14 dams on the main stem (11 in the U.S., 3 in Canada), four on the lower Snake (Ice Harbor, Lower Monumental, Little Goose, and Lower Granite), and hundreds across the basin. Grand Coulee (completed 1942) and Chief Joseph dams have no fish passage and cut salmon off from the upper Columbia; Grand Coulee's reservoir flooded the great fishery at Kettle Falls. Upper Columbia Tribes and First Nations are leading work to return salmon above these dams (verify status). The Hells Canyon dams block the upper Snake. On 03/10/1957, The Dalles Dam flooded Celilo Falls, a fishing and trading place used for thousands of years.
 
 Hatcheries now produce a large share of returning fish (the draft says most; verify with CRITFC). They support harvest and raise real questions about wild genetics. The Hanford Site produced plutonium from World War II through the Cold War; about 56 million gallons of radioactive and chemical waste remain in 177 underground tanks, and the Yakama Nation, CTUIR, and the Nez Perce Tribe take part in cleanup oversight.
 
@@ -805,14 +805,14 @@ Hatcheries now produce a large share of returning fish (the draft says most; ver
 - **Snow and timing:** The Fifth National Climate Assessment (2023), Chapter 27 (Northwest), documents warming, declining spring snowpack, and shifting streamflow timing. In the 2015 snow drought, near-normal precipitation in many places fell as rain, leaving rivers low and warm by summer.
 - **Water temperature and salmon:** Adult migration is impaired above roughly 20 to 21 °C (68 to 70 °F), and warm water holds less oxygen. In summer 2015, roughly 250,000 adult sockeye died in warm water in the basin. Cold-water refuges at tributary mouths matter more every year.
 - **Heat:** The late June 2021 heat dome set all-time records across the Northwest, including 116 °F in Portland.
-- **Fire and smoke:** The 2017 Eagle Creek Fire burned about 50,000 acres in the Columbia River Gorge; the draft reports the 2025 Burdoin Fire across the river (verify). After fires, erosion can bury salmon nests in sediment.
-- **Glaciers and ocean:** Cascade glaciers are shrinking (the draft reports the Hinman Glacier essentially gone; verify). Marine heatwaves and ocean acidification affect young salmon's food web.
+- **Fire and smoke:** The 2017 Eagle Creek Fire burned about 50,000 acres in the Columbia River Gorge; the Burdoin Fire started across the river on 07/18/2025, east of Bingen, between Bingen and Lyle, in Klickitat County. After fires, erosion can bury salmon nests in sediment.
+- **Glaciers and ocean:** Cascade glaciers are shrinking; on the west slope, the Hinman Glacier was gone by 2022. Marine heatwaves and ocean acidification affect young salmon's food web.
 - **First Foods:** CTUIR organizes its climate work around First Foods (water, salmon, deer, cous, and huckleberry). Its Climate Adaptation Plan summary is public: https://ctuir.org/media/oeklm2el/cap-executive-summary-final-std-pg-no.pdf
 
 ### Governance and Policy Now (Verify at Time of Teaching)
 
-- **Columbia River Treaty:** The 1964 U.S. and Canada treaty governs flood control and hydropower. Tribes and First Nations were excluded from its negotiation. U.S. Tribes have participated in the Treaty review since 2012, and the Syilx Okanagan, Ktunaxa, and Secwepemc Nations observed with the Canadian delegation. An Agreement in Principle on modernization was announced July 11, 2024; the U.S. paused negotiations in March 2025 amid trade tensions (https://www.opb.org/article/2025/03/14/us-pauses-columbia-river-water-sharing-agreement-with-canada/ ).
-- **Resilient Columbia Basin Agreement:** A December 2023 agreement among the United States, the four Treaty Tribes, Oregon, and Washington. The federal government withdrew on June 12, 2025, by executive action, without Tribal consultation (https://critfc.org/2025/06/12/21153/ ).
+- **Columbia River Treaty:** The 1964 U.S. and Canada treaty governs flood control and hydropower. Tribes and First Nations were excluded from its negotiation. U.S. Tribes have participated in the Treaty review since 2012, and the Syilx Okanagan, Ktunaxa, and Secwepemc Nations observed with the Canadian delegation. An Agreement in Principle on modernization was announced 07/11/2024; the U.S. paused negotiations in March 2025 amid trade tensions (https://www.opb.org/article/2025/03/14/us-pauses-columbia-river-water-sharing-agreement-with-canada/ ).
+- **Resilient Columbia Basin Agreement:** A December 2023 agreement among the United States, the four Treaty Tribes, Oregon, and Washington. The federal government withdrew on 06/12/2025, by executive action, without Tribal consultation (https://critfc.org/2025/06/12/21153/ ).
 - **Federal funding (volatile):** The Federal Emergency Management Agency (FEMA) ended its Building Resilient Infrastructure and Communities (BRIC) program in April 2025; a court ordered it restarted, and FEMA in 2026 describes reconstituting it. The BIA Tribal Community Resilience (TCR) Annual Awards Program lists FY24 as its latest cycle (https://www.bia.gov/service/tcr-annual-awards-program ). EPA's Environmental and Climate Justice Block Grants were terminated in 2025; Tribes are among plaintiffs in *Appalachian Voices et al. v. EPA*, on appeal as of early 2026 (https://earthjustice.org/press/2026/nonprofits-tribes-and-local-governments-appeal-to-restore-epa-grant-program ).
 
 ### Editor's Note: Corrections for the *Climate Change and the Tribes* Draft
@@ -827,7 +827,7 @@ Hatcheries now produce a large share of returning fish (the draft says most; ver
 | Treaties "provided" rights "in effect from time immemorial" | The Tribes reserved their rights; the Treaties did not grant them (*Winans*, 1905). |
 | "Tribal Ecological Knowledge" | Traditional Ecological Knowledge (TEK), or Indigenous Knowledges |
 | Water "above the 60 degrees salmon need to survive" | Stress rises with temperature; adult migration is impaired above roughly 20 to 21 °C (68 to 70 °F); thresholds vary by species and life stage. |
-| CTUIR Tutuilla: 200 panels and "176 megawatt-hours of battery storage" | Likely a unit error (176 megawatt-hours is utility scale). Verify with CTUIR. |
+| CTUIR Tutuilla: 200 panels and "176 megawatt-hours of battery storage" | Resolved: CTUIR's own paper reports about 176,125 kWh a year of generation and no batteries; the "176 MWh storage" figure is a mislabel. |
 | "Ninety percent of diseases" from the climate crisis affect children under five | Find the original source before using this figure. |
 | May 2026 Longview paper mill tank collapse; January 2026 FERC Goldendale hearing quotes; 2026 snowpack "one-third the normal" | Reported in the draft; verify before classroom use. |
 | Talking Sticks used "for thousands of years," "resembling small totem poles" | Practices differ by Nation; ask your local Tribe. |
@@ -837,7 +837,7 @@ Hatcheries now produce a large share of returning fish (the draft says most; ver
 
 ## Standards Alignment
 
-Verify codes against your state framework. Codes are Next Generation Science Standards (NGSS) performance expectations unless noted.
+Verify codes against your state framework. Codes are Next Generation Science Standards* performance expectations unless noted.
 
 | Standard | Focus | Lessons |
 |---|---|---|
@@ -853,10 +853,12 @@ Verify codes against your state framework. Codes are Next Generation Science Sta
 | HS-ESS3-4 | Evaluating solutions that reduce human impacts | 3.2, 4.3 |
 | HS-ESS3-5 | Analyzing geoscience data and climate forecasts | 1.3, 3.3 |
 | HS-LS2-7 | Solutions that reduce impacts on biodiversity | 3.1 B (Round 3), 4.2 |
-| Washington: *Since Time Immemorial* (Office of Superintendent of Public Instruction, OSPI; RCW 28A.320.170) | Tribal sovereignty curriculum (verify unit alignment in OSPI materials) | Opening, 3.1, 4.1, 4.3, Background |
-| Oregon: Senate Bill 13, Tribal History/Shared History (Oregon Department of Education, with Oregon's nine federally recognized Tribes) | Essential Understandings of Native Americans in Oregon, such as sovereignty and treaties (verify current list) | Opening, 3.1, 4.3, Background |
+| Washington: *John McCoy (lulilaš) Since Time Immemorial* (Office of Superintendent of Public Instruction, OSPI; RCW 28A.320.170, as amended 2024) | Tribal sovereignty curriculum (verify unit alignment in OSPI materials) | Opening, 3.1, 4.1, 4.3, Background |
+| Oregon: Senate Bill 13, Tribal History/Shared History (Oregon Department of Education, with Oregon's nine federally recognized Tribes) | Essential Understandings of Native Americans in Oregon: 1 Since Time Immemorial, 2 Sovereignty, 6 Lifeways, and 8 Treaties with the United States (nine in all, ODE 2020) | Opening, 3.1, 4.3, Background |
 | Idaho and Montana | `[PLACEHOLDER: state or Tribal education alignment]` | |
 | Common Core English Language Arts, Speaking and Listening (SL.1, SL.4) | Collaborative discussion; presenting claims | 2.3, 4.3, Closing |
+
+*Next Generation Science Standards is a registered trademark of WestEd. Neither WestEd nor the lead states and partners that developed the Next Generation Science Standards were involved in the production of this product, and do not endorse it.
 
 ---
 
@@ -882,16 +884,16 @@ Verify codes against your state framework. Codes are Next Generation Science Sta
 
 - Tribal Climate Change Guide, University of Oregon: https://tribalclimateguide.uoregon.edu/
 - Tribal Resilience Actions database: https://tribalresilienceactions.org/plans/
-- Institute for Tribal Environmental Professionals (ITEP), Northern Arizona University: https://www7.nau.edu/itep/main/tcc/
+- Institute for Tribal Environmental Professionals (ITEP), Tribal Wellbeing for Seven Generations Program, Northern Arizona University: https://itep.nau.edu/tw7g/
 - NW CASC: https://nwcasc.uw.edu/
-- Fifth National Climate Assessment (2023), Chapter 16, "Tribes and Indigenous Peoples," and Chapter 27, "Northwest": https://nca5.climate.us/ (the federal site was taken offline in mid-2025; a volunteer-hosted copy is at https://nca5.climate.us/ ; verify before assigning)
+- Fifth National Climate Assessment (2023), Chapter 16, "Tribes and Indigenous Peoples," and Chapter 27, "Northwest": doi:10.7930/NCA5.2023.CH16 and doi:10.7930/NCA5.2023.CH27. The federal site went offline in mid-2025; an online copy hosted by the nonprofit Climate.us is at https://nca5.climate.us/
 
 **Elwha River**
 
 - PBS *Nature*, "The Beautiful Undammed" (*Wild Hope*): https://www.pbs.org/wnet/nature/the-beautiful-undammed-wild-hope/29052/
-- Washington Sea Grant self-guided Elwha tour: https://wsg.washington.edu/self-guided-field-trip-elwha-river-restoration-tour/
+- National Park Service, Elwha River Restoration: https://www.nps.gov/olym/learn/nature/elwha-ecosystem-restoration.htm
 
 **Working with Tribes and Indigenous data**
 
 - Local Contexts (TK and BC Labels): https://localcontexts.org/
-- CARE Principles, Global Indigenous Data Alliance: https://www.gida-global.org/care
+- CARE Principles, Global Indigenous Data Alliance: https://www.gida-global.org/careprinciples

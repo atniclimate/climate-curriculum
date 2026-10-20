@@ -93,12 +93,12 @@ These lessons are made to be shared broadly, with leaders, teachers, and communi
 **Polished:**
 
 - **Cycles:** water, seasons, salmon, and generations all come back around.
-- **Relationships:** with each other, and with the lands, waters, and all beings who live within them.
+- **Relationships:** with each other, and with the lands, waters, and all Beings who live within them.
 - **Local observation:** what you can see, hear, and feel where you live.
 - **Critical thinking:** thinking about thinking; reading our sources and ourselves.
 - **Intergenerational knowledge:** learning from Elders, teaching the young, and the responsibility to do both.
 - **Change, felt as well as measured:** change is physical, and it is emotional too.
-- **Scale:** the frog's eye (up close, at the water), the bird's eye (above the land, the whole watershed), and the moon's eye (the whole planet, seen through satellites and global records).
+- **Scale:** the Frog's Eye (up close, at the water), the Bird's Eye (above the land, the whole watershed), and the Moon's Eye (the whole planet, seen through satellites and global records).
 
 ---
 
@@ -225,7 +225,7 @@ What did you learn about how we come to know things, and who we trust to share t
 **Guiding questions in the workshop:**
 
 - With your own senses you can see the snow in the winter. How do we learn about weather and climate in the classroom, and in the media? (Part Two title slide)
-- What can only be seen up close, and what can only be seen from far away? (frog's eye, bird's eye, moon's eye)
+- What can only be seen up close, and what can only be seen from far away? (Frog's Eye, Bird's Eye, Moon's Eye)
 - Which one did you feel before you thought about it? (source check)
 - What would you need to make this journey, and what would make it harder? (the salmon's journey home)
 - Which of these relatives have you seen, eaten, or heard stories about? (relatives of the river)
@@ -292,7 +292,7 @@ Adaptation, mitigation, and resilience get used like they are one word, but they
 
 How do you now understand climate change adaptation, mitigation, and resilience? Did your sense of what needs to happen, or how fast, change today? What is one question about responding to climate impacts in your own community that you want to find out?
 
-**Notes:** One meaning change to decide. The second version's description says "We must adapt to present climate impacts to mitigate the impacts on our future generations." That joins adaptation and mitigation into one action, which is the confusion Part Three exists to untangle; the polished text keeps the first version's logic (adapt now to be resilient; mitigate now to limit future impacts). The takeaway appears as "black mirror" in the first version and "smoke and mirrors" in the second; the workshop uses "black mirror." The second version's inquiry turns open questions into yes or no questions ("Has your understanding ... changed?"); the polished text keeps the open forms.
+**Notes:** One meaning change to decide. The second version's description says "We must adapt to present climate impacts to mitigate the impacts on our future generations." That joins adaptation and mitigation into one action, which is the confusion Part Three exists to untangle; the polished text keeps the first version's logic (adapt now to be resilient; mitigate now to limit future impacts). The takeaway appears as "black mirror" in the first version and "smoke and mirrors" in the second; the workshop uses "black mirror." The second version's inquiry turns open questions into yes-or-no questions ("Has your understanding ... changed?"); the polished text keeps the open forms.
 
 **Guiding questions in the workshop:**
 
@@ -342,7 +342,7 @@ We are not born into this world; we are born out of it. We are not apart from na
 
 **Polished:**
 
-"We will always be better than I ever will be" is the heart of this last part. The work, the action, and the thinking all go back to honoring our relationships and responsibilities: to each other, and to the lands, waters, and all beings who live within them. The same way we learned by going outside to watch a cloud, we rely on our many senses. Experience shows us what is truly possible; we have watched the whole world change quickly when it had to. So let us rely more upon what we have experienced than on what we "know."
+"We will always be better than I ever will be" is the heart of this last part. The work, the action, and the thinking all go back to honoring our relationships and responsibilities: to each other, and to the lands, waters, and all Beings who live within them. The same way we learned by going outside to watch a cloud, we rely on our many senses. Experience shows us what is truly possible; we have watched the whole world change quickly when it had to. So let us rely more upon what we have experienced than on what we "know."
 
 **Notes:** The first version names Covid and the Israel and Iran war as examples of fast change; the second generalizes to "natural disasters, drought, war, famine, or airborne illness." The polished text keeps the point without naming a war, so it does not date quickly or pull the room into current politics; restore either version's examples if you prefer. The source has no inquiry questions for Part Four; the workshop uses: What did you learn about the place of relationships in this work? What idea about being a good ancestor moved for you? What question will you keep working on? "Reoccurring" in the second version should read "recurring" if that version is used.
 
@@ -377,12 +377,10 @@ These choices apply across the workshop, lessons, and syllabi.
 
 | Part | Workshop slides | Grades 6 to 12 | CCIC 200 | TCR 201 |
 |---|---|---|---|---|
-| One: How does a cloud work? | 3 to 6 | Unit 1 | Weeks 1 to 3 | Module 1 |
-| Two: How do you know what you know? | 7 to 13 | Unit 2 | Weeks 4 to 6 | Module 2 |
-| Three: What can we do? | 14 to 18 | Unit 3 | Weeks 7 to 8 | Module 3 |
-| Four: How do we work together? | 19 to 21 | Unit 4 | Weeks 9 to 10 | Module 4 |
-
-`[verify week and unit ranges against the current drafts after editing]`
+| One: How does a cloud work? | 3 to 6 | Unit 1 | Weeks 2 and 3 | Module 1 |
+| Two: How do you know what you know? | 7 to 13 | Unit 2 | Weeks 4 and 6 (Week 5 is the bridge) | Module 2 |
+| Three: What can we do? | 14 to 18 | Unit 3 | Weeks 7, 8, and 9 | Module 3 |
+| Four: How do we work together? | 19 to 21 | Unit 4 | Weeks 1, 4, and 10 | Module 4 |
 
 ---
 
@@ -391,4 +389,4 @@ These choices apply across the workshop, lessons, and syllabi.
 - Patrick Freeland and Cayla Jones, *Understanding a Climate of Change: Understanding an Ever Changing Climate*, PF Presentation tab, *Climate Change & The Tribes Curriculum 062326* (Google Doc), ATNI Climate.
 - Steve Robinson, *Climate Change and the Tribes: Columbia River Edition* (draft), Tab 1 of the same document; case material, quotations, and Tribal examples.
 - *Changing Currents Tribal Youth Water Summit Climate Change Curriculum* (2025 Youth Summit tab); the Elder-and-child elevator pitch.
-- NESC 215, Climate Change in Indian Country, Northwest Indian College.
+- NESC 215, Northwest Indian College (catalog title: Climate Change in Native Lands; taught by Patrick Freeland as "Climate Change in Indian Country").
