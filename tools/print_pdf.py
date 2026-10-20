@@ -393,6 +393,11 @@ def build(doc):
             OUT.mkdir(parents=True, exist_ok=True)
             d.save(OUT / doc["out"], garbage=3, deflate=True)
             print(f"{doc['out']}: {d.page_count} pages, {len(toc)} contents entries")
+        # the same page as a web draft beside the PDF: assets relative to docs/downloads, a sheet on screen
+        web = page.replace((ROOT / "docs").as_uri(), "..").replace(
+            "</style>", "@media screen{html{background:#D9DEE3}body{box-sizing:border-box;width:8.5in;max-width:100%;margin:24px auto;"
+            "padding:.6in .75in;background:#fff;box-shadow:0 2px 14px rgba(0,0,0,.25)}.cover{margin:-.6in -.75in .6in}}</style>", 1)
+        (OUT / doc["out"]).with_suffix(".html").write_text(web, encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

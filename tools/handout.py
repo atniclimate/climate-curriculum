@@ -2,6 +2,7 @@
 
 Run:  python tools/handout.py                    (office and bleed PDFs to private/craft/handout/)
       python tools/handout.py office --out docs/downloads   (the published copy, after approval)
+      python tools/handout.py html --out docs/downloads     (the web working draft only, no PDF)
       python tools/handout.py photo              (remake source/handout/gorge-band.jpg; reads private/)
 Two 2-page outputs from one source: office (US Letter, 0.25 in white safe frame, nothing printed in it)
 and bleed (8.75 x 11.25 in: art runs 0.125 in past the trim on every side, type stays 0.375 in
@@ -451,6 +452,12 @@ if __name__ == "__main__":
     if want == ["photo"]:
         make_photo()
         sys.exit()
+    if want == ["html"]:  # the office sheet as a web page: both sides on a gray table
+        web = OUT / Path(KINDS["office"]).with_suffix(".html").name
+        OUT.mkdir(parents=True, exist_ok=True)
+        web.write_text(page("office").replace("</style>", "@media screen{html{background:#8E959C}body{background:none;padding:24px 0}"
+                       ".sheet{margin:0 auto 24px;background:#fff;box-shadow:0 2px 14px rgba(0,0,0,.35)}}</style>", 1), encoding="utf-8", newline="\n")
+        sys.exit(print(web))
     for kind in KINDS:
         if not want or kind in want:
             build(kind)
