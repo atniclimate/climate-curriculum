@@ -14,6 +14,30 @@ top. Keep each entry short.
 
 ---
 
+### 10/20/2026, branch: dev/workshop-polish-2026-10 (from dev/revisions-2026-10; no TCU commits)
+- Done: D21, D22 printing note, D25 rulings recorded (e4f178d). Page polish
+  (21dc2e0): probe now clean apart from by-design .sort/.webwrap columns, S4
+  control panel scroll with notes open at 1366, phone progress segments 27px
+  wide (above 24px). D25 slide fixes S4 notes, S5, S9, S10 (Kettle Falls,
+  AUG table, Salmon River), S16 (Nez Perce, Tutuilla, Pushpum), S20 (0f1b67b).
+  Copy-edit plus D25 corrections in both curriculum documents (f7dfef8).
+  tools/print_pdf.py (a1b73fd) and docs/downloads PDFs: lessons 33 pages,
+  guiding document 14 pages, tagged, bookmarked (484b8c4).
+- Evidence: the source re-check report and copy-edit logs were session
+  scratch (not kept); VERIFY.md rows carry the sources. build --check passes;
+  tools/check.py 0 errors.
+- Waiting on Patrick: merge to main if the polish and PDFs should be live for
+  10/23 (merging also brings the dev/revisions-2026-10 commits); S22 links to
+  the PDFs; voice pass VP1 to VP8; Colville review of the Kettle Falls line;
+  Yakama Nation confirmation of the Pushpum wording; NESC 215 title wording;
+  copy-edit flags (guiding doc Four Questions note contradiction, Language
+  Guide missing Knowledge and Beings, OCAP framing, "Patrick A. Freeland").
+- Watch out: an untracked zip appeared in curriculum/ ("Climate Change & The
+  Tribes Curriculum  062326.zip"), not committed. vectorcraft/designcraft
+  were not reachable from this session (no MCP tools, not on PATH).
+  Lesson 4.3 case summary still says "proposes" inside "from the draft".
+  The TCU branch (dev/tcu-templates-2026-10) is separate and untouched.
+
 ### 10/15/2026, branch: dev/revisions-2026-10
 - Done (planning only; no slide, source, docs, or curriculum change; build
   check passed before starting, and no commit touched source/):
