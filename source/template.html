@@ -169,9 +169,10 @@ input[type=range]{width:100%;accent-color:var(--red);height:44px;margin:-6px 0}
 .inst button:focus-visible{outline:2px solid var(--red-dk);outline-offset:-2px}
 .inst button[aria-expanded="true"]{background:var(--plate-hi);box-shadow:inset 0 -3px 0 var(--text)}
 .inst.focused button[aria-expanded="false"]{opacity:.42}
-.inst svg{width:100%;height:clamp(130px,calc(30vh - 60px),280px);display:block}
-@media (max-width:980px){.inst svg{height:auto;aspect-ratio:4/3;max-height:clamp(130px,calc(30vh - 60px),280px)}}
-[data-slide-id="s05-gauges"] .inner{max-width:none;padding-inline:clamp(12px,1.6vw,28px)}
+/* 150px at 768 tall (the least that still fills a 1366 card edge to edge), about 300px at 1080 */
+.inst svg{width:100%;height:clamp(130px,calc(48vh - 219px),320px);display:block}
+@media (max-width:980px){.inst svg{height:auto;aspect-ratio:4/3;max-height:clamp(130px,calc(48vh - 219px),320px)}}
+[data-slide-id="s05-gauges"] .inner{max-width:none;padding-inline:clamp(12px,1.6vw,28px);padding-block:clamp(8px,1.4vh,34px);gap:clamp(10px,1.6vh,26px)}
 .inst h3{font-size:calc(var(--b)*.98)}
 .inst .unit{font-family:var(--f-data);font-size:12px;color:var(--muted)}
 .focus{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:8px}
@@ -632,7 +633,7 @@ blockquote{margin:0}
             <linearGradient id="g5sm-a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A2119"/><stop offset="1" stop-color="#3A2E24"/></linearGradient>
             <linearGradient id="g5sm-b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4E3B2A"/><stop offset="1" stop-color="#5A4632"/></linearGradient>
             <linearGradient id="g5sm-c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3D3731"/><stop offset="1" stop-color="#2E2924"/></linearGradient>
-            <linearGradient id="g5sm-wet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F5F8C" stop-opacity=".5"/><stop offset=".82" stop-color="#2F5F8C" stop-opacity=".42"/><stop offset="1" stop-color="#2F5F8C" stop-opacity="0"/></linearGradient>
+            <linearGradient id="g5sm-wet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14304D" stop-opacity=".6"/><stop offset=".82" stop-color="#14304D" stop-opacity=".55"/><stop offset="1" stop-color="#14304D" stop-opacity="0"/></linearGradient>
             <pattern id="g5sm-grain" width="9" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".5" fill="#E8ECF0" fill-opacity=".14"/><circle cx="6.5" cy="5" r=".4" fill="#E8ECF0" fill-opacity=".1"/><circle cx="5" cy="1.5" r=".6" fill="#010B13" fill-opacity=".35"/></pattern>
             <clipPath id="g5sm-soil"><path d="M-40 32C-20 34-10 31 0 33C20 31 40 34 60 32S100 31 120 33S150 31 160 32S190 33 200 32V120H-40Z"/></clipPath>
           </defs>
